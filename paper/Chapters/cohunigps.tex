@@ -1,0 +1,330 @@
+
+\section{Introduction}
+
+So far some of the details are still skipped, but I have tried to write pretty much everything that's not already written in results I cite.
+
+\subsection{Notation and setup}
+
+Let $p$ be a prime and let $k = \Z_p$.\nomuni[k]{$k$}{${}=\Z_{p}$} Also note that the following is true for any integral domain $k$ (in particular also for $\F_p$).
+
+Let $\gs{G}_\Z$ be a split and connected reductive algebraic $\Z$-group and let $\gs{G} = (\gs{G}_\Z)_{k}$ (the base change from $\Z$ to $k$).\index{algebraic group}\dknote{We might be able to avoid going through $\Z$ at first with some work. Also, we may need to assume that $\gs{G}$ is simple.} Let $\gs{T}_\Z$ be a split maximal torus of $\gs{G}_\Z$ and set $\gs{T} = (\gs{T}_\Z)_{k}$. Let $\Phi = \Phi(\gs{G},\gs{T})$ be the root system of $\gs{G}$ with respect to $\gs{T}$ and note that $\Phi$ can be identified with the root system of $\gs{G}_\Z$ with respect to $\gs{T}_\Z$. Also note that $\Lie(\gs{G}) = \Lie(\gs{G}_\Z) \otimes_\Z k$ and for any $\alpha \in \Phi$ we have the root subgroup $\gs{N}_\alpha \subseteq \gs{G}$ with $\Lie \gs{N}_\alpha = (\Lie \gs{G})_\alpha = (\Lie \gs{G}_\Z)_\alpha \otimes_\Z k$. Now fix a $k$-basis $X_\alpha$ of the Lie algebra of $\gs{N}_\alpha$. This choice gives rise to a unique isomorphism isomorphism of group schemes $x_\alpha \colon \G_a \xrightarrow{\iso} \gs{N}_\alpha$ such that $(dx_\alpha)(1) = X_\alpha$. We furthermore fix a basis $\Delta \subseteq \Phi$ of the root system such that we get a decomposition $\Phi = \Phi^+ \cup \Phi^-$ into positive and negative roots. Let $\gs{B} = \gs{T}\gs{N}$ and $\gs{B}^+ = \gs{T}\gs{N}^+$ denote the Borel subgroups of $\gs{G}$ corresponding to $\Phi^-$ and $\Phi^+$, respectively, with unipotent radicals $\gs{N}$ and $\gs{N}^+$. (Here we also have corresponding algebraic $\Z$-groups.)
+
+For any total ordering of $\Phi^-$ the multiplication induces an isomorphism of schemes $\prod_{\alpha \in \Phi^-} \gs{N}_\alpha \xrightarrow{\iso} \gs{N}$. For convenience we fix in the following such a total ordering which has the additional property that $\alpha_1 \geq \alpha_2$ if $\Ht(\alpha_1) \leq \Ht(\alpha_2)$. All products indexed by $\Phi^-$ are meant to be taken according to this ordering. Here we have the height function $\Ht \colon \Z[\Delta] \to \Z$ given by $\sum_{\alpha \in \Delta} m_\alpha \alpha \mapsto \sum_{\alpha \in \Delta} m_\alpha$. In particular, since $\Phi \subseteq \Z[\Delta]$ the height $\Ht(\beta)$ of any root $\beta \in \Phi$ is defined.
+
+Let furthermore $\rho$ be the half-sum of the elements of $\Phi^+$, let $X = X(\gs{T}) \iso X(\gs{T}_\Z)$ be the character group of $\gs{T}$, let
+\begin{equation*}
+  X^+ = \set{\lambda \in X \given \inner{\lambda}{\alpha^\vee} \geq 0 \text{ for all } \alpha \in \Phi^+},
+\end{equation*}
+and let $h$ be the Coxeter number of $\gs{G}$ and assume from now on that $p \geq h-1$.
+% and let
+% \begin{equation*}
+%   \cl{C}_p = \set{\lambda \in X \given 0 \leq \inner{\lambda + \rho}{\beta^\vee} \leq p \text{ for all } \beta\in\Phi^+}.
+% \end{equation*}
+For any $\lambda \in X^+$, let $V_\Z(\lambda)$ be the Weyl module for $\gs{G}_\Z$ over $\Z$ with highest weight $\lambda$, and let $V_k(\lambda) = V_\Z(\lambda) \otimes_\Z k$.
+
+Let $\Phi^\vee$ be the dual root system of $\Phi$ and let $W$ be the corresponding Weyl group with length function $\ell$ on $W$. Let $\lie{n}_\Z = \Lie(\gs{N}_\Z)$ be the Lie algebra of $\gs{N}_\Z$ over $\Z$ and $\lie{n} = \lie{n}_{\F_p} = \Lie(\gs{N}_{\F_p}) = \lie{n}_\Z \otimes \F_p$ be the Lie algebra of $\gs{N}_{\F_p}$ over $\F_p$.
+
+Finally let $G = N = \gs{N}(\Z_p) = \gs{N}_\Z(\Z_p)$ and let $\lie{g} = \F_p \otimes_{\F_p[\pi]} \gr G$.
+
+\section{The \texorpdfstring{$p$}{p}-valuation}\label{sec:pval}
+
+This section is mainly based on some unpublished notes by Schneider.
+
+In this section we will write $N$ for $\gs{N}(\Z_p)$, and we note that as a set $N$ is the direct product $N = \prod_{\alpha \in \Phi^{-}} x_\alpha(\Z_p)$, which allows us to introduce the function
+\begin{align*}
+  \omega \colon N \setminus \set{1} &\to \N \\
+  \prod_{\alpha \in \Phi^{-}} x_\alpha(a_\alpha) &\mapsto \min_{\alpha \in \Phi^{-}} \bigl( v_p(a_\alpha) - \Ht(\alpha) \bigr),
+\end{align*}
+where $v_p$ denotes the usual $p$-adic valuation on $\Z_p$. Here it is important to note that we write any $g \in N$ uniquely as product
+\begin{equation*}
+  g = \prod_{\alpha \in \Phi^{-}} x_\alpha(a_\alpha)
+\end{equation*}
+by taking the product following the total ordering $\geq$ of $\Phi^{-}$ defined above. Now, with the convention that $\omega(1) \coloneqq \infty$, we define the descending sequence of subsets
+\begin{equation*}
+  N_m \coloneqq \set{g \in N \given \omega(g) \geq m}
+\end{equation*}
+in $N$ for $m\geq0$. The main goal of this section is to show that $\omega$ is a $p$-valuation by a careful analysis of the sequence of subsets given by $N_m$.
+
+We first note that clearly $N_1 = N$, $\bigcap_m N_m = \set{1}$, and
+\begin{equation}
+  \label{eq:N_m}
+  \begin{split}
+    N_m &= \prod_{\alpha \in \Phi^{-}} x_\alpha(p^{\max(0,m+\Ht(\alpha))} \Z_p) \\
+    &= \prod_{\substack{\alpha\in \Phi^{-} \\ \Ht(\alpha) = -1}} x_\alpha(p^{m-1} \Z_p) \dotsb \prod_{\substack{\alpha\in \Phi^{-} \\ \Ht(\alpha) = -(m-1)}} x_\alpha(p\Z_p) \prod_{\substack{\alpha\in \Phi^{-} \\ \Ht(\alpha) \leq -m}} x_\alpha(\Z_p).
+  \end{split}
+\end{equation}
+
+In our analysis of this sequence we will also need two other filtrations of $N$. Firstly we will consider the filtration by congruence subgroups
+\begin{equation}
+  \label{eq:N(m)}
+  \begin{split}
+    N(m) &\coloneqq \ker\bigl( \gs{N}(\Z_p) \to \gs{N}(\Z/p^m\Z) \bigr) \\
+    &= \prod_{\alpha \in \Phi^{-}} x_\alpha(p^m\Z_p)
+  \end{split}
+\end{equation}
+for $m \geq 0$. Secondly, using the descending central series of the group $\gs{G}(\Q_p)$ defined by $C^1\gs{G}(\Q_p) \coloneqq \gs{G}(\Q_p)$ and $C^{m+1} \gs{G}(\Q_p) \coloneqq [C^m \gs{G}(\Q_p),\gs{G}(\Q_p)]$, we consider the filtration given by
+\begin{equation*}
+    N_{(m)} \coloneqq N \cap C^m \gs{G}(\Q_p)
+\end{equation*}
+for $m \geq 1$. By BT\dknote{Check reference.} we have that
+\begin{equation}
+  \label{eq:N_(m)}
+    N_{(m)} = \prod_{\substack{\alpha \in \Phi^{-} \\ \Ht(\alpha) \leq -m}} x_\alpha(\Z_p).
+\end{equation}
+We note that the natural map
+\begin{equation*}
+  \prod_{\substack{\alpha\in \Phi^{-} \\ \Ht(\alpha) = -m}} x_\alpha(\Z_p) \to N_{(m)}/N_{(m+1)}
+\end{equation*}
+is an isomorphism of abelian groups, and that all the subgroups $N(m)$ and $N_{(m)}$ are normal in $N$.
+
+We are now ready to prove the following lemma, which will help us when showing that $\omega$ is a $p$-valuation.
+
+\begin{lemma}\label{lem:N_m}
+  \begin{enumerate}[(i)]
+  \item $N_m = \prod_{1 \leq i \leq m} N(m-i) \cap N_{(i)}$, for any $m \geq 1$, is a normal subgroup of $N$ which is independent of the choices made.\label{item:N_m}
+
+  \item $[N_\ell,N_m] \subseteq N_{\ell + m}$ for any $\ell,m \geq 1$.\label{item:N_mcom}
+
+  \item $N_m/N_{m+1}$, for any $m \geq 1$, is an $\F_p$-vector space of dimension equal to $\abs{\set{\alpha \in \Phi^{-} \given \Ht(\alpha) \geq -m}}$.
+
+  \item Let $g \in N_m$ for some $m \geq 1$. If $g^p \in N_{m+2}$, then $g \in N_{m+1}$.\label{item:g^p}
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  \begin{enumerate}[(i),wide]
+  \item Using \eqref{eq:N(m)} and \eqref{eq:N_(m)} we note that
+    \begin{equation*}
+      \prod_{\substack{\alpha\in \Phi^{-} \\ \Ht(\alpha) = -i}} x_\alpha(p^{m-1} \Z_p) \subseteq N(m-i) \cap N_{(i)} \quad \text{and} \quad \prod_{\substack{\alpha\in \Phi^{-} \\ \Ht(\alpha) \leq -m}} x_\alpha(\Z_p) = N(0) \cap N_{(m)}
+    \end{equation*}
+    for $1 \leq i < m$, so by \eqref{eq:N_m} it's clear that $N_m \subseteq \prod_{1 \leq i \leq m} N(m-i) \cap N_{(i)}$. We also note, by \eqref{eq:N(m)} and \eqref{eq:N_(m)}, that
+    \begin{align*}
+      \bigl( N(m-i) \cap N_{(i)} \bigr)&\bigl( N(m-i-1) \cap N_{(i+1)} \bigr) \\
+      &\subseteq \Bigl( \prod_{\substack{\alpha\in \Phi^{-} \\ \Ht(\alpha) = -i}} x_\alpha(p^{m-i} \Z_p) \Bigr)\bigl( N(m-i-1) \cap N_{(i+1)} \bigr)
+    \end{align*}
+    for any $1 \leq i < m$, so
+    \begin{align*}
+      \prod_{1 \leq i \leq m} &N(m-i) \cap N_{(i)} \\
+                    &\subseteq \prod_{\substack{\alpha\in \Phi^{-} \\ \Ht(\alpha) = -1}} x_\alpha(p^{m-1} \Z_p) \dotsb \prod_{\substack{\alpha\in \Phi^{-} \\ \Ht(\alpha) = -(m-1)}} x_\alpha(p \Z_p) \bigl( N(0) \cap N_{(m)} \bigr) \\
+      &= N_m
+    \end{align*}
+    by induction, \eqref{eq:N_m} and \eqref{eq:N_(m)}. This shows the equality and that $N_m$ is normal clearly follows.
+
+  \item We first recall the following formulas for commutators
+    \begin{equation}\label{eq:comformulas}
+      [gh,k] = g[h,k]g^{-1}[g,k] \quad \text{ and } \quad [g,hk] = [g,h]h[g,k]h^{-1}.
+    \end{equation}
+    Now, using \eqref{eq:comformulas}, \ref{item:N_m} and the fact that all the involved subgroups are normal, it's enough to show that
+    \begin{equation*}
+      [N(\ell) \cap N_{(i)}, N(m) \cap N_{(j)}] \subseteq N(\ell+m) \cap N_{(i+j)}.
+    \end{equation*}
+    This further reduces to showing that
+    \begin{equation*}
+      [N(\ell),N(m)] \subseteq N(\ell+m) \quad \text{ and } \quad [N_{(i)},N_{(j)}] \subseteq N_{(i+j)}.
+    \end{equation*}
+    The right inclusion is a well known property of the descending central series, so it follows from our defintion of $N_{(m)}$. For the left inclusion it suffices, by \eqref{eq:N(m)}, to show that
+    \begin{equation*}
+      [x_\alpha(p^\ell \Z_p), x_\beta(p^m \Z_p)] \subseteq N(\ell + m)
+    \end{equation*}
+    for any $\alpha,\beta \in \Phi^{-}$. To show this inclusion we recall Chevalley's commutator formula
+    \begin{equation*}
+      [x_\alpha(a),x_\beta(b)] \in x_{\alpha+\beta}(ab\Z_p) \prod_{\substack{i,j \geq 1 \\ i+j > 2}} x_{i\alpha + j\beta}(a^{i}b^{j}\Z_p),
+    \end{equation*}
+    where on the right hand side the convention is that $x_{i\alpha + j\beta} \equiv 1$ if $i\alpha + j\beta \notin \Phi$ (cf.\ BT).\dknote{Check reference.} From \eqref{eq:N(m)} and Chevalley's commutator formula the inclusion follows.
+
+  \item We note that
+    \begin{equation*}
+      N(m-i) \cap N_{(i)} = \prod_{\substack{\alpha \in \Phi^{-} \\ \Ht(\alpha) \leq -i}} x_\alpha(p^{m-i} \Z_p)
+    \end{equation*}
+    for $1 \leq i \leq m$, so the statement follows from \ref{item:N_m} and \ref{item:N_mcom}.\dknote{Write (iii) better.}
+
+  \item For any $1 \leq \ell \leq m$ we consider the chain of normal subgroups
+    \begin{equation*}
+      N_{m+2}(N_m \cap N_{(\ell+1)}) \subseteq N_{m+1}(N_m \cap N_{(\ell+1)}) \subseteq N_{m+1}(N_m \cap N_{(\ell)})
+    \end{equation*}
+    between $N_{m+2}$ and $N_m$. By \eqref{eq:comformulas} and an argument like in \ref{item:N_mcom}, we get that
+    \begin{equation*}
+      [N_{m+1}(N_m \cap N_{(\ell)}),N_{m+1}(N_m \cap N_{(\ell)})] \subseteq N_{m+2}(N_m \cap N_{(\ell+1)}),
+    \end{equation*}
+    so the quotient group
+    \begin{equation*}
+      N_{m+1}(N_m \cap N_{(\ell)}) / N_{m+2}(N_m \cap N_{(\ell+1)})
+    \end{equation*}
+    is abelian. Now looking carefully at the groups as sets, we see that
+    \begin{equation*}
+      N_{m} \cap N_{(\ell)} = \prod_{\substack{\alpha \in \Phi^{-} \\ \Ht(\alpha) \leq -\ell}} x_\alpha(p^{\max(0,m+\Ht(\alpha))} \Z_p)
+    \end{equation*}
+    and thus (using Chevalley's commutator formula and the fact that $\Ht(i\alpha+j\beta) \leq \Ht(\alpha+\beta) < \Ht(\alpha), \Ht(\beta)$ to move the products for the $\Ht(\alpha) = -\ell$ term)
+    \begin{align*}
+      N_{m+1}(N_{m} \cap N_{(\ell)}) &= \prod_{\substack{\alpha \in \Phi^{-} \\ \Ht(\alpha) > -\ell}} x_\alpha(p^{\max(0,m+1+\Ht(\alpha))} \Z_p) \\
+      &\phantom{{}={}} \cdot \prod_{\substack{\alpha \in \Phi^{-} \\ \Ht(\alpha) = -\ell}} x_\alpha(p^{m-\ell} \Z_p) \\
+      &\phantom{{}={}} \cdot \prod_{\substack{\alpha \in \Phi^{-} \\ \Ht(\alpha) < -\ell}} x_\alpha(p^{\max(0,m+\Ht(\alpha))} \Z_p).
+    \end{align*}
+    Similarly
+    \begin{align*}
+      N_{m+2}(N_{m} \cap N_{(\ell+1)}) &= \prod_{\substack{\alpha \in \Phi^{-} \\ \Ht(\alpha) > -\ell}} x_\alpha(p^{\max(0,m+2+\Ht(\alpha))} \Z_p) \\
+      &\phantom{{}={}} \cdot \prod_{\substack{\alpha \in \Phi^{-} \\ \Ht(\alpha) = -\ell}} x_\alpha(p^{m+2-\ell} \Z_p) \\
+      &\phantom{{}={}} \cdot \prod_{\substack{\alpha \in \Phi^{-} \\ \Ht(\alpha) \leq -(\ell+1)}} x_\alpha(p^{\max(0,m+\Ht(\alpha))} \Z_p),
+    \end{align*}
+    and since the quotient group
+    \begin{equation*}
+      N_{m+1}(N_m \cap N_{(\ell)}) / N_{m+2}(N_m \cap N_{(\ell+1)})
+    \end{equation*}
+    is abelian, we see that it is isomorphic to
+    \begin{equation*}
+      \prod_{\substack{\alpha \in \Phi^{-} \\ \Ht(\alpha) > -\ell}} \frac{x_\alpha(p^{\max(0,m+1+\Ht(\alpha))} \Z_p)}{x_\alpha(p^{\max(m+2+\Ht(\alpha))} \Z_p)} \times \prod_{\Ht(\alpha) = -\ell} \frac{x_\alpha(p^{m-\ell} \Z_p)}{x_\alpha(p^{m+2-\ell} \Z_p)}.
+    \end{equation*}
+    Here the subgroup
+    \begin{equation*}
+      N_{m+1}(N_m \cap N_{(\ell+1)}) / N_{m+2}(N_m \cap N_{(\ell+1)})
+    \end{equation*}
+    corresponds to
+    \begin{equation*}
+      \prod_{\Ht(\alpha) > -\ell} \frac{x_\alpha(p^{\max(0,m+1+\Ht(\alpha))} \Z_p)}{x_\alpha(p^{\max(0,m+2+\Ht(\alpha))} \Z_p)} \times \prod_{\Ht(\alpha) = -\ell} \frac{x_\alpha(p^{m+1-\ell} \Z_p)}{x_\alpha(p^{m+2-\ell} \Z_p)}.
+    \end{equation*}
+    It follows that $N_{m+1}(N_m \cap N_{(\ell+1)}) / N_{m+2}(N_m \cap N_{(\ell+1)})$ is the $p$-torsion subgroup of $N_{m+1}(N_m \cap N_{(\ell)}) / N_{m+2}(N_m \cap N_{(\ell+1)})$.
+
+    Now let $g\in N_m$ for some $m\geq1$ and assume that $g^p \in N_{m+2}$. For $\ell = 1$ we have $g \in N_m = N_{m+1}(N_m \cap N_{(1)})$, since $N_{(1)} = N$, and clearly $g^p \in N_{m+2}(N_m \cap N_{(2)})$. Since $N_{m+1}(N_m \cap N_{(2)}) / N_{m+2}(N_m \cap N_{(2)})$ is the $p$-torsion subgroup of $N_{m+1}(N_m \cap N_{(1)}) / N_{m+2}(N_m \cap N_{(2)})$, it follows that $g \in N_{m+1}(N_m \cap N_{(2)})$ and $g^p \in N_{m+2}(N_m \cap N_{(3)})$. By induction on $\ell$, we thus get that $g \in N_{m+1}(N_m \cap N_{(m+1)}) = N_{m+1}$. Here the last equality follows from the fact that $N_{(m+1)} \subseteq N_{m+1}$ by \eqref{eq:N_m} and \eqref{eq:N_(m)}.
+  \end{enumerate}
+\end{proof}
+
+\begin{proposition}
+  The function $\omega$ is a $p$-valuation on $N$, i.e., it satisfies for any $g,h \in N$:
+  \begin{enumerate}[(a)]
+  \item $\omega(g) > \frac{1}{p-1}$,
+  \item $\omega(g^{-1}h) \geq \min(\omega(g),\omega(h))$,
+  \item $\omega([g,h]) \geq \omega(g) + \omega(h)$,
+  \item $\omega(g^p) = \omega(g) + 1$.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  We note that (a) is obvious by our definition of $\omega$, (c) follows from \Cref{lem:N_m}~\ref{item:N_mcom} and (d) follows from \Cref{lem:N_m}~\ref{item:g^p}.
+
+  It only remains to show (b), which we will do by following the proof idea of Lemma~1 from [Zab], i.e., we are going to use triple induction. Also, for the sake of this proof (and only during this proof), we will take all product $\prod_{\alpha \in \Phi^{-}} x_\alpha(a_\alpha)$ to be in descending order in $\Phi^{-}$.
+
+  At first by induction on the number of non-zero coordinates among $(a_\alpha)_{\alpha \in \Phi^{-}}$ in $\prod_{\alpha \in \Phi^{-}} x_\alpha(a_\alpha)$ we are reduced to the case where $g$ is of the form $g = x_\alpha(a_\alpha)$ for some $\alpha \in \Phi^{-}$ and $a_\alpha \in \Z_p$. To see this let $g \in N \setminus \set{1}$ and write $g = \prod_{\alpha \in \Phi^{-}} x_\alpha(a_\alpha)$ in our unique way (according to the descending ordering of $\Phi^{-}$), and let $\beta$ be the smallest element of $\Phi^{-}$ for which $a_\alpha \neq 0$ so that $g = g' \cdot x_\beta(a_\beta)$. Then $g^{-1}h = x_\beta(a_\beta)^{-1}((g')^{-1}h)$ and thus strong induction will imply that
+\begin{align*}
+  \omega(g^{-1}h) &\geq \min\bigl( v(a_\beta)-\Ht(\beta),\omega((g')^{-1}h) \bigr) \\
+  &\geq \min\bigl( v(a_\beta)-\Ht(\alpha),\omega(g'),\omega(h) \bigr) = \min\bigl( \omega(g),\omega(h) \bigr).
+\end{align*}
+
+Let now $h$ be of the form $h = \prod_{k=1}^r x_{\beta_k}(a_{\beta_k})$ with $\beta_1 > \beta_2 > \dotsb > \beta_r$ in $\Phi^{-}$. If $\alpha \geq \beta_1$, then $g^{-1}h = x_\alpha(-a_\alpha) \cdot x_{\beta_1}(a_{\beta_1})  \prod_{k=2}^r x_{\beta_k}(a_{\beta_k})$, so (b) is clearly true if $\alpha > \beta_1$ (by the definition of $\omega$), and if $\alpha = \beta_1$, then $x_\alpha(-a_\alpha) \cdot x_{\beta_1}(a_{\beta_1}) = x_\alpha(-a_\alpha + a_{\beta_1})$ and (b) follows from $v_p(a+b) \geq \min(v_p(a),v_p(b))$ for $a,b \in \Z_p$.
+
+On the other hand, if $\alpha < \beta_1$, then we write
+\begin{align*}
+  g^{-1}h &= x_\alpha(-a_\alpha) \cdot \prod_{k=1}^r x_{\beta_k}(a_{\beta_k}) \\
+  &= [x_\alpha(-a_\alpha),x_{\beta_1}(a_{\beta_1})] x_{\beta_1}(a_{\beta_1}) \cdot x_\alpha(-a_\alpha) \prod_{k=2}^{r}x_{\beta_k}(a_{\beta_k}).
+\end{align*}
+
+Now we use descending induction on $\alpha$ in the chosen ordering of $\Phi^{-}$ and suppose that the statement (b) is true for any $h$ and any $g'$ of the form $g' = x_{\alpha'}(a_{\alpha'})$ with $\alpha' > \alpha$. Note that we already implicitly described the base case earlier and recall that $\Phi^{-}$ is finite and totally ordered. Note furthermore that Chevalley's commutator formula gives us
+\begin{equation}\label{eq:Chevalley}
+  [x_\alpha(-a_\alpha),x_\beta(a_\beta)] = \prod_{\substack{i\alpha + j\beta \in \Phi^{-} \\ i,j>0}} x_{i\alpha + j\beta}(c_{\alpha,\beta,i,j}(-a_\alpha)^{i}a_\beta^{j})
+\end{equation}
+for any $\alpha,\beta \in \Phi^{-}$, where $c_{\alpha,\beta,i,j} \in \Z_p$. Also, we have $\Ht(i\alpha+j\beta) \leq \Ht(\alpha+\beta) < \Ht(\alpha),\Ht(\beta)$, so we can apply the inductional hypothesis for $x_{\beta_1}(a_{\beta_1})$ (since $\beta_1>\alpha$) and for all terms on the right side of \eqref{eq:Chevalley} (recalling that $\alpha' \geq \beta'$ if $\Ht(\alpha') \leq \Ht(\beta')$ and with the choice $\beta = \beta_1$) in order to obtain
+\begin{equation}\label{eq:omega(ginvh)}
+  \begin{aligned}
+    \omega(g^{-1}h) &\geq \min\biggl( \min_{\substack{i\alpha+j\beta \in \Phi^{-} \\ i,j>0}} \omega(x_{i\alpha + j\beta}(c_{\alpha,\beta,i,j}(-a_\alpha)^{i}a_\beta^{j})), \\*
+    &\phantom{{} \geq \min\biggl( {}} \omega(x_{\beta_1}(a_{\beta_1})), \omega\Bigl( x_\alpha(-a_\alpha)\prod_{k=2}^r x_{\beta_k}(a_{\beta_k}) \Bigr) \biggr).
+  \end{aligned}
+\end{equation}
+
+Now, for $i,j>0$ with $i\alpha+j\beta \in \Phi$,
+\begin{equation}\label{eq:omega(Chev)}
+  \begin{aligned}
+    \omega(x_{i\alpha+j\beta}(c_{\alpha,\beta,i,j}(-a_\alpha)^{i}a_\beta^{j})) &= v_p(c_{\alpha,\beta,i,j}(-a_\alpha)^{i}a_\beta^{j}) - \Ht(i\alpha+j\beta) \\*
+    &\geq v_p(c_{\alpha,\beta,i,j}) + v_p((-a_\alpha)^{i}) + v_p(a_\beta^{j}) - \Ht(\alpha+\beta) \\*
+    &\geq v_p(a_\alpha) - \Ht(\alpha) + v_p(a_\beta) - \Ht(\beta) \\*
+    &= \omega(x_\alpha(a_\alpha)) + \omega(x_\beta(a_\beta)) \\*
+    &\geq \min\bigl( \omega(x_\alpha(a_\alpha)), \omega(x_\beta(a_\beta)) \bigr).
+  \end{aligned}
+\end{equation}
+So taking $\beta = \beta_1$ and using \eqref{eq:omega(Chev)} in \eqref{eq:omega(ginvh)}, we get that
+\begin{equation}\label{eq:omega(ginvh)2}
+  \omega(g^{-1}h) \geq \min\biggl( \omega(x_\alpha(a_\alpha)), \omega(x_{\beta_1}(a_{\beta_1})), \omega\Bigl( x_\alpha(-a_\alpha)\prod_{k=2}^r x_{\beta_k}(a_{\beta_k}) \Bigr) \biggr).
+\end{equation}
+
+Finally induction on $r$ will imply that
+\begin{align*}
+  \omega\Bigl( x_\alpha(-a_\alpha)\prod_{k=2}^r x_{\beta_k}(a_{\beta_k}) \Bigr) &\geq \min\biggl( \omega(x_\alpha(a_\alpha)), \omega\Bigl( \prod_{k=2}^r x_{\beta_k}(a_{\beta_k}) \Bigr) \biggr) \\
+                                                     &= \min\bigl( \omega(x_\alpha(a_\alpha)), \min_{2 \leq k \leq r} \omega(x_{\beta_k}(a_{\beta_k})) \bigr),
+\end{align*}
+which by \eqref{eq:omega(ginvh)2} implies that
+\begin{align*}
+  \omega(g^{-1}h) &\geq \min\bigl( \omega(x_\alpha(a_\alpha)), \min_{1 \leq k \leq r} \omega(x_{\beta_k}(a_{\beta_k})) \bigr) \\
+             &= \min\bigl( \omega(g), \omega(h) \bigr),
+\end{align*}
+thus finishing the proof.
+\end{proof}
+
+\section{A multiplicative spectral sequence}\label{sec:specsec}
+
+In this section we will write $G$ for $\gs{N}(\Z_p)$, and we let $\lie{g} = \F_p \otimes_{\F_p[\pi]} \gr G$.
+
+Here $\gr G \iso \F_p[\pi] \otimes_{\F_p} \lie{n}$ by Proposition~3.2 of Schneider's notes, so $\lie{g} \iso \F_p \otimes_{\F_p[\pi]} \F_p[\pi] \otimes_{\F_p} \lie{n} \iso \lie{n}$. (Which can also be shown by looking at the Chevalley constants.)
+
+Note that $G$ is a pro-$p$-group and by Corollary~2.2 of Schneider's notes $G$ is $p$-valuable, so by Theorem~29.8 of \cite{Sch} $G$ is a (compact) $p$-adic Lie group. \dknote{This actually takes quite a lot of work to write the argument for, but it's mostly written in Schneider's notes already.}
+
+Now we have a $p$-valued group $(G,\omega)$, so by \cite{Sor} we get a multiplicative convergent spectral sequence
+\begin{equation*}
+  E_{1}^{s,t} = H^{s,t}(\lie{g},\F_p) \Longrightarrow H^{s+t}(G,\F_p).
+\end{equation*}
+Here $H^{s,t}(\lie{g},\F_p) = H^{s+t}(\gr^{s} C^\bullet(\lie{g},\F_p))$ by definition, where the Lie algebra $\lie{g} \iso \lie{n}$ is graded by the height function.
+
+\section{Dimension of cohomology of \texorpdfstring{$\lie{n}$}{n} and \texorpdfstring{$N=\gs{N}(\Z_p)$}{N=NZp}}\label{sec:dimofcoh}
+By Corollary~2.10 and Corollary~3.8 of \cite{PT} and the Universal Coefficient Theorem there is a finite, natural $\gs{T}_\Z(\Z)$-filtration such that we get isomorphisms of $\F_p$-vector spaces\footnote{You get more than this, but we don't need more here.}
+\begin{equation*}
+  H^{n}(\lie{n}_\Z,V_{\F_p}(0)) \iso \bigoplus_{\substack{w \in W \\ \ell(w) = n}} V_{\F_p}(w \cdot 0) \iso \gr H^{n}(\gs{N}_\Z(\Z),V_{\F_p}(0))
+\end{equation*}
+for any $n \geq 0$ if $p \geq h-1$ (which we assumed to be the case). (Here $V_{\F_p}(\lambda) \iso \F_p$ with $\gs{T}_\Z(\F_p) = \gs{T}(\F_p) = \gs{T}_{\F_p}(\F_p)$ acting via $\lambda$.)
+
+Furthermore
+\begin{equation*}
+  H^{n}(\gs{N}_\Z(\Z),V_{\F_p}(0)) \iso H^{n}(\gs{N}(\Z_p),V_{\F_p}(0)).
+\end{equation*}
+To see this, first note that $\Z$ is a discrete group, $\Z_p$ is a profinite group, and the homomorphism $\Z \to \Z_p$ has dense image in $\Z_p$. So we have homomorphisms
+\begin{equation*}
+  H^n(\Z_p,\F_p) \to H^n(\Z,\F_p)
+\end{equation*}
+for all $n\geq0$ from \cite[Section~I~§2.6]{GalCoh}. Now both $H^0(\Z,\edot)$ and $H^0(\Z_p,\edot)$ are the functor of taking invariant, both $H^1(\Z,\edot)$ and $H^1(\Z_p,\edot)$ are the functor of taking coinvariants, and all $H^n(\Z,\edot)$ and $H^n(\Z_p,\edot)$ vanish for $n\geq2$, so $\Z$ is \enquote{good} in the sense of \cite[Section~I~§2.6 Exercise~2]{GalCoh}. Thus \cite[Section~I~§2.6 Exercise~2(d)]{GalCoh} implies that the homomorphisms
+\begin{equation*}
+  H^n(\gs{N}(\Z_p),\F_p) \to H^n(\gs{N}(\Z),\F_p) \qquad n\geq0,
+\end{equation*}
+induced by the homomorphism $\gs{N}(\Z) \to \gs{N}(\Z_p)$, are all isomorphisms.
+%To see this one can consider a filtration of $\gs{N}(\Z)$ with subquotients isomorphic with $\Z$, and its parallel filtration of $\gs{N}(\Z_p)$ with subquotients isomorphic with $\Z_p$, which will make it follow directly from \cite[Section~I~§2.6 Exercise~2(d)]{GalCoh}.
+
+Hence
+\begin{equation*}
+  \dim_{\F_p} H^{n}(\lie{n}_\Z,\F_p) = \dim_{\F_p} H^n(\gs{N}_\Z(\Z),\F_p)= \dim_{\F_p} H^{n}(\gs{N}(\Z_p),\F_p).
+\end{equation*}
+
+Now $\lie{n} = \lie{n}_\Z \otimes \F_p$, and $H^n(\lie{g},\F_p) \iso H^{n}(\lie{n},\F_p)$ (since $\lie{g} \iso \lie{n}$) is the homology of the complex
+\begin{equation*}
+  C^\bullet(\lie{n},\F_p) = \Hom_{\F_p}\Bigl( \bigwedge^\bullet \lie{n},\F_p \Bigr)
+\end{equation*}
+while $H^{n}(\lie{n}_\Z,\F_p)$ is the homology of the complex
+\begin{equation*}
+  C^\bullet(\lie{n}_\Z,\F_p) = \Hom_{\F_p}\Bigl( \bigwedge^\bullet \lie{n}_\Z,\F_p \Bigr).
+\end{equation*}
+Here $\bigwedge^\bullet \lie{n}_\Z$ is a free $\Z$-module and $(\bigwedge^\bullet \lie{n}_\Z) \otimes \F_p \iso \bigwedge^\bullet (\lie{n}_\Z \otimes \F_p) \iso \bigwedge^\bullet \lie{n}$, so we have natural isomorphisms
+\begin{equation*}
+  \Hom_{\F_p}\Bigl( \bigwedge^\bullet \lie{n}_\Z,\F_p \Bigr) \iso \Hom_{\F_p}\Bigl( \Bigl( \bigwedge^\bullet \lie{n}_\Z \Bigr) \otimes \F_p, \F_p \Bigr) \iso \Hom_{\F_p}\Bigl( \bigwedge^\bullet \lie{n},\F_p \Bigr).
+\end{equation*}
+These isomorphisms are clearly compatible with the differentials, so $C^\bullet(\lie{n},\F_p) \iso C^\bullet(\lie{n}_\Z,\F_p)$, and thus $H^n(\lie{n},\F_p) \iso H^n(\lie{n}_\Z,\F_p)$. Hence
+\begin{equation*}
+  \dim_{\F_p} H^n(\lie{n},\F_p) = \dim_{\F_p} H^n(\lie{n}_\Z,\F_p) = \dim_{\F_p} H^{n}(\gs{N}(\Z_p),\F_p).
+\end{equation*}
+
+\section{Cohomology of \texorpdfstring{$N=\gs{N}(\Z_p)$}{N=NZp}}
+
+Now \Cref{sec:dimofcoh} implies that
+\begin{equation*}
+  \sum_{s+t = n} \dim_{\F_p} H^{s,t}(\lie{g},\F_p) = \dim_{\F_p} H^n(\lie{g},\F_p) = \dim_{\F_p} H^n(G,\F_p),
+\end{equation*}
+so the multiplicative spectral sequence
+\begin{equation*}
+  E_{1}^{s,t} = H^{s,t}(\lie{g},\F_p) \Longrightarrow H^{s+t}(G,\F_p)
+\end{equation*}
+from \Cref{sec:specsec} converges on the first page.\dknote{How do we argue this purely from looking at the dimensions? Do we need to just look at the page and differentials in more detail?} I.e.,
+\begin{equation*}
+  H^n(N,\F_p) = H^n(G,\F_p) \iso H^n(\lie{g},\F_p) \iso H^n(\lie{n},\F_p),
+\end{equation*}
+giving us a good description of $H^n(\gs{N}(\Z_p),\F_p)$. (Since the spectral sequence is multiplicative, can we also say that the cup product can be taken from the right hand side?)

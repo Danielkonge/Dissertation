@@ -1,0 +1,218 @@
+% \usepackage{etoolbox} %gives a lot of useful tools, e.g. \newbool{...}, \setbool{...}{...}, ...
+
+%% BEGIN : SETUP OF LANGUAGE AND FONTS %%
+
+\usepackage[utf8]{inputenc} %use Unicode
+\usepackage[T1]{fontenc} %European fonts
+
+\usepackage[english=american]{csquotes} %set up \enquote to do American quoting style
+
+\usepackage[english]{babel} %use English as the main language
+
+%% END : SETUP OF LANGUAGE AND FONTS %%
+
+%% BEGIN : STANDARD PACKAGES %%
+
+\usepackage{%
+  amsmath,       %some math tools
+  amssymb,       %math symbols
+  graphicx,      %enhanced graphics options
+  mathtools,     %extension of amsmath
+  microtype,     %small typographic effects
+  bm,            %bold math symbols
+  % todonotes,   %adds the option \todo{...} (use fixme instead)
+  stmaryrd,      %some more math symbolswork
+  nicematrix,    %nicer matrix controls
+  mathrsfs,      %more math fonts
+}
+
+\usepackage[shortlabels]{enumitem} %better lists, e.g. enumerate
+
+\usepackage[citestyle=alphabetic,bibstyle=alphabetic,uniquename=init,autolang=hyphen,backend=biber,sortcites=true]{biblatex} %used to make bibliography
+\renewcommand*{\labelalphaothers}{}
+\addbibresource{ref.bib}
+\DeclareLabelalphaTemplate{
+  \labelelement{
+    \field[final]{shorthand}
+    \field{label}
+    \field[strwidth=3,strside=left,ifnames=1]{labelname}
+    \field[strwidth=1,strside=left]{labelname}
+  }
+}
+% \nobibintoc %removes the bibliography from the table of contents
+% \nocite{*} %include all bibliography entries in the printed bibliography
+
+\usepackage[thmmarks,amsmath]{ntheorem} %package for theorems, definitions, ...
+
+\usepackage{varioref}
+
+\usepackage[colorlinks=false]{hyperref} %make links to references
+
+\usepackage[nameinlink]{cleveref} %clever referencing (uses varioref and hyperref above)
+% make some aliases for later
+\crefalias{theorembreak}{theorem}
+\crefalias{definitionbreak}{definition}
+\crefalias{examplebreak}{example}
+\crefalias{examplesbreak}{examples}
+\crefalias{corollarybreak}{corollary}
+\crefalias{propositionbreak}{proposition}
+\crefalias{lemmabreak}{lemma}
+\crefalias{remarkbreak}{remark}
+\crefalias{proofbreak}{proof}
+%
+
+\usepackage[layout=margin,draft]{fixme}
+%\fxsetup{mode=multiuser}
+\FXRegisterAuthor{dk}{andk}{DK} %register a user DK, and provide \dknote, \dkwarning, \dkerror and \dkfatal
+
+\usepackage{calc} %used for calculating (useful when using tikz)
+
+\usepackage{tikz} %used for drawing and making commutative diagrams
+\usetikzlibrary{calc,shapes.geometric,decorations.markings,decorations.pathmorphing,arrows,cd,quotes,babel}
+\usepackage{pgfplots} %for making graphs and plotting functions
+\pgfplotsset{compat=1.18} %small fix to some compatibility issue
+
+%\usepackage[left]{showlabels} %show labels in left margin while editing
+\usepackage[notref,notcite]{showkeys}
+
+%% END : STANDARD PACKAGES %%
+
+%% BEGIN : SETUP INDEX AND NOMENCLATURE %%
+
+%make index using memoir
+\makeindex %create the default index
+
+\usepackage[refpage,intoc]{nomencl} %used for nomenclature
+\makenomenclature
+\renewcommand*{\nomname}{List of Symbols}%name the nomenclature
+\renewcommand*{\nomlabel}[1]{\hfil #1\hfil}%center symbol
+\renewcommand*{\pagedeclaration}[1]{\dotfill\hyperpage{#1}} %pagenumber in nomenclature + link
+\renewcommand{\nomgroup}[1]{%divide nomenclature into groups (can only use capital letters)
+\item[\bfseries
+  \ifstrequal{#1}{A}{Cohomology of Unipotent groups}{%
+    \ifstrequal{#1}{B}{Cohomology of pro-$p$ Iwahori subgroups}{%
+      \ifstrequal{#1}{C}{List-Decodable Mean Estimation and Clustering}{}}}%
+  ]}
+\newcommand*{\nomuni}[1][]{\nomenclature[A#1]} %nomenclature for Cohomology of Unipotent groups
+\newcommand*{\nomiwa}[1][]{\nomenclature[B#1]} %nomenclature for Cohomology of pro-p Iwahori subgroups
+\newcommand*{\nomlis}[1][]{\nomenclature[C#1]} %nomenclature for List-Decodable Mean Estimation and Clustering
+
+%% END : SETUP INDEX AND NOMENCLATURE %%
+
+%% BEGIN : THEOREMS %%
+
+\theoremseparator{.}
+
+\theoremstyle{plain}
+\theorembodyfont{\normalfont}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremsymbol{\ensuremath{\scriptstyle\bigcirc}}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{examples}[theorem]{Examples}
+
+\theoremheaderfont{\itshape}
+\theoremsymbol{\ensuremath{\triangle}}
+\newtheorem{remark}[theorem]{Remark}
+
+\theoremstyle{nonumberplain}
+\theoremsymbol{\ensuremath{\square}}
+\newtheorem{proof}{Proof}
+
+%corresponding break versions:
+
+\theoremsymbol{}
+\theoremheaderfont{\normalfont\bfseries}
+\theorembodyfont{\normalfont}
+\theoremstyle{break}
+\newtheorem{theorembreak}[theorem]{Theorem}
+\newtheorem{corollarybreak}[theorem]{Corollary}
+\newtheorem{propositionbreak}[theorem]{Proposition}
+\newtheorem{lemmabreak}[theorem]{Lemma}
+
+\newtheorem{definitionbreak}[theorem]{Definition}
+
+\theoremsymbol{\ensuremath{\scriptstyle\bigcirc}}
+\newtheorem{examplebreak}{Example}
+\newtheorem{examplesbreak}{Examples}
+
+\theoremheaderfont{\itshape}
+\theoremsymbol{\ensuremath{\triangle}}
+\newtheorem{remarkbreak}{Remark}
+
+\theoremstyle{nonumberbreak}
+\theoremsymbol{\ensuremath{\square}}
+\newtheorem{proofbreak}{Proof}
+
+% no number versions:
+
+\theoremsymbol{}
+\theoremstyle{nonumberplain}
+\theoremheaderfont{\normalfont\bfseries}
+\theorembodyfont{\normalfont}
+\newtheorem{notheorem}{Theorem}
+\newtheorem{nocorollary}{Corollary}
+\newtheorem{noproposition}{Proposition}
+\newtheorem{nolemma}{Lemma}
+
+\newtheorem{nodefinition}{Definition}
+
+\theoremsymbol{\ensuremath{\scriptstyle\bigcirc}}
+\newtheorem{noexample}{Example}
+\newtheorem{noexamples}{Examples}
+
+\theoremheaderfont{\itshape}
+\theoremsymbol{\ensuremath{\triangle}}
+\newtheorem{noremark}{Remark}
+
+%corresponding no number break versions:
+
+\theoremsymbol{}
+\theoremheaderfont{\normalfont\bfseries}
+\theorembodyfont{\normalfont}
+\theoremstyle{nonumberbreak}
+\newtheorem{notheorembreak}{Theorem}
+\newtheorem{nocorollarybreak}{Corollary}
+\newtheorem{nopropositionbreak}{Proposition}
+\newtheorem{nolemmabreak}{Lemma}
+
+\newtheorem{nodefinitionbreak}{Definition}
+
+\theoremsymbol{\ensuremath{\scriptstyle\bigcirc}}
+\newtheorem{noexamplebreak}{Example}
+\newtheorem{noexamplesbreak}{Examples}
+
+\theoremheaderfont{\itshape}
+\theoremsymbol{\ensuremath{\triangle}}
+\newtheorem{noremarkbreak}{Remark}
+
+% special theorems:
+
+\theoremseparator{.}
+\theoremstyle{plain}
+\theoremheaderfont{\normalfont\bfseries}
+\theorembodyfont{\itshape}
+\theoremsymbol{}
+\newtheorem{fact}[theorem]{Fact}
+
+\theoremseparator{:}
+\theoremstyle{nonumberplain}
+\theoremheaderfont{\normalfont\bfseries}
+\theorembodyfont{\itshape}
+\theoremsymbol{}
+\newtheorem{univprop}{Universal Property}
+
+%% END : THEOREMS %%
+
+%% BEGIN : USEFUL SETTINGS FOR THIS DOCUMENT %%
+
+\allowdisplaybreaks[1] %allows page change in align (but tries to avoid it)
+
+\newcommand*{\yesnumber}{\refstepcounter{equation}\tag{\theequation}} %makes it possible to add a number in an equation
+
+%% END : USEFUL SETTINGS FOR THIS DOCUMENT %%

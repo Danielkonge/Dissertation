@@ -1,0 +1,136 @@
+\newcommand*\N{\mathbb{N}}
+\newcommand*\Z{\mathbb{Z}}
+\newcommand*\Q{\mathbb{Q}}
+\newcommand*\R{\mathbb{R}}
+\newcommand*\C{\mathbb{C}}
+\newcommand*\F{\mathbb{F}}
+\newcommand*\A{\mathbb{A}}
+
+%% BEGIN : USER DEFINED COMMANDS %%
+
+% define absolute value \abs{...}:
+\DeclarePairedDelimiterX\abs[1]\lvert\rvert{%
+  \ifblank{#1}{\:\cdot\:}{#1}
+}
+% define norm \norm{...}:
+\DeclarePairedDelimiterX\norm[1]\lVert\rVert{%
+  \ifblank{#1}{\:\cdot\:}{#1}
+}
+% define inner product \inner{...}{...}:
+\DeclarePairedDelimiterX{\inner}[2]{\langle}{\rangle}{%
+  \ifblank{#1}{\:\cdot\:}{#1},\ifblank{#2}{\:\cdot\:}{#2}
+}
+
+% define \set{...} to write sets and \given to write \set{... \given ...} for {...|...}
+\newcommand*\setSymbol[1][]{
+  \nonscript\:#1\vert\allowbreak\nonscript\:\mathopen{}
+}
+\providecommand\given{}
+\DeclarePairedDelimiterX\set[1]{\lbrace}{\rbrace}{
+  \renewcommand*\given{\setSymbol[\delimsize]}
+  #1
+}
+
+%free group geneated by ... \free{...} or \free{... \given ...}
+\DeclarePairedDelimiterX\free[1]{\langle}{\rangle}{
+  \renewcommand\given{\nonscript\:\delimsize\vert\nonscript\:
+    \mathopen{}}
+  #1}
+
+%define \lopen{...}{...}, \ropen{...}{...}, \open{...}{...}, \closed{...}{...} for intervals
+\DeclarePairedDelimiterX\open[2](){#1,#2}
+\DeclarePairedDelimiterX\lopen[2](]{#1,#2}
+\DeclarePairedDelimiterX\ropen[2][){#1,#2}
+\DeclarePairedDelimiterX\closed[2][]{#1,#2}
+
+%define \Span{...} to write span of vectors
+\DeclareMathOperator\Span{span}
+
+%define \Mat to write for set of matrices
+\newcommand*\Mat{\textup{Mat}}
+
+%define \gen{...} to write <...>
+\DeclarePairedDelimiterX\gen[1]\langle\rangle{
+  \ifblank{#1}{\:\cdot\:}{#1}
+}
+
+\DeclareMathOperator{\Ker}{Ker} %Kernel
+\DeclareMathOperator{\kernel}{ker} %kernel
+\DeclareMathOperator*{\supp}{supp} %support
+\DeclareMathOperator{\id}{id} %identity map
+\DeclareMathOperator{\Id}{Id} %Identity map
+\DeclareMathOperator{\ord}{ord} %order of a group
+\DeclareMathOperator{\Syl}{Syl} %Sylow
+\DeclareMathOperator{\GL}{GL} %GL
+\DeclareMathOperator{\SL}{SL} %SL
+\DeclareMathOperator{\Ad}{Ad} %Adjoint representation
+\DeclareMathOperator{\ad}{ad} %adjoint representation
+\DeclareMathOperator{\Char}{char} %characteristic (cannot write with small c since that is used in LaTeX already)
+\DeclareMathOperator{\diag}{diag} %diagonal matrix
+\DeclareMathOperator{\Tr}{Tr} %Trace
+\DeclareMathOperator{\tr}{tr} %trace
+\DeclareMathOperator{\rank}{rank} %rank
+\DeclareMathOperator{\rk}{rk} %rank
+\DeclareMathOperator{\Hom}{Hom} %Hom
+\DeclareMathOperator{\homo}{hom} %hom
+\DeclareMathOperator{\spec}{Spec} %spec
+\DeclareMathOperator{\End}{End} %endomorphisms
+\DeclareMathOperator{\Aut}{Aut} %automorphisms
+\DeclareMathOperator{\Der}{Der} %derivations
+\DeclareMathOperator{\Gal}{Gal} %Galois group
+\DeclareMathOperator{\Frac}{Frac} %fraction field
+\DeclareMathOperator{\Fr}{Fr} %Frobenius
+\DeclareMathOperator{\Frob}{Frob} %Frobenius
+\DeclareMathOperator{\Nm}{Nm} %norm
+\DeclareMathOperator{\Mor}{Mor} %morphisms
+\DeclareMathOperator{\Lie}{Lie} %Lie algebra of group scheme/Lie group
+\DeclareMathOperator{\Ht}{ht} %height
+\DeclareMathOperator{\uHom}{\mkern1mu\underline{\mkern-1mu Hom\mkern-1mu}\mkern1mu}
+\DeclareMathOperator{\gr}{gr}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\amp}{amp}
+
+
+\newcommand*\op{^{\textup{op}}} %oposite ring/category/...
+\renewcommand*\Re{\operatorname{Re}} %real part
+\renewcommand*\Im{\operatorname{Im}} %imaginary part
+\newcommand*{\liegp}[1]{\operatorname{#1}} %for writing Lie groups, e.g. \Lie{O}(n)
+\newcommand*{\lie}[1]{\mathfrak{#1}} %for writing Lie algebras, e.g. \lie{g}
+\newcommand*{\cat}[1]{\textup{\textbf{#1}}} %for writing categories, e.g. \cat{Sets}, \cat{$R$-mod},...
+\newcommand*{\cats}[1]{\set{\:#1\:}} %for writing categories, e.g. \cats{$k$-algebras}, \cats{$R$-modules},...
+\newcommand*\rad[1]{\sqrt{#1}} %radical
+\newcommand*\cl[1]{\overline{#1}} %closure of a set
+\newcommand*\rint[1]{\mathcal{O}_{#1}} %ring of integers
+\newcommand*\act{\,.\,} %action of a group/Lie algebra/...
+\newcommand*\rest[1]{_{\vert{#1}}} %restriction
+\newcommand*\edot{\:\cdot\:} %dot for when function input is empty
+\newcommand*\Sp{\textup{Sp}} %spectrum
+\newcommand*\iso{\cong} %isomorphism
+\newcommand*\std{_{\textup{std}}}
+
+\newcommand*\gs[1]{\mathcal{#1}}
+% \newcommand*\edot{{-}}
+
+\newcommand*\bmat[1]{\begin{bNiceMatrix} #1 \end{bNiceMatrix}}
+\newcommand*\pmat[1]{\begin{pNiceMatrix} #1 \end{pNiceMatrix}}
+
+\newcommand*\G{\mathcal{G}}
+\newcommand*\T{\mathcal{T}}
+
+\newcommand*\catF{\mathcal{F}}
+\newcommand*\catG{\mathcal{G}}
+\newcommand*\catP{\mathcal{P}}
+\newcommand*\catD{\mathcal{D}}
+
+\newcommand*\ZpG{\Z_p\llbracket G \rrbracket}
+\newcommand*\ZpN{\Z_p\llbracket N \rrbracket}
+
+\newcommand*\sO{\mathcal{O}}
+\newcommand*\idm{\mathfrak{m}}
+\newcommand*\sL{\mathcal{L}}
+
+\renewcommand*\projlim{\varprojlim}
+
+%% END : USER DEFINED COMMANDS %%

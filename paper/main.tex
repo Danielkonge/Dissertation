@@ -1,0 +1,59 @@
+\documentclass[letterpaper,oneside,english,11pt,openany]{memoir}
+
+\input{my-packages}
+
+\input{my-macros}
+
+\title{Dissertation}
+% \date{\today}
+\author{Daniel Kongsgaard}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BEGIN : DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% \maketitle
+
+\frontmatter
+
+\input{front}
+
+\tableofcontents*
+
+\clearpage
+
+\begin{vplace}[0.7]
+  Some extra stuff.
+\end{vplace}
+
+\clearpage
+
+\mainmatter
+
+\chapter{Cohomology of Unipotent Groups}
+\label{cha:cohunigps}
+
+\input{Chapters/cohunigps}
+
+\clearpage
+
+\backmatter
+
+\printbibliography
+
+\clearpage
+
+\printnomenclature[4cm]
+
+\clearpage
+
+\printindex
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% END : DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
