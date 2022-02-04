@@ -1,5 +1,6 @@
 
-\section{Introduction}
+\section{Introduction}%
+\label{sec:cohunigps-intro}
 
 So far some of the details are still skipped, but I have tried to write pretty much everything that's not already written in results I cite.
 
@@ -79,7 +80,7 @@ is an isomorphism of abelian groups, and that all the subgroups $N(m)$ and $N_{(
 
 We are now ready to prove the following lemma, which will help us when showing that $\omega$ is a $p$-valuation.
 
-\begin{lemma}\label{lem:N_m}
+\begin{lemmabreak}\label{lem:N_m}
   \begin{enumerate}[(i)]
   \item $N_m = \prod_{1 \leq i \leq m} N(m-i) \cap N_{(i)}$, for any $m \geq 1$, is a normal subgroup of $N$ which is independent of the choices made.\label{item:N_m}
 
@@ -89,7 +90,7 @@ We are now ready to prove the following lemma, which will help us when showing t
 
   \item Let $g \in N_m$ for some $m \geq 1$. If $g^p \in N_{m+2}$, then $g \in N_{m+1}$.\label{item:g^p}
   \end{enumerate}
-\end{lemma}
+\end{lemmabreak}
 \begin{proof}
   \begin{enumerate}[(i),wide]
   \item Using \eqref{eq:N(m)} and \eqref{eq:N_(m)} we note that
@@ -328,3 +329,8 @@ from \Cref{sec:specsec} converges on the first page.\dknote{How do we argue this
   H^n(N,\F_p) = H^n(G,\F_p) \iso H^n(\lie{g},\F_p) \iso H^n(\lie{n},\F_p),
 \end{equation*}
 giving us a good description of $H^n(\gs{N}(\Z_p),\F_p)$. (Since the spectral sequence is multiplicative, can we also say that the cup product can be taken from the right hand side?)
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% End:

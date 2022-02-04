@@ -1,8 +1,8 @@
 \documentclass[letterpaper,oneside,english,11pt,openany]{memoir}
 
-\input{my-packages}
+\input{my-packages.tex}
 
-\input{my-macros}
+\input{my-macros.tex}
 
 \title{Dissertation}
 % \date{\today}
@@ -12,11 +12,13 @@
 
 \begin{document}
 
+\OnehalfSpacing
+
 % \maketitle
 
 \frontmatter
 
-\input{front}
+\input{front.tex}
 
 \tableofcontents*
 
@@ -30,10 +32,20 @@
 
 \mainmatter
 
-\chapter{Cohomology of Unipotent Groups}
+\chapter{Cohomology of Unipotent Groups}%
 \label{cha:cohunigps}
 
-\input{Chapters/cohunigps}
+\input{Chapters/cohunigps.tex}
+
+\chapter{Cohomology of Iwahori Subgroups}%
+\label{cha:cohiwagps}
+
+\input{Chapters/cohiwagps.tex}
+
+\chapter{List-Decodable Mean Estimation and Clustering}%
+\label{cha:robstat}
+
+\input{Chapters/robstat.tex}
 
 \clearpage
 
