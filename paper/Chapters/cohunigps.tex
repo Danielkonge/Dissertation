@@ -200,57 +200,57 @@ We are now ready to prove the following lemma, which will help us when showing t
 \begin{proof}
   We note that (a) is obvious by our definition of $\omega$, (c) follows from \Cref{lem:N_m}~\ref{item:N_mcom} and (d) follows from \Cref{lem:N_m}~\ref{item:g^p}.
 
-  It only remains to show (b), which we will do by following the proof idea of Lemma~1 from [Zab], i.e., we are going to use triple induction. Also, for the sake of this proof (and only during this proof), we will take all product $\prod_{\alpha \in \Phi^{-}} x_\alpha(a_\alpha)$ to be in descending order in $\Phi^{-}$.
+  It only remains to show (b), which we will do by following the proof idea of Lemma~1 from [Zab]\dknote{add ref}, i.e., we are going to use triple induction. Here we note that all products $\prod_{\alpha \in \Phi^{-}} x_\alpha(a_\alpha)$ are in ascending order in $\Phi^{-}$ (so descending in height). For notational ease, we prove equivalently that $\omega(gh^{-1}) \geq \min(\omega(g),\omega(h))$ for $g,h \in N$.
 
-  At first by induction on the number of non-zero coordinates among $(a_\alpha)_{\alpha \in \Phi^{-}}$ in $\prod_{\alpha \in \Phi^{-}} x_\alpha(a_\alpha)$ we are reduced to the case where $g$ is of the form $g = x_\alpha(a_\alpha)$ for some $\alpha \in \Phi^{-}$ and $a_\alpha \in \Z_p$. To see this let $g \in N \setminus \set{1}$ and write $g = \prod_{\alpha \in \Phi^{-}} x_\alpha(a_\alpha)$ in our unique way (according to the descending ordering of $\Phi^{-}$), and let $\beta$ be the smallest element of $\Phi^{-}$ for which $a_\alpha \neq 0$ so that $g = g' \cdot x_\beta(a_\beta)$. Then $g^{-1}h = x_\beta(a_\beta)^{-1}((g')^{-1}h)$ and thus strong induction will imply that
+  At first by induction on the number of non-zero coordinates among $(a_{\beta})_{\beta \in \Phi^{-}}$ in $\prod_{\beta \in \Phi^{-}} x_{\beta}(a_{\beta})$ we are reduced to the case where $h$ is of the form $h = x_{\beta}(a_{\beta})$ for some $\beta \in \Phi^{-}$ and $a_{\beta} \in \Z_p$. To see this let $h \in N \setminus \set{1}$ and write $h = \prod_{\beta \in \Phi^{-}} x_{\beta}(a_{\beta})$ in our unique way (according to the ordering of $\Phi^{-}$), and let $\alpha$ be the smallest element of $\Phi^{-}$ for which $a_{\alpha} \neq 0$ so that $h = x_{\alpha}(a_{\alpha}) \cdot h'$. Then $gh^{-1} = g(h')^{-1} \cdot x_{\alpha}(a_{\alpha})^{-1}$ and thus strong induction will imply that
 \begin{align*}
-  \omega(g^{-1}h) &\geq \min\bigl( v(a_\beta)-\Ht(\beta),\omega((g')^{-1}h) \bigr) \\
-  &\geq \min\bigl( v(a_\beta)-\Ht(\alpha),\omega(g'),\omega(h) \bigr) = \min\bigl( \omega(g),\omega(h) \bigr).
+  \omega(gh^{-1}) &\geq \min\bigl( \omega(g(h')^{-1}), v(a_{\alpha})-\Ht(\alpha)\bigr) \\
+  &\geq \min\bigl( \omega(g),\omega(h'), v(a_{\alpha})-\Ht(\alpha) \bigr) = \min\bigl( \omega(g),\omega(h) \bigr).
 \end{align*}
 
-Let now $h$ be of the form $h = \prod_{k=1}^r x_{\beta_k}(a_{\beta_k})$ with $\beta_1 > \beta_2 > \dotsb > \beta_r$ in $\Phi^{-}$. If $\alpha \geq \beta_1$, then $g^{-1}h = x_\alpha(-a_\alpha) \cdot x_{\beta_1}(a_{\beta_1})  \prod_{k=2}^r x_{\beta_k}(a_{\beta_k})$, so (b) is clearly true if $\alpha > \beta_1$ (by the definition of $\omega$), and if $\alpha = \beta_1$, then $x_\alpha(-a_\alpha) \cdot x_{\beta_1}(a_{\beta_1}) = x_\alpha(-a_\alpha + a_{\beta_1})$ and (b) follows from $v_p(a+b) \geq \min(v_p(a),v_p(b))$ for $a,b \in \Z_p$.
+Fix $h = x_{\beta}(a_{\beta})$ and let now $g$ be of the form $g = \prod_{k=1}^r x_{\alpha_k}(a_{\alpha_k})$ with $\alpha_1 < \alpha_2 < \dotsb < \alpha_r$ in $\Phi^{-}$. If $\beta > \alpha_{r}$, then $gh^{-1} = \prod_{k=1}^{r-1} x_{\alpha_k}(a_{\alpha_k}) \cdot x_{\alpha_{r}}(a_{\alpha_{r}}) x_{\beta}(-a_{\beta})$, so (b) is clearly true if $\beta > \alpha_1$ (by the definition of $\omega$), and if $\beta = \alpha_{r}$, then $x_{\alpha_{r}}(a_{\alpha_{r}})x_{\beta}(-a_{\beta}) = x_{\beta}(a_{\alpha_{r}} - a_{\beta})$ and (b) follows from $v_p(a-b) \geq \min(v_p(a),v_p(b))$ for $a,b \in \Z_p$.
 
-On the other hand, if $\alpha < \beta_1$, then we write
+On the other hand, if $\beta < \alpha_{r}$, then we write
 \begin{align*}
-  g^{-1}h &= x_\alpha(-a_\alpha) \cdot \prod_{k=1}^r x_{\beta_k}(a_{\beta_k}) \\
-  &= [x_\alpha(-a_\alpha),x_{\beta_1}(a_{\beta_1})] x_{\beta_1}(a_{\beta_1}) \cdot x_\alpha(-a_\alpha) \prod_{k=2}^{r}x_{\beta_k}(a_{\beta_k}).
+  gh^{-1} &= \prod_{k=1}^{r} x_{\alpha_{k}}(a_{\alpha_{k}}) \cdot x_{\beta}(-a_{\beta}) \\
+  &= \prod_{k=1}^{r-1} x_{\alpha_{k}}(a_{\alpha_{k}}) \cdot x_{\beta}(-a_{\beta}) \cdot x_{\alpha_{r}}(a_{\alpha_{r}}) \cdot [x_{\alpha_{r}}(-a_{\alpha_{r}}), x_{\beta}(a_{\beta})].
 \end{align*}
 
-Now we use descending induction on $\alpha$ in the chosen ordering of $\Phi^{-}$ and suppose that the statement (b) is true for any $h$ and any $g'$ of the form $g' = x_{\alpha'}(a_{\alpha'})$ with $\alpha' > \alpha$. Note that we already implicitly described the base case earlier and recall that $\Phi^{-}$ is finite and totally ordered. Note furthermore that Chevalley's commutator formula gives us
+Now we use descending induction on $\beta$ in the chosen ordering of $\Phi^{-}$ and suppose that the statement (b) is true for any $g$ and any $h'$ of the form $h' = x_{\beta'}(a_{\beta'})$ with $\beta' > \beta$. Note that the base case is trivial and recall that $\Phi^{-}$ is finite and totally ordered. Note furthermore that Chevalley's commutator formula gives us
 \begin{equation}\label{eq:Chevalley}
-  [x_\alpha(-a_\alpha),x_\beta(a_\beta)] = \prod_{\substack{i\alpha + j\beta \in \Phi^{-} \\ i,j>0}} x_{i\alpha + j\beta}(c_{\alpha,\beta,i,j}(-a_\alpha)^{i}a_\beta^{j})
+  [x_{\alpha'}(a_{\alpha'}),x_{\beta'}(a_{\beta'})] = \prod_{\substack{i\alpha' + j\beta' \in \Phi^{-} \\ i,j>0}} x_{i\alpha'+ j\beta'}(c_{\alpha',\beta',i,j}a_{\alpha'}^{i}a_{\beta'}^{j})
 \end{equation}
-for any $\alpha,\beta \in \Phi^{-}$, where $c_{\alpha,\beta,i,j} \in \Z_p$. Also, we have $\Ht(i\alpha+j\beta) \leq \Ht(\alpha+\beta) < \Ht(\alpha),\Ht(\beta)$, so we can apply the inductional hypothesis for $x_{\beta_1}(a_{\beta_1})$ (since $\beta_1>\alpha$) and for all terms on the right side of \eqref{eq:Chevalley} (recalling that $\alpha' \geq \beta'$ if $\Ht(\alpha') \leq \Ht(\beta')$ and with the choice $\beta = \beta_1$) in order to obtain
+for any $\alpha',\beta' \in \Phi^{-}$, where $c_{\alpha',\beta',i,j} \in \Z_p$. Also, we have $\Ht(i\alpha'+j\beta') \leq \Ht(\alpha'+\beta') < \Ht(\alpha'),\Ht(\beta')$, so we can apply the induction hypothesis for $x_{\alpha_{r}}(a_{\alpha_{r}})$ and each $x_{i\alpha_{r}+j\beta}(c_{\alpha_{r},\beta,i,j}(-a_{\alpha_{r}})^{i}a_{\beta}^{j})$ in $[x_{\alpha_{r}}(-a_{\alpha_{r}},x_{\beta}(a_{\beta}))]$, since $\alpha_{r} > \beta$ and all terms on the right side of \eqref{eq:Chevalley} are larger than $\beta$ (and $\alpha_{r}$) in the ordering of $\Phi^{-}$. We thus obtain
 \begin{equation}\label{eq:omega(ginvh)}
   \begin{aligned}
-    \omega(g^{-1}h) &\geq \min\biggl( \min_{\substack{i\alpha+j\beta \in \Phi^{-} \\ i,j>0}} \omega(x_{i\alpha + j\beta}(c_{\alpha,\beta,i,j}(-a_\alpha)^{i}a_\beta^{j})), \\*
-    &\phantom{{} \geq \min\biggl( {}} \omega(x_{\beta_1}(a_{\beta_1})), \omega\Bigl( x_\alpha(-a_\alpha)\prod_{k=2}^r x_{\beta_k}(a_{\beta_k}) \Bigr) \biggr).
+    \omega(gh^{-1}) &\geq \min\biggl(\min_{\substack{i\alpha_{r}+j\beta \in \Phi^{-} \\ i,j>0}} \omega(x_{i\alpha_{r} + j\beta}(c_{\alpha_{r},\beta,i,j}(-a_{\alpha_{r}})^{i}a_{\beta}^{j})), \\*
+    &\phantom{{} \geq \min\biggl( {}} \omega(x_{\alpha_{r}}(a_{\alpha_{r}})), \omega\Bigl( \prod_{k=1}^{r-1} x_{\alpha_k}(a_{\alpha_k}) \cdot x_{\beta}(-a_{\beta}) \Bigr) \biggr).
   \end{aligned}
 \end{equation}
 
-Now, for $i,j>0$ with $i\alpha+j\beta \in \Phi$,
+Now, for $i,j>0$ with $i\alpha'+j\beta' \in \Phi^{-}$,
 \begin{equation}\label{eq:omega(Chev)}
   \begin{aligned}
-    \omega(x_{i\alpha+j\beta}(c_{\alpha,\beta,i,j}(-a_\alpha)^{i}a_\beta^{j})) &= v_p(c_{\alpha,\beta,i,j}(-a_\alpha)^{i}a_\beta^{j}) - \Ht(i\alpha+j\beta) \\*
-    &\geq v_p(c_{\alpha,\beta,i,j}) + v_p((-a_\alpha)^{i}) + v_p(a_\beta^{j}) - \Ht(\alpha+\beta) \\*
-    &\geq v_p(a_\alpha) - \Ht(\alpha) + v_p(a_\beta) - \Ht(\beta) \\*
-    &= \omega(x_\alpha(a_\alpha)) + \omega(x_\beta(a_\beta)) \\*
-    &\geq \min\bigl( \omega(x_\alpha(a_\alpha)), \omega(x_\beta(a_\beta)) \bigr).
+    \omega(x_{i\alpha'+j\beta'}(c_{\alpha',\beta',i,j}a_{\alpha'}^{i}a_{\beta'}^{j})) &= v_p(c_{\alpha',\beta',i,j}a_{\alpha'}^{i}a_{\beta'}^{j}) - \Ht(i\alpha'+j\beta') \\*
+    &\geq v_p(c_{\alpha',\beta',i,j}) + v_p(a_{\alpha'}^{i}) + v_p(a_{\beta'}^{j}) - \Ht(\alpha'+\beta') \\*
+    &\geq v_p(a_{\alpha'}) - \Ht(\alpha') + v_p(a_{\beta'}) - \Ht(\beta') \\*
+    &= \omega(x_{\alpha'}(a_{\alpha'})) + \omega(x_{\beta'}(a_{\beta'})) \\*
+    &\geq \min\bigl( \omega(x_{\alpha'}(a_{\alpha'})), \omega(x_{\beta'}(a_{\beta'})) \bigr).
   \end{aligned}
 \end{equation}
-So taking $\beta = \beta_1$ and using \eqref{eq:omega(Chev)} in \eqref{eq:omega(ginvh)}, we get that
+So taking $\alpha' = \alpha_{r}$ and $\beta' = \beta$ and using \eqref{eq:omega(Chev)} in \eqref{eq:omega(ginvh)}, we get that
 \begin{equation}\label{eq:omega(ginvh)2}
-  \omega(g^{-1}h) \geq \min\biggl( \omega(x_\alpha(a_\alpha)), \omega(x_{\beta_1}(a_{\beta_1})), \omega\Bigl( x_\alpha(-a_\alpha)\prod_{k=2}^r x_{\beta_k}(a_{\beta_k}) \Bigr) \biggr).
+  \omega(gh^{-1}) \geq \min\biggl( \omega(x_{\alpha_{r}}(a_{\alpha_{r}})), \omega(x_{\beta}(a_{\beta})), \omega\Bigl( \prod_{k=1}^{r-1} x_{\alpha_{k}}(a_{\alpha_{k}}) \cdot x_{\beta}(-a_{\beta}) \Bigr) \biggr).
 \end{equation}
 
 Finally induction on $r$ will imply that
 \begin{align*}
-  \omega\Bigl( x_\alpha(-a_\alpha)\prod_{k=2}^r x_{\beta_k}(a_{\beta_k}) \Bigr) &\geq \min\biggl( \omega(x_\alpha(a_\alpha)), \omega\Bigl( \prod_{k=2}^r x_{\beta_k}(a_{\beta_k}) \Bigr) \biggr) \\
-                                                     &= \min\bigl( \omega(x_\alpha(a_\alpha)), \min_{2 \leq k \leq r} \omega(x_{\beta_k}(a_{\beta_k})) \bigr),
+  \omega\Bigl( \prod_{k=1}^{r-1} x_{\alpha_{k}}(a_{\alpha_{k}}) \cdot x_{\beta}(-a_{\beta}) \Bigr) &\geq \min\biggl( \omega\Bigl( \prod_{k=1}^{r-1} x_{\alpha_{k}}(a_{\alpha_{k}})\Bigr) , \omega(x_{\beta}(a_{\beta})) \biggr) \\
+                                                     &= \min\bigl( \min_{1 \leq k \leq r-1} \omega(x_{\alpha_{k}}(a_{\alpha_{k}})), \omega(x_{\beta}(a_{\beta})) \bigr),
 \end{align*}
 which by \eqref{eq:omega(ginvh)2} implies that
 \begin{align*}
-  \omega(g^{-1}h) &\geq \min\bigl( \omega(x_\alpha(a_\alpha)), \min_{1 \leq k \leq r} \omega(x_{\beta_k}(a_{\beta_k})) \bigr) \\
+  \omega(gh^{-1}) &\geq \min\bigl( \min_{1 \leq k \leq r} \omega(x_{\alpha_{k}}(a_{\alpha_{k}})), \omega(x_{\beta}(a_{\beta})) \bigr) \\
              &= \min\bigl( \omega(g), \omega(h) \bigr),
 \end{align*}
 thus finishing the proof.
