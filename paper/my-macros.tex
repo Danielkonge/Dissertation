@@ -56,6 +56,8 @@
 
 \DeclareMathOperator{\Ker}{Ker} %Kernel
 \DeclareMathOperator{\kernel}{ker} %kernel
+\DeclareMathOperator{\image}{im}
+\DeclareMathOperator{\coker}{coker}
 \DeclareMathOperator*{\supp}{supp} %support
 \DeclareMathOperator{\id}{id} %identity map
 \DeclareMathOperator{\Id}{Id} %Identity map
@@ -91,6 +93,7 @@
 \DeclareMathOperator{\Tor}{Tor}
 \DeclareMathOperator{\pr}{pr}
 \DeclareMathOperator{\amp}{amp}
+\DeclareMathOperator{\SNF}{SNF}
 
 
 \newcommand*\op{^{\textup{op}}} %oposite ring/category/...
@@ -113,6 +116,7 @@
 \newcommand*\gs[1]{\mathcal{#1}}
 % \newcommand*\edot{{-}}
 
+\NiceMatrixOptions{cell-space-limits = 1pt}
 \newcommand*\bmat[1]{\begin{bNiceMatrix} #1 \end{bNiceMatrix}}
 \newcommand*\pmat[1]{\begin{pNiceMatrix} #1 \end{pNiceMatrix}}
 
@@ -131,6 +135,10 @@
 \newcommand*\idm{\mathfrak{m}}
 \newcommand*\sL{\mathcal{L}}
 
+\newcommand\defeq{\coloneqq}
+
 \renewcommand*\projlim{\varprojlim}
+
+\newcommand\snfsim{\:\: \overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily SNF}}}{\sim} \:\:}
 
 %% END : USER DEFINED COMMANDS %%

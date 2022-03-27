@@ -1,6 +1,741 @@
 \section{Intoduction}%
 \label{sec:cohiwagps}
 
+\section{\texorpdfstring{$I \subseteq \SL_{2}(\Z_{p})$}{I in SL2(Zp)}}%
+\label{sec:Iwa-SL2}
+
+\begin{equation*}
+  I = \pmat{1+p\Z_{p} & \Z_{p} \\ p\Z_{p} & 1+p\Z_{p}} \subseteq \SL_{2}(\Z_{p}).
+\end{equation*}
+
+Obvious try (using that $(1+p)^{\Z_{p}} = 1+p\Z_{p}$):
+\begin{align*}
+  g_{1}' &= \pmat{1 & 0 \\ p & 1}, & g_{2}' &= \pmat{1+p & 0 \\ 0 & (1+p)^{-1}}, & g_{3}' &= \pmat{1 & 1 \\ 0 & 1}.
+\end{align*}
+
+Better:
+\begin{equation}
+  \label{eq:gis-SL2}
+  \begin{aligned}
+    g_{1} &= \pmat{1 & 0 \\ p & 1}, & g_{2} &= \pmat{\exp(p) & 0 \\ 0 & \exp(-p)}, & g_{3} &= \pmat{1 & 1 \\ 0 & 1}.
+  \end{aligned}
+\end{equation}
+
+For $g = (a_{ij})$
+\begin{equation*}
+  \omega(g) \defeq \min\bigl( v_{p}(a_{11}-1), \frac{1}{2} + v_{p}(a_{12}), -\frac{1}{2} + v_{p}(a_{21}), v_{p}(a_{22}-1) \bigr).
+\end{equation*}
+
+\begin{equation}
+  \label{eq:gixi-SL2}
+  g_{1}^{x_{1}}g_{2}^{x_{2}}g_{3}^{x_{3}} = \pmat{\exp(px_{1}) & \exp(px_{2})x_{3} \\ px_{1}\exp(px_{2}) & px_{1}x_{3}\exp(px_{2}) + \exp(-px_{2})} = \pmat{a_{11} & a_{12} \\ a_{21} & a_{22}}.
+\end{equation}
+
+$g_{ij} = [g_{i},g_{j}]$
+\begin{align*}
+  \sigma(g_{12}) &= (p-2)\pi \act \sigma(g_{1}), \\
+  \sigma(g_{13}) &= (p-1)\pi \act \sigma(g_{1}) + (p-1)\sigma(g_{2}) + \pi \act \sigma(g_{3}), \\
+  \sigma(g_{23}) &= (p-2)\pi \act \sigma(g_{3}).
+\end{align*}
+
+So with $\xi_{i} = 1 \otimes \sigma(g_{i})$:
+\begin{align*}
+  [\xi_{1},\xi_{2}] &= 0, & [\xi_{1},\xi_{3}] &= -\xi_{2}, & [\xi_{2},\xi_{3}] &= 0.
+\end{align*}
+
+\section{\texorpdfstring{$I \subseteq \GL_{2}(\Z_{p})$}{I in GL2(Zp)}}%
+\label{sec:Iwa-GL2}
+
+\begin{equation}
+  \label{eq:gis-GL2}
+  \begin{split}
+    g_{1} = \pmat{1 & 0 \\ p & 1}, \qquad g_{2} = \pmat{\exp(p) & 0 \\ 0 & \exp(-p)}, \\
+    g_{3} = \pmat{\exp(p) & 0 \\ 0 & \exp(p)}, \qquad g_{4} = \pmat{1 & 1 \\ 0 & 1}.
+  \end{split}
+\end{equation}
+
+\begin{align}
+  & g_{1}^{x_{1}}g_{2}^{x_{2}}g_{3}^{x_{3}}g_{4}^{x_{4}}  \notag \\
+                &= \pmat{ \exp\bigl( p(x_{2}+x_{3}) \bigr) & \exp\bigl( p(x_{2}+x_{3}) \bigr)x_{4} \\ px_{1}\exp\bigl( p(x_{2}+x_{3}) \bigr) & \exp\bigl( p(x_{2}+x_{3}) \bigr)px_{1}x_{4} + \exp\bigl( p(x_{3}-x_{2}) \bigr) } \\
+                &= \pmat{ a_{11} & a_{12} \\ a_{21} & a_{22} }. \notag
+\end{align}
+
+$g_{ij} = [g_{i},g_{j}]$
+\begin{align*}
+  \sigma(g_{12}) &= (p-2)\pi \act \sigma(g_{1}), \\
+  \sigma(g_{14}) &= (p-1)\pi \act \sigma(g_{1}) + (p-1)\sigma(g_{2}) + \pi \act \sigma(g_{3}), \\
+  \sigma(g_{24}) &= (p-2)\pi \act \sigma(g_{3}), \\
+  \sigma(g_{13}) &= \sigma(g_{23}) = \sigma(g_{24}) = 0.
+\end{align*}
+
+So with $\xi_{i} = 1 \otimes \sigma(g_{i})$:
+\begin{equation*}
+  [\xi_{1},\xi_{4}] = -\xi_{2}
+\end{equation*}
+is the only non-zero commutator.
+
+\section{\texorpdfstring{$I \subseteq \SL_{3}(\Z_{p})$}{I in SL3(Zp)}}%
+\label{sec:Iwa-SL3}
+
+To make the notation easier to read for the bigger matrices, we will write any zeros as blank space in matrices in this section.
+\begin{equation}
+  \label{eq:gis-SL3}
+  \begin{split}
+    g_{1} = \pmat{ 1 \\ & 1 \\ p && 1 }, \quad g_{2} = \pmat{ 1 \\ p & 1 \\ && 1 }, \quad g_{3} = \pmat{ 1 \\ & 1 \\ & p & 1 }, \\
+    g_{4} = \pmat{ \exp(p) \\ & \exp(-p) \\ && 1 }, \quad g_{5} = \pmat{ 1 \\ & \exp(p) \\ && \exp(-p) }, \\
+    g_{6} = \pmat{ 1 \\ & 1 & 1 \\ && 1 }, \quad g_{7} = \pmat{ 1 & 1 \\ & 1 \\ && 1 }, \quad g_{8} = \pmat{ 1 && 1 \\ & 1 \\ && 1 }.
+  \end{split}
+\end{equation}
+
+\begin{equation*}
+    g_{1}^{x_{1}}g_{2}^{x_{2}}g_{3}^{x_{3}}g_{4}^{x_{4}}g_{5}^{x_{5}}g_{6}^{x_{6}}g_{7}^{x_{7}}g_{8}^{x_{8}} = \pmat{ a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33}}
+\end{equation*}
+where
+\begin{equation}
+  \label{eq:gixi-SL3}
+  \begin{aligned}
+    a_{11} &= \exp(px_{4}), \\
+    a_{12} &= x_{7}\exp(px_{4}), \\
+    a_{13} &= x_{8}\exp(px_{4}), \\
+    a_{21} &= px_{2}\exp(px_{4}), \\
+    a_{22} &= px_{2}x_{7}\exp(px_{4}) + \exp\bigl( p(x_{5}-x_{4}) \bigr), \\
+    a_{23} &= px_{2}x_{8}\exp(px_{4}) + x_{6}\exp\bigl( p(x_{5}-x_{4}) \bigr), \\
+    a_{31} &= px_{1}\exp(px_{4}), \\
+    a_{32} &= px_{1}x_{7}\exp(px_{4}) + px_{3}\exp\bigl( p(x_{5}-x_{4}) \bigr), \\
+    a_{33} &= px_{1}x_{8}\exp(px_{4}) + px_{3}x_{6}\exp\bigl( p(x_{5}-x_{4}) \bigr) + \exp(-px_{5}).
+  \end{aligned}
+\end{equation}
+
+
+\subsection{\texorpdfstring{Non-identiy $[g_{i},g_{j}]$}{Non-identity [gi,gj]}}%
+\label{subsec:non-id-gij-SL3}
+
+$g_{ij} = [g_{i},g_{j}]$
+
+Except in the first case, we will note that $x_{i} \in p\Z_{p}$ implies that the coefficient on $\xi_{k}$ in $\xi_{ij}$ is zero. \dknote{Introduce $O(p^{k})$ notation.}
+
+Note that we repeatedly use that $-1 = (p-1) + (p-1)p + (p-1)p^{2} + \dotsb$ in $\Z_{p}$ and $-1 = p-1$ in $\F_{p}$.
+
+\begin{description}
+  \item[$g_{14} = \pmat{1 \\ & 1 \\ p\bigl( 1-\exp(-p) \bigr) && 1}$:] Comparing $g_{14}$ with \eqref{eq:gixi-SL3}, we see that $x_{2} = x_{4} = x_{7} = x_{8} = 0$, and thus also $x_{3} = x_{5} = x_{6} = 0$. This leaves $a_{31} = px_{1} = p\bigl( 1-\exp(-p) \bigr) = p^{2} + O(p^{3})$, which implies that $x_{1} = p + O(p^{2})$. Hence $\sigma(g_{14}) = \pi \act \sigma(g_{1})$, which implies that $\xi_{14} = 0$.
+
+  \item[$g_{15} = \pmat{1 \\ & 1 \\ p\bigl( 1-\exp(-p) \bigr) && 1}$:] Since $g_{15} = g_{14}$, the above calculation shows that $\xi_{15} = 0$.
+
+  \item[$g_{16} = \pmat{1 \\ -p & 1 \\ && 1}$:] Comparing $g_{16}$ with \eqref{eq:gixi-SL3}, we see that $x_{1} = x_{4} = x_{7} = x_{8} = 0$, and thus also $x_{3} = x_{5} = x_{6} = 0$. This leaves $a_{21} = px_{2} = -p$, which implies that $x_{2} = -1$. Hence $\sigma(g_{16}) = -\sigma(g_{2})$, which implies that $\xi_{16} = -\xi_{2}$.
+
+  \item[$g_{17} = \pmat{1 \\ & 1 \\ & p & 1}$:] Comparing $g_{17}$ with \eqref{eq:gixi-SL3}, we see that $x_{1} = x_{2} = x_{4} = x_{7} = x_{8} = 0$, and thus also $x_{5} = x_{6} = 0$. This leaves $a_{32} = px_{3} = p$, which implies that $x_{3} = 1$. Hence $\sigma(g_{17}) = \sigma(g_{3})$, which implies that $\xi_{17} = \xi_{3}$.
+
+  \item[$g_{18} = \pmat{1-p && p \\ & 1 \\ -p^{2} && 1+p+p^{2}}$:] Comparing $g_{18}$ with \eqref{eq:gixi-SL3}, we see that $x_{2} = x_{7} = 0$, and thus also $x_{3} = x_{6} = 0$ and $x_{4} = x_{5}$. Using
+        \begin{align*}
+          a_{11} &= \exp(px_{4}) = 1-p, \\
+          a_{13} &= x_{8}\exp(px_{4}) = x_{8}(1-p) = p, \\
+          a_{31} &= px_{1}\exp(px_{4}) = px_{1}(1-p) = -p^{2},
+        \end{align*}
+        we get that
+        \begin{align*}
+          x_{4} &= \dfrac{1}{p}\log(1-p) = \dfrac{1}{p}\bigl( (-p) + O(p^{2}) \bigr) = -1 + O(p), \\
+          x_{8} &= \dfrac{p}{1-p} = p + O(p^{2}), \\
+          x_{1} &= \dfrac{-p^{2}}{p(1-p)} = -p + O(p^{2}).
+        \end{align*}
+        Hence $\sigma(g_{18}) = -\pi \act \sigma(g_{1}) - \sigma(g_{4}) - \sigma(g_{5}) + \pi \act \sigma(g_{8})$, which implies that $\xi_{18} = -(\xi_{4}+\xi_{5})$.
+
+  \item[$g_{23} = \pmat{1 \\ & 1 \\ -p^{2} && 1}$:] Comparing $g_{23}$ with \eqref{eq:gixi-SL3}, we see that $x_{2} = x_{4} = x_{7} = x_{8} = 0$, and thus also $x_{3} = x_{5} = x_{6} = 0$. This leaves $a_{31} = px_{1} = -p^{2}$, which implies that $x_{1} = -p$. Hence $\sigma(g_{23}) = -\pi \act \sigma(g_{1})$, which implies that $\xi_{23} = 0$.
+
+  \item[$g_{24} = \pmat{1 \\ p\bigl( 1-\exp(-2p) \bigr) & 1 \\ && 1}$:] Comparing $g_{24}$ with \eqref{eq:gixi-SL3}, we see that $x_{1} = x_{4} = x_{7} = x_{8} = 0$, and thus also $x_{3} = x_{5} = x_{6} = 0$. This leaves $a_{21} = px_{2} = p\bigl( 1-\exp(-2p) \bigr) = p\bigl( 1-\bigl( 1+(-2p)+O(p^{2}) \bigr) \bigr) = 2p^{2} + O(p^{3})$, which implies that $x_{2} = 2p + O(p^{2})$. Hence $\sigma(g_{24}) = 2\pi \act \sigma(g_{1})$, which implies that $\xi_{24} = 0$.
+
+  \item[$g_{25} = \pmat{1 \\ p\bigl( 1-\exp(p) \bigr) & 1 \\ && 1}$:] Except a factor $-2$ in the exponential, which clearly doesn't change the final result, we have the same calculation as for $g_{24}$. Thus $\xi_{25} = 0$.
+
+  \item[$g_{27} = \pmat{ 1-p & p \\ -p^{2} & 1+p+p^{2} \\ && 1}$:] Comparing $g_{27}$ with \eqref{eq:gixi-SL3}, we see that $x_{1} = x_{8} = 0$, and thus also $x_{3} = x_{6} = 0$, so $x_{5} = 0$. Using
+        \begin{align*}
+          a_{11} &= \exp(px_{4}) = 1-p, \\
+          a_{12} &= x_{7}\exp(px_{4}) = x_{8}(1-p) = p, \\
+          a_{21} &= px_{2}\exp(px_{4}) = px_{2}(1-p) = -p^{2},
+        \end{align*}
+        we get that
+        \begin{align*}
+          x_{4} &= \dfrac{1}{p}\log(1-p) = \dfrac{1}{p}\bigl( (-p) + O(p^{2}) \bigr) = -1 + O(p), \\
+          x_{7} &= \dfrac{p}{1-p} = p + O(p^{2}), \\
+          x_{2} &= \dfrac{-p^{2}}{p(1-p)} = -p + O(p^{2}).
+        \end{align*}
+        Hence $\sigma(g_{27}) = -\pi \act \sigma(g_{2}) - \sigma(g_{4}) + \pi \act \sigma(g_{7})$, which implies that $\xi_{27} = -\xi_{4}$.
+
+  \item[$g_{28} = \pmat{ 1 \\ & 1 & p \\ && 1}$:] Comparing $g_{28}$ with \eqref{eq:gixi-SL3}, we see that $x_{1} = x_{2} = x_{4} = x_{7} = x_{8} = 0$, and thus also $x_{3} = x_{5} = 0$. This leaves $a_{23} = x_{6} = p$. Hence $\sigma(g_{28}) = \pi \act \sigma(g_{6})$, which implies that $\xi_{28} = 0$.
+
+  \item[$g_{34} = \pmat{ 1 \\ & 1 \\ & p\bigl( 1-\exp(p) \bigr) & 1}$:] Comparing $g_{34}$ with \eqref{eq:gixi-SL3}, we see that $x_{1} = x_{2} = x_{4} = x_{7} = x_{8} = 0$, and thus also $x_{5} = x_{6} = 0$. This leaves $a_{32} = px_{3} = p\bigl( 1-\exp(p) \bigr) = p\bigl( 1-\bigl( 1+p+O(p^{2}) \bigr) \bigr) = -p^{2} + O(p^{3})$, which implies that $x_{3} = -p + O(p^{2})$. Hence $\sigma(g_{34}) = -\pi \act \sigma(g_{3})$, which implies that $\xi_{34} = 0$.
+
+  \item[$g_{35} = \pmat{ 1 \\ & 1 \\ & p\bigl( 1-\exp(-2p) \bigr) & 1}$:] Except a factor $-2$ in the exponential, which clearly doesn't change the final result, we have the same calculation as for $g_{34}$. Thus $\xi_{35} = 0$.
+
+  \item[$g_{36} = \pmat{ 1 \\ & 1-p & p \\ & -p^{2} & 1+p+p^{2}}$:] Comparing $g_{36}$ with \eqref{eq:gixi-SL3}, we see that $x_{1} = x_{2} = x_{4} = x_{7} = x_{8} = 0$. Using
+        \begin{align*}
+          a_{22} &= \exp(px_{5}) = 1-p, \\
+          a_{23} &= x_{6}\exp(px_{5}) = x_{6}(1-p) = p, \\
+          a_{32} &= px_{3}\exp(px_{5}) = px_{3}(1-p) = -p^{2},
+        \end{align*}
+        we get that
+        \begin{align*}
+          x_{5} &= \dfrac{1}{p}\log(1-p) = \dfrac{1}{p}\bigl( (-p) + O(p^{2}) \bigr) = -1 + O(p), \\
+          x_{6} &= \dfrac{p}{1-p} = p + O(p^{2}), \\
+          x_{3} &= \dfrac{-p^{2}}{p(1-p)} = -p + O(p^{2}).
+        \end{align*}
+        Hence $\sigma(g_{36}) = -\pi \act \sigma(g_{3}) - \sigma(g_{5}) + \pi \act \sigma(g_{6})$, which implies that $\xi_{36} = -\xi_{5}$.
+
+  \item[$g_{38} = \pmat{ 1 & -p \\ & 1 \\ && 1}$:] Comparing $g_{38}$ with \eqref{eq:gixi-SL3}, we see that $x_{1} = x_{2} = x_{4} = x_{8} = 0$, and thus also $x_{3} = x_{5} = x_{6} = 0$. This leaves $a_{12} = x_{7} = -p$. Hence $\sigma(g_{38}) = -\pi \act \sigma(g_{3})$, which implies that $\xi_{38} = 0$.
+
+  \item[$g_{46} = \pmat{ 1 \\ & 1 & \exp(-p)-1 \\ && 1}$:] Comparing $g_{46}$ with \eqref{eq:gixi-SL3}, we see that $x_{1} = x_{2} = x_{4} = x_{7} = x_{8} = 0$, and thus also $x_{3} = x_{5} = 0$. This leaves $a_{23} = x_{6} = \exp(-p) - 1 = -p + O(p^{2})$. Hence $\sigma(g_{46}) = -\pi \act \sigma(g_{6})$, which implies that $\xi_{46} = 0$.
+
+  \item[$g_{47} = \pmat{ 1 & \exp(2p)-1 \\ & 1 \\ && 1}$:] Comparing $g_{47}$ with \eqref{eq:gixi-SL3}, we see that $x_{1} = x_{2} = x_{4} = x_{8} = 0$, and thus also $x_{3} = x_{5} = x_{6} = 0$. This leaves $a_{12} = x_{7} = \exp(2p) - 1 = 2p + O(p^{2})$. Hence $\sigma(g_{47}) = 2\pi \act \sigma(g_{7})$, which implies that $\xi_{47} = 0$.
+
+  \item[$g_{48} = \pmat{ 1 && \exp(p)-1 \\ & 1 \\ && 1}$:] Comparing $g_{48}$ with \eqref{eq:gixi-SL3}, we see that $x_{1} = x_{2} = x_{4} = x_{7} = 0$, and thus also $x_{3} = x_{5} = x_{6} = 0$. This leaves $a_{13} = x_{8} = \exp(p) - 1 = p + O(p^{2})$. Hence $\sigma(g_{48}) = \pi \act \sigma(g_{8})$, which implies that $\xi_{48} = 0$.
+
+  \item[$g_{56} = \pmat{ 1 \\ & 1 & \exp(2p)-1 \\ && 1}$:] Except a factor $-2$ in the exponential, which clearly doesn't change the final result, we have the same calculation as for $g_{46}$. Thus $\xi_{56} = 0$.
+
+  \item[$g_{57} = \pmat{ 1 & \exp(-p)-1 \\ & 1 \\ && 1}$:] Except a factor $-2$ in the exponential, which clearly doesn't change the final result, we have the same calculation as for $g_{47}$. Thus $\xi_{57} = 0$.
+
+  \item[$g_{58} = \pmat{ 1 && \exp(p)-1 \\ & 1 \\ && 1}$:] Since $g_{58} = g_{48}$, the above calculation shows that $\xi_{58} = 0$.
+
+  \item[$g_{67} = \pmat{ 1 && -1 \\ & 1 \\ && 1}$:] Comparing $g_{67}$ with \eqref{eq:gixi-SL3}, we see that $x_{1} = x_{2} = x_{4} = x_{7} = 0$, and thus also $x_{3} = x_{5} = x_{6} = 0$. This leaves $a_{13} = x_{8} = -1$. Hence $\sigma(g_{67}) = -\sigma(g_{8})$, which implies that $\xi_{67} = -\xi_{8}$.
+\end{description}
+
+
+The non-zero commutators are:
+\begin{equation}
+  \label{eq:xi_ij-SL3}
+  \begin{aligned}
+    [\xi_{1},\xi_{6}] &= -\xi_{2}, & [\xi_{1},\xi_{7}] &= \xi_{3}, & [\xi_{1},\xi_{8}] &= -(\xi_{4}+\xi_{5}), \\
+    [\xi_{2},\xi_{7}] &= -\xi_{4}, & [\xi_{3},\xi_{6}] &= -\xi_{5}, & [\xi_{6},\xi_{7}] &= -\xi_{8}.
+  \end{aligned}
+\end{equation}
+
+\begin{equation*}
+  \lie{g} = k \otimes_{\F_{p}[\pi]} \gr I = \Span\set{\xi_{1},\dotsc,\xi_{8}} = \lie{g}_{\frac{1}{3}} \oplus \lie{g}_{\frac{2}{3}} \oplus \lie{g}_{1} = \lie{g}^{1} \oplus \lie{g}^{2} \oplus \lie{g}^{3}.
+\end{equation*}
+
+\begin{equation}
+  \label{eq:5}
+  [\lie{g}^{i},\lie{g}^{j}] =
+  \begin{dcases*}
+    \lie{g}^{2} & if $i=j=1$, \\
+    \lie{g}^{3} & if $(i,j)\in \set{(1,2),(2,1)}$, \\
+    0 & otherwise.
+  \end{dcases*}
+\end{equation}
+
+\begin{equation*}
+  \gr^{j}\Bigl( \bigwedge^{n}\lie{g} \Bigr) = \bigoplus_{j_{1} + \dotsb + j_{n} = j} \lie{g}^{j_{1}} \wedge \dotsb \wedge \lie{g}^{j_{n}}.
+\end{equation*}
+
+\begin{description}
+  \item[$n\geq9:$]
+        \begin{equation*}
+          \gr^{j}\Bigl( \bigwedge^{n}\lie{g} \Bigr) = 0 \text{ for all } j.
+        \end{equation*}
+  \item[$n=8:$]
+        \begin{equation*}
+          \gr^{j}\Bigl( \bigwedge^{8}\lie{g} \Bigr) =
+          \begin{dcases}
+            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3} & j=15, \\
+            0                                                                                                         & \text{otherwise.}
+          \end{dcases}
+        \end{equation*}
+  \item[$n=7:$]
+        \begin{equation*}
+          \gr^{j}\Bigl( \bigwedge^{7}\lie{g} \Bigr) =
+          \begin{dcases}
+            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3}                    & j=14, \\
+            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3}                    & j=13, \\
+            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3}                    & j=12, \\
+            0                                                                                                               & \text{otherwise.}
+          \end{dcases}
+        \end{equation*}
+
+  \item[$n=6:$]
+        \begin{equation*}
+          \gr^{j}\Bigl( \bigwedge^{6}\lie{g} \Bigr) =
+          \begin{dcases}
+            \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3} & j=13,                                                                                                                   \\
+            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3}                                                                                                                   & j=12, \\
+            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \end{aligned} & j=11, \\
+            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3}                                                                                                                   & j=10, \\
+            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2}                                                                                                                   & j=9,  \\
+            0                                                                                                                                                                                                & \text{otherwise.}
+          \end{dcases}
+        \end{equation*}
+
+  \item[$n=5:$]
+        \begin{equation*}
+          \gr^{j}\Bigl( \bigwedge^{5}\lie{g} \Bigr) =
+          \begin{dcases}
+            \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3} & j=12,                                                                                                                   \\
+            \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3} & j=11, \\
+            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \end{aligned} & j=10, \\
+            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{3} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \end{aligned} & j=9, \\
+            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \end{aligned} & j=8, \\
+            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2}                                                                                                                  & j=7, \\
+            0                                                                                                                                                                                                      & \text{otherwise.}
+          \end{dcases}
+        \end{equation*}
+
+  \item[$n=4:$]
+        \begin{equation*}
+          \gr^{j}\Bigl( \bigwedge^{4}\lie{g} \Bigr) =
+          \begin{dcases}
+            \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3} & j=10,                                                                                                                   \\
+            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \end{aligned} & j=9, \\
+            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{3} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \end{aligned} & j=8, \\
+            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \end{aligned} & j=7, \\
+            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \end{aligned} & j=6, \\
+            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2}                                                                                                                  & j=5, \\
+            0                                                                                                                                                                                   & \text{otherwise.}
+          \end{dcases}
+        \end{equation*}
+
+  \item[$n=3:$]
+        \begin{equation*}
+          \gr^{j}\Bigl( \bigwedge^{3}\lie{g} \Bigr) =
+          \begin{dcases}
+            \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3} & j=8,                                                                                                                   \\
+            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{3} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \end{aligned} & j=7, \\
+            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \end{aligned} & j=6, \\
+            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \end{aligned} & j=5, \\
+            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2}                                                                                                & j=4, \\
+            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1}                                                                                                & j=3, \\
+            0                                                                                                                                              & \text{otherwise.}
+          \end{dcases}
+        \end{equation*}
+
+  \item[$n=2:$]
+        \begin{equation*}
+          \gr^{j}\Bigl( \bigwedge^{2}\lie{g} \Bigr) =
+          \begin{dcases}
+            \lie{g}^{3} \wedge \lie{g}^{3} & j=6,                                                                             \\
+            \lie{g}^{2} \wedge \lie{g}^{3} & j=5,                                                                             \\
+            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{2} \wedge \lie{g}^{2} \end{aligned} & j=4, \\
+            \lie{g}^{1} \wedge \lie{g}^{2}                                                                             & j=3, \\
+            \lie{g}^{1} \wedge \lie{g}^{1}                                                                             & j=2, \\
+            0                                                                                                         & \text{otherwise.}
+          \end{dcases}
+        \end{equation*}
+
+  \item[$n=1:$]
+        \begin{equation*}
+          \gr^{j}(\lie{g}) =
+          \begin{dcases}
+            \lie{g}^{3} & j=3, \\
+            \lie{g}^{2} & j=2, \\
+            \lie{g}^{1} & j=1, \\
+            0          & \text{otherwise.}
+          \end{dcases}
+        \end{equation*}
+
+  \item[$n=0:$]
+        \begin{equation*}
+          \gr^{j}(k) =
+          \begin{dcases}
+            k & j=0, \\
+            0 & \text{otherwise.}
+          \end{dcases}
+        \end{equation*}
+\end{description}
+
+\begin{table}[h]
+  \centering
+  $\begin{NiceArray}{*{17}{c}}[hvlines]
+    \diagbox{n}{j} & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 \\
+    0 & 1 \\
+    1 & & 3 & 3 & 2 \\
+    2 & & & 3 & 9 & 9 & 6 & 1 \\
+    3 & & & & 1 & 9 & 15 & 19 & 9 & 3 \\
+    4 & & & & & & 3 & 11 & 21 & 21 & 11 & 3 \\
+    5 & & & & & & & & 3 & 9 & 19 & 15 & 9 & 1 \\
+    6 & & & & & & & & & & 1 & 6 & 9 & 9 & 3 \\
+    7 & & & & & & & & & & & & & 2 & 3 & 3 \\
+    8 & & & & & & & & & & & & & & & & 1
+  \end{NiceArray}$
+  \caption[Graded complex dimensions for $I \subseteq \SL_{3}(\Z_{p})$]{Dimensions of $\gr^{j}\bigl( \bigwedge^{n} \lie{g} \bigr)$.}
+  \label{tab:graded-dims-SL3}
+\end{table}
+
+\begin{equation*}
+  \Hom_{k}\Bigl( \bigwedge^{n}\lie{g}, k \Bigr) = \bigoplus_{s \in \Z} \Hom_{k}^{s}\Bigl( \bigwedge^{n}\lie{g}, k \Bigr)
+\end{equation*}
+
+With $j=-s$, we get the same table for dimensions of the graded hom-spaces.
+
+Note that when finding cohomology, we only need to consider $H^{s,t} = H^{s,n-s}$ for the non-zero entries of \Cref{tab:graded-dims-SL3}.
+
+We repeatedly use that, if
+\begin{equation*}
+  d \snfsim \SNF^{n,m}(a_{1},\dotsc,a_{r},0,\dotsc,0)
+\end{equation*}
+with $a_{1},\dotsc,a_{r}$ non-zero (in $\F_{p}$), then
+\begin{align*}
+  \dim \kernel(d) &= m-r, \\
+  \dim \image(d) &= r, \\
+  \dim \coker(d) &= n-r.
+\end{align*}
+
+$\gr^{0}:$
+\[
+  \begin{tikzcd}
+    0 \ar[r] & k \ar[r] & 0
+  \end{tikzcd}
+\]
+
+
+
+\[
+  \begin{tikzcd}
+    0 & \ar[l] \Hom_{k}^{0}(k,k) & \ar[l] 0
+  \end{tikzcd}
+\]
+
+So $H^{0} = H^{0,0}$ with $\dim H^{0,0} = 1$.
+
+$\gr^{1}:$
+\[
+  \begin{tikzcd}
+    0 \ar[r] & \lie{g}^{1} \ar[r] & 0
+  \end{tikzcd}
+\]
+
+\[
+  \begin{tikzcd}
+    0 & \ar[l] \Hom_{k}^{-1}(\lie{g},k) & \ar[l] 0
+  \end{tikzcd}
+\]
+
+So $\dim H^{-1,2} = 3$ by \Cref{tab:graded-dims-SL3}.
+
+$\gr^{2}:$
+\[
+  \begin{tikzcd}[ampersand replacement=\&]
+    0 \ar[r] \& \lie{g}^{1} \wedge \lie{g}^{1} \ar[r, "{\begin{pmatrix} 1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 1 \end{pmatrix}}" {yshift=7pt}] \& \lie{g}^{2} \ar[r] \& 0
+  \end{tikzcd}
+\]
+
+\begin{align*}
+  \lie{g}^{1} \wedge \lie{g}^{1} &\to \lie{g}^{2} \\
+  \xi_{1} \wedge \xi_{6} &\mapsto -[\xi_{1},\xi_{6}] = \xi_{2} \\
+  \xi_{1} \wedge \xi_{7} &\mapsto -[\xi_{1},\xi_{7}] = -\xi_{3} \\
+  \xi_{6} \wedge \xi_{7} &\mapsto -[\xi_{6},\xi_{7}] = \xi_{8}.
+\end{align*}
+
+\[
+  \begin{tikzcd}[ampersand replacement=\&]
+    0 \& \ar[l] \Hom_{k}^{-2}\bigl( \bigwedge^{2} \lie{g}, k \bigr) \& \ar[l, "{\begin{pmatrix} 1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 1 \end{pmatrix}}"' {yshift=7pt}] \Hom_{k}^{-2}(\lie{g},k) \& \ar[l] 0
+  \end{tikzcd}
+\]
+
+\begin{equation*}
+  d = \pmat{1&0&0 \\ 0&-1&0 \\ 0&0&1} \snfsim  \SNF^{3\times3}(1,-1,1).
+\end{equation*}
+
+So
+\begin{align*}
+  \dim H^{-2,3} &= \dim \kernel(d) = 0, \\
+  \dim H^{-2,4} &= \dim \coker(d) = 0.
+\end{align*}
+
+$\gr^{3}:$
+\[
+  \begin{tikzcd}[ampersand replacement=\&, column sep=4em]
+    0 \ar[r] \& \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \ar[r, "{\begin{pmatrix} 0 & 0 & -1 & 0 & -1 & 0 & -1 & 0 & 0 \end{pmatrix}^{\top}}" {yshift=7pt}] \& \lie{g}^{1} \wedge \lie{g}^{2} \ar[r, "{\begin{pmatrix} 0 & 0 & 1 & 0 & 0 & 0 & -1 & 0 & 0 \\ 0 & 0 & 1 & 0 & -1 & 0 & 0 & 0 & 0 \end{pmatrix}}"' {yshift=-7pt}] \& \lie{g}^{3} \ar[r] \& 0
+  \end{tikzcd}
+\]
+
+\[
+  \begin{tikzcd}[ampersand replacement=\&, column sep=1em]
+    0 \& \ar[l] \Hom_{k}^{-3}\bigl( \bigwedge^{3}\lie{g}, k \bigr) \& \ar[l, "{\begin{pmatrix} 0 & 0 & -1 & 0 & -1 & 0 & -1 & 0 & 0 \end{pmatrix}}"' {yshift=7pt}] \Hom_{k}^{-3}\bigl( \bigwedge^{2}\lie{g}, k \bigr) \& \ar[l, "{\begin{pmatrix} 0 & 0 & 1 & 0 & 0 & 0 & -1 & 0 & 0 \\ 0 & 0 & 1 & 0 & -1 & 0 & 0 & 0 & 0 \end{pmatrix}^{\top}}" {yshift=-7pt}] \Hom_{k}^{-3}(\lie{g}, k) \& \ar[l] 0
+  \end{tikzcd}
+\]
+
+\begin{align*}
+  d_{1} = \pmat{0&0 \\ 0&0 \\ 1&1 \\ 0&0 \\ 0&-1 \\ 0&0 \\ 0&-1 \\ 0&0 \\ 0&0} &\snfsim \SNF^{9\times2}(1,-1), \\
+  d_{2} = \pmat{0&0&-1&0&-1&0&-1&0&0} &\snfsim \SNF^{1\times9}(-1).
+\end{align*}
+
+So
+\begin{align*}
+  \dim H^{-3,4} &= \dim \kernel(d_{1}) = 2-2 = 0, \\
+  \dim H^{-3,5} &= \dim \dfrac{\kernel(d_{2})}{\image(d_{1})} = (9-1) - 2 = 6, \\
+  \dim H^{-3,6} &= \dim \coker(d_{2}) = 1 - 1 = 0.
+\end{align*}
+
+$\gr^{4}:$
+\[
+  \begin{tikzcd}[ampersand replacement=\&]
+    0 \ar[r] \& \lie{g}^{1} \wedge \wedge \lie{g}^{1} \wedge \lie{g}^{2} \ar[r,"d^{\top}"] \& \begin{aligned} &\lie{g}^{1} \wedge \lie{g}^{3} \\ &\oplus \lie{g}^{2} \wedge \lie{g}^{2} \end{aligned} \ar[r] \& 0
+  \end{tikzcd}
+\]
+
+\[
+  \begin{tikzcd}
+    0 & \ar[l] \Hom_{k}^{-4}\bigl( \bigwedge^{3}\lie{g}, k \bigr) & \ar[l,"d"'] \Hom_{k}^{-4}\bigl( \bigwedge^{2}\lie{g}, k \bigr) &  \ar[l] 0
+  \end{tikzcd}
+\]
+
+\begin{equation*}
+  d \snfsim \SNF^{9\times9}(1,1,1,-1,1,-1,0,0,0)
+\end{equation*}
+
+So
+\begin{align*}
+  \dim H^{-4,6} &= \dim \kernel(d) = 9-6 = 3, \\
+  \dim H^{-4,7} &= \dim \coker(d) = 9-6 = 3.
+\end{align*}
+
+$\gr^{5}:$
+\[
+  \begin{tikzcd}[ampersand replacement=\&]
+    0 \ar[r] \& \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \ar[r,"d_{2}^{\top}"] \& \begin{aligned} &\lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{3} \\ &\oplus \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \end{aligned} \ar[r,"d_{1}^{\top}"] \& \lie{g}^{2} \wedge \lie{g}^{3} \ar[r] \& 0
+  \end{tikzcd}
+\]
+
+\[
+  \begin{tikzcd}[column sep=1em]
+    0 & \ar[l] \Hom_{k}^{-5}\bigl( \bigwedge^{4}\lie{g}, k \bigr) & \ar[l,"d_{2}"' {yshift=2pt}] \Hom_{k}^{-5}\bigl( \bigwedge^{3}\lie{g}, k \bigr) & \ar[l,"d_{1}"' {yshift=2pt}] \Hom_{k}^{-5}\bigl( \bigwedge^{2}\lie{g}, k \bigr) & \ar[l] 0
+  \end{tikzcd}
+\]
+
+\begin{align*}
+  d_{1} &\snfsim \SNF^{15\times6}(1,1,-1,-1,1,1), \\
+  d_{2} &\snfsim \SNF^{3\times15}(-1,1,1).
+\end{align*}
+
+So
+\begin{align*}
+  \dim H^{-5,7} &= \dim \kernel(d_{1}) = 6-6 = 0, \\
+  \dim H^{-5,8} &= \dim \dfrac{\kernel(d_{2})}{\image(d_{1})} = (15-3) - 6 = 6, \\
+  \dim H^{-5,9} &= \dim \coker(d_{2}) = 3 - 3 = 0.
+\end{align*}
+
+$\gr^{6}:$
+\[
+  \begin{tikzcd}[ampersand replacement=\&]
+    0 \ar[r] \& \begin{aligned} &\lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{3} \\ &\oplus \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \end{aligned} \ar[r,"d_{2}^{\top}"] \& \begin{aligned} &\lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \\ &\oplus \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \end{aligned} \ar[r,"d_{1}^{\top}"] \& \lie{g}^{3} \wedge \lie{g}^{3} \ar[r] \& 0
+  \end{tikzcd}
+\]
+
+\[
+  \begin{tikzcd}[column sep=1em]
+    0 & \ar[l] \Hom_{k}^{-6}\bigl( \bigwedge^{4}\lie{g}, k \bigr) & \ar[l,"d_{2}"' {yshift=2pt}] \Hom_{k}^{-6}\bigl( \bigwedge^{3}\lie{g}, k \bigr) & \ar[l,"d_{1}"' {yshift=2pt}] \Hom_{k}^{-6}\bigl( \bigwedge^{2}\lie{g}, k \bigr) & \ar[l] 0
+  \end{tikzcd}
+\]
+
+\begin{align*}
+  d_{1} &\snfsim \SNF^{19\times1}(-1), \\
+  d_{2} &\snfsim \SNF^{11\times19}(-1,1,-1,1,-1,-1,-1,1,1,1,-2).
+\end{align*}
+
+So
+\begin{align*}
+  \dim H^{-6,8} &= \dim \kernel(d_{1}) = 1-1 = 0, \\
+  \dim H^{-6,9} &= \dim \dfrac{\kernel(d_{2})}{\image(d_{1})} = (19-11) - 1 = 7, \\
+  \dim H^{-6,10} &= \dim \coker(d_{2}) = 11 - 11 = 0.
+\end{align*}
+
+$\gr^{7}:$
+\[
+  \begin{tikzcd}[ampersand replacement=\&, column sep=1em]
+    0 \ar[r] \& \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \ar[r,"d_{2}^{\top}" {yshift=2pt}] \& \begin{aligned} &\lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \\ &\oplus \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \end{aligned} \ar[r,"d_{1}^{\top}" {yshift=2pt}] \& \begin{aligned} &\lie{g}^{1} \wedge \lie{g}^{3} \wedge \lie{g}^{3} \\ &\oplus \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \end{aligned}\ar[r] \& 0
+  \end{tikzcd}
+\]
+
+\[
+  \begin{tikzcd}[column sep=1em]
+    0 & \ar[l] \Hom_{k}^{-7}\bigl( \bigwedge^{5}\lie{g}, k \bigr) & \ar[l,"d_{2}"' {yshift=2pt}] \Hom_{k}^{-7}\bigl( \bigwedge^{4}\lie{g}, k \bigr) & \ar[l,"d_{1}"' {yshift=2pt}] \Hom_{k}^{-7}\bigl( \bigwedge^{3}\lie{g}, k \bigr) & \ar[l] 0
+  \end{tikzcd}
+\]
+
+\begin{align*}
+  d_{1} &\snfsim \SNF^{21\times9}(-1,-1,-1,1,1,1,1,-1,1), \\
+  d_{2} &\snfsim \SNF^{3\times21}(1,1,-1).
+\end{align*}
+
+So
+\begin{align*}
+  \dim H^{-7,10} &= \dim \kernel(d_{1}) = 9-9 = 0, \\
+  \dim H^{-7,11} &= \dim \dfrac{\kernel(d_{2})}{\image(d_{1})} = (21-3) - 9 = 9, \\
+  \dim H^{-7,12} &= \dim \coker(d_{2}) = 3 - 3 = 0.
+\end{align*}
+
+The following calculations are not necessary, since we can get the results using a version of Poincaré duality for Lie algebra cohomology, but we keep the sketch work to make it clear that nothing goes wrong.
+
+$\gr^{8}:$
+
+\begin{align*}
+  d_{1} &\snfsim \SNF^{21\times3}(1,-1,1), \\
+  d_{2} &\snfsim \SNF^{9\times21}(-1,-1,-1,1,1,-1,-1,1,-1).
+\end{align*}
+
+So
+\begin{align*}
+  \dim H^{-8,11} &= \dim \kernel(d_{1}) = 3-3 = 0, \\
+  \dim H^{-8,12} &= \dim \dfrac{\kernel(d_{2})}{\image(d_{1})} = (21-9) - 3 = 9, \\
+  \dim H^{-8,13} &= \dim \coker(d_{2}) = 9 - 9 = 0.
+\end{align*}
+
+
+$\gr^{9}:$
+
+\begin{align*}
+  d_{1} &\snfsim \SNF^{19\times11}(-1,-1,1,-1,1,-1,-1,-1,-1,1,-1), \\
+  d_{2} &\snfsim \SNF^{1\times19}(-1).
+\end{align*}
+
+So
+\begin{align*}
+  \dim H^{-9,13} &= \dim \kernel(d_{1}) = 11-11 = 0, \\
+  \dim H^{-9,14} &= \dim \dfrac{\kernel(d_{2})}{\image(d_{1})} = (19-1) - 11 = 7, \\
+  \dim H^{-9,15} &= \dim \coker(d_{2}) = 1 - 1 = 0.
+\end{align*}
+
+$\gr^{10}:$
+
+\begin{align*}
+  d_{1} &\snfsim \SNF^{15\times3}(1,1,-1), \\
+  d_{2} &\snfsim \SNF^{6\times15}(-1,1,1,-1,1,1).
+\end{align*}
+
+So
+\begin{align*}
+  \dim H^{-10,14} &= \dim \kernel(d_{1}) = 3-3 = 0, \\
+  \dim H^{-10,15} &= \dim \dfrac{\kernel(d_{2})}{\image(d_{1})} = (15-6) - 3 = 6, \\
+  \dim H^{-10,16} &= \dim \coker(d_{2}) = 6-6 = 0.
+\end{align*}
+
+$\gr^{11}:$
+
+\begin{equation*}
+  d \snfsim \SNF^{9\times9}(1,1,-1,-1,-1,-1,0,0,0).
+\end{equation*}
+
+So
+\begin{align*}
+  \dim H^{-11,16} &= \dim \kernel(d) = 9-6 = 3, \\
+  \dim H^{-11,17} &= \dim \coker(d) = 9-6 = 3.
+\end{align*}
+
+$\gr^{12}:$
+
+\begin{align*}
+  d_{1} &\snfsim \SNF^{9\times1}(1), \\
+  d_{2} &\snfsim \SNF^{2\times9}(1,-1).
+\end{align*}
+
+So
+\begin{align*}
+  \dim H^{-12,17} &= \dim \kernel(d_{1}) = 1-1 = 0, \\
+  \dim H^{-12,18} &= \dim \dfrac{\kernel(d_{2})}{\image(d_{1})} = (9-2) - 1 = 6, \\
+  \dim H^{-12,19} &= \dim \coker(d_{2}) = 2-2 = 0.
+\end{align*}
+
+$\gr^{13}:$
+
+\begin{equation*}
+  d \snfsim \SNF^{3\times3}(-1,1,-1).
+\end{equation*}
+
+So
+\begin{align*}
+  \dim H^{-13,19} &= \dim \kernel(d) = 3-3 = 0, \\
+  \dim H^{-13,20} &= \dim \coker(d) = 3-3 = 0.
+\end{align*}
+
+$\gr^{14}:$
+\[
+  \begin{tikzcd}
+    0 \ar[r] & \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3}  \ar[r] & 0
+  \end{tikzcd}
+\]
+
+\[
+  \begin{tikzcd}
+    0 & \ar[l] \Hom_{k}^{-14}\bigl( \bigwedge^{7}\lie{g},k \bigr) & \ar[l] 0
+  \end{tikzcd}
+\]
+
+So $\dim H^{-14,21} = 3$ by \Cref{tab:graded-dims-SL3}.
+
+$\gr^{15}:$
+\[
+  \begin{tikzcd}
+    0 \ar[r] & \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3}  \ar[r] & 0
+  \end{tikzcd}
+\]
+
+\[
+  \begin{tikzcd}
+    0 & \ar[l] \Hom_{k}^{-15}\bigl( \bigwedge^{8}\lie{g},k \bigr) & \ar[l] 0
+  \end{tikzcd}
+\]
+
+So $H^{8} = H^{-15,23}$ with $\dim H^{-15,23} = 1$ by \Cref{tab:graded-dims-SL3}.
+
+Altogether:
+\begin{align*}
+  H^{0} &= H^{0,0}, \\
+  H^{1} &= H^{-1,2}, \\
+  H^{2} &= H^{-3,5} \oplus H^{-4,6}, \\
+  H^{3} &= H^{-4,7} \oplus H^{-5,8} \oplus H^{-6,9}, \\
+  H^{4} &= H^{-7,11} \oplus H^{-8,12}, \\
+  H^{5} &= H^{-9,14} \oplus H^{-10,15} \oplus H^{-11,16}, \\
+  H^{6} &= H^{-11,17} \oplus H^{-12,18}, \\
+  H^{7} &= H^{-14,21}, \\
+  H^{8} &= H^{-15,23}
+\end{align*}
+and we have the following table:
+\begin{table}[ht]
+  \centering
+  \scalebox{0.8}{%
+  $\begin{NiceArray}{*{17}{c}}[hvlines]
+    \diagbox{t}{s} & 0 & -1 & -2 & -3 & -4 & -5 & -6 & -7 & -8 & -9 & -10 & -11 & -12 & -13 & -14 & -15 \\
+    0 & 1\\
+    1 \\
+    2 && 3 \\
+    3 \\
+    4 \\
+    5 &&&& 6\\
+    6 &&&&& 3 \\
+    7 &&&&& 3\\
+    8 &&&&&& 6\\
+    9 &&&&&&& 7\\
+    10 \\
+    11 &&&&&&&& 9 \\
+    12 &&&&&&&&& 9 \\
+    13 \\
+    14 &&&&&&&&&& 7 \\
+    15 &&&&&&&&&&& 6 \\
+    16 &&&&&&&&&&&& 3 \\
+    17 &&&&&&&&&&&& 3 \\
+    18 &&&&&&&&&&&&& 6 \\
+    19 \\
+    20 \\
+    21 &&&&&&&&&&&&&&& 3 \\
+    22 \\
+    23 &&&&&&&&&&&&&&&& 1
+  \end{NiceArray}$%
+  }
+  \caption[Graded cohomology dimensions for $I \subseteq \SL_{3}(\Z_{p})$]{Dimensions of $H^{s,t} = \gr^{s} H^{s+t}(\lie{g},k)$.}
+  \label{tab:graded-coh-dims-SL3}
+\end{table}
+Thus
+\begin{equation*}
+  \dim H^{i} =
+  \begin{dcases}
+    1 & i=0, \\
+    3 & i=1, \\
+    9 & i=2, \\
+    16 & i=3, \\
+    18 & i=4, \\
+    16 & i=5, \\
+    9 & i=6, \\
+    3 & i=7, \\
+    1 & i=8.
+  \end{dcases}
+\end{equation*}
+
+
 
 %%% Local Variables:
 %%% mode: latex

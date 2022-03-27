@@ -32,10 +32,12 @@ Finally let $G = N = \gs{N}(\Z_p) = \gs{N}_\Z(\Z_p)$ and let $\lie{g} = \F_p \ot
 This section is mainly based on some unpublished notes by Schneider.
 
 In this section we will write $N$ for $\gs{N}(\Z_p)$, and we note that as a set $N$ is the direct product $N = \prod_{\alpha \in \Phi^{-}} x_\alpha(\Z_p)$, which allows us to introduce the function
-\begin{align*}
-  \omega \colon N \setminus \set{1} &\to \N \\
-  \prod_{\alpha \in \Phi^{-}} x_\alpha(a_\alpha) &\mapsto \min_{\alpha \in \Phi^{-}} \bigl( v_p(a_\alpha) - \Ht(\alpha) \bigr),
-\end{align*}
+\begin{equation}\label{eq:p-val}
+  \begin{split}
+    \omega \colon N \setminus \set{1} &\to \N \\
+    \prod_{\alpha \in \Phi^{-}} x_\alpha(a_\alpha) &\mapsto \min_{\alpha \in \Phi^{-}} \bigl( v_p(a_\alpha) - \Ht(\alpha) \bigr),
+  \end{split}
+\end{equation}
 where $v_p$ denotes the usual $p$-adic valuation on $\Z_p$. Here it is important to note that we write any $g \in N$ uniquely as product
 \begin{equation*}
   g = \prod_{\alpha \in \Phi^{-}} x_\alpha(a_\alpha)
@@ -256,6 +258,42 @@ which by \eqref{eq:omega(ginvh)2} implies that
 thus finishing the proof.
 \end{proof}
 
+We have now shown that $N = \gs{N}(\Z_{p})$ is a $p$-valuable group with the $p$-valuation $\omega$ introduced in \eqref{eq:p-val}, which is the main result of this section. Before continuing, we will prove another useful result from Schneider's notes. \dknote{Introduce grading and Lie algebra structure and $\sigma$. Recall grading of $\lie{n}$.}
+
+We note that
+\begin{equation*}
+  \gr_{\bullet} N \coloneqq \bigoplus_{m\geq1} N_{m}/N_{m+1}
+\end{equation*}
+is a graded $\F_{p}$-vector space, and recall the following well known result, cf.\ \dknote{cite Laz}[Laz] or \cite{Sch} §25.
+
+\begin{proposition}[Lazard]
+  $\gr_{\bullet} N$ is a Lie algebra over the polynomial ring $\F_{p}[\pi]$ in one variable $\pi$ where
+  \begin{equation*}
+    [gN_{\ell+1},hN_{m+1}] \coloneqq [g,h]N_{\ell+m+1} \quad \text{ and } \quad \pi(gN_{m+1}) \coloneqq g^{p}N_{m+2},
+  \end{equation*}
+  and as an $\F_{p}[\pi]$-module $\gr_{\bullet} N$ is free of rank $\abs{\Phi^{-}}$.
+\end{proposition}
+
+\begin{lemma}
+  $\gr_{\bullet} N \iso \F_{p}[\pi] \otimes_{\F_{p}} \lie{n}$ as graded Lie algebras (where $\pi$ has degree $1$).
+\end{lemma}
+\begin{proof}
+  We first note that the elements $X_{\alpha}$, where $X_{\alpha}$ is our fixed $\Z_{p}$-basis of $\Lie \gs{N}_{\alpha}$, reduce modulo $p$ to an $\F_{p}$-basis $\set{\overline{X}_{\alpha}}_{\alpha \in \Phi^{-}}$ of $\lie{n}$. On the other hand all
+  \begin{equation*}
+    \sigma\bigl(x_{\alpha}(1)\bigr) \in \gr_{-\Ht(\alpha)} N,
+  \end{equation*}
+  with $x_{\alpha}(1) \in N_{-\Ht(\alpha)}$, form an $\F_{p}[\pi]$-basis of $\gr_{\bullet} N$, cf.\ \cite{Sch} Proposition~26.5. Hence the map
+  \begin{align*}
+    \F_{p}[\pi] \otimes_{\F_{p}} \lie{n} &\to \gr_{\bullet} N \\
+    f \otimes \overline{X}_{\alpha} &\mapsto f \act \sigma\bigl(x_{\alpha}(1)\bigr)
+  \end{align*}
+  is an isomorphism of graded modules. \dknote{clarify} Chevalley's commutator formula says that there are $p$-adic integers $c_{\alpha,\beta}$ such that $[X_{\alpha},X_{\beta}] = c_{\alpha,\beta}X_{\alpha+\beta}$ and
+  \begin{equation*}
+    [x_{\alpha}(1),x_{\beta}(1)] \in x_{\alpha+\beta}(c_{\alpha,\beta})N_{-\Ht(\alpha)-\Ht(\beta)+1} = x_{\alpha+\beta}(1)^{c_{\alpha,\beta}}N_{-\Ht(\alpha)-\Ht(\beta)+1},
+  \end{equation*}
+  where $X_{\alpha+\beta} = 0$ and $x_{\alpha+\beta} \equiv 1$ if $\alpha+\beta \notin \Phi$. This implies that the image of the above map is a Lie subalgebra, and thus that the map is an isomorphism of Lie algebras.
+\end{proof}
+
 \section{A multiplicative spectral sequence}\label{sec:specsec}
 
 In this section we will write $G$ for $\gs{N}(\Z_p)$, and we let $\lie{g} = \F_p \otimes_{\F_p[\pi]} \gr G$.
@@ -324,11 +362,11 @@ so the multiplicative spectral sequence
 \begin{equation*}
   E_{1}^{s,t} = H^{s,t}(\lie{g},\F_p) \Longrightarrow H^{s+t}(G,\F_p)
 \end{equation*}
-from \Cref{sec:specsec} converges on the first page.\dknote{How do we argue this purely from looking at the dimensions? Do we need to just look at the page and differentials in more detail?} I.e.,
+from \Cref{sec:specsec} converges on the first page. I.e.,
 \begin{equation*}
   H^n(N,\F_p) = H^n(G,\F_p) \iso H^n(\lie{g},\F_p) \iso H^n(\lie{n},\F_p),
 \end{equation*}
-giving us a good description of $H^n(\gs{N}(\Z_p),\F_p)$. (Since the spectral sequence is multiplicative, can we also say that the cup product can be taken from the right hand side?)
+giving us a good description of $H^n(\gs{N}(\Z_p),\F_p)$.
 
 %%% Local Variables:
 %%% mode: latex
