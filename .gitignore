@@ -30,3 +30,4 @@ build/
 *.nlo
 *.bcf
 __pycache__/
+.ipynb_checkpoints/
