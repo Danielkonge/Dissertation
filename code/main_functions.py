@@ -2,7 +2,7 @@
 
 import itertools
 import numpy as np
-from sympy import *
+from sympy import Matrix, ZZ, latex, pprint
 from sympy.matrices.normalforms import smith_normal_form
 
 # Example of initialization for I in SL_3(Z_p):
@@ -69,6 +69,55 @@ def grj_nwedge_g(j, n, g):
         if non_zero_wedge(i, g) and sum(i) == j
     ]
     return base_gradings
+
+
+def print_grj_nwedge_g(jmax, nmax, g):
+    """
+    Print all gradings of all wedges of g.
+
+    Input:
+    jmax = max j to try when finding bases
+    nmax = max n to try when finding bases
+    g = np.array([g1,g2,...]) with graded parts of the Lie algebra g
+    where g1,g2,... are lists of numbers 1,2,... corresponding
+    to a basis e_1,e_2,... of g
+
+    Output:
+    No output, just prints gradings.
+
+    Description:
+    Goes through j from 0 to jmax and n from 0 to nmax,
+    and check if grade j of n wedges of g is non-zero,
+    and if so prints it.
+    """
+    print(
+        """
+        ===================================================
+        gr^j of n wedges of g in terms of g^1, g^2 and g^3:
+        =================================================== \n
+        """
+    )
+    print(
+        """
+        Note:
+        - This prints [(1)] as [(1,)].
+        - A tuple corresponds to a wedge product,
+          e.g., (1,1,2) mean g^1 wedge g^1 wedge g^2.
+        - Tuples in the list correcsponds to summands,
+          e.g., [(1,3),(2,2)] means
+          g^1 wedge g^3 direct sum g^2 wedge g^2.
+        - This doesn't work for 0 wedges of g nor for
+          dim(g) wedges of g. \n
+        """
+    )
+
+    for j in range(jmax):
+        print("------------")
+        print(f"Grade {j}: \n")
+        for n in range(nmax):
+            grj_nwedge_g_tmp = grj_nwedge_g(j, n, g)
+            if len(grj_nwedge_g_tmp) != 0:
+                print(grj_nwedge_g_tmp)
 
 
 def flatten_basis(basis):
@@ -228,7 +277,7 @@ def base_sort(g, eis, e_sort):
 
 def d(g, eis, e_sort, commutator):
     """
-    Calculate the d(eis) in the chain complex.
+    Calculate the d of eis in the chain complex.
 
     Input:
     g = np.array([g1,g2,...]) with graded parts of the Lie algebra g
@@ -299,7 +348,9 @@ def d_coefs(g, eis, e_sort, codomain_basis, commutator):
     d_eis = d(g, eis, e_sort, commutator)
     coefs = np.zeros(len(codomain_basis), dtype=np.int32)
     for d_ei in d_eis:
-        coefs[np.where(np.all(codomain_basis == np.array(d_ei[1:]), axis=1))] = d_ei[0]
+        find_in_basis = np.all(codomain_basis == np.array(d_ei[1:]), axis=1)
+        coef_index = np.where(find_in_basis)
+        coefs[coef_index] = d_ei[0]
     return coefs
 
 
@@ -420,3 +471,89 @@ def smith_form_matrices(matrices):
             else:
                 smith_matrices[i][j] = Matrix(np.array([], dtype=np.int32))
     return smith_matrices
+
+
+def max_entry(matrices):
+    """
+    Find the maximal (absolute) entry in a rectangular np.array of matrices.
+
+    Input:
+    A rectangular np.array of matrices.
+
+    Output:
+    A number, the max of absolute value of all entries.
+
+    Description:
+    Go through each entry and calculate the Smith Normal Form for non-empty
+    matrices. For empty matrices, just return them.
+    """
+    max_so_far = 0
+    m, n = matrices.shape
+    for i in range(m):
+        for j in range(n):
+            if len(matrices[i][j]) != 0:
+                max_so_far = max(max(abs(matrices[i][j])), max_so_far)
+    return max_so_far
+
+
+def print_cochain_matrices(jmax, nmax, g, e_sort, commutator):
+    """
+    Print all non-trivial cochain matrices and their SNF.
+
+    Input:
+    jmax = max j to try when finding bases,
+    nmax = max n to try when finding bases,
+    g = np.array([g1,g2,...]) with graded parts of the Lie algebra g
+    where g1,g2,... are lists of numbers 1,2,... corresponding
+    to a basis e_1,e_2,... of g,
+    e_sort = an np.array describing our ordering of the e_i's,
+    bases = np.array with all bases in any grade any wedges,
+    commutator = a function (int,int) -> [(int (coefficient),int (reulst))],
+    where different elements of the list corespond to summands.
+
+    Output:
+    No output, but prints matrices.
+
+    Description:
+    First calculate all bases, then calculate all matrices,
+    and their Smith Normal Form. Finally print (nicely)
+    the matrices and their SNF, plus some useful information.
+    NOTE: Remember to implement commutator first.
+    """
+    base_array = store_bases(jmax, nmax, g)
+    d_matrices = store_d_matrices(jmax, nmax, g, e_sort, base_array, commutator)
+    smith_array = smith_form_matrices(d_matrices)
+    print(
+        """
+        ===================================================
+        Non trivial matrices and their SNF:
+        =================================================== \n
+        """
+    )
+    max_in_snf = max_entry(smith_array)
+    print(f"Max absolute entry in all Smith Normal Forms is {max_in_snf}.\n\n")
+    print("---------------------\n")
+    for j in range(1, 20):
+        for n in range(1, 8):
+            s = -j
+            t = (n - 1) - s
+            # we have the dual map of (j,n) --> (j,n-1), i.e., (j,n-1) --> (j,n)
+            if len(smith_array[j][n]) != 0:
+
+                print(f"s = {s}, t = {t}, s+t = {s+t} ; (j = {j}, n = {n}):")
+                print(
+                    f"""
+                    d : Hom^({s})({s+t} wedges of g, k) --> Hom^({s})({s+t+1} wedges of g, k)
+                    """
+                )
+                print(f"matrix shape: {smith_array[j][n].shape}")
+                print("\n Matrix:\n")
+                # NOTE: display works in jupyter notebooks instead of pprint,
+                # but we use pprint, since it exports to .pdf files better
+                pprint(Matrix(d_matrices[j][n]))
+                print("\n Smith Normal Form:\n")
+                pprint(smith_array[j][n])
+                print("\n LaTeX code:")
+                print("Matrix: " + latex(Matrix(d_matrices[j][n])))
+                print("Smith Normal Form: " + latex(smith_array[j][n]))
+                print("\n ------------------------------------------- \n\n")
