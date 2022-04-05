@@ -76,8 +76,8 @@ def print_grj_nwedge_g(jmax, nmax, g):
     Print all gradings of all wedges of g.
 
     Input:
-    jmax = max j to try when finding bases
-    nmax = max n to try when finding bases
+    jmax = max j to try when finding bases, = max grade,
+    nmax = max n to try when finding bases, = dim(g),
     g = np.array([g1,g2,...]) with graded parts of the Lie algebra g
     where g1,g2,... are lists of numbers 1,2,... corresponding
     to a basis e_1,e_2,... of g
@@ -111,7 +111,7 @@ def print_grj_nwedge_g(jmax, nmax, g):
         """
     )
 
-    for j in range(jmax):
+    for j in range(jmax + 1):
         print("------------")
         print(f"Grade {j}: \n")
         for n in range(nmax):
@@ -189,8 +189,8 @@ def store_bases(jmax, nmax, g):
     Store the all bases in an np.array.
 
     Input:
-    jmax = max j to try when finding bases
-    nmax = max n to try when finding bases
+    jmax = max j to try when finding bases, = max grade,
+    nmax = max n to try when finding bases, = dim(g),
     g = np.array([g1,g2,...]) with graded parts of the Lie algebra g
     where g1,g2,... are lists of numbers 1,2,... corresponding
     to a basis e_1,e_2,... of g
@@ -396,7 +396,10 @@ def d_matrix_grj_nwedge_g(j, n, g, e_sort, bases, commutator):
 
     Description:
     First compute the bases of the codomain and domain of d,
-    then (unless trivial)
+    then (unless trivial) find coefficients to represent the
+    image in the codomain basis. Finally, note that we return
+    the transpose, since we fill in rows instead of columns,
+    which is the map we actually care about anyways.
     """
     codomain_basis = bases[j][n - 1]
     domain_basis = bases[j][n]
@@ -417,8 +420,8 @@ def store_d_matrices(jmax, nmax, g, e_sort, bases, commutator):
     Store the all the matrices describing d in an np.array.
 
     Input:
-    jmax = max j to try when finding bases,
-    nmax = max n to try when finding bases,
+    jmax = max j to try when finding bases, = max grade,
+    nmax = max n to try when finding bases, = dim(g),
     g = np.array([g1,g2,...]) with graded parts of the Lie algebra g
     where g1,g2,... are lists of numbers 1,2,... corresponding
     to a basis e_1,e_2,... of g,
@@ -426,7 +429,8 @@ def store_d_matrices(jmax, nmax, g, e_sort, bases, commutator):
     bases = np.array with all bases in any grade any wedges.
 
     Output:
-    An np.array with a matrix to grade -j of Hom(n wedges of g, k)
+    An np.array with a matrix to the map
+    gr^(-j) Hom(n-1 wedges of g, k) --> Hom(n wedges of g, k)
     in entry array[j][n].
 
     Description:
@@ -448,7 +452,8 @@ def store_d_matrices(jmax, nmax, g, e_sort, bases, commutator):
 
 def smith_form_matrices(matrices):
     """
-    Calculate Smith Normal Form for each matrix in a rectangular np.array of matrices.
+    Calculate Smith Normal Form for each matrix in a rectangular
+    np.array of matrices.
 
     Input:
     A rectangular np.array of matrices.
@@ -501,8 +506,8 @@ def print_cochain_matrices(jmax, nmax, g, e_sort, commutator):
     Print all non-trivial cochain matrices and their SNF.
 
     Input:
-    jmax = max j to try when finding bases,
-    nmax = max n to try when finding bases,
+    jmax = max j to try when finding bases, = max grade,
+    nmax = max n to try when finding bases, = dim(g),
     g = np.array([g1,g2,...]) with graded parts of the Lie algebra g
     where g1,g2,... are lists of numbers 1,2,... corresponding
     to a basis e_1,e_2,... of g,
@@ -533,13 +538,12 @@ def print_cochain_matrices(jmax, nmax, g, e_sort, commutator):
     max_in_snf = max_entry(smith_array)
     print(f"Max absolute entry in all Smith Normal Forms is {max_in_snf}.\n\n")
     print("---------------------\n")
-    for j in range(1, 20):
-        for n in range(1, 8):
+    for j in range(1, jmax):
+        for n in range(1, nmax):
             s = -j
             t = (n - 1) - s
             # we have the dual map of (j,n) --> (j,n-1), i.e., (j,n-1) --> (j,n)
             if len(smith_array[j][n]) != 0:
-
                 print(f"s = {s}, t = {t}, s+t = {s+t} ; (j = {j}, n = {n}):")
                 print(
                     f"""
@@ -557,3 +561,106 @@ def print_cochain_matrices(jmax, nmax, g, e_sort, commutator):
                 print("Matrix: " + latex(Matrix(d_matrices[j][n])))
                 print("Smith Normal Form: " + latex(smith_array[j][n]))
                 print("\n ------------------------------------------- \n\n")
+
+
+def dim_H_s_t(j, n, bases, smith_matrices):
+    """
+    Return transpose of matrix d out from grade j of n wedges of g.
+
+    Input:
+    j = grading (≥1),
+    n = number of wedges (≥1, < dim(g)),
+    bases = np.array with all bases in any grade any wedges,
+    smith_matrices = np.array with matrices in Smith Normal Form,
+    where the matrices satisfy that smith_matrices[j][n] it the SNF
+    of the map
+    gr^(-j) Hom(n-1 wedges of g, k) --> gr^(-j) Hom(n wedges of g, k).
+
+    Output:
+    Returns the dimension of H^(s,t), where s = -j and t = (n-1)-s.
+
+    Description:
+    First
+    """
+    codomain_basis = bases[j][n]
+    codomain_dim = len(codomain_basis)
+    domain_basis = bases[j][n - 1]
+    domain_dim = len(domain_basis)
+    this_d = np.array(smith_matrices[j][n])
+    this_image_dim = np.count_nonzero(this_d)
+    prev_d = np.array(smith_matrices[j][n - 1])
+    prev_image_dim = np.count_nonzero(prev_d)
+    if domain_dim == 0:
+        return 0
+    this_kernel_dim = domain_dim - this_image_dim
+    return this_kernel_dim - prev_image_dim
+
+
+def print_cohomology(jmax, nmax, g, e_sort, commutator):
+    """
+    Print all non-trivial (graded) cohomology groups.
+
+    Input:
+    jmax = max j to try when finding bases, = max grade,
+    nmax = max n to try when finding bases, = dim(g),
+    g = np.array([g1,g2,...]) with graded parts of the Lie algebra g
+    where g1,g2,... are lists of numbers 1,2,... corresponding
+    to a basis e_1,e_2,... of g,
+    e_sort = an np.array describing our ordering of the e_i's,
+    bases = np.array with all bases in any grade any wedges,
+    commutator = a function (int,int) -> [(int (coefficient),int (reulst))],
+    where different elements of the list corespond to summands.
+
+    Output:
+    No output, but prints matrices.
+
+    Description:
+    First calculate all bases, then calculate all matrices,
+    and their Smith Normal Form. Finally print (nicely)
+    the matrices and their SNF, plus some useful information.
+    NOTE: Remember to implement commutator first.
+    """
+    base_array = store_bases(jmax, nmax + 1, g)
+    d_matrices = store_d_matrices(jmax, nmax + 1, g, e_sort, base_array, commutator)
+    smith_array = smith_form_matrices(d_matrices)
+    print(
+        """
+        ===================================================
+        Graded F_p cohomology for lie algebra g:
+        =================================================== \n
+        """
+    )
+    max_in_snf = max_entry(smith_array)
+    print(
+        f"""
+        Max absolute entry in all Smith Normal Forms is {max_in_snf}.
+
+        Thus the follwing is true for F_p, for p > {max_in_snf}. \n\n
+
+        Note:
+        - H^(0) and H^(nmax) are hardcoded, while the rest are calculated,
+        and nmax is supposed to be dim(g).
+        """
+    )
+    for n in range(0, nmax + 1):
+        dim_H_n = 0
+        print("====================\n")
+        if n == 0:
+            print("H^(0) = H^(0,0): \n --------- \n")
+            print("dim H^(0,0) = 1 \n")
+            dim_H_n = 1
+        elif n == nmax:
+            print(f"H^({nmax}) = H^({-jmax},{nmax + jmax}): \n --------- \n")
+            print(f"dim H^(-{jmax},{nmax + jmax}) = 1 \n")
+            dim_H_n = 1
+        else:
+            print(f"H^({n}): \n --------- \n")
+            for j in range(1, jmax):
+                s = -j
+                t = n - s
+                dim_H_s_t_tmp = dim_H_s_t(j, n + 1, base_array, smith_array)
+                if dim_H_s_t_tmp != 0:
+                    dim_H_n += dim_H_s_t_tmp
+                    print(f"dim H^({s},{t}) = {dim_H_s_t_tmp}")
+        print(f"\n---------- \n dim H^({n}) = {dim_H_n} \n")
+    print("====================")

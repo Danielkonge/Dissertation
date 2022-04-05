@@ -88,7 +88,7 @@
 \renewcommand*{\nomlabel}[1]{\hfil #1\hfil}%center symbol
 \renewcommand*{\pagedeclaration}[1]{\dotfill\hyperpage{#1}} %pagenumber in nomenclature + link
 \renewcommand{\nomgroup}[1]{%divide nomenclature into groups (can only use capital letters)
-\item[\bfseries
+\item[\bfseries%
   \ifstrequal{#1}{A}{Cohomology of Unipotent groups}{%
     \ifstrequal{#1}{B}{Cohomology of pro-$p$ Iwahori subgroups}{%
       \ifstrequal{#1}{C}{List-Decodable Mean Estimation and Clustering}{}}}%
@@ -105,11 +105,13 @@
 
 \theoremstyle{plain}
 \theorembodyfont{\normalfont}
+\theoremsymbol{\ensuremath{\clubsuit}}
 \newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
 
+\theoremsymbol{\ensuremath{\spadesuit}}
 \newtheorem{definition}[theorem]{Definition}
 
 \theoremsymbol{\ensuremath{\scriptstyle\bigcirc}}
@@ -127,14 +129,17 @@
 %corresponding break versions:
 
 \theoremsymbol{}
+
 \theoremheaderfont{\normalfont\bfseries}
 \theorembodyfont{\normalfont}
 \theoremstyle{break}
+\theoremsymbol{\ensuremath{\clubsuit}}
 \newtheorem{theorembreak}[theorem]{Theorem}
 \newtheorem{corollarybreak}[theorem]{Corollary}
 \newtheorem{propositionbreak}[theorem]{Proposition}
 \newtheorem{lemmabreak}[theorem]{Lemma}
 
+\theoremsymbol{\ensuremath{\spadesuit}}
 \newtheorem{definitionbreak}[theorem]{Definition}
 
 \theoremsymbol{\ensuremath{\scriptstyle\bigcirc}}

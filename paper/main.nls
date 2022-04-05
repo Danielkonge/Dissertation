@@ -1,0 +1,33 @@
+
+\begin{thenomenclature} 
+\nomgroup{A}
+  \item [{$\gs{B}$ / $\gs{B}^{+}$}]\begingroup (${} = \gs{T}\gs{T}$ / ${} = \gs{T}\gs{N}^{+}$) the Borel subgroups of $\gs{G}$ corresponding to $\Phi^{-}$ / $\Phi^{+}$\nomeqref {1.0}\nompageref{3}
+  \item [{$\Delta$}]\begingroup a (fixed) basis of the root system $\Phi$\nomeqref {1.0}\nompageref{3}
+  \item [{$\gs{G}$}]\begingroup a (fixed) split and connected reductive algebraic $\Z_{p}$-group\nomeqref {1.0}\nompageref{3}
+  \item [{$\lie{g}$}]\begingroup ${} = \F_{p} \otimes_{\F_{p}[\pi]} \gr N$, the Lazard Lie algebra corresponding to $N$\nomeqref {1.0}\nompageref{4}
+  \item [{$G_{\nu}$}]\begingroup ${}\coloneqq \set{g\in G : \omega(g)\geq \nu}$\nomeqref {1.0}\nompageref{6}
+  \item [{$G_{\nu+}$}]\begingroup ${}\coloneqq \set{g\in G : \omega(g)>\nu}$\nomeqref {1.0}\nompageref{6}
+  \item [{$\gr G$}]\begingroup ${} \coloneqq \bigoplus_{\nu>0} \gr_\nu G$ (a graded Lie algebra over $\F_{p}[\pi]$)\nomeqref {1.0}\nompageref{7}
+  \item [{$\gr_\nu G$}]\begingroup ${}\coloneqq G_\nu/G_{\nu+}$\nomeqref {1.0}\nompageref{7}
+  \item [{$h$}]\begingroup the Coxeter number of $\gs{G}$\nomeqref {1.0}\nompageref{4}
+  \item [{$H^{\bullet}(\lie{g},\edot)$}]\begingroup the cohomology of the Lie algebra $\lie{g}$\nomeqref {1.0}\nompageref{4}
+  \item [{$\Hc^{\bullet}(H, \edot)$}]\begingroup the continuous group cohomology of a topological group $G$\nomeqref {1.0}\nompageref{4}
+  \item [{$\Hd^{\bullet}(G, \edot)$}]\begingroup the discrete group cohomology of a topological group $H$\nomeqref {1.0}\nompageref{4}
+  \item [{$H^{s,t}$}]\begingroup ${} = \gr^{s}H^{s+t}$ for some cohomology $H$\nomeqref {1.0}\nompageref{4}
+  \item [{$H^{s,t}(\lie{g}, \F_{p})$}]\begingroup ${} = H^{s+t}\bigl( \gr^{s} \Hom_{\F_{p}}(\bigwedge^{\bullet}\lie{g}, \F_{p}) \bigr)$\nomeqref {1.2}\nompageref{11}
+  \item [{$\gs{N}$ / $\gs{N}^{+}$}]\begingroup the unipotent radical of $\gs{B}$ / $\gs{B}^{+}$\nomeqref {1.0}\nompageref{3}
+  \item [{$\omega \colon G \setminus \set{1} \to \open{0}{\infty}$}]\begingroup a $p$-valuation on $G$\nomeqref {1.0}\nompageref{5}
+  \item [{$p$}]\begingroup a prime, $p \geq h-1$, where $h$ is the Coxeter number of $\gs{G}$\nomeqref {1.0}\nompageref{4}
+  \item [{$\Phi$}]\begingroup ${} = \Phi(\gs{G},\gs{T})$, the root system of $\gs{G}$ with respect to $\gs{T}$\nomeqref {1.0}\nompageref{3}
+  \item [{$\Phi^{+}$ / $\Phi^{-}$}]\begingroup the positive/negative roots in $\Phi$ with respect to $\Delta$\nomeqref {1.0}\nompageref{3}
+  \item [{$\Phi^{\vee}$}]\begingroup the dual root system of $\Phi$\nomeqref {1.0}\nompageref{4}
+  \item [{$\pi \colon \gr G \to \gr G$}]\begingroup the direct sum of the maps $gG_{\nu+} \mapsto g^pG_{(\nu+1)+}$\nomeqref {1.0}\nompageref{8}
+  \item [{$\rank(G,\omega)$}]\begingroup ${}\coloneqq \rank_{\F_p[P]} \gr G$ the rank of the pair $(G,\omega)$\nomeqref {1.0}\nompageref{8}
+  \item [{$\gs{T}$}]\begingroup a (fixed) split maximal torus of $\gs{G}$\nomeqref {1.0}\nompageref{3}
+  \item [{$V_{\F_{p}}(\lambda)$}]\begingroup ${} = V_{\Z}(\lambda) \otimes_{\Z} \F_{p}$\nomeqref {1.0}\nompageref{4}
+  \item [{$V_{\Z}(\lambda)$}]\begingroup the Weyl module for $\gs{G}_{\Z}$ over $\Z$ with highest weight $\lambda$\nomeqref {1.0}\nompageref{4}
+  \item [{$W$}]\begingroup the Weyl group corresponding to $\Phi$ and $\Phi^{\vee}$\nomeqref {1.0}\nompageref{4}
+  \item [{$X$}]\begingroup $=X(\gs{T}) \iso X(\gs{T}_{\Z})$, the character group of $\gs{T}$\nomeqref {1.0}\nompageref{4}
+  \item [{$X^{+}$}]\begingroup ${} = \set{\lambda \in X \given \inner{\lambda}{\alpha^\vee} \geq 0 \text{ for all } \alpha \in \Phi^+}$\nomeqref {1.0}\nompageref{4}
+
+\end{thenomenclature}

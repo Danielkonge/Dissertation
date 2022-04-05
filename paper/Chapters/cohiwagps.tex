@@ -14,29 +14,52 @@ Obvious try (using that $(1+p)^{\Z_{p}} = 1+p\Z_{p}$):
 \end{align*}
 
 Better:
-\begin{equation}
+\begin{align}
   \label{eq:gis-SL2}
-  \begin{aligned}
-    g_{1} &= \pmat{1 & 0 \\ p & 1}, & g_{2} &= \pmat{\exp(p) & 0 \\ 0 & \exp(-p)}, & g_{3} &= \pmat{1 & 1 \\ 0 & 1}.
-  \end{aligned}
-\end{equation}
+  g_{1} &= \pmat{1 & 0 \\ p & 1}, & g_{2} &= \pmat{\exp(p) & 0 \\ 0 & \exp(-p)}, & g_{3} &= \pmat{1 & 1 \\ 0 & 1}.
+\end{align}
 
 For $g = (a_{ij})$
 \begin{equation*}
-  \omega(g) \defeq \min\bigl( v_{p}(a_{11}-1), \frac{1}{2} + v_{p}(a_{12}), -\frac{1}{2} + v_{p}(a_{21}), v_{p}(a_{22}-1) \bigr).
+  \omega(g) \defeq \min\bigl( v_{p}(a_{11}-1), \tfrac{1}{2} + v_{p}(a_{12}), -\tfrac{1}{2} + v_{p}(a_{21}), v_{p}(a_{22}-1) \bigr).
 \end{equation*}
 
 \begin{equation}
   \label{eq:gixi-SL2}
-  g_{1}^{x_{1}}g_{2}^{x_{2}}g_{3}^{x_{3}} = \pmat{\exp(px_{1}) & \exp(px_{2})x_{3} \\ px_{1}\exp(px_{2}) & px_{1}x_{3}\exp(px_{2}) + \exp(-px_{2})} = \pmat{a_{11} & a_{12} \\ a_{21} & a_{22}}.
+  g_{1}^{x_{1}}g_{2}^{x_{2}}g_{3}^{x_{3}} = \pmat{\exp(px_{2}) & x_{3}\exp(px_{2}) \\ px_{1}\exp(px_{2}) & px_{1}x_{3}\exp(px_{2}) + \exp(-px_{2})} = \pmat{a_{11} & a_{12} \\ a_{21} & a_{22}}.
 \end{equation}
 
 $g_{ij} = [g_{i},g_{j}]$
+
+In the following we use that $\frac{1}{p-1} = 1 + p + p^{2} + \dotsb$ and $\log(1-p) = -p - \frac{p^{2}}{2} - \frac{p^{3}}{3} - \dotsb$.
+
+\begin{description}
+  \item[$g_{12} = \pmat{ 1 & 0 \\ p\bigl( 1 - \exp(-2p) \bigr) }$:] Comparing $g_{12}$ with \eqref{eq:gixi-SL2}, we see that $x_{2} = x_{3} = 0$. This leaves $a_{21} = px_{1} = p\bigl( 1 - \exp(-2p) \bigr) = 2p^{2} + O(p^{3})$, which implies that $x_{1} = 2p + O(p^{2})$. Hence $\sigma(g_{12}) = 2\pi \act \sigma(g_{1})$, which implies that $\xi_{12} = 0$.
+
+  \item[$g_{13} = \pmat{ 1-p & p \\ -p^{2} & 1+p+p^{2} }$:] Comparing $g_{13}$ with \eqref{eq:gixi-SL2}, we see that
+        \begin{align*}
+          a_{11} &= \exp(px_{2}) = 1-p, \\
+          a_{12} &= x_{3}\exp(px_{2}) = x_{3}(1-p) = p, \\
+          a_{21} &= px_{1}\exp(px_{2}) = px_{1}(1-p) = -p^{2},
+        \end{align*}
+        and thus
+        \begin{align*}
+          x_{2} &= \dfrac{1}{p}\log(1-p) = \dfrac{1}{p}\bigl( (-p) + O(p^{2}) \bigr) = -1 + O(p), \\
+          x_{3} &= \dfrac{p}{1-p} = p + O(p^{2}), \\
+          x_{1} &= \dfrac{-p^{2}}{p(1-p)} = -p + O(p^{2}).
+        \end{align*}
+        Hence $\sigma(g_{13}) = -\pi \act \sigma(g_{1}) - \sigma(g_{2}) - \pi \act \sigma(g_{3})$, which implies that $\xi_{13} = -\xi_{2}$.
+
+  \item[$g_{23} = \pmat{ 1 & \exp(2p)-1 \\ 0 & 1 }$:] Comparing $g_{23}$ with \eqref{eq:gixi-SL2}, we see that $x_{1} = x_{2} = 0$. This leaves $a_{12} = x_{3} = \exp(2p)-1 = 2p + O(p^{2})$. Hence $\sigma(g_{23}) = 2\pi \act \sigma(g_{3})$, which implies that $\xi_{23} = 0$.
+\end{description}
+
+
 \begin{align*}
-  \sigma(g_{12}) &= (p-2)\pi \act \sigma(g_{1}), \\
-  \sigma(g_{13}) &= (p-1)\pi \act \sigma(g_{1}) + (p-1)\sigma(g_{2}) + \pi \act \sigma(g_{3}), \\
-  \sigma(g_{23}) &= (p-2)\pi \act \sigma(g_{3}).
+  \sigma(g_{12}) &= 2\pi \act \sigma(g_{1}), \\
+  \sigma(g_{13}) &= \pi \act \sigma(g_{1}) + (p-1)\sigma(g_{2}) + \pi \act \sigma(g_{3}), \\
+  \sigma(g_{23}) &= \pi \act \sigma(g_{3}).
 \end{align*}
+
 
 So with $\xi_{i} = 1 \otimes \sigma(g_{i})$:
 \begin{align*}
@@ -48,10 +71,10 @@ So with $\xi_{i} = 1 \otimes \sigma(g_{i})$:
 
 \begin{equation}
   \label{eq:gis-GL2}
-  \begin{split}
+  \begin{gathered}
     g_{1} = \pmat{1 & 0 \\ p & 1}, \qquad g_{2} = \pmat{\exp(p) & 0 \\ 0 & \exp(-p)}, \\
     g_{3} = \pmat{\exp(p) & 0 \\ 0 & \exp(p)}, \qquad g_{4} = \pmat{1 & 1 \\ 0 & 1}.
-  \end{split}
+  \end{gathered}
 \end{equation}
 
 \begin{align}
@@ -80,11 +103,11 @@ is the only non-zero commutator.
 To make the notation easier to read for the bigger matrices, we will write any zeros as blank space in matrices in this section.
 \begin{equation}
   \label{eq:gis-SL3}
-  \begin{split}
+  \begin{gathered}
     g_{1} = \pmat{ 1 \\ & 1 \\ p && 1 }, \quad g_{2} = \pmat{ 1 \\ p & 1 \\ && 1 }, \quad g_{3} = \pmat{ 1 \\ & 1 \\ & p & 1 }, \\
     g_{4} = \pmat{ \exp(p) \\ & \exp(-p) \\ && 1 }, \quad g_{5} = \pmat{ 1 \\ & \exp(p) \\ && \exp(-p) }, \\
     g_{6} = \pmat{ 1 \\ & 1 & 1 \\ && 1 }, \quad g_{7} = \pmat{ 1 & 1 \\ & 1 \\ && 1 }, \quad g_{8} = \pmat{ 1 && 1 \\ & 1 \\ && 1 }.
-  \end{split}
+  \end{gathered}
 \end{equation}
 
 \begin{equation*}
@@ -716,7 +739,7 @@ and we have the following table:
     23 &&&&&&&&&&&&&&&& 1
   \end{NiceArray}$%
   }
-  \caption[Graded cohomology dimensions for $I \subseteq \SL_{3}(\Z_{p})$]{Dimensions of $H^{s,t} = \gr^{s} H^{s+t}(\lie{g},k)$.}
+  \caption[Graded cohomology dimensions for $I \subseteq \SL_{3}(\Z_{p})$]{Dimensions of $E_{1}^{s,t} = H^{s,t} = \gr^{s} H^{s+t}(\lie{g},k)$.}
   \label{tab:graded-coh-dims-SL3}
 \end{table}
 Thus
@@ -735,7 +758,58 @@ Thus
   \end{dcases}
 \end{equation*}
 
+\section{\texorpdfstring{$I \subseteq \GL_{3}(\Z_{p})$}{I in GL3(Zp)}}%
+\label{sec:Iwa-GL3}
 
+\begin{equation}
+  \label{eq:gis-GL3}
+  \begin{gathered}
+    g_{1} = \pmat{ 1 \\ & 1 \\ p && 1 }, \quad g_{2} = \pmat{ 1 \\ p & 1 \\ && 1 }, \quad g_{3} = \pmat{ 1 \\ & 1 \\ & p & 1 }, \\
+    g_{4} = \pmat{ \exp(p) \\ & \exp(-p) \\ && 1 }, \quad g_{5} = \pmat{ 1 \\ & \exp(p) \\ && \exp(-p) }, \\
+    g_{6} = \pmat{ \exp(p) \\ & \exp(p) \\ && \exp(p) },  \\
+    g_{7} = \pmat{ 1 \\ & 1 & 1 \\ && 1 }, \quad g_{8} = \pmat{ 1 & 1 \\ & 1 \\ && 1 }, \quad g_{9} = \pmat{ 1 && 1 \\ & 1 \\ && 1 }.
+  \end{gathered}
+\end{equation}
+
+
+\begin{table}[ht]
+  \centering
+  \scalebox{0.7}{%
+  $\begin{NiceArray}{*{20}{c}}[hvlines]
+    \diagbox{t}{s} & 0 & -1 & -2 & -3 & -4 & -5 & -6 & -7 & -8 & -9 & -10 & -11 & -12 & -13 & -14 & -15 & -16 & -17 & -18 \\
+    0 & 1\\
+    1 \\
+    2 && 3 \\
+    3 \\
+    4 &&&& 1 \\
+    5 &&&& 6 \\
+    6 &&&&& 6 \\
+    7 &&&&& 3\\
+    8 &&&&&& 6 \\
+    9 &&&&&&& 13 \\
+    10 &&&&&&&& 3 \\
+    11 &&&&&&&& 12 \\
+    12 &&&&&&&&& 15 \\
+    13 &&&&&&&&&& 7 \\
+    14 &&&&&&&&&& 7 \\
+    15 &&&&&&&&&&& 15 \\
+    16 &&&&&&&&&&&& 12 \\
+    17 &&&&&&&&&&&& 3 \\
+    18 &&&&&&&&&&&&& 13 \\
+    19 &&&&&&&&&&&&&& 6 \\
+    20 &&&&&&&&&&&&&&& 3 \\
+    21 &&&&&&&&&&&&&&& 6 \\
+    22 &&&&&&&&&&&&&&&& 6 \\
+    23 &&&&&&&&&&&&&&&& 1 \\
+    24 \\
+    25 &&&&&&&&&&&&&&&&&& 3 \\
+    26 \\
+    27 &&&&&&&&&&&&&&&&&&& 1
+  \end{NiceArray}$%
+  }
+  \caption[Graded cohomology dimensions for $I \subseteq \GL_{3}(\Z_{p})$]{Dimensions of $E_{1}^{s,t} = H^{s,t} = \gr^{s} H^{s+t}(\lie{g},k)$.}
+  \label{tab:graded-coh-dims-GL3}
+\end{table}
 
 %%% Local Variables:
 %%% mode: latex
