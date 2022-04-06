@@ -1,5 +1,54 @@
 \section{Intoduction}%
-\label{sec:cohiwagps}
+\label{sec:cohiwagps-intro}
+
+In this chapter we will calculate the cohomology over perfect fields $k$ of a collection of pro-$p$ Iwahori subgroups of $\SL_{n}$ and $\GL_{n}$ over $\Z_{p}$ or (low degree) extensions of $\Z_{p}$.\dknote{Maybe change perfect fields to just $\F_{p}$.}
+
+\subsection{Background and motivation}%
+\label{subsec:background-iwa}
+
+Write later.
+
+\subsection{Setup and notation}%
+\label{subsec:setup-iwa}
+
+Let $p \geq 5$ be a prime and let $k$ be a perfect field of characteristic $p$.
+
+\paragraph{Pro-$p$ Iwahori subgroups.} Let $\gs{G}$ be a split reductive group over $\Z_{p}$ and fix a Borel subgroup $\gs{B}$ with unipotent radical $\gs{U} \triangleleft \gs{B}$ and split maximal torus $\gs{T} \subseteq \gs{G}$. See \Cref{sec:cohunigps-intro} or \cite{Con-book} for more details, and note that we have switched notation from $\gs{N}$ to $\gs{U}$ for the unipotent radical, which is more common in this setting. The pro-$p$ Iwahori subgrou $I$ of $\gs{G}(\Z_{p})$ is defined by\dknote{Rewrite to more general definition over $E/\Q_{p}$. Is the paper by Claus and Aranya published? If so, quote it. Probably write it out in a subsection.}
+\begin{equation*}
+  I \coloneqq \set{ g \in \gs{G}(\Z_{p}) : \red(g) \in \gs{U}(\F_{p}) }.
+\end{equation*}
+
+\paragraph{Pro-$p$ Iwahori subgroups of $\GL_{n}$ and $\SL_{n}$.} In this chapter, we will only work with pro-$p$ Iwahori subgroups of $\GL_{n}(F)$ or $\SL_{n}(F)$,\dknote{Introduce $F$ when rewriting the above.} which simplifies the defintions. When $\gs{G} = \GL_{n}$ or $\gs{G} = \SL_{n}$, we can always take $\gs{B}$ to be the upper triangular Borel subgroup of $\gs{G}$ and $\gs{T}$ the diagonal maximal torus. Furthermore we can take $I$ to be the subgroup of $\gs{G}(\sO)$ which is upper triangular and unipotent module $\varpi$.
+
+\paragraph{Lazard theory.} For an introduction to Lazard theory see \Cref{sec:cohunigps-intro}, or \cite{Sch} for more details. In particular, note that the Lazard Lie algebra generalizes from $\F_{p}$ to general $k$ of characteristic $p$. We will let $\lie{g} = k \otimes_{\F_p[\pi]} \gr I$\nomiwa[g]{$\lie{g}$}{${} = k \otimes_{\F_{p}[\pi]} \gr N$, the Lazard Lie algebra corresponding to the pro-$p$ subgroup $I$} be the Lazard Lie algebra corresponding to the pro-$p$ subgroup $I$.
+
+\paragraph{Cohomology.} We denote (using the Chevalley-Eilenberg complex) the Lie algebra cohomology\index{cohomology!Lie algebra} of any $k$-Lie algebra $\lie{g}$ by $H^{\bullet}(\lie{g}, \edot)$,\nomiwa[Hg]{$H^{\bullet}(\lie{g},\edot)$}{the cohomology of the Lie algebra $\lie{g}$} while we write $H^{\bullet}(G,\edot)$\nomiwa[HG]{$H^{\bullet}(G,\edot)$}{the continuous group cohomology of the topological group $G$} for the continuous group cohomology of a topological group $G$. Here we let the entries distinguish between different types of cohomology without any ambiguity. As in \Cref{sec:cohunigps-intro}, we introduce filtrations and then gradings on the cohomology and use the notation $H^{s,t} = \gr^{s}H^{s+t}$\nomiwa[Hst]{$H^{s,t}$}{${} = \gr^{s}H^{s+t}$ for some cohomology $H$} for any type of cohomology $H$.
+
+\paragraph{Spectral sequences.} Given a ring $R$, a cohomological spectral sequence\index{spectral sequence}\index{spectral sequence!cohomological} is a choice of $r_0 \in \N$ and a collection of
+\begin{enumerate}[$\bullet$]
+  \item $R$-modules $E_r^{s,t}$ for each $s,t \in \Z$ and all integers $r \geq r_0$
+  \item differentials $d_r^{s,t} \colon E_r^{s,t} \to E_r^{s+r,t+1-r}$ such that $d_r^2 = 0$ and $E_{r+1}$ is isomorphic to the homology of $(E_r,d_r)$, i.e.,
+  \[
+    E_{r+1}^{s,t} = \frac{\kernel(d_r^{s,t} \colon E_r^{s,t} \to E_r^{s+r,t+1-r})}{\image(d_r^{s-r,t+r-1} \colon E_r^{s-r,t+r-1} \to E_r^{s,t})}.
+  \]
+\end{enumerate}
+For a given $r$, the collection $(E_r^{s,t},d_r^{s,t})_{s,t\in\Z}$ is called the $r$-th page. A spectral sequence \emph{converges}\index{spectral sequence!convergent} if $d_r$ vanishes on $E_r^{s,t}$ for any $s,t$ when $r\gg0$. In this case $E_r^{s,t}$ is independent of $r$ for sufficiently large $r$, we denote it by $E_{\infty}^{s,t}$ and write
+  \[
+    E_{r}^{s,t} \Longrightarrow E_\infty^{s+t}.
+  \]
+Also, we say that the spectral sequence collapses at the $r'$-th page if $E_{r} = E_{\infty}$ for all $r \geq r'$, but not for $r < r'$. Finally, when we have terms $E_\infty^{n}$  with a natural filtration $F^\bullet E_\infty^n$ (but no natural double grading), we set $E_\infty^{s,t} = \gr^{s} E_\infty^{s,t}= F^{s}E_\infty^{s+t}/F^{s+1}E_\infty^{s+t}$.
+
+
+\section{Techniques}%
+\label{sec:tech-iwa}
+
+Let $(G, \omega)$ be a $p$-valuable group and let $k$ be a perfect field of characteristic $p$. In this section we will describe how the spectral sequence
+\begin{equation*}
+  E_{1}^{s,t} = H^{s,t}(\lie{g}, k) \Longrightarrow H^{s+t}(G, k)
+\end{equation*}
+from \cite[§6.1]{Sor} can be used to calculate information about the dimensions of $H^{n}(G,k)$ for varying $n$ and information about the cup product on $H^{*}(G,k)$. After this, we will then briefly discuss how this applies to pro-$p$ Iwahori subgroups $I$ of $\GL_{n}$ or $\SL_{n}$.
+
+
 
 \section{\texorpdfstring{$I \subseteq \SL_{2}(\Z_{p})$}{I in SL2(Zp)}}%
 \label{sec:Iwa-SL2}
