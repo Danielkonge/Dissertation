@@ -11,16 +11,93 @@ Write later.
 \subsection{Setup and notation}%
 \label{subsec:setup-iwa}
 
-Let $p \geq 5$ be a prime and let $k$ be a perfect field of characteristic $p$.
+Let $p$ be an odd prime (further restricted later) and let $k$ be a perfect field of characteristic $p$.\nomiwa[k]{$k$}{a perfect field of characteristic $p$}
 
-\paragraph{Pro-$p$ Iwahori subgroups.} Let $\gs{G}$ be a split reductive group over $\Z_{p}$ and fix a Borel subgroup $\gs{B}$ with unipotent radical $\gs{U} \triangleleft \gs{B}$ and split maximal torus $\gs{T} \subseteq \gs{G}$. See \Cref{sec:cohunigps-intro} or \cite{Con-book} for more details, and note that we have switched notation from $\gs{N}$ to $\gs{U}$ for the unipotent radical, which is more common in this setting. The pro-$p$ Iwahori subgrou $I$ of $\gs{G}(\Z_{p})$ is defined by\dknote{Rewrite to more general definition over $E/\Q_{p}$. Is the paper by Claus and Aranya published? If so, quote it. Probably write it out in a subsection.}
+\paragraph{Field extension of $\Q_{p}$.} We fix a finite extension of $F/\Q_{p}$\nomiwa[F]{$F$}{a finite extension of $\Q_{p}$} of degree $D$\nomiwa[D]{$D$}{${} = [F : \Q_{p}]$, the degree of the extension $F/\Q_{p}$} with valuation ring $\sO_{F}$\nomiwa[OF]{$\sO_{F}$}{the valuation ring of $F$} and maximal ideal $\idm_{F} = (\varpi_{F}) \subseteq \sO_{F}$.\nomiwa[mF]{$\idm_{F}$}{maximal ideal of the valuation ring $\sO_{F}$}\nomiwa[piF]{$\varpi_{F}$}{a uniformizer of $F$} Let $e = e(F/\Q_{p})$ be the \emph{ramification index}\index{ramification index} and $f = f(F/\Q_{p})$ the \emph{inertia degree}\index{inertia degree} of the extension $F/\Q_{p}$. Let furthermore $v$ be the valuation on $F$ for which $v(p) = 1$, and thus $v(\varpi_{F}) = \frac{1}{e}$.
+
+\paragraph{$\exp$ and $\log$.} Given a $\idm$-adic number field $F$ with valuation ring $\sO_{F}$ and maximal ideal $\idm_{F}$ with $p\sO_{F} = \idm_{F}^{e}$, we get by \cite[Prop.~(5.5)]{Neukirch} (noting that we will ensure that $1 > \frac{e}{p-1}$ later) that the power series
 \begin{equation*}
-  I \coloneqq \set{ g \in \gs{G}(\Z_{p}) : \red(g) \in \gs{U}(\F_{p}) }.
+  \exp(x) = 1 + x + \frac{x^{2}}{2!} + \frac{x^{3}}{3!} + \dotsb \quad \text{ and } \quad \log(1+z) = z - \frac{z^{2}}{2} + \frac{z^{3}}{3} - \dotsb,
+\end{equation*}
+are two mutually inverse isomorphisms (and homeomorphisms)
+\[
+  \begin{tikzcd}
+    \idm_{F} \ar[r, yshift=0.7ex, "\exp"] & U_{F}^{(1)}. \ar[l, yshift=-0.7ex, "\log"]
+  \end{tikzcd}
+\]
+Note that this implies that a $\Z_{p}$-basis of $\idm$ translates to a $\Z_{p}$-basis of $U_{F}^{(1)} = 1+\idm_{F}$ via $\exp$.
+
+\paragraph{Big-$O$ notation.} For elements of $\sO_{F}$ we write $x = y + O(p^{r})$ if and only if $x-y \in p^{r}\sO_{F}$.\index{big-O notation@big-$O$ notation}\index{Opr@$O(p^{r})$}\nomiwa[Opr]{$O(p^{r})$}{for elements of $\sO_{F}$ we write $x = y + O(p^{r})$ if and only if $x-y \in p^{r}\sO_{F}$}
+
+\paragraph{Matrices.} Let $E_{ij}$\nomiwa[Eij]{$E_{ij}$}{the matrix with $1$ in the $(i,j)$ entry and zeroes in all other entries} denote the matrix with $1$ in the $(i,j)$ entry, and zeroes in all other entries, and write $1_{n}$ for the identity matrix in $M_{n}(F)$.\dknote{Use correct name for $E_{ij}$.} Let $A = (a_{ij})$. We write $A = \diag(a_{1},\dotsc,a_{n})$\nomiwa[diag]{$\diag(a_{1},\dotsc,a_{n})$}{(${} = (a_{ij})$) the diagonal matrix with entries $a_{ii} = a_{i}$} for the diagonal matrix in $M_{n}(F)$ with entries $a_{ii}=a_{i}$ in the diagonal, and $A = \diag_{i_{1},\dotsc,i_{k}}(a_{1},\dotsc,a_{k})$\nomiwa[diagi]{$\diag_{i_{1},\dotsc,i_{k}}(a_{1},\dotsc,)$}{(${} = (a_{ij})$) the matrix with entries $a_{i_{\ell}i_{\ell}} = a_{\ell}$ for $\ell=1,\dotsc,k$ and zeroes in all other entries} for the diagonal matrix in $M_{n}(F)$ with entries $a_{i_{\ell}i_{\ell}} = a_{\ell}$ for $\ell = 1,\dotsc,k$ and zeroes in all other entries.
+
+\paragraph{Smith normal form.} Let $R$ be an integral domain and consider only non-zero matrices over $R$ in this paragraph. Given an $n \times m$ matrix $A$, there exist invertible $m \times m$ and $n \times n$ matrices $S$ and $T$ such that
+\begin{equation*}
+  SAT =
+  \begin{pNiceMatrix}[nullify-dots]
+    a_{1} & 0 & \Cdots \hspace*{3mm} & & & & & 0 \\
+    0 & a_{2} & \Ddots & & & & & \Vdots \\
+    \Vdots & \Ddots & \Ddots \\
+    & & & a_{r} \\
+    & & & & 0 & \Ddots \hspace*{3mm} \\
+    & & & & & \Ddots \\
+    & & & & & & & 0 \\
+    0 & \Cdots & & & & & 0 & 0
+  \end{pNiceMatrix}
+\end{equation*}
+and the diagonal entries $a_{i}$ satisfy $a_{i} \mid a_{i+1}$ for $i=1,\dotsc,r-1$. This matrix is called the Smith normal form of the matrix $A$. Given $n \times m$ matrices $A,B$, we write $A \snfsim B$ if $A$ and $B$ have the same Smith normal form. This notation will mainly be used when $B$ is already a matrix in Smith normal form. Finally we introduce the notation $A = \SNF^{n\times m}(a_{1},\dotsc,a_{r},0,\dotsc,0)$ for the $n \times m$ matrix with $a_{ii} = a_{i}$ for $i=1,\dotsc,r$ and zeroes in all other entries. In next subsection, we will note that the Smith normal form will be useful for our cohomology calculations.
+
+\paragraph{Algebraic groups.} We will work with schemes using the functorial approach and notation described in \cite{Jan}. In particular, given an integral domain $R$, we note that a \emph{$R$-group functor}\index{R-group@$R$-group!functor} is a functor from the category of all $R$-algebras to the category of groups, a \emph{$R$-group scheme}\index{R-group!scheme} is a $R$-group functor that is an affine scheme over $R$ when considered as a $R$-functor, and an \emph{algebraic $R$-group}\index{R-group!algebraic}\index{algebraic R-group@algebraic $R$-group} is a $R$-group scheme that is algebraic as an affine scheme. For more in depth introduction to these concepts, we refer to \cite{Con-book} and \cite{Jan}.
+
+\paragraph{Fixed groups and roots.} We fix a split and connected reductive algebraic $F$-group $\gs{G}$\nomiwa[G]{$\gs{G}$}{a (fixed) split and connected reductive algebraic $F$-group}\index{G}, and consider the locally profinite group $G = \gs{G}(F)$.\nomiwa[GF]{$G$}{${} = \gs{G}(F)$, a locally profinite group} We then fix split maximal torus $\gs{T} \subseteq \gs{G}$\nomiwa[T]{$\gs{T}$}{a (fixed) split maximal torus of $\gs{G}$} and let $T = \gs{T}{F}$.\nomiwa[TF]{$T$}{${} = \gs{T}(F)$} In $T$ we have a maximal compact subgroup $T^{0}$ and its Sylow pro-$p$ subgroup $T^{1}$.
+
+Let $\Phi = \Phi(\gs{G},\gs{T})$\nomiwa[Phi]{$\Phi$}{${} = \Phi(\gs{G},\gs{T})$, the root system of $\gs{G}$ with respect to $\gs{T}$} be the \emph{root system}\index{root!system} of $\gs{G}$ with respect to $\gs{T}$, and let $(X^{*}(T),\Phi,X_{*}(T),\Phi^{\vee})$\nomiwa[XTPhi]{$(X^{*}(T),\Phi,X_{*}(T),\Phi^{\vee})$}{the root datum associated with $\Phi = \Phi(\gs(G),\gs{T})$} be the associated root datum.\index{root!datum} Fix a system of positive roots $\Phi^{+}$ and let $\Pi \subseteq \Phi^{+}$ be the simple roots.\index{root!simple}\dknote{Write $\Delta$ instead of $\Pi$?} For any $\alpha \in \Phi$ we have the root subgroup\index{root!subgroup} $\gs{U}_{\alpha} \subseteq \gs{G}$ with Lie algebra $\Lie \gs{U}_{\alpha} =  (\Lie \gs{G})_{\alpha}$. We let $U_{\alpha} = \gs{U}_{\alpha}(F)$ and choose an isomorphism $x_{\alpha} \colon F \xrightarrow{\iso} U_{\alpha}$\nomiwa[xa]{$x_{\alpha} \colon F \xrightarrow{\iso} U_{\alpha}$}{an isomorphism such that $tx_{\alpha}(x)t^{-1} = x_{\alpha}(\alpha(t)x)$ for $t \in T$ and $x \in F$} such that $tx_{\alpha}(x)t^{-1} = x_{\alpha}(\alpha(t)x)$ for $t \in T$ and $x \in F$. For $r \in \Z_{\geq 0}$ we let $U_{\alpha,r} = x_{\alpha}(\idm_{F}^{r})$.\nomiwa[Uar]{$U_{\alpha,r}$}{${} = x_{\alpha}(\idm_{F}^{r})$}
+
+
+% We furthermore fix a basis $\Delta \subseteq \Phi$\nomiwa[Delta]{$\Delta$}{a (fixed) basis of the root system $\Phi$} of the root system,\index{root system} so we get a decomposition $\Phi = \Phi^+ \cup \Phi^-$\nomiwa[Phi+]{$\Phi^{+}$ / $\Phi^{-}$}{the positive/negative roots in $\Phi$ with respect to $\Delta$} into positive and negative roots. Let $\gs{B} = \gs{T}\gs{U}$\nomiwa[B]{$\gs{B}$ / $\gs{B}^{+}$}{(${} = \gs{T}\gs{U}$ / ${} = \gs{T}\gs{U}^{+}$) the Borel subgroups of $\gs{G}$ corresponding to $\Phi^{-}$ / $\Phi^{+}$} and $\gs{B}^+ = \gs{T}\gs{U}^+$ denote the Borel subgroups of $\gs{G}$ corresponding to $\Phi^-$ and $\Phi^+$, respectively, with unipotent radicals $\gs{U}$ and $\gs{U}^+$.\nomuni[U]{$\gs{U}$ / $\gs{U}^{+}$}{the unipotent radical of $\gs{B}$ / $\gs{B}^{+}$}\index{U@$\gs{U}$}
+
+\paragraph{Pro-$p$ Iwahori subgroups.} We follow the definitions of \cite{SchOll-modular} with $\gs{G}, \gs{T}$ and $\gs(U)_{\alpha}$ as above. Let $I$ be the pro-$p$ Iwahori subgroup of $G$ (associated with a positive chamber as in \cite{SchOll-modular}, but we don't need the exact definition). We note by \cite[Lem.~2.1(i)]{SchOll-modular} and the proof of \cite[Lem.~2.3]{SchOll-modular} that $I$ has the following factorization: Multiplication defines a homeomorphism
+\begin{equation*}
+  \prod_{\alpha \in \Phi^{-}} U_{\alpha,1} \times T^{1} \times \prod_{\alpha \in \Phi^{+}} U_{\alpha,0} \xrightarrow{\iso} I,
+\end{equation*}
+where the products are ordered in an arbitrarily chosen way. For a more detailed introduction to these pro-$p$ groups we refer to \cite{SchOll-modular}.\dknote{Maybe add a more general reference too.}
+
+\paragraph{Pro-$p$ Iwahori subgroups of $\GL_{n}$ and $\SL_{n}$.} In this chapter, we will only work with pro-$p$ Iwahori subgroups of $\GL_{n}(F)$ or $\SL_{n}(F)$, which simplifies the definitions. When $\gs{G} = \GL_{n}$ or $\gs{G} = \SL_{n}$, we can always take $\gs{T}$ the diagonal maximal torus, and we can take $I$ to be the subgroup of $\gs{G}(\sO_{F})$ which is upper triangular and unipotent modulo $\varpi$. In this case we have that $U_{\alpha,1}$ for $\alpha \in \Phi^{-}$ correspond to entries below the diagonal and $U_{\alpha,0}$ for $\alpha \in \Phi^{+}$ corresponds to the entries above the diagonal.
+
+\paragraph{Coxeter number and $p$.} Let $h$\nomiwa[h]{$h$}{the Coxeter number of $\gs{G}$} be the Coxeter number of $\gs{G}$ and assume from now on that $p-1 > eh$.\nomiwa[p]{$p$}{a prime, $p-1 \geq eh$, where $h$ is the Coxeter number of $\gs{G}$}
+
+\paragraph{$p$-valuation on $I$.} By a recent pre-print by Lahiri and Sørensen (not yet published),\dknote{Figure out exactly how to write this. Probably cite as (unpublished).} we know (since $p-1 > eh$) that $I$ admits a $p$-valuation $\omega$ with the property
+\begin{equation}\label{eq:Iwa-p-val}
+  \omega(x_{\alpha}(x)) = v(x) + \frac{\Ht(\alpha)}{eh} \qquad
+  \begin{dcases*}
+    x \in \idm_{F} & if $\alpha \in \Phi^{-}$, \\
+    x \in \sO_{F} & if $\alpha \in \Phi^{+}$.
+  \end{dcases*}
+\end{equation}
+
+\paragraph{Lazard theory.} For an introduction to Lazard theory see \Cref{sec:cohunigps-intro}, or \cite{Sch} for more details. In particular, note that the Lazard Lie algebra generalizes from $\F_{p}$ to general $k$ of characteristic $p$. We will let $\lie{g} = k \otimes_{\F_p[\pi]} \gr I$\nomiwa[g]{$\lie{g}$}{${} = k \otimes_{\F_{p}[\pi]} \gr I$, the Lazard Lie algebra corresponding to the pro-$p$ Iwahori subgroup $I$} be the Lazard Lie algebra corresponding to the pro-$p$ Iwahori subgroup $I$. Furthermore, recall that a sequence of elements $(g_1,\dotsc,g_r)$ in $G$ is called an \emph{ordered basis} of $(G,\omega)$\index{p-valued group!ordered basis} if the map $\Z_{p}^{r} \to G$ given by $(x_{1},\dotsc,x_{r}) \mapsto g_{1}^{x_{1}} \dotsb g_{r}^{x_{r}}$ is a bijection (and hence, by compactness, a homeomorphism) and
+\begin{equation*}
+  \omega(g_1^{x_1}\dotsb g_r^{x_r}) = \min_{1 \leq i \leq r}(\omega(g_i)+v(x_i)) \qquad \text{for any } x_1,\dotsc,x_r\in\Z_p.
 \end{equation*}
 
-\paragraph{Pro-$p$ Iwahori subgroups of $\GL_{n}$ and $\SL_{n}$.} In this chapter, we will only work with pro-$p$ Iwahori subgroups of $\GL_{n}(F)$ or $\SL_{n}(F)$,\dknote{Introduce $F$ when rewriting the above.} which simplifies the defintions. When $\gs{G} = \GL_{n}$ or $\gs{G} = \SL_{n}$, we can always take $\gs{B}$ to be the upper triangular Borel subgroup of $\gs{G}$ and $\gs{T}$ the diagonal maximal torus. Furthermore we can take $I$ to be the subgroup of $\gs{G}(\sO)$ which is upper triangular and unipotent module $\varpi$.
+\paragraph{Ordered basis of $I$.} Let $\set{b_{1},\dotsc,b_{D}}$ be a $\Z_{p}$-basis of $\sO_{F}$ and let $\set{u_{1},\dotsc,u_{D}}$ be a $\Z_{p}$-basis of $U_{F}^{(1)} = 1+\idm_{F}$, where $D = [F:\Q_{p}]$. Then $\bigl( x_{\alpha}(b_{1}), \dotsc, x_{\alpha}(b_{D}) \bigr)$ is an ordered basis for $U_{\alpha,0}$ when $\alpha \in \Phi^{+}$, and $\bigl( x_{\alpha}(\varpi_{F}b_{1}), \dotsc, x_{\alpha}(\varpi_{F}b_{D}) \bigr)$ is an ordered basis for $U_{\alpha,1}$ when $\alpha \in \Phi^{-}$. Furthermore, when $G$ is semisimple and simply connected, we have that the simple coroots\index{coroots} $\set{ \alpha^{\vee} : \alpha \in \Pi }$ form a $\Z$-basis of $X_{*}(T)$, and thus $\bigl( \alpha^{\vee}(u_{1}), \dotsc, \alpha^{\vee}(u_{D}) \bigr)_{\alpha \in \Pi}$ form an ordered basis of $T^{1}$. By \cite[Prop.~3.1]{IwaBasis}, given orderings of $\Phi^{+}$ and $\Phi^{-}$, and assuming that $G$ is semisimple and simply connected, we now get: the sequence of elements
+\begin{enumerate}[$\bullet$]
+  \item $\bigl( x_{\alpha}(\varpi_{F}b_{1}), \dotsc, x_{\alpha}(\varpi_{F}b_{D}) \bigr)_{\alpha \in \Phi^{-}}$,
+  \item $\bigl( \alpha^{\vee}(u_{1}), \dotsc, \alpha^{\vee}(u_{D}) \bigr)_{\alpha \in \Pi}$,
+  \item $\bigl( x_{\alpha}(b_{1}), \dotsc, x_{\alpha}(b_{D}) \bigr)_{\alpha \in \Phi^{+}}$
+\end{enumerate}
+forms an ordered basis of $(I,\omega)$ (with $\omega$ from \eqref{eq:Iwa-p-val}) which is a saturated $p$-valued group. Recalling from above that $\exp \colon \idm_{F} = (\varpi_{F}) \to U_{F}^{(1)} = 1 + \idm_{F}$ takes a basis to a basis, and noting that $\set{ \varpi_{F}b_{1}, \dotsc, \varpi_{F}b_{D} }$ is a $\Z_{p}$-basis of $\idm_{F} = \varpi_{F}\sO_{F}$, we see that we can take $u_{i} = \exp(\varpi_{F}b_{i})$ for $i=1,\dotsc,D$. When $\gs{G} = \SL_{n}$,\dknote{Reference for this being simply connected.} we have that $\Phi = \set{ \varepsilon_{i}-\varepsilon_{j} \given 1 \leq i,j \leq n, i\neq j }$ and can take
+\begin{equation*}
+  \Pi = \set{\alpha_{1}=\varepsilon_{1}-\varepsilon_{2}, \alpha_{2}=\varepsilon_{2}-\varepsilon_{3}, \dotsc, \alpha_{n-1}=\varepsilon_{n-1}-\varepsilon_{n}},
+\end{equation*}
+where $\varepsilon_{i}$ is the map that takes a diagonal matrix to its $i$-th diagonal entry.\dknote{Standard Lie algebra theory, add a reference.} In this case $\alpha_{i}^{\vee}(u) = \diag(0,\dotsc,0,u,-u,0,\dotsc,0) = \diag_{i,i+1}(u,-u)$, where the non-zero entries are the $i$-th and $(i+1)$-th entries. This together with the above gives us the following ordered basis (in the listed order and with a chosen ordering of $\set{ (i,j) : 1 \leq i,j \leq n }$) in the case $\gs{G} = \SL_{n}$:
+\begin{enumerate}[$\bullet$]
+  \item $\bigl( 1_{n}+\varpi_{F}b_{1}E_{ij}, \dotsc, 1_{n}+\varpi_{F}b_{D}E_{ij} \bigr)_{1 \leq j < i \leq n}$,
+  \item $\bigl( \diag_{i,i+1}(\exp(\varpi_{F}b_{1})), \dotsc, \diag_{i,i+1}(\exp(\varpi_{F}b_{D})) \bigr)_{i=1,\dotsc,n-1}$,
+  \item $\bigl( 1_{n}+b_{1}E_{ij}, \dotsc, 1_{n}+b_{D}E_{ij} \bigr)_{1 \leq i < j \leq n}$.
+\end{enumerate}
 
-\paragraph{Lazard theory.} For an introduction to Lazard theory see \Cref{sec:cohunigps-intro}, or \cite{Sch} for more details. In particular, note that the Lazard Lie algebra generalizes from $\F_{p}$ to general $k$ of characteristic $p$. We will let $\lie{g} = k \otimes_{\F_p[\pi]} \gr I$\nomiwa[g]{$\lie{g}$}{${} = k \otimes_{\F_{p}[\pi]} \gr N$, the Lazard Lie algebra corresponding to the pro-$p$ subgroup $I$} be the Lazard Lie algebra corresponding to the pro-$p$ subgroup $I$.
+Finally note that an ordered basis of $\GL_{n}$ can be obtained from an ordered basis of $\SL_{n}$ by adding a non-trivial element of the center, which in the above corresponds to adding $\bigl(  \exp(\varpi_{F}b_{1})1_{n}, \dotsc, \exp(\varpi_{F}b_{D})1_{n} \bigr)$ to the middle item above.
 
 \paragraph{Cohomology.} We denote (using the Chevalley-Eilenberg complex) the Lie algebra cohomology\index{cohomology!Lie algebra} of any $k$-Lie algebra $\lie{g}$ by $H^{\bullet}(\lie{g}, \edot)$,\nomiwa[Hg]{$H^{\bullet}(\lie{g},\edot)$}{the cohomology of the Lie algebra $\lie{g}$} while we write $H^{\bullet}(G,\edot)$\nomiwa[HG]{$H^{\bullet}(G,\edot)$}{the continuous group cohomology of the topological group $G$} for the continuous group cohomology of a topological group $G$. Here we let the entries distinguish between different types of cohomology without any ambiguity. As in \Cref{sec:cohunigps-intro}, we introduce filtrations and then gradings on the cohomology and use the notation $H^{s,t} = \gr^{s}H^{s+t}$\nomiwa[Hst]{$H^{s,t}$}{${} = \gr^{s}H^{s+t}$ for some cohomology $H$} for any type of cohomology $H$.
 
@@ -38,6 +115,10 @@ For a given $r$, the collection $(E_r^{s,t},d_r^{s,t})_{s,t\in\Z}$ is called the
   \]
 Also, we say that the spectral sequence collapses at the $r'$-th page if $E_{r} = E_{\infty}$ for all $r \geq r'$, but not for $r < r'$. Finally, when we have terms $E_\infty^{n}$  with a natural filtration $F^\bullet E_\infty^n$ (but no natural double grading), we set $E_\infty^{s,t} = \gr^{s} E_\infty^{s,t}= F^{s}E_\infty^{s+t}/F^{s+1}E_\infty^{s+t}$.
 
+\subsection{Smith normal form and cohomology}%
+\label{subsec:SNF-coh}
+
+Note how SNF is useful.
 
 \section{Techniques}%
 \label{sec:tech-iwa}
@@ -859,6 +940,11 @@ Thus
   \caption[Graded cohomology dimensions for $I \subseteq \GL_{3}(\Z_{p})$]{Dimensions of $E_{1}^{s,t} = H^{s,t} = \gr^{s} H^{s+t}(\lie{g},k)$.}
   \label{tab:graded-coh-dims-GL3}
 \end{table}
+
+\section{Future work}%
+\label{sec:future}
+
+Mention spectral sequence talked about with Claus. Trying to generalize current work. Conjectures based on this chapter.
 
 %%% Local Variables:
 %%% mode: latex
