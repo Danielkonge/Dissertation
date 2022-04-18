@@ -29,23 +29,43 @@ Note that this implies that a $\Z_{p}$-basis of $\idm$ translates to a $\Z_{p}$-
 
 \paragraph{Big-$O$ notation.} For elements of $\sO_{F}$ we write $x = y + O(p^{r})$ if and only if $x-y \in p^{r}\sO_{F}$.\index{big-O notation@big-$O$ notation}\index{Opr@$O(p^{r})$}\nomiwa[Opr]{$O(p^{r})$}{for elements of $\sO_{F}$ we write $x = y + O(p^{r})$ if and only if $x-y \in p^{r}\sO_{F}$}
 
-\paragraph{Matrices.} Let $E_{ij}$\nomiwa[Eij]{$E_{ij}$}{the matrix with $1$ in the $(i,j)$ entry and zeroes in all other entries} denote the matrix with $1$ in the $(i,j)$ entry, and zeroes in all other entries, and write $1_{n}$ for the identity matrix in $M_{n}(F)$.\dknote{Use correct name for $E_{ij}$.} Let $A = (a_{ij})$. We write $A = \diag(a_{1},\dotsc,a_{n})$\nomiwa[diag]{$\diag(a_{1},\dotsc,a_{n})$}{(${} = (a_{ij})$) the diagonal matrix with entries $a_{ii} = a_{i}$} for the diagonal matrix in $M_{n}(F)$ with entries $a_{ii}=a_{i}$ in the diagonal, and $A = \diag_{i_{1},\dotsc,i_{k}}(a_{1},\dotsc,a_{k})$\nomiwa[diagi]{$\diag_{i_{1},\dotsc,i_{k}}(a_{1},\dotsc,)$}{(${} = (a_{ij})$) the matrix with entries $a_{i_{\ell}i_{\ell}} = a_{\ell}$ for $\ell=1,\dotsc,k$ and zeroes in all other entries} for the diagonal matrix in $M_{n}(F)$ with entries $a_{i_{\ell}i_{\ell}} = a_{\ell}$ for $\ell = 1,\dotsc,k$ and zeroes in all other entries.
+\paragraph{Matrices.} Let $E_{ij}$\nomiwa[Eij]{$E_{ij}$}{the matrix with $1$ in the $(i,j)$ entry and zeroes in all other entries} denote the matrix with $1$ in the $(i,j)$ entry, and zeroes in all other entries, and write $1_{n}$ for the identity matrix in $M_{n}(F)$.\dknote{Use correct name for $E_{ij}$.} Let $A = (a_{ij})$. We write $A = \diag(a_{1},\dotsc,a_{n})$\nomiwa[diag]{$\diag(a_{1},\dotsc,a_{n})$}{(${} = (a_{ij})$) the diagonal matrix with entries $a_{ii} = a_{i}$} for the diagonal matrix in $M_{n}(F)$ with entries $a_{ii}=a_{i}$ in the diagonal, and $A = \diag_{i_{1},\dotsc,i_{k}}(a_{1},\dotsc,a_{k})$\nomiwa[diagi]{$\diag_{i_{1},\dotsc,i_{k}}(a_{1},\dotsc,)$}{(${} = (a_{ij})$) the matrix with entries $a_{i_{\ell}i_{\ell}} = a_{\ell}$ for $\ell=1,\dotsc,k$ and zeroes in all other entries} for the diagonal matrix in $M_{n}(F)$ with entries $a_{i_{\ell}i_{\ell}} = a_{\ell}$ for $\ell = 1,\dotsc,k$ and zeroes in all other entries. Finally, we write $A^{\top}$\nomiwa[T]{$(\edot)^{\top}$}{the transpose matrix} for the transpose matrix of $A$.
+
+\paragraph{Dual basis.} Let $V$ be a $k$-vector space with basis $\basis = (e_{1},\dotsc,e_{d})$. Then we let $\basis^{*} = (e_{1}^{*},\dotsc,e_{d}^{*})$ be the dual basis of $\Hom_{k}(V,k)$ defined by $e_{i}^{*}(e_{i}) = \delta_{ij}$, where $\delta_{ij}$ is the Kronecker delta function. Now consider two vector spaces $V$ and $W$ with bases $\basis_{V}$ and $\basis_{W}$. Given a linear map $d \colon V \to W$ with matrix $A$ when described in these bases, it's a well known fact from linear algebra that the dual map $d^{*} \colon \Hom_{k}(W,k) \to \Hom_{k}(V,k)$ has matrix $A^{\top}$ when described in the dual bases $\basis_{V}^{*}$ and $\basis_{W}^{*}$. We will often use this without mention and abuse notation writing $d$ and $d^{\top}$ for these matrices.
 
 \paragraph{Smith normal form.} Let $R$ be an integral domain and consider only non-zero matrices over $R$ in this paragraph. Given an $n \times m$ matrix $A$, there exist invertible $m \times m$ and $n \times n$ matrices $S$ and $T$ such that
 \begin{equation*}
   SAT =
   \begin{pNiceMatrix}[nullify-dots]
-    a_{1} & 0 & \Cdots \hspace*{3mm} & & & & & 0 \\
+    a_{1} & 0 & \Cdots \hspace*{5mm} & & & & & 0 \\
     0 & a_{2} & \Ddots & & & & & \Vdots \\
     \Vdots & \Ddots & \Ddots \\
     & & & a_{r} \\
-    & & & & 0 & \Ddots \hspace*{3mm} \\
+    & & & & 0 & \Ddots \hspace*{5mm} \\
     & & & & & \Ddots \\
     & & & & & & & 0 \\
     0 & \Cdots & & & & & 0 & 0
   \end{pNiceMatrix}
 \end{equation*}
-and the diagonal entries $a_{i}$ satisfy $a_{i} \mid a_{i+1}$ for $i=1,\dotsc,r-1$. This matrix is called the Smith normal form of the matrix $A$. Given $n \times m$ matrices $A,B$, we write $A \snfsim B$ if $A$ and $B$ have the same Smith normal form. This notation will mainly be used when $B$ is already a matrix in Smith normal form. Finally we introduce the notation $A = \SNF^{n\times m}(a_{1},\dotsc,a_{r},0,\dotsc,0)$ for the $n \times m$ matrix with $a_{ii} = a_{i}$ for $i=1,\dotsc,r$ and zeroes in all other entries. In next subsection, we will note that the Smith normal form will be useful for our cohomology calculations.
+and the diagonal entries $a_{i}$ satisfy $a_{i} \mid a_{i+1}$ for $i=1,\dotsc,r-1$. This matrix is called the Smith normal form\index{Smith normal form} of the matrix $A$. Given $n \times m$ matrices $A,B$, we write $A \snfsim B$ if $A$ and $B$ have the same Smith normal form. This notation will mainly be used when $B$ is already a matrix in Smith normal form. Finally we introduce the notation $A = \SNF_{n\times m}(a_{1},\dotsc,a_{r},0,\dotsc,0)$ for the $n \times m$ matrix with $a_{ii} = a_{i}$ for $i=1,\dotsc,r$ and zeroes in all other entries as above. In next subsection, we will note that the Smith normal form will be useful for our cohomology calculations.
+
+\begin{remark}
+  In the case $R = \Z$, the Smith normal form of a matrix can be found using the following row and column operations, which are invertible over $\Z$.
+  \begin{align*}
+    \text{(R1): } & \text{swap rows $R_{i}$ and $R_{j}$} & \text{(C1): } & \text{swap columns $C_{i}$ and $C_{j}$} \\
+    \text{(R2): } & \text{multiply row $R_{i}$ by $-1$} & \text{(C2): } & \text{multiply column $C_{i}$ by $-1$} \\
+    \text{(R3): } & \text{replace row $R_{i}$ by $R_{i} + kR_{j}$} & \text{(C3): } & \text{replace column $C_{i}$ by $C_{i} + kC_{j}$} \\
+                  & \text{for some row $R_{j} \neq R_{i}$ and} && \text{for some column $C_{j} \neq C_{i}$ and} \\
+    & k\in\Z && k\in\Z.
+  \end{align*}
+
+  \noindent We will not do these calculations by hand in this chapter, and will instead utilize implementations in Sage and SymPy that can find the Smith normal fom of a matrix over $\Z$. Here it's important to note that the SymPy implementation doesn't allow the use of the rules (R2) and (C2), so we get a small difference between the results of the calculations in SymPy and Sage, but it will only be a difference of sign on some entries in the diagonal.
+\end{remark}
+
+\paragraph{Lazard theory.} For an introduction to Lazard theory see \Cref{sec:cohunigps-intro}, or \cite{Sch} for more details. In particular, note that the Lazard Lie algebra generalizes from $\F_{p}$ to general $k$ of characteristic $p$. We will let $\lie{g} = k \otimes_{\F_p[\pi]} \gr I$\nomiwa[g]{$\lie{g}$}{${} = k \otimes_{\F_{p}[\pi]} \gr I$, the Lazard Lie algebra corresponding to the pro-$p$ Iwahori subgroup $I$} be the Lazard Lie algebra corresponding to the pro-$p$ Iwahori subgroup $I$. Furthermore, recall that a sequence of elements $(g_1,\dotsc,g_r)$ in $G$ is called an \emph{ordered basis} of $(G,\omega)$\index{p-valued group!ordered basis} if the map $\Z_{p}^{r} \to G$ given by $(x_{1},\dotsc,x_{r}) \mapsto g_{1}^{x_{1}} \dotsb g_{r}^{x_{r}}$ is a bijection (and hence, by compactness, a homeomorphism) and
+\begin{equation*}
+  \omega(g_1^{x_1}\dotsb g_r^{x_r}) = \min_{1 \leq i \leq r}(\omega(g_i)+v(x_i)) \qquad \text{for any } x_1,\dotsc,x_r\in\Z_p.
+\end{equation*}
 
 \paragraph{Algebraic groups.} We will work with schemes using the functorial approach and notation described in \cite{Jan}. In particular, given an integral domain $R$, we note that a \emph{$R$-group functor}\index{R-group@$R$-group!functor} is a functor from the category of all $R$-algebras to the category of groups, a \emph{$R$-group scheme}\index{R-group!scheme} is a $R$-group functor that is an affine scheme over $R$ when considered as a $R$-functor, and an \emph{algebraic $R$-group}\index{R-group!algebraic}\index{algebraic R-group@algebraic $R$-group} is a $R$-group scheme that is algebraic as an affine scheme. For more in depth introduction to these concepts, we refer to \cite{Con-book} and \cite{Jan}.
 
@@ -53,6 +73,7 @@ and the diagonal entries $a_{i}$ satisfy $a_{i} \mid a_{i+1}$ for $i=1,\dotsc,r-
 
 Let $\Phi = \Phi(\gs{G},\gs{T})$\nomiwa[Phi]{$\Phi$}{${} = \Phi(\gs{G},\gs{T})$, the root system of $\gs{G}$ with respect to $\gs{T}$} be the \emph{root system}\index{root!system} of $\gs{G}$ with respect to $\gs{T}$, and let $(X^{*}(T),\Phi,X_{*}(T),\Phi^{\vee})$\nomiwa[XTPhi]{$(X^{*}(T),\Phi,X_{*}(T),\Phi^{\vee})$}{the root datum associated with $\Phi = \Phi(\gs(G),\gs{T})$} be the associated root datum.\index{root!datum} Fix a system of positive roots $\Phi^{+}$ and let $\Pi \subseteq \Phi^{+}$ be the simple roots.\index{root!simple}\dknote{Write $\Delta$ instead of $\Pi$?} For any $\alpha \in \Phi$ we have the root subgroup\index{root!subgroup} $\gs{U}_{\alpha} \subseteq \gs{G}$ with Lie algebra $\Lie \gs{U}_{\alpha} =  (\Lie \gs{G})_{\alpha}$. We let $U_{\alpha} = \gs{U}_{\alpha}(F)$ and choose an isomorphism $x_{\alpha} \colon F \xrightarrow{\iso} U_{\alpha}$\nomiwa[xa]{$x_{\alpha} \colon F \xrightarrow{\iso} U_{\alpha}$}{an isomorphism such that $tx_{\alpha}(x)t^{-1} = x_{\alpha}(\alpha(t)x)$ for $t \in T$ and $x \in F$} such that $tx_{\alpha}(x)t^{-1} = x_{\alpha}(\alpha(t)x)$ for $t \in T$ and $x \in F$. For $r \in \Z_{\geq 0}$ we let $U_{\alpha,r} = x_{\alpha}(\idm_{F}^{r})$.\nomiwa[Uar]{$U_{\alpha,r}$}{${} = x_{\alpha}(\idm_{F}^{r})$}
 
+\paragraph{Coxeter number and $p$.} Let $h$\nomiwa[h]{$h$}{the Coxeter number of $\gs{G}$} be the Coxeter number of $\gs{G}$ and assume from now on that $p-1 > eh$.\nomiwa[p]{$p$}{a prime, $p-1 \geq eh$, where $h$ is the Coxeter number of $\gs{G}$}
 
 % We furthermore fix a basis $\Delta \subseteq \Phi$\nomiwa[Delta]{$\Delta$}{a (fixed) basis of the root system $\Phi$} of the root system,\index{root system} so we get a decomposition $\Phi = \Phi^+ \cup \Phi^-$\nomiwa[Phi+]{$\Phi^{+}$ / $\Phi^{-}$}{the positive/negative roots in $\Phi$ with respect to $\Delta$} into positive and negative roots. Let $\gs{B} = \gs{T}\gs{U}$\nomiwa[B]{$\gs{B}$ / $\gs{B}^{+}$}{(${} = \gs{T}\gs{U}$ / ${} = \gs{T}\gs{U}^{+}$) the Borel subgroups of $\gs{G}$ corresponding to $\Phi^{-}$ / $\Phi^{+}$} and $\gs{B}^+ = \gs{T}\gs{U}^+$ denote the Borel subgroups of $\gs{G}$ corresponding to $\Phi^-$ and $\Phi^+$, respectively, with unipotent radicals $\gs{U}$ and $\gs{U}^+$.\nomuni[U]{$\gs{U}$ / $\gs{U}^{+}$}{the unipotent radical of $\gs{B}$ / $\gs{B}^{+}$}\index{U@$\gs{U}$}
 
@@ -62,9 +83,7 @@ Let $\Phi = \Phi(\gs{G},\gs{T})$\nomiwa[Phi]{$\Phi$}{${} = \Phi(\gs{G},\gs{T})$,
 \end{equation*}
 where the products are ordered in an arbitrarily chosen way. For a more detailed introduction to these pro-$p$ groups we refer to \cite{SchOll-modular}.\dknote{Maybe add a more general reference too.}
 
-\paragraph{Pro-$p$ Iwahori subgroups of $\GL_{n}$ and $\SL_{n}$.} In this chapter, we will only work with pro-$p$ Iwahori subgroups of $\GL_{n}(F)$ or $\SL_{n}(F)$, which simplifies the definitions. When $\gs{G} = \GL_{n}$ or $\gs{G} = \SL_{n}$, we can always take $\gs{T}$ the diagonal maximal torus, and we can take $I$ to be the subgroup of $\gs{G}(\sO_{F})$ which is upper triangular and unipotent modulo $\varpi$. In this case we have that $U_{\alpha,1}$ for $\alpha \in \Phi^{-}$ correspond to entries below the diagonal and $U_{\alpha,0}$ for $\alpha \in \Phi^{+}$ corresponds to the entries above the diagonal.
-
-\paragraph{Coxeter number and $p$.} Let $h$\nomiwa[h]{$h$}{the Coxeter number of $\gs{G}$} be the Coxeter number of $\gs{G}$ and assume from now on that $p-1 > eh$.\nomiwa[p]{$p$}{a prime, $p-1 \geq eh$, where $h$ is the Coxeter number of $\gs{G}$}
+\paragraph{Pro-$p$ Iwahori subgroups of $\GL_{n}(\Z_{p})$ and $\SL_{n}(\Z_{p})$.} In this chapter, we will only work with pro-$p$ Iwahori subgroups of $\GL_{n}(F)$ or $\SL_{n}(F)$, which simplifies the definitions. When $\gs{G} = \GL_{n}$ or $\gs{G} = \SL_{n}$, we can always take $\gs{T}$ the diagonal maximal torus, and we can take $I$ to be the subgroup of $\gs{G}(\sO_{F})$ which is upper triangular and unipotent modulo $\varpi$. In this case we have that $U_{\alpha,1}$ for $\alpha \in \Phi^{-}$ correspond to entries below the diagonal and $U_{\alpha,0}$ for $\alpha \in \Phi^{+}$ corresponds to the entries above the diagonal.
 
 \paragraph{$p$-valuation on $I$.} By a recent pre-print by Lahiri and Sørensen (not yet published),\dknote{Figure out exactly how to write this. Probably cite as (unpublished).} we know (since $p-1 > eh$) that $I$ admits a $p$-valuation $\omega$ with the property
 \begin{equation}\label{eq:Iwa-p-val}
@@ -75,18 +94,23 @@ where the products are ordered in an arbitrarily chosen way. For a more detailed
   \end{dcases*}
 \end{equation}
 
-\paragraph{Lazard theory.} For an introduction to Lazard theory see \Cref{sec:cohunigps-intro}, or \cite{Sch} for more details. In particular, note that the Lazard Lie algebra generalizes from $\F_{p}$ to general $k$ of characteristic $p$. We will let $\lie{g} = k \otimes_{\F_p[\pi]} \gr I$\nomiwa[g]{$\lie{g}$}{${} = k \otimes_{\F_{p}[\pi]} \gr I$, the Lazard Lie algebra corresponding to the pro-$p$ Iwahori subgroup $I$} be the Lazard Lie algebra corresponding to the pro-$p$ Iwahori subgroup $I$. Furthermore, recall that a sequence of elements $(g_1,\dotsc,g_r)$ in $G$ is called an \emph{ordered basis} of $(G,\omega)$\index{p-valued group!ordered basis} if the map $\Z_{p}^{r} \to G$ given by $(x_{1},\dotsc,x_{r}) \mapsto g_{1}^{x_{1}} \dotsb g_{r}^{x_{r}}$ is a bijection (and hence, by compactness, a homeomorphism) and
-\begin{equation*}
-  \omega(g_1^{x_1}\dotsb g_r^{x_r}) = \min_{1 \leq i \leq r}(\omega(g_i)+v(x_i)) \qquad \text{for any } x_1,\dotsc,x_r\in\Z_p.
-\end{equation*}
-
 \paragraph{Ordered basis of $I$.} Let $\set{b_{1},\dotsc,b_{D}}$ be a $\Z_{p}$-basis of $\sO_{F}$ and let $\set{u_{1},\dotsc,u_{D}}$ be a $\Z_{p}$-basis of $U_{F}^{(1)} = 1+\idm_{F}$, where $D = [F:\Q_{p}]$. Then $\bigl( x_{\alpha}(b_{1}), \dotsc, x_{\alpha}(b_{D}) \bigr)$ is an ordered basis for $U_{\alpha,0}$ when $\alpha \in \Phi^{+}$, and $\bigl( x_{\alpha}(\varpi_{F}b_{1}), \dotsc, x_{\alpha}(\varpi_{F}b_{D}) \bigr)$ is an ordered basis for $U_{\alpha,1}$ when $\alpha \in \Phi^{-}$. Furthermore, when $G$ is semisimple and simply connected, we have that the simple coroots\index{coroots} $\set{ \alpha^{\vee} : \alpha \in \Pi }$ form a $\Z$-basis of $X_{*}(T)$, and thus $\bigl( \alpha^{\vee}(u_{1}), \dotsc, \alpha^{\vee}(u_{D}) \bigr)_{\alpha \in \Pi}$ form an ordered basis of $T^{1}$. By \cite[Prop.~3.1]{IwaBasis}, given orderings of $\Phi^{+}$ and $\Phi^{-}$, and assuming that $G$ is semisimple and simply connected, we now get: the sequence of elements
 \begin{enumerate}[$\bullet$]
   \item $\bigl( x_{\alpha}(\varpi_{F}b_{1}), \dotsc, x_{\alpha}(\varpi_{F}b_{D}) \bigr)_{\alpha \in \Phi^{-}}$,
   \item $\bigl( \alpha^{\vee}(u_{1}), \dotsc, \alpha^{\vee}(u_{D}) \bigr)_{\alpha \in \Pi}$,
   \item $\bigl( x_{\alpha}(b_{1}), \dotsc, x_{\alpha}(b_{D}) \bigr)_{\alpha \in \Phi^{+}}$
 \end{enumerate}
-forms an ordered basis of $(I,\omega)$ (with $\omega$ from \eqref{eq:Iwa-p-val}) which is a saturated $p$-valued group. Recalling from above that $\exp \colon \idm_{F} = (\varpi_{F}) \to U_{F}^{(1)} = 1 + \idm_{F}$ takes a basis to a basis, and noting that $\set{ \varpi_{F}b_{1}, \dotsc, \varpi_{F}b_{D} }$ is a $\Z_{p}$-basis of $\idm_{F} = \varpi_{F}\sO_{F}$, we see that we can take $u_{i} = \exp(\varpi_{F}b_{i})$ for $i=1,\dotsc,D$. When $\gs{G} = \SL_{n}$,\dknote{Reference for this being simply connected.} we have that $\Phi = \set{ \varepsilon_{i}-\varepsilon_{j} \given 1 \leq i,j \leq n, i\neq j }$ and can take
+forms an ordered basis of $(I,\omega)$ (with $\omega$ from \eqref{eq:Iwa-p-val}) which is a saturated $p$-valued group. Here, \cite{IwaBasis} notes that the $p$-valuation from \eqref{eq:Iwa-p-val} on this basis is given by
+\begin{equation}
+  \label{eq:Iwa-p-val-basis}
+  \begin{dcases}
+    \omega\bigl( x_{\alpha}(\varpi_{F}b_{\ell}) \bigr) = \frac{1}{e}\Bigl( 1 + \frac{\Ht(\alpha)}{h} \Bigr) & \alpha \in \Phi^{-} \\
+    \omega\bigl( \alpha^{\vee}(u_{i}) \bigr) = \frac{1}{e} & \alpha \in \Pi \\
+    \omega\bigl( x_{\alpha}(b_{\ell}) \bigr) = \frac{\Ht(\alpha)}{eh} & \alpha \in \Phi^{+}.
+  \end{dcases}
+\end{equation}
+
+Recalling from above that $\exp \colon \idm_{F} = (\varpi_{F}) \to U_{F}^{(1)} = 1 + \idm_{F}$ takes a basis to a basis, and noting that $\set{ \varpi_{F}b_{1}, \dotsc, \varpi_{F}b_{D} }$ is a $\Z_{p}$-basis of $\idm_{F} = \varpi_{F}\sO_{F}$, we see that we can take $u_{i} = \exp(\varpi_{F}b_{i})$ for $i=1,\dotsc,D$. When $\gs{G} = \SL_{n}$,\dknote{Reference for this being simply connected.} we have that $\Phi = \set{ \varepsilon_{i}-\varepsilon_{j} \given 1 \leq i,j \leq n, i\neq j }$ and can take
 \begin{equation*}
   \Pi = \set{\alpha_{1}=\varepsilon_{1}-\varepsilon_{2}, \alpha_{2}=\varepsilon_{2}-\varepsilon_{3}, \dotsc, \alpha_{n-1}=\varepsilon_{n-1}-\varepsilon_{n}},
 \end{equation*}
@@ -96,8 +120,17 @@ where $\varepsilon_{i}$ is the map that takes a diagonal matrix to its $i$-th di
   \item $\bigl( \diag_{i,i+1}(\exp(\varpi_{F}b_{1})), \dotsc, \diag_{i,i+1}(\exp(\varpi_{F}b_{D})) \bigr)_{i=1,\dotsc,n-1}$,
   \item $\bigl( 1_{n}+b_{1}E_{ij}, \dotsc, 1_{n}+b_{D}E_{ij} \bigr)_{1 \leq i < j \leq n}$.
 \end{enumerate}
+Here the $p$-valuation described in \eqref{eq:Iwa-p-val} and \eqref{eq:Iwa-p-val-basis} is given by
+\begin{equation}\label{eq:Iwa-p-val-basis-SLn}
+  \begin{dcases}
+    \omega\bigl( 1_{n} + \varpi_{F}b_{\ell}E_{ij} \bigr) = \frac{1}{e}\Bigl( 1 + \frac{j-i}{h} \Bigr) & j < i, \\
+    \omega\bigl( \diag_{i,i+1}(\exp(\varpi_{F}b_{\ell})) \bigr) = \frac{1}{e} & i = 1,\dotsc,n-1, \\
+    \omega\bigl( 1_{n}+b_{\ell}E_{ij} \bigr) = \frac{j-i}{eh} & i < j
+  \end{dcases}
+\end{equation}
+on the above ordered basis.
 
-Finally note that an ordered basis of $\GL_{n}$ can be obtained from an ordered basis of $\SL_{n}$ by adding a non-trivial element of the center, which in the above corresponds to adding $\bigl(  \exp(\varpi_{F}b_{1})1_{n}, \dotsc, \exp(\varpi_{F}b_{D})1_{n} \bigr)$ to the middle item above.
+Finally note that an ordered basis of $\GL_{n}$ can be obtained from an ordered basis of $\SL_{n}$ by adding non-trivial elements of the center, which in the above corresponds to adding $\bigl(  \exp(\varpi_{F}b_{1})1_{n}, \dotsc, \exp(\varpi_{F}b_{D})1_{n} \bigr)$ to the middle item above (adding the root $\varepsilon_{1} + \dotsb + \varepsilon_{n}$), and the $p$-valuation on these is still $\frac{1}{e}$.
 
 \paragraph{Cohomology.} We denote (using the Chevalley-Eilenberg complex) the Lie algebra cohomology\index{cohomology!Lie algebra} of any $k$-Lie algebra $\lie{g}$ by $H^{\bullet}(\lie{g}, \edot)$,\nomiwa[Hg]{$H^{\bullet}(\lie{g},\edot)$}{the cohomology of the Lie algebra $\lie{g}$} while we write $H^{\bullet}(G,\edot)$\nomiwa[HG]{$H^{\bullet}(G,\edot)$}{the continuous group cohomology of the topological group $G$} for the continuous group cohomology of a topological group $G$. Here we let the entries distinguish between different types of cohomology without any ambiguity. As in \Cref{sec:cohunigps-intro}, we introduce filtrations and then gradings on the cohomology and use the notation $H^{s,t} = \gr^{s}H^{s+t}$\nomiwa[Hst]{$H^{s,t}$}{${} = \gr^{s}H^{s+t}$ for some cohomology $H$} for any type of cohomology $H$.
 
@@ -118,53 +151,194 @@ Also, we say that the spectral sequence collapses at the $r'$-th page if $E_{r} 
 \subsection{Smith normal form and cohomology}%
 \label{subsec:SNF-coh}
 
-Note how SNF is useful.
+It's well known that the Smith normal form of a matrices are useful when calculating (co)homology over $\Z$ as follows.
+
+\begin{fact}\label{fact:SNF-Z-coh}
+  Given a complex
+  \[
+    \begin{tikzcd}
+      \Z^{n} \ar[r,"d_{1}"] & \Z^{m} \ar[r,"d_{2}"] & \Z^{\ell},
+    \end{tikzcd}
+  \]
+  where $d_{1}$ and $d_{2}$ are $\Z$-linear maps with $d_{2} \circ d_{1} = 0$, the homology at the middle term is given by
+  \begin{equation*}
+    \kernel(d_{2})/\image(d_{1}) \iso \bigoplus_{i=1}^{r} \Z/a_{i}\Z \oplus \Z^{m-r-s}.
+  \end{equation*}
+  Here $r = \rank(d_{1})$, $s = \rank(d_{2})$ and $a_{1},\dotsc,a_{r}$ are the non-zero diagonal elements of the Smith normal form of $d_{1}$.
+\end{fact}
+\dknote{Fact is still italic.}
+
+We will not directly use this result, but instead we will follow the same ideas but reduce modulo $p$ to get matrices over $k$ (using the natural embedding $\F_{p} \hookrightarrow k$). Assuming that the non-zero diagonal entries $a_{i}$ of the Smith normal form of a matrix $d$ are in $\set{1,2,\dotsc,p-1}$ (or more generally $\gcd(a_{i},p) = 1$), we note that $a_{i} \pmod{p} \in k^{\times}$. So, given an $n \times m$ matrix $d$ with integer entries such that
+\begin{equation*}
+  d \snfsim \SNF_{n \times m}(a_{1},\dotsc,a_{r},0,\dotsc,0),
+\end{equation*}
+where $a_{1},\dotsc,a_{r}$ are non-zero and $\gcd(a_{i},p) = 1$, we get by considering $d$ as a matrix over $k$ that
+\begin{equation}
+  \label{eq:snf-dims}
+  \begin{aligned}
+    \dim_{k} \kernel(d) &= m-r, \\
+    \dim_{k} \image(d) &= r, \\
+    \dim_{k} \coker(d) &= n-r.
+  \end{aligned}
+\end{equation}
+
+\begin{remark}
+  Note that finding the Smith normal form of all matrices used in our (co)homology calculations, will thus allow us to calculated (co)homological dimensions for $p$ relatively prime to all non-zero diagonal entries of the Smith normal form matrices. This is what makes this method preferable to just calculating the rank of the matrices directly, since that would just allow us to find (co)homological dimensions for $p \gg 0$, but not give us the precise $p$ it will work for.
+\end{remark}
+
+So, when calculating dimensions of homology over $k$ of the middle term in a given complex
+\[
+  \begin{tikzcd}
+    k^{n} \ar[r,"d_{1}"] & k^{m} \ar[r,"d_{2}"] & k^{\ell},
+  \end{tikzcd}
+\]
+where $d_{1}$ and $d_{2}$ can be described by matrices with integer entries, and $d_{1} \snfsim \SNF_{m \times n}(a_{1},\dotsc,a_{r},0,\dotsc,0)$ and $d_{2} \snfsim \SNF_{\ell \times m}(b_{1},\dotsc,b_{r},0,\dotsc,0)$, then we can do it as follows:
+\begin{enumerate}[align=left]
+  \item[$n=0$:] The dimension of the homology of the middle term is $\dim_{k} \kernel(d_{2}) = m-s$.
+  \item[$\ell=0$:] The dimension of the homology of the middle term is $\dim_{k} \coker(d_{1}) = r$.
+  \item[$n,\ell \neq 0$:] The dimension of the homology of the middle term is $\dim_{k} \frac{\kernel(d_{2})}{\image(d_{1})} = (m-s) - (r) = m-s-r$.
+\end{enumerate}
+
+\begin{remark}
+  Here the general formula is obviously just that the dimension of the homology of the middle term is $m-s-r$, but when implementing this, it will be useful to split it into the above cases. Also, note that this is what we directly get from \Cref{fact:SNF-Z-coh} in the case $k = \F_{p}$, recalling that $\Z/m\Z \otimes \Z/n\Z \iso \Z/\gcd(n,m)\Z$.
+\end{remark}
+
+\begin{remark}
+  When the dimensions of the vector spaces we work with get sufficiently large, the runtime of calculating the full Smith normal form of integer matrices becomes prohibitively high, so we will have to use an alternative solution. In this case, we can utilize that we know such a form exists, and that $\rank_{\Z}(A) = \rank_{\Z}(B)$ when $A \snfsim B$. Considering the $n \times m$ matrix $A$ with integer entries as a matrix over $\R$, we can then find the Singular value decomposition\index{Singular value decomposition} (SVD)\index{SVD} of $A$, i.e., complex matrices $U,\Sigma,V$ such that $A = U\Sigma V^{*}$. Here $U$ is an $n \times n$ unitary matrix, $\Sigma$ is a rectangular diagonal $n \times m$ matrix (a matrix like in the Smith normal form) with non-negative real numbers on the diagonal, and $V$ is an $m \times m$ unitary matrix. Now $\rank_{\R} \Sigma = \rank_{\Z} A$ allows us to find dimensions of (co)homology as in the case where we know the Smith normal form, but we use information about which $p$ exactly the calculations work for. Thus we will only be able to find the (co)homological dimensions for $p \gg 0$ in this case.
+\end{remark}
 
 \section{Techniques}%
 \label{sec:tech-iwa}
 
+In this section we will describe how to calculate information about the cohomology of a $p$-valuable group by using it's Lazard Lie algebra. Note that this section uses a lot of concepts and notation from \Cref{subsec:Laz-theory}.
+
 Let $(G, \omega)$ be a $p$-valuable group and let $k$ be a perfect field of characteristic $p$. In this section we will describe how the spectral sequence
-\begin{equation*}
+\begin{equation}\label{eq:spec-sec-tech}
   E_{1}^{s,t} = H^{s,t}(\lie{g}, k) \Longrightarrow H^{s+t}(G, k)
-\end{equation*}
+\end{equation}
 from \cite[§6.1]{Sor} can be used to calculate information about the dimensions of $H^{n}(G,k)$ for varying $n$ and information about the cup product on $H^{*}(G,k)$. After this, we will then briefly discuss how this applies to pro-$p$ Iwahori subgroups $I$ of $\GL_{n}$ or $\SL_{n}$.
 
+Recall that $\lie{g}$ in the above spectral sequence is given by $\lie{g} = k \otimes_{\F_{p}[\pi]} \gr G$, so to describe $\lie{g}$, we first need a good description of the $\F_{p}[\pi]$-Lie algebra $\gr G$. To get this description, suppose that we have an ordered basis $(g_{1},\dotsc,g_{d})$ of $G$, so that $\omega(g) = \min_{i = 1,\dotsc,d} \bigl( \omega(g_{i}) + v_{p}(x_{i}) \bigr)$ for $g = g_{1}^{x_{1}} \dotsb g_{d}^{x_{d}}$, and recall that $\bigl( \sigma(g_{1}),\dotsc,\sigma(g_{d}) \bigr)$ is a basis of $\gr G$, where $\sigma(g) = gG_{\omega(g)+} \in \gr G$ for $g \neq 1$.
+
+To understand the $\F_{p}[\pi]$-Lie algebra, we need to find $[\sigma(g_{i}),\sigma(g_{j})] = \sigma\bigl( [g_{i},g_{j}] \bigr)$ for all $i,j = 1,\dotsc,d$. We recall from \eqref{eq:sigma-gx} that $\sigma(g^{x}) = \overline{x}\pi^{v_{p}(x)} \act \sigma(g)$ for $g \in G \setminus\set{1}$ and $x \in \Z_{p}\setminus\set{0}$. Now, calculating $[g_{i},g_{j}]$ for all $i,j = 1,\dotsc,d$, we can find $x_{1},\dotsc,x_{d} \in \Z_{p}$ such that
+\begin{equation*}
+  [g_{i},g_{j}] = g_{1}^{x_{1}} \dotsb g_{d}^{x_{d}},
+\end{equation*}
+and thus
+\begin{equation*}
+  \bigl[ \sigma(g_{i}),\sigma(g_{j}) \bigr] = \sigma\bigl( [g_{i},g_{j}] \bigr) = \sum_{\ell=1}^{d} \overline{x}_{\ell}\pi^{v_{p}(x_{\ell})} \act \sigma(g_{\ell}).
+\end{equation*}
+See the proofs of \cite[Lem.~26.4 and Prop.~26.5]{Sch} for more details.
+
+Let $\set{\ell_{1},\dotsc,\ell_{r}}$ be the subset of $\set{1,\dotsc,d}$ such that $v_{p}(x_{\ell_{s}}) = 0$ and $v_{p}(x_{\ell}) > 0$ for $\ell \notin \set{\ell_{1},\dotsc,\ell_{r}}$, and recall that $\lie{g} = k \otimes_{\F_{p}[\pi]} \gr G$ has basis $1 \otimes \sigma(g_{i})$. Since $\pi$ acts trivially on $k$ here, we see that
+\begin{equation*}
+  [\xi_{i},\xi_{j}] = \bigl[ 1\otimes\sigma(g_{i}),1\otimes\sigma(g_{j}) \bigr] = \sum_{s=1}^{r} \overline{x}_{\ell_{s}} \sigma(g_{\ell_{s}}).
+\end{equation*}
+Now we have a basis $(\xi_{1},\dotsc,\xi_{d})$ of $\lie{g} = k \otimes_{\F_{p}[\pi]} \gr G$, and we know all the structure constants.
+
+\begin{remark}\label{rem:struc-consts-lift}
+  Note that the structure constants are in $\F_{p} \subseteq k$ by the above, so we can lift them to structure constants in $\set{0,1,\dotsc,p-1} \subseteq \Z$. This will be useful later.
+\end{remark}
+
+Assume from now on that the Lie algebra $\lie{g}$ is unitary,\index{unitary} i.e., that $[\xi_{i},\xi_{j}] = \sum_{\ell=1}^{d} c_{ij\ell} \xi_{\ell}$ has $\sum_{j=1}^{d} c_{ijj} = 0$. This will be the case for all Lie algebras, we will work with in this chapter. Suppose furthermore that $\lie{g}$ is a graded Lie algebra, graded by finitely many positive integers, $\lie{g} = \lie{g}^{1} \oplus \lie{g}^{2} \oplus \dotsb \oplus \lie{g}^{m}$, which will also be the case for all Lie algebras we are work with in this chapter.
+
+\begin{remark}\label{rem:g-Z-grading}
+  Note that any $p$-valuable group $G$ admits a $p$-valuation $\omega$ with values in $\frac{1}{m}\Z$ for some $m \in \N$, cf.\ \cite[Cor.~33.3]{Sch}. Thus we can reindex the filtration of $G$ by letting $G^{i} = G_{\frac{i}{e}}$ for $i=0,1,\dotsc$, and this translates to $\gr^{i} G = \gr_{\frac{i}{e}} G$ and $\lie{g}^{i} = \lie{g}_{\frac{i}{e}}$ in general. In the cases we care about there will be no zero graded part, which allows us to make the above assumption.
+\end{remark}
+
+Then $\bigwedge^{n} \lie{g}$ is graded as well by letting
+\begin{equation*}
+  \gr^{j}\Bigl( \bigwedge^{n}\lie{g} \Bigr) = \bigoplus_{j_{1} + \dotsb + j_{n} = j} \lie{g}^{j_{1}} \wedge \dotsb \wedge \lie{g}^{j_{n}}.
+\end{equation*}
+We note that, since $\lie{g}$ is finite dimensional, there are only finitely many non-zero $\gr^{j}\bigl( \bigwedge^{n} \lie{g} \bigr)$ we are interested in, and we can find a basis of each of these using our basis $(\xi_{1},\dotsc,\xi_{d})$ of $\lie{g}$.
+
+\begin{remark}
+  When ordering the basis of $\gr^{j} \bigl( \bigwedge^{n}\lie{g} \bigr) = \bigoplus_{j_{1} + \dotsb + j_{n} = j} \lie{g}^{j_{1}} \wedge \dotsb \wedge \lie{g}^{j_{n}}$, we will do it as follows. First we order the $\lie{g}^{j_{1}} \wedge \dotsb \wedge \lie{g}^{j_{n}}$ by the lexicographical order on $(j_{1},\dotsc,j_{n})$. Then we order the basis of each $\lie{g}^{j_{1}} \wedge \dotsb \wedge \lie{g}^{j_{n}}$ by the lexicographical order on equal $j_{\ell}$'s, i.e., if $\lie{g}^{1} = \Span_{k}(\xi_{1},\xi_{3})$ and $\lie{g}^{2} = \Span_{k}(\xi_{2},\xi_{4})$, then $\lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2}$ has basis $\xi_{1} \wedge \xi_{3} \wedge \xi_{2}, \xi_{1} \wedge \xi_{2} \wedge \xi_{4}$.
+\end{remark}
+
+Assuming furthermore that $k$ is $\Z$-graded (concentrated in degree $0$), the space $\Hom_{k}\bigl( \bigwedge^{n}\lie{g}, k \bigr)$ inherits the $\Z$-grading
+\[
+  \Hom_{k}\Bigl( \bigwedge^n \lie{g}, k \Bigr) = \bigoplus_{s \in \Z} \Hom_{k}^s\Bigl( \bigwedge^n\lie{g}, k \Bigr),
+\]
+where $\Hom_{k}^s$ denotes the homogeneous $k$-linear maps of degree $s$, cf.\ \cite[Lem.~4.2]{Fossum}. We note, by \cite[§3.7]{Fuks}, that these gradings on the chain and cochain complexes transfer to gradings on the homology and cohomology. We write
+\begin{equation*}
+  H^{s,t} = H^{s,t}(\lie{g}, k) = H^{s+t}\Bigl( \gr^s \Hom_{k}\bigl(\bigwedge^{\bullet} \lie{g}, k\bigr) \Bigr).
+\end{equation*}%
+\nomiwa[Hst]{$H^{s,t}$}{${}= H^{s,t}(\lie{g},k) = H^{s+t}\bigl( \gr^{s} \Hom_{k}(\bigwedge^{\bullet}\lie{g}, k) \bigr)$}%
+
+\begin{remark}
+  We don't spend effort to describe the homology for a few reasons. First, we need the cohomology, not the homology, in our spectral sequence. Second, by \cite[§3.6]{Fuks}, we have a version of Poincaré duality for Lie algebra cohomology, i.e., $H^{n}(\lie{g},k) \iso H_{n-d}(\lie{g},k)$, so we can easily describe the homology using the cohomology. Third, we will care about the cup product later, and we don't get a nice product in homology, cf.\ \cite[§3.2]{Fuks}.
+\end{remark}
+
+Now we have bases of all $\gr^{j}\bigl( \bigwedge^{n}\lie{g} \bigr)$, and by \cite[§3.7]{Fuks} we get graded chain complexes that we can use to find the homology of $\lie{g}$. Here the boundary maps of
+\[
+  \begin{tikzcd}
+    \cdots \ar[r,"d_{4}"] & \bigwedge^{3}\lie{g} \ar[r,"d_{3}"] & \bigwedge^{2}\lie{g} \ar[r,"d_{2}"] & \lie{g} \ar[r,"d_{1}"] & k \ar[r] &  0,
+  \end{tikzcd}
+\]
+are given by
+\begin{equation*}
+  d_{n}(x_{1} \wedge \dotsb \wedge x_{n}) = \sum_{i<j} (-1)^{i+j}[x_{i},x_{j}]\wedge x_{1} \wedge \dotsb \wedge \widehat{x}_{i} \wedge \dotsb \wedge \widehat{x}_{j} \wedge \dotsb \wedge x_{n},
+\end{equation*}
+and the coboundary maps
+\[
+  \begin{tikzcd}
+    \cdots & \ar[l,"\partial_{3}"'] \Hom_{k}\Bigl( \bigwedge^{2}\lie{g}, k \Bigr) & \ar[l,"\partial_{2}"'] \Hom_{k}(\lie{g},k) & \ar[l,"\partial_{1}"'] \Hom_{k}(k, k) = k &  \ar[l] 0,
+  \end{tikzcd}
+\]
+are the dual maps of the boundary maps (see \cite[§3.1]{Fuks} for more details). Thus, if we use the dual basis of $\bigwedge^{n}\lie{g}$ in $\Hom_{k}\bigl( \bigwedge^{n},k \bigr)$, we get that $\partial_{n} = d_{n}^{\top}$ as matrices, where $(\edot)^{\top}$ is the transpose (cf.\ \Cref{sec:cohiwagps-intro}). Since we know bases and linear maps explicitly, and we know that the linear maps restrict to graded linear maps, we can now find matrices describing all graded linear maps
+\begin{equation*}
+  \gr^{j} \Bigl( \bigwedge^{n}\lie{g} \Bigr) \to \gr^{j} \Bigl( \bigwedge^{n-1}\lie{g} \Bigr),
+\end{equation*}
+and thus we can find matrices describing all graded linear maps
+\begin{equation*}
+  \Hom_{k}^{s}\Bigl( \bigwedge^{n-1}\lie{g},k \Bigr) \to \Hom_{k}^{s}\Bigl( \bigwedge^{n}\lie{g}, k \Bigr).
+\end{equation*}
+
+Noting that all the structure constants can be lifted to $\Z$ and looking at the formula for the boundary maps, it's clear that the above matrices describing the (co)boundary maps can be lifted to $\Z$. Finding the Smith normal form of these lifts, we can calculate the cohomology over $k$ by \Cref{subsec:SNF-coh} for $p$ large enough. (In most examples, $p\geq5$ will be enough.)
+
+Suppose now that we have found the dimensions of $H^{s,t} = H^{s,t}(\lie{g},k)$ for all $s,t$. To get information about the cohomology $H^{n}(G,k)$, we need to use the multiplicative spectral sequence \eqref{eq:spec-sec-tech}, i.e.,
+\begin{equation*}
+  E_{1}^{s,t} = H^{s,t}(\lie{g}, k) \Longrightarrow H^{s+t}(G,k)
+\end{equation*}
+and information about spectral sequences in general. We already know that this spectral sequence collapses at a finite page, and one can hope is that it will actually collapse at the first page. One way we can verify that the spectral sequence (in certain cases) collapses at the first page, is by considering the exact bidegrees of the differentials. We know that the differentials $d_{r}^{s,t} \colon E_{r}^{s,t} \to E_{r}^{s+r,t+1-r}$ has bidegree $(r,1-r)$, so if the non-zero modules on the first pages is distributed in such a way that all differentials $d_{r}^{s,t}$ are trivial for all $s,t$ and $r\geq1$, then we can be sure that the spectral sequence collapses on the first page. This will become clearer when we look at examples in the next few sections.
+
+Now note, by \cite[§3.7]{Fuks}, that the cup product is compatible with the gradings on the Lie algebra cohomology, in particular $H^{s,t} \cup H^{s',t'} \subseteq H^{s+s',t+t'}$ (where $H^{s,t} = H^{s,t}(\lie{g},k)$). Thus, since the spectral sequence is multiplicative, we can describe the cup product on $H^{*}(G,k)$ when the spectral sequence collapses on the first page.
+
+Even when the spectral sequence doesn't (necessarily) collapse on the first page, we can still get some bounds on the dimensions of $H^{n}(G,k)$ that will allow us to draw some conclusions about the structure of $H^{*}(G,k)$.
+
+In the rest of this chapter we will focus on using the techniques described in this section to get as much as possible information about the cohomology of $H^{*}(I,k)$, where $I$ is the pro-$p$ Iwahori subgroup of $\SL_{n}(\Z_{p})$ or $\GL_{n}(\Z_{p})$.
 
 
 \section{\texorpdfstring{$I \subseteq \SL_{2}(\Z_{p})$}{I in SL2(Zp)}}%
 \label{sec:Iwa-SL2}
 
-\begin{equation*}
-  I = \pmat{1+p\Z_{p} & \Z_{p} \\ p\Z_{p} & 1+p\Z_{p}} \subseteq \SL_{2}(\Z_{p}).
-\end{equation*}
+In this section we will describe the continuous group cohomology of the pro-$p$ Iwahori subgroup $I$ of $\SL_{2}(\Q_{p})$.
 
-Obvious try (using that $(1+p)^{\Z_{p}} = 1+p\Z_{p}$):
+When $I$ is the pro-$p$ Iwahori subgroup in $\SL_{2}(\Q_{p})$, we know by \Cref{sec:cohiwagps-intro} that we can take it to be of the form
+\begin{equation*}
+  I = \pmat{1+p\Z_{p} & \Z_{p} \\ p\Z_{p} & 1+p\Z_{p}}^{\!\!\det = 1} \subseteq \SL_{2}(\Z_{p}).
+\end{equation*}
+In this case, an obvious guess for an ordered basis (using that $(1+p)^{\Z_{p}} = 1+p\Z_{p}$) is
 \begin{align*}
   g_{1}' &= \pmat{1 & 0 \\ p & 1}, & g_{2}' &= \pmat{1+p & 0 \\ 0 & (1+p)^{-1}}, & g_{3}' &= \pmat{1 & 1 \\ 0 & 1}.
 \end{align*}
-
-Better:
+Because we want to be able to describe the commutators using this ordered basis, we will at one point need to solve for $x$ in equation of the form $(1+p)^{x} = y$. For this reason a better choice of ordered basis is (as described in \Cref{sec:cohiwagps-intro})
 \begin{align}
   \label{eq:gis-SL2}
   g_{1} &= \pmat{1 & 0 \\ p & 1}, & g_{2} &= \pmat{\exp(p) & 0 \\ 0 & \exp(-p)}, & g_{3} &= \pmat{1 & 1 \\ 0 & 1}.
 \end{align}
+In this case the above equations to solve translate to solving for $x$ in $\exp(x) = y$, which we can easily do, as $x = \log(y)$, cf.\ \Cref{sec:cohiwagps-intro}.
 
-For $g = (a_{ij})$
-\begin{equation*}
-  \omega(g) \defeq \min\bigl( v_{p}(a_{11}-1), \tfrac{1}{2} + v_{p}(a_{12}), -\tfrac{1}{2} + v_{p}(a_{21}), v_{p}(a_{22}-1) \bigr).
-\end{equation*}
-
+Now write
 \begin{equation}
   \label{eq:gixi-SL2}
   g_{1}^{x_{1}}g_{2}^{x_{2}}g_{3}^{x_{3}} = \pmat{\exp(px_{2}) & x_{3}\exp(px_{2}) \\ px_{1}\exp(px_{2}) & px_{1}x_{3}\exp(px_{2}) + \exp(-px_{2})} = \pmat{a_{11} & a_{12} \\ a_{21} & a_{22}}.
 \end{equation}
-
-$g_{ij} = [g_{i},g_{j}]$
-
-In the following we use that $\frac{1}{p-1} = 1 + p + p^{2} + \dotsb$ and $\log(1-p) = -p - \frac{p^{2}}{2} - \frac{p^{3}}{3} - \dotsb$.
+Furthermore, write $g_{ij} = [g_{i},g_{j}]$\nomiwa[gij]{$g_{ij}$}{${} = [g_{i},g_{j}]$} and $\xi_{ij} = [\xi_{i},\xi_{j}]$.\nomiwa[xiij]{$\xi_{ij}$}{${} = [\xi_{i},\xi_{j}]$} Then we are ready to find $x_{1},x_{2},x_{3}$ such that $g_{ij} = g_{1}^{x_{1}}g_{2}^{x_{2}}g_{3}^{x_{3}}$ for different $i<j$. (In the following we use that $\frac{1}{p-1} = 1 + p + p^{2} + \dotsb$ and $\log(1-p) = -p - \frac{p^{2}}{2} - \frac{p^{3}}{3} - \dotsb$.)
 
 \begin{description}
-  \item[$g_{12} = \pmat{ 1 & 0 \\ p\bigl( 1 - \exp(-2p) \bigr) }$:] Comparing $g_{12}$ with \eqref{eq:gixi-SL2}, we see that $x_{2} = x_{3} = 0$. This leaves $a_{21} = px_{1} = p\bigl( 1 - \exp(-2p) \bigr) = 2p^{2} + O(p^{3})$, which implies that $x_{1} = 2p + O(p^{2})$. Hence $\sigma(g_{12}) = 2\pi \act \sigma(g_{1})$, which implies that $\xi_{12} = 0$.
+  \item[$g_{12} = \pmat{ 1 & 0 \\ p\bigl( 1 - \exp(-2p) & 1 \bigr) }$:] Comparing $g_{12}$ with \eqref{eq:gixi-SL2}, we see that $x_{2} = x_{3} = 0$. This leaves $a_{21} = px_{1} = p\bigl( 1 - \exp(-2p) \bigr) = 2p^{2} + O(p^{3})$, which implies that $x_{1} = 2p + O(p^{2})$. Hence $\sigma(g_{12}) = 2\pi \act \sigma(g_{1})$, which implies that $\xi_{12} = 0$.
 
   \item[$g_{13} = \pmat{ 1-p & p \\ -p^{2} & 1+p+p^{2} }$:] Comparing $g_{13}$ with \eqref{eq:gixi-SL2}, we see that
         \begin{align*}
@@ -183,22 +357,261 @@ In the following we use that $\frac{1}{p-1} = 1 + p + p^{2} + \dotsb$ and $\log(
   \item[$g_{23} = \pmat{ 1 & \exp(2p)-1 \\ 0 & 1 }$:] Comparing $g_{23}$ with \eqref{eq:gixi-SL2}, we see that $x_{1} = x_{2} = 0$. This leaves $a_{12} = x_{3} = \exp(2p)-1 = 2p + O(p^{2})$. Hence $\sigma(g_{23}) = 2\pi \act \sigma(g_{3})$, which implies that $\xi_{23} = 0$.
 \end{description}
 
-
+To clarify, we found that
 \begin{align*}
   \sigma(g_{12}) &= 2\pi \act \sigma(g_{1}), \\
-  \sigma(g_{13}) &= \pi \act \sigma(g_{1}) + (p-1)\sigma(g_{2}) + \pi \act \sigma(g_{3}), \\
-  \sigma(g_{23}) &= \pi \act \sigma(g_{3}).
+  \sigma(g_{13}) &= -\pi \act \sigma(g_{1}) - \sigma(g_{2}) - \pi \act \sigma(g_{3}), \\
+  \sigma(g_{23}) &= 2\pi \act \sigma(g_{3}),
 \end{align*}
+and recalling that $\xi_{i} = 1 \otimes \sigma(g_{i})$ in $k \otimes_{\F_{p}[\pi]} \gr G$, where $\pi$ acts trivially on $k$, we get that
+\begin{align}\label{eq:xi_ij-SL2}
+  \xi_{12} &= 0, & \xi_{13} &= -\xi_{2}, & \xi_{23} &= 0,
+\end{align}
+where $\xi_{ij} = [\xi_{i},\xi_{j}]$.
 
-
-So with $\xi_{i} = 1 \otimes \sigma(g_{i})$:
+Looking at \eqref{eq:Iwa-p-val-basis-SLn} (with $e=1$ and $h=2$), we see that
 \begin{align*}
-  [\xi_{1},\xi_{2}] &= 0, & [\xi_{1},\xi_{3}] &= -\xi_{2}, & [\xi_{2},\xi_{3}] &= 0.
+  \omega(g_{1}) &= 1-\frac{1}{2} = \frac{1}{2}, & \omega(g_{2}) &= 1, & \omega(g_{3}) &= \frac{1}{2}.
 \end{align*}
+Hence $\lie{g}^{1} = \lie{g}_{\frac{1}{2}} = \Span_{k}(\xi_{1},\xi_{3})$ and $\lie{g}^{2} = \lie{g}_{1} = \Span_{k}(\xi_{2})$, cf.\ \Cref{rem:g-Z-grading}.
+
+% So with $\xi_{i} = 1 \otimes \sigma(g_{i})$:
+% \begin{align*}
+%   [\xi_{1},\xi_{2}] &= 0, & [\xi_{1},\xi_{3}] &= -\xi_{2}, & [\xi_{2},\xi_{3}] &= 0.
+% \end{align*}
+
+Now we are ready to describe the graded chain complex
+\begin{equation*}
+  \gr^{j}\Bigl( \bigwedge^{n}\lie{g} \Bigr) = \bigoplus_{j_{1} + \dotsb + j_{n} = j} \lie{g}^{j_{1}} \wedge \dotsb \wedge \lie{g}^{j_{n}}
+\end{equation*}
+and its bases.
+
+\begin{description}
+  \item[$n=0:$]
+        \begin{equation*}
+          \gr^{j}(k) =
+          \begin{dcases}
+            k & j=0, \\
+            0 & \text{otherwise.}
+          \end{dcases}
+        \end{equation*}
+        Bases:
+        \begin{align*}
+          k: \quad & 1.
+        \end{align*}
+
+   \item[$n=1:$]
+        \begin{equation*}
+          \gr^{j}(\lie{g}) =
+          \begin{dcases}
+            \lie{g}^{2} & j=2, \\
+            \lie{g}^{1} & j=1, \\
+            0          & \text{otherwise.}
+          \end{dcases}
+        \end{equation*}
+        Bases:
+        \begin{align*}
+          \lie{g}^{1}: \quad & \xi_{1}, \xi_{3}, \\
+          \lie{g}^{2}: \quad & \xi_{2}.
+        \end{align*}
+
+   \item[$n=2:$]
+        \begin{equation*}
+          \gr^{j}\Bigl( \bigwedge^{2}\lie{g} \Bigr) =
+          \begin{dcases}
+            \lie{g}^{1} \wedge \lie{g}^{2} & j=3, \\
+            \lie{g}^{1} \wedge \lie{g}^{1} & j=2, \\
+            0                             & \text{otherwise.}
+          \end{dcases}
+        \end{equation*}
+        Bases:
+        \begin{align*}
+          \lie{g}^{1} \wedge \lie{g}^{2}: \quad & \xi_{1} \wedge \xi_{2}, \xi_{3} \wedge \xi_{2}, \\
+          \lie{g}^{1} \wedge \lie{g}^{1}: \quad & \xi_{1} \wedge \xi_{3}.
+        \end{align*}
+
+  \item[$n=3:$]
+        \begin{equation*}
+          \gr^{j}\Bigl( \bigwedge^{3}\lie{g} \Bigr) =
+          \begin{dcases}
+            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} & j=4, \\ 0                                                & \text{otherwise.}
+          \end{dcases}
+        \end{equation*}
+        Bases:
+        \begin{align*}
+          \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2}: \quad & \xi_{1} \wedge \xi_{3} \wedge \xi_{2}.
+        \end{align*}
+
+   \item[$n\geq4:$]
+        \begin{equation*}
+          \gr^{j}\Bigl( \bigwedge^{n}\lie{g} \Bigr) = 0 \text{ for all } j.
+        \end{equation*}
+\end{description}
+
+\begin{table}[ht]
+  \centering
+  \caption[Graded complex dimensions for the $I \subseteq \SL_{2}(\Z_{p})$ case.]{Dimensions of $\gr^{j}\bigl( \bigwedge^{n} \lie{g} \bigr)$ for the $I \subseteq \SL_{2}(\Z_{p})$ case.}
+  \label{tab:graded-dims-SL2}
+  $\begin{NiceArray}{*{6}{c}}[hvlines]
+    \diagbox{n}{j} & 0 & 1 & 2 & 3 & 4 \\
+    0 & 1 \\
+    1 & & 2 & 1 \\
+    2 & & & 1 & 2 \\
+    3 & & & & & 1
+  \end{NiceArray}$
+\end{table}
+
+We collect the above information about the dimensions of the chain complex of $\lie{g}$ in \Cref{tab:graded-dims-SL2}, and note that we only need to consider non-zero (non-empty) entries of the table, when we calculate  $H^{s,t} = H^{s,n-s}$ (where $H^{s,t} = H^{s,t}(\lie{g},k)$). Also, recalling that
+\begin{equation*}
+  \Hom_{k}\Bigl( \bigwedge^{n}\lie{g}, k \Bigr) = \bigoplus_{s \in \Z} \Hom_{k}^{s}\Bigl( \bigwedge^{n}\lie{g}, k \Bigr),
+\end{equation*}
+we see that, with $j=-s$, we get the same table for dimensions of the graded hom-spaces in the cochain complex.
+
+\begin{remark}
+  In this section we will calculate the cohomology directly instead of using the method described in \Cref{subsec:SNF-coh}, since the calculations are only with small matrices. To see how \Cref{subsec:SNF-coh} is used, we refer to \Cref{sec:Iwa-SL3}.
+\end{remark}
+
+We will now go through all different graded chain complexes one by one, using that $\gr^{j}$ in the chain complex corresponds to $\gr^{s}$ with $s = -j$ in the cochain complex. We note that the graded chain complex corresponds to vertical downwards arrows in \Cref{tab:graded-dims-SL2}, while the cochain complex corresponds to vertical upwards arrows. And finally, we reiterate that $H^{n} = H^{n}(\lie{g},k)$ and $H^{s,t} = H^{s,t}(\lie{g},k)$ in the following.
+
+In grade $0$ we have the chain complex
+\[
+  \begin{tikzcd}
+    0 \ar[r] & k \ar[r] & 0,
+  \end{tikzcd}
+\]
+which gives us the grade $0$ cochain complex
+\[
+  \begin{tikzcd}
+    0 & \ar[l] \Hom_{k}^{0}(k,k) & \ar[l] 0.
+  \end{tikzcd}
+\]
+So $H^{0} = H^{0,0}$ with $\dim H^{0,0} = 1$.
+
+In grade $1$ we have the chain complex
+\[
+  \begin{tikzcd}
+    0 \ar[r] & \lie{g}^{1} \ar[r] & 0,
+  \end{tikzcd}
+\]
+which gives us the grade $-1$ cochain complex
+\[
+  \begin{tikzcd}
+    0 & \ar[l] \Hom_{k}^{-1}(\lie{g},k) & \ar[l] 0.
+  \end{tikzcd}
+\]
+So $\dim H^{-1,2} = 2$ by \Cref{tab:graded-dims-SL2}.
+
+In grade $2$ we have the chain complex
+\[
+  \begin{tikzcd}[ampersand replacement=\&]
+    0 \ar[r] \& \lie{g}^{1} \wedge \lie{g}^{1} \ar[r, "{(1)}" {yshift=2pt}] \& \lie{g}^{2} \ar[r] \& 0,
+  \end{tikzcd}
+\]
+since
+\begin{align*}
+  \lie{g}^{1} \wedge \lie{g}^{1} &\to \lie{g}^{2} \\
+  \xi_{1} \wedge \xi_{3} &\mapsto -[\xi_{1},\xi_{3}] = \xi_{2}.
+\end{align*}
+This gives us the grade $-2$ cochain complex
+\[
+  \begin{tikzcd}[ampersand replacement=\&]
+    0 \& \ar[l] \Hom_{k}^{-2}\bigl( \bigwedge^{2} \lie{g}, k \bigr) \& \ar[l, "{(1)}"' {yshift=2pt}] \Hom_{k}^{-2}(\lie{g},k) \& \ar[l] 0.
+  \end{tikzcd}
+\]
+So with $d = (1)$, and comparing with \Cref{tab:graded-dims-SL2},
+\begin{align*}
+  \dim H^{-2,3} &= \dim \kernel(d) = 0, \\
+  \dim H^{-2,4} &= \dim \coker(d) = 0.
+\end{align*}
+
+In grade $3$ we have the chain complex
+\[
+  \begin{tikzcd}
+    0 \ar[r] & \lie{g}^{1} \wedge \lie{g}^{2} \ar[r] & 0,
+  \end{tikzcd}
+\]
+which gives us the grade $-3$ cochain complex
+\[
+  \begin{tikzcd}
+    0 & \ar[l] \Hom_{k}^{-3}\bigl( \bigwedge^{2}\lie{g}, k \bigr) & \ar[l] 0.
+  \end{tikzcd}
+\]
+So $\dim H^{-3,5} = 2$ by \Cref{tab:graded-dims-SL2}.
+
+In grade $4$ we have the chain complex
+\[
+  \begin{tikzcd}
+    0 \ar[r] & \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2}  \ar[r] & 0,
+  \end{tikzcd}
+\]
+which gives us the grade $-4$ cochain complex
+\[
+  \begin{tikzcd}
+    0 & \ar[l] \Hom_{k}^{-4}\bigl( \bigwedge^{3}\lie{g}, k \bigr) & \ar[l] 0.
+  \end{tikzcd}
+\]
+So $\dim H^{-4,7} = 1$ by \Cref{tab:graded-dims-SL2}.
+
+\begin{table}[ht]
+  \centering
+  \caption[Graded cohomology dimensions for the $I \subseteq \SL_{2}(\Z_{p})$ case.]{Dimensions of $E_{1}^{s,t} = H^{s,t}(\lie{g},k)$ for the $I \subseteq \SL_{2}(\Z_{p})$ case.}
+  \label{tab:graded-coh-dims-SL2}
+  \renewcommand{\arraystretch}{1.5}
+  $\begin{NiceArray}{*{6}{c}}[hvlines, columns-width=auto]
+    \diagbox{t}{s} & 0 & -1 & -2 & -3 & -4 \\
+    0 & 1 \\
+    1 & \\
+    2 & & 2 \\
+    3 & \\
+    4 & \\
+    5 & & & & 2 \\
+    6 & \\
+    7 & & & & & 1
+  \end{NiceArray}$
+  \renewcommand{\arraystretch}{1}
+\end{table}
+
+Altogether, we see that
+\begin{equation}
+  \label{eq:Hn-to-Hst-SL2}
+  \begin{aligned}
+    H^{0} &= H^{0,0}, \\
+    H^{1} &= H^{-1,2}, \\
+    H^{2} &= H^{-3,5}, \\
+    H^{3} &= H^{-4,7},
+  \end{aligned}
+\end{equation}
+with dimension as described in \Cref{tab:graded-coh-dims-SL2}.
+
+Now we note that all differentials $d_{r}^{s,t} \colon E_{r}^{s,t} \to E_{r}^{s+r,t+1-r}$ in \Cref{tab:graded-coh-dims-SL2} has bidegree $(r,1-r)$, i.e., they are all below the $(r,-r)$ arrow going $r$ to the left and $r$ up in the table, where $r \geq 1$. Looking at \Cref{tab:graded-coh-dims-SL2}, this clearly means that all differentials for $r \geq 1$ are trivial, and thus the spectral sequence collapses on the first page. Hence $H^{s,t}(\lie{g},k) = E_{1}^{s,t} \iso E_{\infty}^{s,t} = \gr^{s} H^{s+t}(I,k)$, and by \eqref{eq:Hn-to-Hst-SL2} and \Cref{tab:graded-coh-dims-SL2} we get that
+\begin{equation}
+  \label{eq:dim-HnI-SL2}
+  \dim H^{n}(I,k) =
+  \begin{dcases}
+    1 & n=0, \\
+    2 & n=1, \\
+    2 & n=2, \\
+    1 & n=3.
+  \end{dcases}
+\end{equation}
+
+Recalling that the spectral sequence is multiplicative, we also note, by \Cref{tab:graded-coh-dims-SL2}, that $H^{s,t} \cup H^{s',t'} \subseteq H^{s+s',t+t'}$ implies that the cup products
+\begin{equation*}
+  \gr^{s} H^{n}(I,k) \otimes \gr^{s'} H^{n'}(I,k) \to \gr^{s+s'} H^{n+n'}(I,k)
+\end{equation*}
+are trivial. But, since the spectral sequence collapses on the first page, we also have \eqref{eq:Hn-to-Hst-SL2} for $H^{n}(I,k)$, and thus the cup product is trivial.
+
 
 \section{\texorpdfstring{$I \subseteq \GL_{2}(\Z_{p})$}{I in GL2(Zp)}}%
 \label{sec:Iwa-GL2}
 
+In this section we will describe the continuous group cohomology of the pro-$p$ Iwahori subgroup $I$ of $\GL_{2}(\Q_{p})$.
+
+When $I$ is the pro-$p$ Iwahori subgroup in $\GL_{2}(\Q_{p})$, we know by \Cref{sec:cohiwagps-intro} that we can take it to be of the form
+\begin{equation*}
+  I = \pmat{1+p\Z_{p} & \Z_{p} \\ p\Z_{p} & 1+p\Z_{p}} \subseteq \GL_{2}(\Z_{p}),
+\end{equation*}
+and, by \Cref{sec:cohiwagps-intro}, we have an ordered basis
 \begin{equation}
   \label{eq:gis-GL2}
   \begin{gathered}
@@ -206,26 +619,426 @@ So with $\xi_{i} = 1 \otimes \sigma(g_{i})$:
     g_{3} = \pmat{\exp(p) & 0 \\ 0 & \exp(p)}, \qquad g_{4} = \pmat{1 & 1 \\ 0 & 1}.
   \end{gathered}
 \end{equation}
+Since we just renamed some elements and added an element of the center of $\GL(\Z_{p})$ when comparing to the ordered basis of $I \subseteq \SL_{2}(\Z_{p})$ from \Cref{sec:Iwa-SL2}, it's clear from \Cref{eq:xi_ij-SL2} that the only non-zero commutator in $\lie{g} = k \otimes \gr G$ is
+\begin{equation*}
+  [\xi_{1},\xi_{4}] = -\xi_{2},
+\end{equation*}
+where $\xi_{i} = 1 \otimes \sigma(g_{i})$ as usual.
 
-\begin{align}
-  & g_{1}^{x_{1}}g_{2}^{x_{2}}g_{3}^{x_{3}}g_{4}^{x_{4}}  \notag \\
-                &= \pmat{ \exp\bigl( p(x_{2}+x_{3}) \bigr) & \exp\bigl( p(x_{2}+x_{3}) \bigr)x_{4} \\ px_{1}\exp\bigl( p(x_{2}+x_{3}) \bigr) & \exp\bigl( p(x_{2}+x_{3}) \bigr)px_{1}x_{4} + \exp\bigl( p(x_{3}-x_{2}) \bigr) } \\
-                &= \pmat{ a_{11} & a_{12} \\ a_{21} & a_{22} }. \notag
-\end{align}
-
-$g_{ij} = [g_{i},g_{j}]$
+Looking at \eqref{eq:Iwa-p-val-basis-SLn} (with $e=1$ and $h=2$) and the note about the $\GL_{n}$ case after \eqref{eq:Iwa-p-val-basis-SLn}, we see that
 \begin{align*}
-  \sigma(g_{12}) &= (p-2)\pi \act \sigma(g_{1}), \\
-  \sigma(g_{14}) &= (p-1)\pi \act \sigma(g_{1}) + (p-1)\sigma(g_{2}) + \pi \act \sigma(g_{3}), \\
-  \sigma(g_{24}) &= (p-2)\pi \act \sigma(g_{3}), \\
-  \sigma(g_{13}) &= \sigma(g_{23}) = \sigma(g_{24}) = 0.
+  \omega(g_{1}) &= \frac{1}{2}, & \omega(g_{2}) &= 1, \\
+  \omega(g_{3}) &= 1 & \omega(g_{4}) &= \frac{1}{2}.
+\end{align*}
+Hence $\lie{g}^{1} = \lie{g}_{\frac{1}{2}} = \Span_{k}(\xi_{1},\xi_{4})$ and $\lie{g}^{2} = \lie{g}_{1} = \Span_{k}(\xi_{2},\xi_{3})$, cf.\ \Cref{rem:g-Z-grading}.
+
+Now we are ready to describe the graded chain complex
+\begin{equation*}
+  \gr^{j}\Bigl( \bigwedge^{n}\lie{g} \Bigr) = \bigoplus_{j_{1} + \dotsb + j_{n} = j} \lie{g}^{j_{1}} \wedge \dotsb \wedge \lie{g}^{j_{n}}
+\end{equation*}
+and its bases.
+
+\begin{description}
+  \item[$n=0:$]
+        \begin{equation*}
+          \gr^{j}(k) =
+          \begin{dcases}
+            k & j=0, \\
+            0 & \text{otherwise.}
+          \end{dcases}
+        \end{equation*}
+        Bases:
+        \begin{align*}
+          k: \quad & 1.
+        \end{align*}
+
+   \item[$n=1:$]
+        \begin{equation*}
+          \gr^{j}(\lie{g}) =
+          \begin{dcases}
+            \lie{g}^{2} & j=2, \\
+            \lie{g}^{1} & j=1, \\
+            0          & \text{otherwise.}
+          \end{dcases}
+        \end{equation*}
+        Bases:
+        \begin{align*}
+          \lie{g}^{1}: \quad & \xi_{1}, \xi_{4}, \\
+          \lie{g}^{2}: \quad & \xi_{2}, \xi_{3}.
+        \end{align*}
+
+   \item[$n=2:$]
+        \begin{equation*}
+          \gr^{j}\Bigl( \bigwedge^{2}\lie{g} \Bigr) =
+          \begin{dcases}
+            \lie{g}^{2} \wedge \lie{g}^{2} & j=4, \\
+            \lie{g}^{1} \wedge \lie{g}^{2} & j=3, \\
+            \lie{g}^{1} \wedge \lie{g}^{1} & j=2, \\
+            0                             & \text{otherwise.}
+          \end{dcases}
+        \end{equation*}
+        Bases:
+        \begin{align*}
+          \lie{g}^{2} \wedge \lie{g}^{2}: \quad & \xi_{2} \wedge \xi_{3}, \\
+          \lie{g}^{1} \wedge \lie{g}^{2}: \quad & \xi_{1} \wedge \xi_{2}, \xi_{1} \wedge \xi_{3}, \xi_{4} \wedge \xi_{2}, \xi_{4} \wedge \xi_{3}, \\
+          \lie{g}^{1} \wedge \lie{g}^{1}: \quad & \xi_{1} \wedge \xi_{4}.
+        \end{align*}
+
+  \item[$n=3:$]
+        \begin{equation*}
+          \gr^{j}\Bigl( \bigwedge^{3}\lie{g} \Bigr) =
+          \begin{dcases}
+            \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} & j=5, \\
+            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} & j=4, \\ 0                                                & \text{otherwise.}
+          \end{dcases}
+        \end{equation*}
+        Bases:
+        \begin{align*}
+          \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2}: \quad & \xi_{1} \wedge \xi_{2} \wedge \xi_{3}, \xi_{4} \wedge \xi_{2} \wedge \xi_{3}, \\
+          \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2}: \quad & \xi_{1} \wedge \xi_{4} \wedge \xi_{2}, \xi_{1} \wedge \xi_{4} \wedge \xi_{3}.
+        \end{align*}
+
+  \item[$n=4:$]
+        \begin{equation*}
+          \gr^{j}\Bigl( \bigwedge^{4}\lie{g} \Bigr) =
+          \begin{dcases}
+            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} & j=6, \\ 0                                                                  & \text{otherwise.}
+          \end{dcases}
+        \end{equation*}
+        Bases:
+        \begin{align*}
+          \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{4}: \quad & \xi_{1} \wedge \xi_{4} \wedge \xi_{2} \wedge \xi_{3}.
+        \end{align*}
+
+   \item[$n\geq5:$]
+        \begin{equation*}
+          \gr^{j}\Bigl( \bigwedge^{n}\lie{g} \Bigr) = 0 \text{ for all } j.
+        \end{equation*}
+\end{description}
+
+\begin{table}[ht]
+  \centering
+  \caption[Graded complex dimensions for the $I \subseteq \GL_{2}(\Z_{p})$ case.]{Dimensions of $\gr^{j}\bigl( \bigwedge^{n} \lie{g} \bigr)$ for the $I \subseteq \GL_{2}(\Z_{p})$ case.}
+  \label{tab:graded-dims-GL2}
+  $\begin{NiceArray}{*{8}{c}}[hvlines]
+    \diagbox{n}{j} & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+    0 & 1 \\
+    1 & & 2 & 2 \\
+    2 & & & 1 & 4 & 1 \\
+    3 & & & & & 2 & 2 \\
+    4 & & & & & & & 1
+  \end{NiceArray}$
+\end{table}
+
+We collect the above information about the dimensions of the chain complex of $\lie{g}$ in \Cref{tab:graded-dims-GL2}, and note that we only need to consider non-zero (non-empty) entries of the table, when we calculate  $H^{s,t} = H^{s,n-s}$ (where $H^{s,t} = H^{s,t}(\lie{g},k)$). Also, recalling that
+\begin{equation*}
+  \Hom_{k}\Bigl( \bigwedge^{n}\lie{g}, k \Bigr) = \bigoplus_{s \in \Z} \Hom_{k}^{s}\Bigl( \bigwedge^{n}\lie{g}, k \Bigr),
+\end{equation*}
+we see that, with $j=-s$, we get the same table for dimensions of the graded hom-spaces in the cochain complex.
+
+We will now go through all different graded chain complexes one by one, using that $\gr^{j}$ in the chain complex corresponds to $\gr^{s}$ with $s = -j$ in the cochain complex. We note that the graded chain complex corresponds to vertical downwards arrows in \Cref{tab:graded-dims-GL2}, while the cochain complex corresponds to vertical upwards arrows. And finally, we reiterate that $H^{n} = H^{n}(\lie{g},k)$ and $H^{s,t} = H^{s,t}(\lie{g},k)$ in the following.
+
+In grade $0$ we have the chain complex
+\[
+  \begin{tikzcd}
+    0 \ar[r] & k \ar[r] & 0,
+  \end{tikzcd}
+\]
+which gives us the grade $0$ cochain complex
+\[
+  \begin{tikzcd}
+    0 & \ar[l] \Hom_{k}^{0}(k,k) & \ar[l] 0.
+  \end{tikzcd}
+\]
+So $H^{0} = H^{0,0}$ with $\dim H^{0,0} = 1$.
+
+In grade $1$ we have the chain complex
+\[
+  \begin{tikzcd}
+    0 \ar[r] & \lie{g}^{1} \ar[r] & 0,
+  \end{tikzcd}
+\]
+which gives us the grade $-1$ cochain complex
+\[
+  \begin{tikzcd}
+    0 & \ar[l] \Hom_{k}^{-1}(\lie{g},k) & \ar[l] 0.
+  \end{tikzcd}
+\]
+So $\dim H^{-1,2} = 2$ by \Cref{tab:graded-dims-SL2}.
+
+In grade $2$ we have the chain complex
+\[
+  \begin{tikzcd}[ampersand replacement=\&]
+    0 \ar[r] \& \lie{g}^{1} \wedge \lie{g}^{1} \ar[r, "{\begin{pmatrix} 1 \\ 0 \end{pmatrix}}" {yshift=7pt}] \& \lie{g}^{2} \ar[r] \& 0,
+  \end{tikzcd}
+\]
+since
+\begin{align*}
+  \lie{g}^{1} \wedge \lie{g}^{1} &\to \lie{g}^{2} \\
+  \xi_{1} \wedge \xi_{4} &\mapsto -[\xi_{1},\xi_{4}] = \xi_{2}.
+\end{align*}
+This gives us the grade $-2$ cochain complex
+\[
+  \begin{tikzcd}[ampersand replacement=\&]
+    0 \& \ar[l] \Hom_{k}^{-2}\bigl( \bigwedge^{2} \lie{g}, k \bigr) \& \ar[l, "{\begin{pmatrix} 1 & 0 \end{pmatrix}}"' {yshift=7pt}] \Hom_{k}^{-2}(\lie{g},k) \& \ar[l] 0.
+  \end{tikzcd}
+\]
+So with \[ d = \pmat{1 & 0},\] and comparing with \Cref{tab:graded-dims-GL2},
+\begin{align*}
+  \dim H^{-2,3} &= \dim \kernel(d) = 1, \\
+  \dim H^{-2,4} &= \dim \coker(d) = 0.
 \end{align*}
 
-So with $\xi_{i} = 1 \otimes \sigma(g_{i})$:
+In grade $3$ we have the chain complex
+\[
+  \begin{tikzcd}
+    0 \ar[r] & \lie{g}^{1} \wedge \lie{g}^{2} \ar[r] & 0,
+  \end{tikzcd}
+\]
+which gives us the grade $-3$ cochain complex
+\[
+  \begin{tikzcd}
+    0 & \ar[l] \Hom_{k}^{-3}\bigl( \bigwedge^{2}\lie{g}, k \bigr) & \ar[l] 0.
+  \end{tikzcd}
+\]
+So $\dim H^{-3,5} = 2$ by \Cref{tab:graded-dims-SL2}.
+
+In grade $4$ we have the chain complex
+\[
+  \begin{tikzcd}[ampersand replacement=\&]
+    0 \ar[r] \& \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2}  \ar[r,"{\begin{pmatrix} 0 & 1 \end{pmatrix}}" {yshift=7pt}] \& \lie{g}^{2} \wedge \lie{g}^{2} \ar[r] \& 0,
+  \end{tikzcd}
+\]
+since
+\begin{align*}
+  \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} &\to \lie{g}^{2} \wedge \lie{g}^{2} \\
+  \xi_{1} \wedge \xi_{4} \wedge \xi_{2} &\mapsto -[\xi_{1},\xi_{4}] \wedge \xi_{2} + [\xi_{1},\xi_{2}] \wedge \xi_{4} - [\xi_{4},\xi_{2}] \wedge \xi_{1} = \xi_{2} \wedge \xi_{2} = 0, \\
+  \xi_{1} \wedge \xi_{4} \wedge \xi_{3} &\mapsto -[\xi_{1},\xi_{4}] \wedge \xi_{3} + [\xi_{1},\xi_{3}] \wedge \xi_{4} - [\xi_{4},\xi_{3}] \wedge \xi_{1} = \xi_{2} \wedge \xi_{3}.
+\end{align*}
+This gives us the grade $-4$ cochain complex
+\[
+  \begin{tikzcd}[ampersand replacement=\&]
+    0 \& \ar[l] \Hom_{k}^{-4}\bigl( \bigwedge^{3}\lie{g}, k \bigr) \& \ar[l,"{\begin{pmatrix} 0 \\ 1 \end{pmatrix}}"' {yshift=7pt}] \Hom_{k}^{-4}\bigl( \bigwedge^{2}\lie{g}, k \bigr) \& \ar[l] 0.
+  \end{tikzcd}
+\]
+So with \[ d = \pmat{0 \\ 1},\] and comparing with \Cref{tab:graded-dims-GL2},
+\begin{align*}
+  \dim H^{-4,6} &= \dim \kernel(d) = 0, \\
+  \dim H^{-4,7} &= \dim \coker(d) = 1.
+\end{align*}
+
+In grade $5$ we have the chain complex
+\[
+  \begin{tikzcd}
+    0 \ar[r] & \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \ar[r] & 0,
+  \end{tikzcd}
+\]
+which gives us the grade $-5$ cochain complex
+\[
+  \begin{tikzcd}
+    0 & \ar[l] \Hom_{k}^{-5}\bigl( \bigwedge^{3}\lie{g}, k \bigr) & \ar[l] 0.
+  \end{tikzcd}
+\]
+So $\dim H^{-5,8} = 2$ by \Cref{tab:graded-dims-SL2}.
+
+In grade $6$ we have the chain complex
+\[
+  \begin{tikzcd}
+    0 \ar[r] & \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \ar[r] & 0,
+  \end{tikzcd}
+\]
+which gives us the grade $-6$ cochain complex
+\[
+  \begin{tikzcd}
+    0 & \ar[l] \Hom_{k}^{-6}\bigl( \bigwedge^{4}\lie{g}, k \bigr) & \ar[l] 0.
+  \end{tikzcd}
+\]
+So $\dim H^{-6,10} = 1$ by \Cref{tab:graded-dims-SL2}.
+
+\begin{table}[ht]
+  \centering
+  \caption[Graded cohomology dimensions for the $I \subseteq \GL_{2}(\Z_{p})$ case.]{Dimensions of $E_{1}^{s,t} = H^{s,t}(\lie{g},k)$ for the $I \subseteq \GL_{2}(\Z_{p})$ case.}
+  \label{tab:graded-coh-dims-GL2}
+  \renewcommand{\arraystretch}{1.5}
+  $\begin{NiceArray}{*{8}{c}}[hvlines, columns-width=auto]
+    \diagbox{t}{s} & 0 & -1 & -2 & -3 & -4 & -5 & -6 \\
+    0 & 1 \\
+    1 & \\
+    2 & & 2 \\
+    3 & & & 1 \\
+    4 & \\
+    5 & & & & 4 \\
+    6 & \\
+    7 & & & & & 1 \\
+    8 & & & & & & 2 \\
+    9 & \\
+    10 & & & & & & & 1
+  \end{NiceArray}$
+  \renewcommand{\arraystretch}{1}
+\end{table}
+
+Altogether, we see that
+\begin{equation}
+  \label{eq:Hn-to-Hst-GL2}
+  \begin{aligned}
+    H^{0} &= H^{0,0}, \\
+    H^{1} &= H^{-1,2} \oplus H^{-2,3}, \\
+    H^{2} &= H^{-3,5}, \\
+    H^{3} &= H^{-4,7} \oplus H^{-5,8}, \\
+    H^{4} &= H^{-6,10},
+  \end{aligned}
+\end{equation}
+with dimension as described in \Cref{tab:graded-coh-dims-GL2}.
+
+Now we note that all differentials $d_{r}^{s,t} \colon E_{r}^{s,t} \to E_{r}^{s+r,t+1-r}$ in \Cref{tab:graded-coh-dims-SL2} has bidegree $(r,1-r)$, i.e., they are all below the $(r,-r)$ arrow going $r$ to the left and $r$ up in the table, where $r \geq 1$. Looking at \Cref{tab:graded-coh-dims-GL2}, this clearly means that all differentials for $r \geq 1$ are trivial, and thus the spectral sequence collapses on the first page. Hence $H^{s,t}(\lie{g},k) = E_{1}^{s,t} \iso E_{\infty}^{s,t} = \gr^{s} H^{s+t}(I,k)$, and by \eqref{eq:Hn-to-Hst-GL2} and \Cref{tab:graded-coh-dims-GL2} we get that
+\begin{equation}
+  \label{eq:dim-HnI-GL2}
+  \dim H^{n}(I,k) =
+  \begin{dcases}
+    1 & n=0, \\
+    3 & n=1, \\
+    4 & n=2, \\
+    3 & n=3, \\
+    1 & n=4.
+  \end{dcases}
+\end{equation}
+
+Recalling that the spectral sequence is multiplicative, we also note, by \Cref{tab:graded-coh-dims-GL2}, that $H^{s,t} \cup H^{s',t'} \subseteq H^{s+s',t+t'}$ implies that the cup products
 \begin{equation*}
-  [\xi_{1},\xi_{4}] = -\xi_{2}
+  \gr^{s} H^{n}(I,k) \otimes \gr^{s'} H^{n'}(I,k) \to \gr^{s+s'} H^{n+n'}(I,k)
 \end{equation*}
-is the only non-zero commutator.
+are trivial except for the cases
+\begin{equation}\label{eq:non-triv-cups-GL2}
+  \begin{aligned}
+    H^{-1,2} \cup H^{-2,3} &\subseteq H^{-3,5}, \\
+    H^{-1,2} \cup H^{-3,5} &\subseteq H^{-4,7}, \\
+    H^{-1,2} \cup H^{-5,8} &\subseteq H^{-6,10}, \\
+    H^{-2,3} \cup H^{-3,5} &\subseteq H^{-5,8}, \\
+    H^{-2,3} \cup H^{-4,7} &\subseteq H^{-6,10}, \\
+    H^{-3,5} \cup H^{-3,5} &\subseteq H^{-6,10},
+  \end{aligned}
+\end{equation}
+and the reverse of the above (which we can find using graded commutativity).
+
+Next we want to describe these cup products.
+
+Let $e_{i_{1},\dotsc,i_{m}} = (\xi_{i_{1}} \wedge \dotsb \wedge \xi_{i_{m}})^{*}$\nomiwa[ei1i2]{$e_{i_{1},\dotsc,i_{m}}$}{${} = (\xi_{i_{1}} \wedge \dotsb \wedge \xi_{i_{m}})^{*}$, the element of the dual basis of $\Hom_{k}\bigl( \bigwedge^{m}\lie{g},k \bigr)$ corresponding to $\xi_{i_{1}} \wedge \dotsb \wedge \xi_{i_{m}}$ in the basis of $\bigwedge^{m}\lie{g}$} be the element of the dual basis of $\Hom_{k}\bigl( \bigwedge^{m}\lie{g},k \bigr)$ corresponding to $\xi_{i_{1}} \wedge \dotsb \wedge \xi_{i_{m}}$ in the basis of $\bigwedge^{m}\lie{g}$. Looking at the cochain complexes and descriptions of the maps above together with the known bases of the graded chain complexes, we get the following precise descriptions of the of the graded cohomology spaces $H^{s,t} = H^{s,t}(\lie{g},k)$:
+\begin{equation}\label{eq:Hst-spaces-GL2}
+  \begin{aligned}
+    H^{-1,2} &= k[e_{1},e_{4}], \\
+    H^{-2,3} &= \kernel \pmat{1 & 0} = k[e_{3}], \\
+    H^{-3,5} &= k[e_{1,2},e_{1,3},e_{4,2},e_{4,3}], \\
+    H^{-4,7} &= \frac{k[e_{1,4,2},e_{1,4,3}]}{\image \pmat{0 \\ 1}} = k[e_{1,4,2}], \\
+    H^{-5,8} &= k[e_{1,2,3},e_{4,2,3}], \\
+    H^{-6,10} &= k[e_{1,4,2,3}].
+  \end{aligned}
+\end{equation}
+
+For $f \in \Hom_{k}\bigl( \bigwedge^{p}\lie{g}, k \bigr)$ and $g \in \Hom_{k}\bigl( \bigwedge^{q}\lie{g}, k \bigr)$, we know from \cite[Chap.~XIII, Sect.~8]{CartanHomAlg}, that the cup product in cohomology is induced by: $f \cup g \in \Hom_{k}\bigl( \bigwedge^{p+q}\lie{g}, k \bigr)$ defined by\dknote{Move to techniques.}
+\begin{equation}
+  \label{eq:cup-prod-def}
+  (f \cup g)(x_{1} \wedge \dotsb \wedge x_{p+q})  = \sum_{\mathclap{\substack{ \sigma \in S_{p+q} \\ \sigma(1) < \dotsb < \sigma(p) \\ \sigma(p+1) < \dotsb < \sigma(p+q) }}} \sign(\sigma) f(x_{\sigma(1)} \wedge \dotsb \wedge x_{\sigma(p)}) g(x_{\sigma(p+1)} \wedge \dotsb \wedge x_{\sigma(p+q)}).
+\end{equation}
+
+We will now find all the cup products in \eqref{eq:non-triv-cups-GL2} by working with our given bases and the \eqref{eq:cup-prod-def}.
+% In the following it will be important to be aware that we use $\sigma \in S_{n}$ to describe a \enquote{positional} permutation when writing it as an action, and not a permutation of the numbers $\set{1,\dotsc,n}$. We will write e.g. $\sigma \act (1,4,2) = (4,1,2)$ for $\sigma=(1,2)$, when using $\sigma$ in this way, while $\sigma(1)=2$, $\sigma(2) = 1$, $\sigma(3) = 1$ will be written as usual. \dknote{Be more clear about the notation.}
+
+We will start by finding
+\[
+  \begin{tikzcd}
+    H^{-1,2} \otimes H^{-2,3} \ar[r,"\cup"] & H^{-3,5}.
+  \end{tikzcd}
+\]
+Looking at \eqref{eq:Hst-spaces-GL2}, we need to describe the maps $e_{1} \cup e_{3}$ and $e_{4} \cup e_{3}$ on the basis of $\gr^{3} \bigwedge^{2}\lie{g}$, i.e., on $\basis = (\xi_{1}\wedge\xi_{2}, \xi_{1} \wedge \xi_{3},\xi_{4} \wedge \xi_{2},\xi_{4} \wedge \xi_{3})$. In the case of $e_{1} \cup e_{3}$, \eqref{eq:cup-prod-def} simplifies to
+\begin{equation*}
+  (e_{1} \cup e_{3})(x_{1} \wedge x_{2}) = \sum_{\sigma \in S_{2}} \sign(\sigma) e_{1}(x_{\sigma(1)}) e_{3}(x_{\sigma(2)}),
+\end{equation*}
+which is zero on all of $\basis$ except $\xi_{1} \wedge \xi_{3}$ with $\sigma=(1)$, where we get (using that $\sign\bigl( (1) \bigr) = 1$)
+\begin{equation*}
+  (e_{1} \cup e_{3})(\xi_{1} \wedge \xi_{3}) = 1.
+\end{equation*}
+Hence $e_{1} \cup e_{3} = e_{1,3}$. In the case of $e_{4} \cup e_{3}$, \eqref{eq:cup-prod-def} simplifies to
+\begin{equation*}
+  (e_{4} \cup e_{3})(x_{1} \wedge x_{2}) = \sum_{\sigma \in S_{2}} \sign(\sigma) e_{4}(x_{\sigma(1)}) e_{3}(x_{\sigma(2)}),
+\end{equation*}
+which is zero on all of $\basis$ except $\xi_{4} \wedge \xi_{3}$ with $\sigma=(1)$, where we get (using that $\sign\bigl( (1) \bigr) = 1$)
+\begin{equation*}
+  (e_{4} \cup e_{3})(\xi_{4} \wedge \xi_{3}) = 1.
+\end{equation*}
+Hence $e_{4} \cup e_{3} = e_{4,3}$. Looking at \eqref{eq:Hst-spaces-GL2}, we see that $e_{1,3}$ and $e_{4,3}$ are the second and forth basis elements of $H^{-3,5}$, so the above calculation caries over to the above cup product in cohomology.
+
+We will now describe
+\[
+  \begin{tikzcd}
+    H^{-1,2} \otimes H^{-3,5} \ar[r,"\cup"] & H^{-4,7}.
+  \end{tikzcd}
+\]
+Looking at \eqref{eq:Hst-spaces-GL2}, we need to describe the maps
+\begin{align*}
+  &e_{1} \cup e_{1,2}, e_{1} \cup e_{1,3}, e_{1} \cup e_{4,2}, e_{1} \cup e_{4,3}, \\
+  &e_{4} \cup e_{1,2}, e_{4} \cup e_{1,3}, e_{4} \cup e_{4,2}, e_{4} \cup e_{4,3}
+\end{align*}
+on the basis of $\gr^{4} \bigwedge^{3}\lie{g}$, i.e., on $\basis = (\xi_{1} \wedge \xi_{4} \wedge \xi_{2}, \xi_{1} \wedge \xi_{4} \wedge \xi_{3})$. In any case with repeat numbers, it's clear from \eqref{eq:cup-prod-def} (and the fact that there are no repeats in $\basis$) that the cup product will be zero, so we only need to consider $e_{1} \cup e_{4,2}$, $e_{1} \cup e_{4,3}$, $e_{4} \cup e_{1,2}$ and $e_{4} \cup e_{1,3}$. In all cases of $e_{i} \cup e_{j,k}$, \eqref{eq:cup-prod-def} simplifies to
+\begin{equation*}
+  (e_{i} \cup e_{j,k})(x_{2} \wedge x_{2} \wedge x_{3}) = \sum_{\substack{\sigma \in S_{3} \\ \sigma(2) < \sigma(3)}} \sign(\sigma) e_{i}(x_{\sigma(1)}) e_{j,k}(x_{\sigma(2)} \wedge x_{\sigma(3)}),
+\end{equation*}
+i.e., the sum is over $\sigma \in \set{(1), (1,2), (1,3,2)}$. When $(i,j,k) = (1,4,2)$ or $(i,j,k) = (1,4,3)$, this sum is zero on all of $\basis$ except $\xi_{i} \wedge \xi_{j} \wedge \xi_{k}$ with $\sigma=(1)$, since $\sigma$ needs to fix $1$ and $\basis$ uses the same ordering. Here we get (using that $\sign\bigl((1)\bigr) = 1$)
+\begin{equation*}
+  (e_{i} \cup e_{j,k})(\xi_{i} \wedge \xi_{j} \wedge \xi_{k}) = 1.
+\end{equation*}
+Hence $e_{1} \cup e_{4,2} = e_{1,4,2}$ and $e_{1} \cup e_{4,3} = e_{1,4,3}$. When $(i,j,k) = (4,1,2)$ or $(i,j,k) = (4,1,3)$, the sum is zero on all of $\basis$ except $\xi_{j} \wedge \xi_{i} \wedge \xi_{k}$ with $\sigma=(1,2)$, since the order of the first and second elements of $(i,j,k)$ are swapped compared to in $\basis$. Here we get (using that $\sign\bigl((1,2)\bigr) = -1$)
+\begin{equation*}
+  (e_{i} \cup e_{j,k})(\xi_{i} \wedge \xi_{j} \wedge \xi_{k}) = -1.
+\end{equation*}
+Hence $e_{4} \cup e_{1,2} = -e_{1,4,2}$ and $e_{4} \cup e_{1,3} = -e_{1,4,3}$. Looking at \eqref{eq:Hst-spaces-GL2}, we see that $e_{1,4,3}$ reduces to zero in $H^{-4,7}$, while $e_{1,4,2}$ is part of the basis. So in the cup product on the cohomology, the only nontrivial products are $e_{1} \cup e_{4,2} = e_{1,4,2}$ and $e_{4} \cup e_{1,2} = -e_{1,4,2}$.
+
+At this point, it should be clear how to skip some of the details, so we will proceed with less justification than above.
+
+Now consider
+\[
+  \begin{tikzcd}
+    H^{-1,2} \otimes H^{-5,8} \ar[r,"\cup"] & H^{-6,10}.
+  \end{tikzcd}
+\]
+Looking at \eqref{eq:Hst-spaces-GL2}, the only nontrivial maps we need to describe are $e_{1} \cup e_{4,2,3}$ and $e_{4} \cup e_{1,2,3}$ on the basis of $\gr^{6} \bigwedge^{4}\lie{g}$, i.e., on $\basis = (\xi_{1} \wedge \xi_{4} \wedge \xi_{2} \wedge \xi_{3})$. For $e_{1} \cup e_{4,2,3}$ to be non-zero, we need $\sigma \in S_{4}$ that fixes $1$ and satisfies $\sigma(2) < \sigma(3) < \sigma(4)$, which is only true for $\sigma = (1)$. For $e_{4} \cup e_{1,2,3}$ to be non-zero, we need $\sigma \in S_{4}$ that swaps $1$ and $2$ and satisfies $\sigma(2) < \sigma(3) < \sigma(4)$, which is only true for $\sigma = (1,2)$. Since $\sign\bigl((1)\bigr) = 1$ and $\sign\bigl((1,2)\bigr) = -1$, we get that $e_{1} \cup e_{4,2,3} = e_{1,4,2,3}$ and $e_{4} \cup e_{1,2,3} = -e_{1,4,2,3}$. Looking at \eqref{eq:Hst-spaces-GL2}, we see that $e_{1,4,2,3}$ it the basis elements of $H^{-6,10}$, so the above calculation caries over to the above cup products in cohomology.
+
+Continue with
+\[
+  \begin{tikzcd}
+    H^{-2,3} \otimes H^{-3,5} \ar[r,"\cup"] & H^{-5,8}.
+  \end{tikzcd}
+\]
+Looking at \eqref{eq:Hst-spaces-GL2}, the only nontrivial maps we need to describe are $e_{3} \cup e_{1,2}$ and $e_{3} \cup e_{4,2}$ on the basis of $\gr^{5} \bigwedge^{3}\lie{g}$, i.e., on $\basis = (\xi_{1} \wedge \xi_{2} \wedge \xi_{3}, \xi_{4} \wedge \xi_{2} \wedge \xi_{3})$.  For $e_{3} \cup e_{1,2}$ or $e_{3} \cup e_{4,2}$ to be non-zero, we need $\sigma \in S_{3}$ that satisfies $\sigma(1) = 3$ (putting $\xi_{3}$ first) and $\sigma(2) < \sigma(3)$, which is only true for $\sigma = (1,3,2)$. Since $\sign\bigl(((1,3,2)\bigr) = 1$, we get that $e_{3} \cup e_{1,2} = e_{1,2,3}$ and $e_{3} \cup e_{4,2} = e_{4,2,3}$. Looking at \eqref{eq:Hst-spaces-GL2}, we see that $e_{1,2,3}$ and $e_{4,2,3}$ are the basis elements of $H^{-5,8}$, so the above calculation caries over to the above cup products in cohomology.
+
+Continue with
+\[
+  \begin{tikzcd}
+    H^{-2,3} \otimes H^{-4,7} \ar[r,"\cup"] & H^{-6,10}.
+  \end{tikzcd}
+\]
+Looking at \eqref{eq:Hst-spaces-GL2}, the only map we need to describe is $e_{3} \cup e_{1,4,2}$ on the basis of $\gr^{6} \bigwedge^{4}\lie{g}$, i.e., on $\basis = (\xi_{1} \wedge \xi_{4} \wedge \xi_{2} \wedge \xi_{3})$.  For $e_{3} \cup e_{1,4,2}$ to be non-zero, we need $\sigma \in S_{4}$ that satisfies $\sigma(1) = 4$ (putting $\xi_{3}$ first) and $\sigma(2) < \sigma(3) < \sigma(4)$, which is only true for $\sigma = (1,4,3,2)$. Since $\sign\bigl(((1,4,3,2)\bigr) = -1$, we get that $e_{3} \cup e_{1,4,2} = -e_{1,4,2,3}$. Looking at \eqref{eq:Hst-spaces-GL2}, we see that $e_{1,4,2,3}$ it the basis elements of $H^{-6,10}$, so the above calculation caries over to the above cup product in cohomology.
+
+Finally, consider
+\[
+  \begin{tikzcd}
+    H^{-3,5} \otimes H^{-3,5} \ar[r,"\cup"] & H^{-6,10}.
+  \end{tikzcd}
+\]
+Looking at \eqref{eq:Hst-spaces-GL2}, the only nontrivial maps we need to describe are $e_{1,2} \cup e_{4,3}$ and $e_{1,3} \cup e_{4,2}$ (getting the rest by graded-commutativity) on the basis of $\gr^{6} \bigwedge^{4}\lie{g}$, i.e., on $\basis = (\xi_{1} \wedge \xi_{4} \wedge \xi_{2} \wedge \xi_{3})$.  For $e_{1,2} \cup e_{4,3}$ to be non-zero, we need $\sigma \in S_{4}$ that satisfies
+\begin{enumerate}[$\bullet$]
+  \item $\set{\sigma(1),\sigma(2)} = \set{1,3}$ (putting $\xi_{1}$ and $\xi_{2}$ in $e_{1,2}$),
+  \item $\set{\sigma(3),\sigma(4)} = \set{2,4}$ (putting $\xi_{4}$ and $\xi_{3}$ in $e_{4,3}$),
+  \item $\sigma(1) < \sigma(2)$ and $\sigma(3) < \sigma(4)$,
+\end{enumerate}
+which is only true for $\sigma = (2,3)$. Since $\sign\bigl((2,3)\bigr) = -1$, we get that $e_{1,2} \cup e_{4,3} = -e_{1,4,2,3}$. For $e_{1,3} \cup e_{4,2}$ to be non-zero, we need $\sigma \in S_{4}$ that satisfies
+\begin{enumerate}[$\bullet$]
+  \item $\set{\sigma(1),\sigma(2)} = \set{1,4}$ (putting $\xi_{1}$ and $\xi_{3}$ in $e_{1,3}$),
+  \item $\set{\sigma(3),\sigma(4)} = \set{2,3}$ (putting $\xi_{4}$ and $\xi_{2}$ in $e_{4,2}$),
+  \item $\sigma(1) < \sigma(2)$ and $\sigma(3) < \sigma(4)$,
+\end{enumerate}
+which doesn't exist.\dknote{Or did I miss it?} Hence $e_{1,3} \cup e_{4,2} = 0$. Looking at \eqref{eq:Hst-spaces-GL2}, we see that $e_{1,4,2,3}$ it the basis elements of $H^{-6,10}$, so the above calculation caries over to the above cup products in cohomology. Also, since $H^{-3,5} = H^{2}$, we get, by graded commutativity of the cup product, that $e_{4,2} \cup e_{1,3} = 0$ and $e_{4,3} \cup e_{1,2} = (-1)^{2\times2} e_{1,2} \cup e_{4,3} = e_{1,4,2,3}$.
+
+Now, since the spectral sequence collapses on the first page, all of the above work on the cup product of the Lie algebra cohomology transfers to the cup product on $H^{*}(I,k)$ as described above.
 
 \section{\texorpdfstring{$I \subseteq \SL_{3}(\Z_{p})$}{I in SL3(Zp)}}%
 \label{sec:Iwa-SL3}
@@ -490,8 +1303,10 @@ The non-zero commutators are:
         \end{equation*}
 \end{description}
 
-\begin{table}[h]
+\begin{table}[ht]
   \centering
+  \caption[Graded complex dimensions for $I \subseteq \SL_{3}(\Z_{p})$]{Dimensions of $\gr^{j}\bigl( \bigwedge^{n} \lie{g} \bigr)$.}
+  \label{tab:graded-dims-SL3}
   $\begin{NiceArray}{*{17}{c}}[hvlines]
     \diagbox{n}{j} & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 \\
     0 & 1 \\
@@ -504,8 +1319,6 @@ The non-zero commutators are:
     7 & & & & & & & & & & & & & 2 & 3 & 3 \\
     8 & & & & & & & & & & & & & & & & 1
   \end{NiceArray}$
-  \caption[Graded complex dimensions for $I \subseteq \SL_{3}(\Z_{p})$]{Dimensions of $\gr^{j}\bigl( \bigwedge^{n} \lie{g} \bigr)$.}
-  \label{tab:graded-dims-SL3}
 \end{table}
 
 \begin{equation*}
@@ -518,7 +1331,7 @@ Note that when finding cohomology, we only need to consider $H^{s,t} = H^{s,n-s}
 
 We repeatedly use that, if
 \begin{equation*}
-  d \snfsim \SNF^{n,m}(a_{1},\dotsc,a_{r},0,\dotsc,0)
+  d \snfsim \SNF_{n \times m}(a_{1},\dotsc,a_{r},0,\dotsc,0)
 \end{equation*}
 with $a_{1},\dotsc,a_{r}$ non-zero (in $\F_{p}$), then
 \begin{align*}
@@ -580,7 +1393,7 @@ $\gr^{2}:$
 \]
 
 \begin{equation*}
-  d = \pmat{1&0&0 \\ 0&-1&0 \\ 0&0&1} \snfsim  \SNF^{3\times3}(1,-1,1).
+  d = \pmat{1&0&0 \\ 0&-1&0 \\ 0&0&1} \snfsim  \SNF_{3\times3}(1,1,1).
 \end{equation*}
 
 So
@@ -603,8 +1416,8 @@ $\gr^{3}:$
 \]
 
 \begin{align*}
-  d_{1} = \pmat{0&0 \\ 0&0 \\ 1&1 \\ 0&0 \\ 0&-1 \\ 0&0 \\ 0&-1 \\ 0&0 \\ 0&0} &\snfsim \SNF^{9\times2}(1,-1), \\
-  d_{2} = \pmat{0&0&-1&0&-1&0&-1&0&0} &\snfsim \SNF^{1\times9}(-1).
+  d_{1} = \pmat{0&0 \\ 0&0 \\ 1&1 \\ 0&0 \\ 0&-1 \\ 0&0 \\ 0&-1 \\ 0&0 \\ 0&0} &\snfsim \SNF_{9\times2}(1,1), \\
+  d_{2} = \pmat{0&0&-1&0&-1&0&-1&0&0} &\snfsim \SNF_{1\times9}(1).
 \end{align*}
 
 So
@@ -628,7 +1441,7 @@ $\gr^{4}:$
 \]
 
 \begin{equation*}
-  d \snfsim \SNF^{9\times9}(1,1,1,-1,1,-1,0,0,0)
+  d \snfsim \SNF_{9\times9}(1,1,1,1,1,1,0,0,0)
 \end{equation*}
 
 So
@@ -651,8 +1464,8 @@ $\gr^{5}:$
 \]
 
 \begin{align*}
-  d_{1} &\snfsim \SNF^{15\times6}(1,1,-1,-1,1,1), \\
-  d_{2} &\snfsim \SNF^{3\times15}(-1,1,1).
+  d_{1} &\snfsim \SNF_{15\times6}(1,1,1,1,1,1), \\
+  d_{2} &\snfsim \SNF_{3\times15}(1,1,1).
 \end{align*}
 
 So
@@ -676,8 +1489,8 @@ $\gr^{6}:$
 \]
 
 \begin{align*}
-  d_{1} &\snfsim \SNF^{19\times1}(-1), \\
-  d_{2} &\snfsim \SNF^{11\times19}(-1,1,-1,1,-1,-1,-1,1,1,1,-2).
+  d_{1} &\snfsim \SNF_{19\times1}(1), \\
+  d_{2} &\snfsim \SNF_{11\times19}(1,1,1,1,1,1,1,1,1,1,2).
 \end{align*}
 
 So
@@ -701,8 +1514,8 @@ $\gr^{7}:$
 \]
 
 \begin{align*}
-  d_{1} &\snfsim \SNF^{21\times9}(-1,-1,-1,1,1,1,1,-1,1), \\
-  d_{2} &\snfsim \SNF^{3\times21}(1,1,-1).
+  d_{1} &\snfsim \SNF_{21\times9}(1,1,1,1,1,1,1,1,1), \\
+  d_{2} &\snfsim \SNF_{3\times21}(1,1,1).
 \end{align*}
 
 So
@@ -717,8 +1530,8 @@ The following calculations are not necessary, since we can get the results using
 $\gr^{8}:$
 
 \begin{align*}
-  d_{1} &\snfsim \SNF^{21\times3}(1,-1,1), \\
-  d_{2} &\snfsim \SNF^{9\times21}(-1,-1,-1,1,1,-1,-1,1,-1).
+  d_{1} &\snfsim \SNF_{21\times3}(1,1,1), \\
+  d_{2} &\snfsim \SNF_{9\times21}(1,1,1,1,1,1,1,1,1).
 \end{align*}
 
 So
@@ -732,8 +1545,8 @@ So
 $\gr^{9}:$
 
 \begin{align*}
-  d_{1} &\snfsim \SNF^{19\times11}(-1,-1,1,-1,1,-1,-1,-1,-1,1,-1), \\
-  d_{2} &\snfsim \SNF^{1\times19}(-1).
+  d_{1} &\snfsim \SNF_{19\times11}(1,1,1,1,1,1,1,1,1,1,1), \\
+  d_{2} &\snfsim \SNF_{1\times19}(1).
 \end{align*}
 
 So
@@ -746,8 +1559,8 @@ So
 $\gr^{10}:$
 
 \begin{align*}
-  d_{1} &\snfsim \SNF^{15\times3}(1,1,-1), \\
-  d_{2} &\snfsim \SNF^{6\times15}(-1,1,1,-1,1,1).
+  d_{1} &\snfsim \SNF_{15\times3}(1,1,1), \\
+  d_{2} &\snfsim \SNF_{6\times15}(1,1,1,1,1,1).
 \end{align*}
 
 So
@@ -760,7 +1573,7 @@ So
 $\gr^{11}:$
 
 \begin{equation*}
-  d \snfsim \SNF^{9\times9}(1,1,-1,-1,-1,-1,0,0,0).
+  d \snfsim \SNF_{9\times9}(1,1,1,1,1,1,0,0,0).
 \end{equation*}
 
 So
@@ -772,8 +1585,8 @@ So
 $\gr^{12}:$
 
 \begin{align*}
-  d_{1} &\snfsim \SNF^{9\times1}(1), \\
-  d_{2} &\snfsim \SNF^{2\times9}(1,-1).
+  d_{1} &\snfsim \SNF_{9\times1}(1), \\
+  d_{2} &\snfsim \SNF_{2\times9}(1,1).
 \end{align*}
 
 So
@@ -786,7 +1599,7 @@ So
 $\gr^{13}:$
 
 \begin{equation*}
-  d \snfsim \SNF^{3\times3}(-1,1,-1).
+  d \snfsim \SNF_{3\times3}(1,1,1).
 \end{equation*}
 
 So

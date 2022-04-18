@@ -8,6 +8,25 @@
 % \date{\today}
 \author{Daniel Kongsgaard}
 
+
+
+\makeevenhead{ruled}{\scshape\leftmark}{}{\rightmark}
+\makeoddhead{ruled}{\scshape\leftmark}{}{\rightmark}
+\makeevenfoot{ruled}{}{\thepage}{}
+\makeoddfoot{ruled}{}{\thepage}{}
+\renewcommand{\footnotesize}{\fontsize{10}{12}\selectfont}
+\setlength{\parindent}{0.5in}
+
+\setulmarginsandblock{1.6in}{*}{0.8}
+\setlrmarginsandblock{1.5in}{*}{1}
+\setlength{\footskip}{\lowermargin}
+\addtolength{\footskip}{-0.5in}
+\checkandfixthelayout
+
+\pagestyle{plain}
+\setsecnumdepth{subsection}
+\settocdepth{subsection}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BEGIN : DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -17,11 +36,16 @@
 
 % \maketitle
 
-\frontmatter
-
 \input{front.tex}
 
+\frontmatter
+
 \tableofcontents*
+
+\clearpage
+
+\printnomenclature[4cm]
+% To update call: makeindex main.nlo -s nomencl.ist -o main.nls
 
 \clearpage
 
@@ -32,6 +56,8 @@
 \clearpage
 
 \mainmatter
+
+\pagestyle{ruled}
 
 \chapter{Cohomology of Unipotent Groups}%
 \label{cha:cohunigps}
@@ -52,12 +78,9 @@
 
 \backmatter
 
+\pagestyle{plain}
+
 \printbibliography
-
-\clearpage
-
-\printnomenclature[4cm]
-% To update call: makeindex main.nlo -s nomencl.ist -o main.nls
 
 \clearpage
 
