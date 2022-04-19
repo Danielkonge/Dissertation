@@ -330,6 +330,9 @@ Because we want to be able to describe the commutators using this ordered basis,
 \end{align}
 In this case the above equations to solve translate to solving for $x$ in $\exp(x) = y$, which we can easily do, as $x = \log(y)$, cf.\ \Cref{sec:cohiwagps-intro}.
 
+\subsection{Finding the commutators \texorpdfstring{$[\xi_{i},\xi_{j}]$}{[xi-i,xi-j]}}%
+\label{subsec:non-id-xi_ij-SL2}
+
 Now write
 \begin{equation}
   \label{eq:gixi-SL2}
@@ -337,8 +340,10 @@ Now write
 \end{equation}
 Furthermore, write $g_{ij} = [g_{i},g_{j}]$\nomiwa[gij]{$g_{ij}$}{${} = [g_{i},g_{j}]$} and $\xi_{ij} = [\xi_{i},\xi_{j}]$.\nomiwa[xiij]{$\xi_{ij}$}{${} = [\xi_{i},\xi_{j}]$} Then we are ready to find $x_{1},x_{2},x_{3}$ such that $g_{ij} = g_{1}^{x_{1}}g_{2}^{x_{2}}g_{3}^{x_{3}}$ for different $i<j$. (In the following we use that $\frac{1}{p-1} = 1 + p + p^{2} + \dotsb$ and $\log(1-p) = -p - \frac{p^{2}}{2} - \frac{p^{3}}{3} - \dotsb$.)
 
+We now list all non-identitiy commutators $g_{ij} = [g_{i},g_{j}]$ and find $\xi_{ij} = [\xi_{i},\xi_{j}]$ based on these. (For $g_{ij} = 1_{2}$ it's clear that $x_{1} = x_{2} = x_{3} = 0$, and thus $\xi_{ij} = 0$.)
+
 \begin{description}
-  \item[$g_{12} = \pmat{ 1 & 0 \\ p\bigl( 1 - \exp(-2p) & 1 \bigr) }$:] Comparing $g_{12}$ with \eqref{eq:gixi-SL2}, we see that $x_{2} = x_{3} = 0$. This leaves $a_{21} = px_{1} = p\bigl( 1 - \exp(-2p) \bigr) = 2p^{2} + O(p^{3})$, which implies that $x_{1} = 2p + O(p^{2})$. Hence $\sigma(g_{12}) = 2\pi \act \sigma(g_{1})$, which implies that $\xi_{12} = 0$.
+  \item[$g_{12} = \pmat{ 1 & 0 \\ p\bigl( 1 - \exp(-2p) \bigr) & 1 }$:] Comparing $g_{12}$ with \eqref{eq:gixi-SL2}, we see that $x_{2} = x_{3} = 0$. This leaves $a_{21} = px_{1} = p\bigl( 1 - \exp(-2p) \bigr) = 2p^{2} + O(p^{3})$, which implies that $x_{1} = 2p + O(p^{2})$. Hence $\sigma(g_{12}) = 2\pi \act \sigma(g_{1})$, which implies that $\xi_{12} = 0$.
 
   \item[$g_{13} = \pmat{ 1-p & p \\ -p^{2} & 1+p+p^{2} }$:] Comparing $g_{13}$ with \eqref{eq:gixi-SL2}, we see that
         \begin{align*}
@@ -369,6 +374,9 @@ and recalling that $\xi_{i} = 1 \otimes \sigma(g_{i})$ in $k \otimes_{\F_{p}[\pi
 \end{align}
 where $\xi_{ij} = [\xi_{i},\xi_{j}]$.
 
+\subsection{Describing the graded chain complex, \texorpdfstring{$\gr^{j}\bigl(\bigwedge^{n}\lie{g}\bigr)$}{grj(wedge-n g)}}%
+\label{subsec:graded-complex-SL2}
+
 Looking at \eqref{eq:Iwa-p-val-basis-SLn} (with $e=1$ and $h=2$), we see that
 \begin{align*}
   \omega(g_{1}) &= 1-\frac{1}{2} = \frac{1}{2}, & \omega(g_{2}) &= 1, & \omega(g_{3}) &= \frac{1}{2}.
@@ -384,7 +392,7 @@ Now we are ready to describe the graded chain complex
 \begin{equation*}
   \gr^{j}\Bigl( \bigwedge^{n}\lie{g} \Bigr) = \bigoplus_{j_{1} + \dotsb + j_{n} = j} \lie{g}^{j_{1}} \wedge \dotsb \wedge \lie{g}^{j_{n}}
 \end{equation*}
-and its bases.
+and its bases. We list the grading of $\bigwedge^{n}\lie{g}$ for all $n$.
 
 \begin{description}
   \item[$n=0:$]
@@ -450,7 +458,7 @@ and its bases.
 
 \begin{table}[ht]
   \centering
-  \caption[Graded complex dimensions for the $I \subseteq \SL_{2}(\Z_{p})$ case.]{Dimensions of $\gr^{j}\bigl( \bigwedge^{n} \lie{g} \bigr)$ for the $I \subseteq \SL_{2}(\Z_{p})$ case.}
+  \caption[Graded complex dimensions for the $I \subseteq \SL_{2}(\Z_{p})$ case]{Dimensions of $\gr^{j}\bigl( \bigwedge^{n} \lie{g} \bigr)$ for the $I \subseteq \SL_{2}(\Z_{p})$ case.}
   \label{tab:graded-dims-SL2}
   $\begin{NiceArray}{*{6}{c}}[hvlines]
     \diagbox{n}{j} & 0 & 1 & 2 & 3 & 4 \\
@@ -466,6 +474,9 @@ We collect the above information about the dimensions of the chain complex of $\
   \Hom_{k}\Bigl( \bigwedge^{n}\lie{g}, k \Bigr) = \bigoplus_{s \in \Z} \Hom_{k}^{s}\Bigl( \bigwedge^{n}\lie{g}, k \Bigr),
 \end{equation*}
 we see that, with $j=-s$, we get the same table for dimensions of the graded hom-spaces in the cochain complex.
+
+\subsection{Finding the graded Lie algebra cohomology, \texorpdfstring{$H^{s,t}(\lie{g},k)$}{H(s,t)(g,k)}}%
+\label{subsec:graded-coh-SL2}
 
 \begin{remark}
   In this section we will calculate the cohomology directly instead of using the method described in \Cref{subsec:SNF-coh}, since the calculations are only with small matrices. To see how \Cref{subsec:SNF-coh} is used, we refer to \Cref{sec:Iwa-SL3}.
@@ -554,7 +565,7 @@ So $\dim H^{-4,7} = 1$ by \Cref{tab:graded-dims-SL2}.
 
 \begin{table}[ht]
   \centering
-  \caption[Graded cohomology dimensions for the $I \subseteq \SL_{2}(\Z_{p})$ case.]{Dimensions of $E_{1}^{s,t} = H^{s,t}(\lie{g},k)$ for the $I \subseteq \SL_{2}(\Z_{p})$ case.}
+  \caption[Graded cohomology dimensions for the $I \subseteq \SL_{2}(\Z_{p})$ case]{Dimensions of $E_{1}^{s,t} = H^{s,t}(\lie{g},k)$ for the $I \subseteq \SL_{2}(\Z_{p})$ case.}
   \label{tab:graded-coh-dims-SL2}
   \renewcommand{\arraystretch}{1.5}
   $\begin{NiceArray}{*{6}{c}}[hvlines, columns-width=auto]
@@ -583,7 +594,10 @@ Altogether, we see that
 \end{equation}
 with dimension as described in \Cref{tab:graded-coh-dims-SL2}.
 
-Now we note that all differentials $d_{r}^{s,t} \colon E_{r}^{s,t} \to E_{r}^{s+r,t+1-r}$ in \Cref{tab:graded-coh-dims-SL2} has bidegree $(r,1-r)$, i.e., they are all below the $(r,-r)$ arrow going $r$ to the left and $r$ up in the table, where $r \geq 1$. Looking at \Cref{tab:graded-coh-dims-SL2}, this clearly means that all differentials for $r \geq 1$ are trivial, and thus the spectral sequence collapses on the first page. Hence $H^{s,t}(\lie{g},k) = E_{1}^{s,t} \iso E_{\infty}^{s,t} = \gr^{s} H^{s+t}(I,k)$, and by \eqref{eq:Hn-to-Hst-SL2} and \Cref{tab:graded-coh-dims-SL2} we get that
+\subsection{Describing the group cohomology, \texorpdfstring{$H^{n}(I,k)$}{Hn(I,k)}}%
+\label{subsec:group-coh-SL2}
+
+We note that all differentials $d_{r}^{s,t} \colon E_{r}^{s,t} \to E_{r}^{s+r,t+1-r}$ in \Cref{tab:graded-coh-dims-SL2} has bidegree $(r,1-r)$, i.e., they are all below the $(r,-r)$ arrow going $r$ to the left and $r$ up in the table, where $r \geq 1$. Looking at \Cref{tab:graded-coh-dims-SL2}, this clearly means that all differentials for $r \geq 1$ are trivial, and thus the spectral sequence collapses on the first page. Hence $H^{s,t}(\lie{g},k) = E_{1}^{s,t} \iso E_{\infty}^{s,t} = \gr^{s} H^{s+t}(I,k)$, and by \eqref{eq:Hn-to-Hst-SL2} and \Cref{tab:graded-coh-dims-SL2} we get that
 \begin{equation}
   \label{eq:dim-HnI-SL2}
   \dim H^{n}(I,k) =
@@ -601,6 +615,10 @@ Recalling that the spectral sequence is multiplicative, we also note, by \Cref{t
 \end{equation*}
 are trivial. But, since the spectral sequence collapses on the first page, we also have \eqref{eq:Hn-to-Hst-SL2} for $H^{n}(I,k)$, and thus the cup product is trivial.
 
+\subsection{Lower \texorpdfstring{$p$}{p}-series of \texorpdfstring{$I$}{I}}%
+\label{subsec:lower-p-series-SL2}
+
+Possibly do later. I can show that $I_{2} = [I,I]$ so $I_{3} \subseteq I^{p}$. I'm having a few problems with $I^{p} \subseteq I_{3}$. \dknote{Check back later.}
 
 \section{\texorpdfstring{$I \subseteq \GL_{2}(\Z_{p})$}{I in GL2(Zp)}}%
 \label{sec:Iwa-GL2}
@@ -624,6 +642,9 @@ Since we just renamed some elements and added an element of the center of $\GL(\
   [\xi_{1},\xi_{4}] = -\xi_{2},
 \end{equation*}
 where $\xi_{i} = 1 \otimes \sigma(g_{i})$ as usual.
+
+\subsection{Describing the graded chain complex, \texorpdfstring{$\gr^{j}\bigl(\bigwedge^{n}\lie{g}\bigr)$}{grj(wedge-n g)}}%
+\label{subsec:graded-complex-GL2}
 
 Looking at \eqref{eq:Iwa-p-val-basis-SLn} (with $e=1$ and $h=2$) and the note about the $\GL_{n}$ case after \eqref{eq:Iwa-p-val-basis-SLn}, we see that
 \begin{align*}
@@ -718,7 +739,7 @@ and its bases.
 
 \begin{table}[ht]
   \centering
-  \caption[Graded complex dimensions for the $I \subseteq \GL_{2}(\Z_{p})$ case.]{Dimensions of $\gr^{j}\bigl( \bigwedge^{n} \lie{g} \bigr)$ for the $I \subseteq \GL_{2}(\Z_{p})$ case.}
+  \caption[Graded complex dimensions for the $I \subseteq \GL_{2}(\Z_{p})$ case]{Dimensions of $\gr^{j}\bigl( \bigwedge^{n} \lie{g} \bigr)$ for the $I \subseteq \GL_{2}(\Z_{p})$ case.}
   \label{tab:graded-dims-GL2}
   $\begin{NiceArray}{*{8}{c}}[hvlines]
     \diagbox{n}{j} & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
@@ -735,6 +756,9 @@ We collect the above information about the dimensions of the chain complex of $\
   \Hom_{k}\Bigl( \bigwedge^{n}\lie{g}, k \Bigr) = \bigoplus_{s \in \Z} \Hom_{k}^{s}\Bigl( \bigwedge^{n}\lie{g}, k \Bigr),
 \end{equation*}
 we see that, with $j=-s$, we get the same table for dimensions of the graded hom-spaces in the cochain complex.
+
+\subsection{Finding the graded Lie algebra cohomology, \texorpdfstring{$H^{s,t}(\lie{g},k)$}{H(s,t)(g,k)}}%
+\label{subsec:graded-coh-GL2}
 
 We will now go through all different graded chain complexes one by one, using that $\gr^{j}$ in the chain complex corresponds to $\gr^{s}$ with $s = -j$ in the cochain complex. We note that the graded chain complex corresponds to vertical downwards arrows in \Cref{tab:graded-dims-GL2}, while the cochain complex corresponds to vertical upwards arrows. And finally, we reiterate that $H^{n} = H^{n}(\lie{g},k)$ and $H^{s,t} = H^{s,t}(\lie{g},k)$ in the following.
 
@@ -857,7 +881,7 @@ So $\dim H^{-6,10} = 1$ by \Cref{tab:graded-dims-SL2}.
 
 \begin{table}[ht]
   \centering
-  \caption[Graded cohomology dimensions for the $I \subseteq \GL_{2}(\Z_{p})$ case.]{Dimensions of $E_{1}^{s,t} = H^{s,t}(\lie{g},k)$ for the $I \subseteq \GL_{2}(\Z_{p})$ case.}
+  \caption[Graded cohomology dimensions for the $I \subseteq \GL_{2}(\Z_{p})$ case]{Dimensions of $E_{1}^{s,t} = H^{s,t}(\lie{g},k)$ for the $I \subseteq \GL_{2}(\Z_{p})$ case.}
   \label{tab:graded-coh-dims-GL2}
   \renewcommand{\arraystretch}{1.5}
   $\begin{NiceArray}{*{8}{c}}[hvlines, columns-width=auto]
@@ -890,7 +914,10 @@ Altogether, we see that
 \end{equation}
 with dimension as described in \Cref{tab:graded-coh-dims-GL2}.
 
-Now we note that all differentials $d_{r}^{s,t} \colon E_{r}^{s,t} \to E_{r}^{s+r,t+1-r}$ in \Cref{tab:graded-coh-dims-SL2} has bidegree $(r,1-r)$, i.e., they are all below the $(r,-r)$ arrow going $r$ to the left and $r$ up in the table, where $r \geq 1$. Looking at \Cref{tab:graded-coh-dims-GL2}, this clearly means that all differentials for $r \geq 1$ are trivial, and thus the spectral sequence collapses on the first page. Hence $H^{s,t}(\lie{g},k) = E_{1}^{s,t} \iso E_{\infty}^{s,t} = \gr^{s} H^{s+t}(I,k)$, and by \eqref{eq:Hn-to-Hst-GL2} and \Cref{tab:graded-coh-dims-GL2} we get that
+\subsection{Describing the group cohomology, \texorpdfstring{$H^{n}(I,k)$}{Hn(I,k)}}%
+\label{subsec:group-coh-GL2}
+
+We note that all differentials $d_{r}^{s,t} \colon E_{r}^{s,t} \to E_{r}^{s+r,t+1-r}$ in \Cref{tab:graded-coh-dims-SL2} has bidegree $(r,1-r)$, i.e., they are all below the $(r,-r)$ arrow going $r$ to the left and $r$ up in the table, where $r \geq 1$. Looking at \Cref{tab:graded-coh-dims-GL2}, this clearly means that all differentials for $r \geq 1$ are trivial, and thus the spectral sequence collapses on the first page. Hence $H^{s,t}(\lie{g},k) = E_{1}^{s,t} \iso E_{\infty}^{s,t} = \gr^{s} H^{s+t}(I,k)$, and by \eqref{eq:Hn-to-Hst-GL2} and \Cref{tab:graded-coh-dims-GL2} we get that
 \begin{equation}
   \label{eq:dim-HnI-GL2}
   \dim H^{n}(I,k) =
@@ -1038,12 +1065,35 @@ which is only true for $\sigma = (2,3)$. Since $\sign\bigl((2,3)\bigr) = -1$, we
 \end{enumerate}
 which doesn't exist.\dknote{Or did I miss it?} Hence $e_{1,3} \cup e_{4,2} = 0$. Looking at \eqref{eq:Hst-spaces-GL2}, we see that $e_{1,4,2,3}$ it the basis elements of $H^{-6,10}$, so the above calculation caries over to the above cup products in cohomology. Also, since $H^{-3,5} = H^{2}$, we get, by graded commutativity of the cup product, that $e_{4,2} \cup e_{1,3} = 0$ and $e_{4,3} \cup e_{1,2} = (-1)^{2\times2} e_{1,2} \cup e_{4,3} = e_{1,4,2,3}$.
 
+In conclusion, all the non-zero cup products (up to graded commutativity) are:
+\begin{equation}
+  \label{eq:cup-products-GL2}
+  \begin{aligned}
+    e_{1} \cup e_{3} &= e_{1,3}, \\
+    e_{4} \cup e_{3} &= e_{4,3}, \\
+    e_{1} \cup e_{4,2} &= e_{1,4,2}, \\
+    e_{4} \cup e_{1,2} &= -e_{1,4,2}, \\
+    e_{1} \cup e_{4,2,3} &= e_{1,4,2,3}, \\
+    e_{4} \cup e_{1,2,3} &= -e_{1,4,2,3}, \\
+    e_{3} \cup e_{1,2} &= e_{1,2,3}, \\
+    e_{3} \cup e_{4,2} &= e_{4,2,3}, \\
+    e_{3} \cup e_{1,4,2} &= -e_{1,4,2,3}, \\
+    e_{1,2} \cup e_{4,3} &= -e_{1,4,2,3}.
+  \end{aligned}
+\end{equation}
+
 Now, since the spectral sequence collapses on the first page, all of the above work on the cup product of the Lie algebra cohomology transfers to the cup product on $H^{*}(I,k)$ as described above.
 
 \section{\texorpdfstring{$I \subseteq \SL_{3}(\Z_{p})$}{I in SL3(Zp)}}%
 \label{sec:Iwa-SL3}
 
-To make the notation easier to read for the bigger matrices, we will write any zeros as blank space in matrices in this section.
+In this section we will describe the continuous group cohomology of the pro-$p$ Iwahori subgroup $I$ of $\SL_{3}(\Q_{p})$.
+
+When $I$ is the pro-$p$ Iwahori subgroup in $\SL_{3}(\Q_{p})$, we know by \Cref{sec:cohiwagps-intro} that we can take it to be of the form
+\begin{equation*}
+  I = \pmat{1+p\Z_{p} & \Z_{p} & \Z_{p} \\ p\Z_{p} & 1+p\Z_{p} & \Z_{p} \\ p\Z_{p} & p\Z_{p} & 1+p\Z_{p}}^{\!\!\det = 1} \subseteq \SL_{3}(\Z_{p}),
+\end{equation*}
+and, by \Cref{sec:cohiwagps-intro}, we have an ordered basis
 \begin{equation}
   \label{eq:gis-SL3}
   \begin{gathered}
@@ -1052,9 +1102,14 @@ To make the notation easier to read for the bigger matrices, we will write any z
     g_{6} = \pmat{ 1 \\ & 1 & 1 \\ && 1 }, \quad g_{7} = \pmat{ 1 & 1 \\ & 1 \\ && 1 }, \quad g_{8} = \pmat{ 1 && 1 \\ & 1 \\ && 1 }.
   \end{gathered}
 \end{equation}
+Here we write any zeros as blank space in matrices, to make the notation easier to read for the bigger matrices.
 
+\subsection{Finding the commutators \texorpdfstring{$[\xi_{i},\xi_{j}]$}{[xi-i,xi-j]}}%
+\label{subsec:non-id-xi_ij-SL3}
+
+Now
 \begin{equation*}
-    g_{1}^{x_{1}}g_{2}^{x_{2}}g_{3}^{x_{3}}g_{4}^{x_{4}}g_{5}^{x_{5}}g_{6}^{x_{6}}g_{7}^{x_{7}}g_{8}^{x_{8}} = \pmat{ a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33}}
+    g_{1}^{x_{1}}g_{2}^{x_{2}}g_{3}^{x_{3}}g_{4}^{x_{4}}g_{5}^{x_{5}}g_{6}^{x_{6}}g_{7}^{x_{7}}g_{8}^{x_{8}} = \pmat{ a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33}},
 \end{equation*}
 where
 \begin{equation}
@@ -1072,15 +1127,9 @@ where
   \end{aligned}
 \end{equation}
 
+Furthermore, write $g_{ij} = [g_{i},g_{j}]$ and $\xi_{ij} = [\xi_{i},\xi_{j}]$. Then we are ready to find $x_{1},\dotsc,x_{8}$ such that $g_{ij} = g_{1}^{x_{1}} \dotsb g_{8}^{x_{8}}$ for different $i<j$. (In the following we use that $\frac{1}{p-1} = 1 + p + p^{2} + \dotsb$ and $\log(1-p) = -p - \frac{p^{2}}{2} - \frac{p^{3}}{3} - \dotsb$.) Also, except in the first case, we will note that $x_{i} \in p\Z_{p}$ implies that the coefficient on $\xi_{k}$ in $\xi_{ij}$ is zero.
 
-\subsection{\texorpdfstring{Non-identiy $[g_{i},g_{j}]$}{Non-identity [gi,gj]}}%
-\label{subsec:non-id-gij-SL3}
-
-$g_{ij} = [g_{i},g_{j}]$
-
-Except in the first case, we will note that $x_{i} \in p\Z_{p}$ implies that the coefficient on $\xi_{k}$ in $\xi_{ij}$ is zero. \dknote{Introduce $O(p^{k})$ notation.}
-
-Note that we repeatedly use that $-1 = (p-1) + (p-1)p + (p-1)p^{2} + \dotsb$ in $\Z_{p}$ and $-1 = p-1$ in $\F_{p}$.
+We now list all non-identitiy commutators $g_{ij} = [g_{i},g_{j}]$ and find $\xi_{ij} = [\xi_{i},\xi_{j}]$ based on these. (For $g_{ij} = 1_{3}$ it's clear that $x_{1} = \cdots = x_{8} = 0$, and thus $\xi_{ij} = 0$.)
 
 \begin{description}
   \item[$g_{14} = \pmat{1 \\ & 1 \\ p\bigl( 1-\exp(-p) \bigr) && 1}$:] Comparing $g_{14}$ with \eqref{eq:gixi-SL3}, we see that $x_{2} = x_{4} = x_{7} = x_{8} = 0$, and thus also $x_{3} = x_{5} = x_{6} = 0$. This leaves $a_{31} = px_{1} = p\bigl( 1-\exp(-p) \bigr) = p^{2} + O(p^{3})$, which implies that $x_{1} = p + O(p^{2})$. Hence $\sigma(g_{14}) = \pi \act \sigma(g_{1})$, which implies that $\xi_{14} = 0$.
@@ -1162,8 +1211,7 @@ Note that we repeatedly use that $-1 = (p-1) + (p-1)p + (p-1)p^{2} + \dotsb$ in 
   \item[$g_{67} = \pmat{ 1 && -1 \\ & 1 \\ && 1}$:] Comparing $g_{67}$ with \eqref{eq:gixi-SL3}, we see that $x_{1} = x_{2} = x_{4} = x_{7} = 0$, and thus also $x_{3} = x_{5} = x_{6} = 0$. This leaves $a_{13} = x_{8} = -1$. Hence $\sigma(g_{67}) = -\sigma(g_{8})$, which implies that $\xi_{67} = -\xi_{8}$.
 \end{description}
 
-
-The non-zero commutators are:
+Thus the non-zero commutators are:
 \begin{equation}
   \label{eq:xi_ij-SL3}
   \begin{aligned}
@@ -1172,86 +1220,79 @@ The non-zero commutators are:
   \end{aligned}
 \end{equation}
 
-\begin{equation*}
-  \lie{g} = k \otimes_{\F_{p}[\pi]} \gr I = \Span\set{\xi_{1},\dotsc,\xi_{8}} = \lie{g}_{\frac{1}{3}} \oplus \lie{g}_{\frac{2}{3}} \oplus \lie{g}_{1} = \lie{g}^{1} \oplus \lie{g}^{2} \oplus \lie{g}^{3}.
-\end{equation*}
+\subsection{Describing the graded chain complex, \texorpdfstring{$\gr^{j}\bigl(\bigwedge^{n}\lie{g}\bigr)$}{grj(wedge-n g)}}%
+\label{subsec:graded-complex-SL3}
 
-\begin{equation}
-  \label{eq:5}
-  [\lie{g}^{i},\lie{g}^{j}] =
-  \begin{dcases*}
-    \lie{g}^{2} & if $i=j=1$, \\
-    \lie{g}^{3} & if $(i,j)\in \set{(1,2),(2,1)}$, \\
-    0 & otherwise.
-  \end{dcases*}
-\end{equation}
-
+Looking at \eqref{eq:Iwa-p-val-basis-SLn} (with $e=1$ and $h=3$), we see that
+\begin{align*}
+  \omega(g_{1}) &= 1-\frac{2}{3} = \frac{1}{3}, \\
+  \omega(g_{2}) &= 1-\frac{1}{3} = \frac{2}{3}, \\
+  \omega(g_{3}) &= 1-\frac{1}{3} = \frac{2}{3}, \\
+  \omega(g_{4}) &= 1, \\
+  \omega(g_{5}) &= 1, \\
+  \omega(g_{6}) &= \frac{1}{3}, \\
+  \omega(g_{7}) &= \frac{1}{3}, \\
+  \omega(g_{8}) &= \frac{2}{3}.
+\end{align*}
+Hence
 \begin{equation*}
-  \gr^{j}\Bigl( \bigwedge^{n}\lie{g} \Bigr) = \bigoplus_{j_{1} + \dotsb + j_{n} = j} \lie{g}^{j_{1}} \wedge \dotsb \wedge \lie{g}^{j_{n}}.
+  \lie{g} = k \otimes_{\F_{p}[\pi]} \gr I = \Span_{k}(\xi_{1},\dotsc,\xi_{8}) = \lie{g}^{1} \oplus \lie{g}^{2} \oplus \lie{g}^{3},
 \end{equation*}
+where
+\begin{align*}
+  \lie{g}^{1} &= \lie{g}_{\frac{1}{3}} = \Span_{k}(\xi_{1},\xi_{6},\xi_{7}), \\
+  \lie{g}^{2} &= \lie{g}_{\frac{2}{3}} = \Span_{k}(\xi_{2},\xi_{3},\xi_{8}), \\
+  \lie{g}^{3} &= \lie{g}_{1} = \Span_{k}(\xi_{4},\xi_{5}).
+\end{align*}
+See \Cref{rem:g-Z-grading} for more details.
+
+% \begin{equation}
+%   \label{eq:5}
+%   [\lie{g}^{i},\lie{g}^{j}] =
+%   \begin{dcases*}
+%     \lie{g}^{2} & if $i=j=1$, \\
+%     \lie{g}^{3} & if $(i,j)\in \set{(1,2),(2,1)}$, \\
+%     0 & otherwise.
+%   \end{dcases*}
+% \end{equation}
+
+Now we are ready to describe the graded chain complex
+\begin{equation*}
+  \gr^{j}\Bigl( \bigwedge^{n}\lie{g} \Bigr) = \bigoplus_{j_{1} + \dotsb + j_{n} = j} \lie{g}^{j_{1}} \wedge \dotsb \wedge \lie{g}^{j_{n}},
+\end{equation*}
+but we will skip the description of the bases this time. For a description of the basis, we refer to the supplemental files of \cite{code}. We list the grading of $\bigwedge^{n}\lie{g}$ for all $n$.
 
 \begin{description}
-  \item[$n\geq9:$]
+  \item[$n=0:$]
         \begin{equation*}
-          \gr^{j}\Bigl( \bigwedge^{n}\lie{g} \Bigr) = 0 \text{ for all } j.
-        \end{equation*}
-  \item[$n=8:$]
-        \begin{equation*}
-          \gr^{j}\Bigl( \bigwedge^{8}\lie{g} \Bigr) =
+          \gr^{j}(k) =
           \begin{dcases}
-            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3} & j=15, \\
+            k & j=0, \\
+            0 & \text{otherwise.}
+          \end{dcases}
+        \end{equation*}
+
+   \item[$n=1:$]
+        \begin{equation*}
+          \gr^{j}(\lie{g}) =
+          \begin{dcases}
+            \lie{g}^{3} & j=3, \\
+            \lie{g}^{2} & j=2, \\
+            \lie{g}^{1} & j=1, \\
+            0          & \text{otherwise.}
+          \end{dcases}
+        \end{equation*}
+
+  \item[$n=2:$]
+        \begin{equation*}
+          \gr^{j}\Bigl( \bigwedge^{2}\lie{g} \Bigr) =
+          \begin{dcases}
+            \lie{g}^{3} \wedge \lie{g}^{3} & j=6,                                                                             \\
+            \lie{g}^{2} \wedge \lie{g}^{3} & j=5,                                                                             \\
+            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{2} \wedge \lie{g}^{2} \end{aligned} & j=4, \\
+            \lie{g}^{1} \wedge \lie{g}^{2}                                                                             & j=3, \\
+            \lie{g}^{1} \wedge \lie{g}^{1}                                                                             & j=2, \\
             0                                                                                                         & \text{otherwise.}
-          \end{dcases}
-        \end{equation*}
-  \item[$n=7:$]
-        \begin{equation*}
-          \gr^{j}\Bigl( \bigwedge^{7}\lie{g} \Bigr) =
-          \begin{dcases}
-            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3}                    & j=14, \\
-            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3}                    & j=13, \\
-            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3}                    & j=12, \\
-            0                                                                                                               & \text{otherwise.}
-          \end{dcases}
-        \end{equation*}
-
-  \item[$n=6:$]
-        \begin{equation*}
-          \gr^{j}\Bigl( \bigwedge^{6}\lie{g} \Bigr) =
-          \begin{dcases}
-            \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3} & j=13,                                                                                                                   \\
-            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3}                                                                                                                   & j=12, \\
-            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \end{aligned} & j=11, \\
-            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3}                                                                                                                   & j=10, \\
-            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2}                                                                                                                   & j=9,  \\
-            0                                                                                                                                                                                                & \text{otherwise.}
-          \end{dcases}
-        \end{equation*}
-
-  \item[$n=5:$]
-        \begin{equation*}
-          \gr^{j}\Bigl( \bigwedge^{5}\lie{g} \Bigr) =
-          \begin{dcases}
-            \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3} & j=12,                                                                                                                   \\
-            \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3} & j=11, \\
-            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \end{aligned} & j=10, \\
-            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{3} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \end{aligned} & j=9, \\
-            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \end{aligned} & j=8, \\
-            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2}                                                                                                                  & j=7, \\
-            0                                                                                                                                                                                                      & \text{otherwise.}
-          \end{dcases}
-        \end{equation*}
-
-  \item[$n=4:$]
-        \begin{equation*}
-          \gr^{j}\Bigl( \bigwedge^{4}\lie{g} \Bigr) =
-          \begin{dcases}
-            \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3} & j=10,                                                                                                                   \\
-            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \end{aligned} & j=9, \\
-            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{3} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \end{aligned} & j=8, \\
-            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \end{aligned} & j=7, \\
-            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \end{aligned} & j=6, \\
-            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2}                                                                                                                  & j=5, \\
-            0                                                                                                                                                                                   & \text{otherwise.}
           \end{dcases}
         \end{equation*}
 
@@ -1269,43 +1310,78 @@ The non-zero commutators are:
           \end{dcases}
         \end{equation*}
 
-  \item[$n=2:$]
+  \item[$n=4:$]
         \begin{equation*}
-          \gr^{j}\Bigl( \bigwedge^{2}\lie{g} \Bigr) =
+          \gr^{j}\Bigl( \bigwedge^{4}\lie{g} \Bigr) =
           \begin{dcases}
-            \lie{g}^{3} \wedge \lie{g}^{3} & j=6,                                                                             \\
-            \lie{g}^{2} \wedge \lie{g}^{3} & j=5,                                                                             \\
-            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{2} \wedge \lie{g}^{2} \end{aligned} & j=4, \\
-            \lie{g}^{1} \wedge \lie{g}^{2}                                                                             & j=3, \\
-            \lie{g}^{1} \wedge \lie{g}^{1}                                                                             & j=2, \\
+            \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3} & j=10,                                                                                                                   \\
+            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \end{aligned} & j=9, \\
+            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{3} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \end{aligned} & j=8, \\
+            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \end{aligned} & j=7, \\
+            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \end{aligned} & j=6, \\
+            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2}                                                                                                                  & j=5, \\
+            0                                                                                                                                                                                   & \text{otherwise.}
+          \end{dcases}
+        \end{equation*}
+
+  \item[$n=5:$]
+        \begin{equation*}
+          \gr^{j}\Bigl( \bigwedge^{5}\lie{g} \Bigr) =
+          \begin{dcases}
+            \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3} & j=12,                                                                                                                   \\
+            \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3} & j=11, \\
+            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \end{aligned} & j=10, \\
+            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{3} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \end{aligned} & j=9, \\
+            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \end{aligned} & j=8, \\
+            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2}                                                                                                                  & j=7, \\
+            0                                                                                                                                                                                                      & \text{otherwise.}
+          \end{dcases}
+        \end{equation*}
+
+
+  \item[$n=6:$]
+        \begin{equation*}
+          \gr^{j}\Bigl( \bigwedge^{6}\lie{g} \Bigr) =
+          \begin{dcases}
+            \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3} & j=13,                                                                                                                   \\
+            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3}                                                                                                                   & j=12, \\
+            \!\begin{aligned} & \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3} \\ & \oplus \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \end{aligned} & j=11, \\
+            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3}                                                                                                                   & j=10, \\
+            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2}                                                                                                                   & j=9,  \\
+            0                                                                                                                                                                                                & \text{otherwise.}
+          \end{dcases}
+        \end{equation*}
+
+
+  \item[$n=7:$]
+        \begin{equation*}
+          \gr^{j}\Bigl( \bigwedge^{7}\lie{g} \Bigr) =
+          \begin{dcases}
+            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3}                    & j=14, \\
+            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3}                    & j=13, \\
+            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3}                    & j=12, \\
+            0                                                                                                               & \text{otherwise.}
+          \end{dcases}
+        \end{equation*}
+
+  \item[$n=8:$]
+        \begin{equation*}
+          \gr^{j}\Bigl( \bigwedge^{8}\lie{g} \Bigr) =
+          \begin{dcases}
+            \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3} & j=15, \\
             0                                                                                                         & \text{otherwise.}
           \end{dcases}
         \end{equation*}
 
-  \item[$n=1:$]
+   \item[$n\geq9:$]
         \begin{equation*}
-          \gr^{j}(\lie{g}) =
-          \begin{dcases}
-            \lie{g}^{3} & j=3, \\
-            \lie{g}^{2} & j=2, \\
-            \lie{g}^{1} & j=1, \\
-            0          & \text{otherwise.}
-          \end{dcases}
-        \end{equation*}
-
-  \item[$n=0:$]
-        \begin{equation*}
-          \gr^{j}(k) =
-          \begin{dcases}
-            k & j=0, \\
-            0 & \text{otherwise.}
-          \end{dcases}
+          \gr^{j}\Bigl( \bigwedge^{n}\lie{g} \Bigr) = 0 \text{ for all } j.
         \end{equation*}
 \end{description}
 
 \begin{table}[ht]
   \centering
-  \caption[Graded complex dimensions for $I \subseteq \SL_{3}(\Z_{p})$]{Dimensions of $\gr^{j}\bigl( \bigwedge^{n} \lie{g} \bigr)$.}
+  \caption[Graded complex dimensions for the $I \subseteq \SL_{3}(\Z_{p})$ case]{Dimensions of $\gr^{j}\bigl( \bigwedge^{n} \lie{g} \bigr)$.}
   \label{tab:graded-dims-SL3}
   $\begin{NiceArray}{*{17}{c}}[hvlines]
     \diagbox{n}{j} & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 \\
@@ -1321,105 +1397,105 @@ The non-zero commutators are:
   \end{NiceArray}$
 \end{table}
 
+We collect the above information about the dimensions of the chain complex of $\lie{g}$ in \Cref{tab:graded-dims-SL3}, and note that we only need to consider non-zero (non-empty) entries of the table, when we calculate  $H^{s,t} = H^{s,n-s}$ (where $H^{s,t} = H^{s,t}(\lie{g},k)$). Also, recalling that
 \begin{equation*}
-  \Hom_{k}\Bigl( \bigwedge^{n}\lie{g}, k \Bigr) = \bigoplus_{s \in \Z} \Hom_{k}^{s}\Bigl( \bigwedge^{n}\lie{g}, k \Bigr)
+  \Hom_{k}\Bigl( \bigwedge^{n}\lie{g}, k \Bigr) = \bigoplus_{s \in \Z} \Hom_{k}^{s}\Bigl( \bigwedge^{n}\lie{g}, k \Bigr),
 \end{equation*}
+we see that, with $j=-s$, we get the same table for dimensions of the graded hom-spaces in the cochain complex.
 
-With $j=-s$, we get the same table for dimensions of the graded hom-spaces.
+\subsection{Finding the graded Lie algebra cohomology, \texorpdfstring{$H^{s,t}(\lie{g},k)$}{H(s,t)(g,k)}}%
+\label{subsec:graded-coh-SL3}
 
-Note that when finding cohomology, we only need to consider $H^{s,t} = H^{s,n-s}$ for the non-zero entries of \Cref{tab:graded-dims-SL3}.
+We will now go through all different graded chain complexes one by one, using that $\gr^{j}$ in the chain complex corresponds to $\gr^{s}$ with $s = -j$ in the cochain complex. We note that the graded chain complex corresponds to vertical downwards arrows in \Cref{tab:graded-dims-SL3}, while the cochain complex corresponds to vertical upwards arrows. And finally, we reiterate that $H^{n} = H^{n}(\lie{g},k)$ and $H^{s,t} = H^{s,t}(\lie{g},k)$ in the following.
 
-We repeatedly use that, if
-\begin{equation*}
-  d \snfsim \SNF_{n \times m}(a_{1},\dotsc,a_{r},0,\dotsc,0)
-\end{equation*}
-with $a_{1},\dotsc,a_{r}$ non-zero (in $\F_{p}$), then
-\begin{align*}
-  \dim \kernel(d) &= m-r, \\
-  \dim \image(d) &= r, \\
-  \dim \coker(d) &= n-r.
-\end{align*}
+\begin{remark}
+  We will repeatedly use that, if
+  \begin{equation*}
+    d \snfsim \SNF_{n \times m}(a_{1},\dotsc,a_{r},0,\dotsc,0)
+  \end{equation*}
+  with $a_{1},\dotsc,a_{r}$ non-zero (in $\F_{p}$), then
+  \begin{align*}
+    \dim \kernel(d) &= m-r, \\
+    \dim \image(d) &= r, \\
+    \dim \coker(d) &= n-r,
+  \end{align*}
+  as described in \Cref{subsec:SNF-coh}.
+\end{remark}
 
-$\gr^{0}:$
+In grade $0$ we have the chain complex
 \[
   \begin{tikzcd}
     0 \ar[r] & k \ar[r] & 0
   \end{tikzcd}
 \]
-
-
-
+which gives us the grade $0$ cochain complex
 \[
   \begin{tikzcd}
     0 & \ar[l] \Hom_{k}^{0}(k,k) & \ar[l] 0
   \end{tikzcd}
 \]
-
 So $H^{0} = H^{0,0}$ with $\dim H^{0,0} = 1$.
 
-$\gr^{1}:$
+In grade $1$ we have the chain complex
 \[
   \begin{tikzcd}
     0 \ar[r] & \lie{g}^{1} \ar[r] & 0
   \end{tikzcd}
 \]
-
+which gives us the grade $-1$ cochain complex
 \[
   \begin{tikzcd}
     0 & \ar[l] \Hom_{k}^{-1}(\lie{g},k) & \ar[l] 0
   \end{tikzcd}
 \]
-
 So $\dim H^{-1,2} = 3$ by \Cref{tab:graded-dims-SL3}.
 
-$\gr^{2}:$
+In grade $2$ we have the chain complex
 \[
   \begin{tikzcd}[ampersand replacement=\&]
     0 \ar[r] \& \lie{g}^{1} \wedge \lie{g}^{1} \ar[r, "{\begin{pmatrix} 1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 1 \end{pmatrix}}" {yshift=7pt}] \& \lie{g}^{2} \ar[r] \& 0
   \end{tikzcd}
 \]
-
+since
 \begin{align*}
   \lie{g}^{1} \wedge \lie{g}^{1} &\to \lie{g}^{2} \\
   \xi_{1} \wedge \xi_{6} &\mapsto -[\xi_{1},\xi_{6}] = \xi_{2} \\
   \xi_{1} \wedge \xi_{7} &\mapsto -[\xi_{1},\xi_{7}] = -\xi_{3} \\
   \xi_{6} \wedge \xi_{7} &\mapsto -[\xi_{6},\xi_{7}] = \xi_{8}.
 \end{align*}
-
+This gives us the grade $-2$ cochain complex
 \[
   \begin{tikzcd}[ampersand replacement=\&]
-    0 \& \ar[l] \Hom_{k}^{-2}\bigl( \bigwedge^{2} \lie{g}, k \bigr) \& \ar[l, "{\begin{pmatrix} 1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 1 \end{pmatrix}}"' {yshift=7pt}] \Hom_{k}^{-2}(\lie{g},k) \& \ar[l] 0
+    0 \& \ar[l] \Hom_{k}^{-2}\bigl( \bigwedge^{2} \lie{g}, k \bigr) \& \ar[l, "{\begin{pmatrix} 1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 1 \end{pmatrix}}"' {yshift=7pt}] \Hom_{k}^{-2}(\lie{g},k) \& \ar[l] 0,
   \end{tikzcd}
 \]
-
+where
 \begin{equation*}
   d = \pmat{1&0&0 \\ 0&-1&0 \\ 0&0&1} \snfsim  \SNF_{3\times3}(1,1,1).
 \end{equation*}
-
 So
 \begin{align*}
   \dim H^{-2,3} &= \dim \kernel(d) = 0, \\
   \dim H^{-2,4} &= \dim \coker(d) = 0.
 \end{align*}
 
-$\gr^{3}:$
+In grade $3$ we have the chain complex
 \[
   \begin{tikzcd}[ampersand replacement=\&, column sep=4em]
     0 \ar[r] \& \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \ar[r, "{\begin{pmatrix} 0 & 0 & -1 & 0 & -1 & 0 & -1 & 0 & 0 \end{pmatrix}^{\top}}" {yshift=7pt}] \& \lie{g}^{1} \wedge \lie{g}^{2} \ar[r, "{\begin{pmatrix} 0 & 0 & 1 & 0 & 0 & 0 & -1 & 0 & 0 \\ 0 & 0 & 1 & 0 & -1 & 0 & 0 & 0 & 0 \end{pmatrix}}"' {yshift=-7pt}] \& \lie{g}^{3} \ar[r] \& 0
   \end{tikzcd}
 \]
-
+which gives us the grade $-3$ cochain complex
 \[
   \begin{tikzcd}[ampersand replacement=\&, column sep=1em]
-    0 \& \ar[l] \Hom_{k}^{-3}\bigl( \bigwedge^{3}\lie{g}, k \bigr) \& \ar[l, "{\begin{pmatrix} 0 & 0 & -1 & 0 & -1 & 0 & -1 & 0 & 0 \end{pmatrix}}"' {yshift=7pt}] \Hom_{k}^{-3}\bigl( \bigwedge^{2}\lie{g}, k \bigr) \& \ar[l, "{\begin{pmatrix} 0 & 0 & 1 & 0 & 0 & 0 & -1 & 0 & 0 \\ 0 & 0 & 1 & 0 & -1 & 0 & 0 & 0 & 0 \end{pmatrix}^{\top}}" {yshift=-7pt}] \Hom_{k}^{-3}(\lie{g}, k) \& \ar[l] 0
+    0 \& \ar[l] \Hom_{k}^{-3}\bigl( \bigwedge^{3}\lie{g}, k \bigr) \& \ar[l, "{\begin{pmatrix} 0 & 0 & -1 & 0 & -1 & 0 & -1 & 0 & 0 \end{pmatrix}}"' {yshift=7pt}] \Hom_{k}^{-3}\bigl( \bigwedge^{2}\lie{g}, k \bigr) \& \ar[l, "{\begin{pmatrix} 0 & 0 & 1 & 0 & 0 & 0 & -1 & 0 & 0 \\ 0 & 0 & 1 & 0 & -1 & 0 & 0 & 0 & 0 \end{pmatrix}^{\top}}" {yshift=-7pt}] \Hom_{k}^{-3}(\lie{g}, k) \& \ar[l] 0,
   \end{tikzcd}
 \]
-
+where
 \begin{align*}
   d_{1} = \pmat{0&0 \\ 0&0 \\ 1&1 \\ 0&0 \\ 0&-1 \\ 0&0 \\ 0&-1 \\ 0&0 \\ 0&0} &\snfsim \SNF_{9\times2}(1,1), \\
   d_{2} = \pmat{0&0&-1&0&-1&0&-1&0&0} &\snfsim \SNF_{1\times9}(1).
 \end{align*}
-
 So
 \begin{align*}
   \dim H^{-3,4} &= \dim \kernel(d_{1}) = 2-2 = 0, \\
@@ -1427,47 +1503,45 @@ So
   \dim H^{-3,6} &= \dim \coker(d_{2}) = 1 - 1 = 0.
 \end{align*}
 
-$\gr^{4}:$
+In grade $4$ we have the chain complex
 \[
   \begin{tikzcd}[ampersand replacement=\&]
     0 \ar[r] \& \lie{g}^{1} \wedge \wedge \lie{g}^{1} \wedge \lie{g}^{2} \ar[r,"d^{\top}"] \& \begin{aligned} &\lie{g}^{1} \wedge \lie{g}^{3} \\ &\oplus \lie{g}^{2} \wedge \lie{g}^{2} \end{aligned} \ar[r] \& 0
   \end{tikzcd}
 \]
-
+which gives us the grade $-4$ cochain complex
 \[
   \begin{tikzcd}
     0 & \ar[l] \Hom_{k}^{-4}\bigl( \bigwedge^{3}\lie{g}, k \bigr) & \ar[l,"d"'] \Hom_{k}^{-4}\bigl( \bigwedge^{2}\lie{g}, k \bigr) &  \ar[l] 0
   \end{tikzcd}
 \]
-
+where
 \begin{equation*}
-  d \snfsim \SNF_{9\times9}(1,1,1,1,1,1,0,0,0)
+  d \snfsim \SNF_{9\times9}(1,1,1,1,1,1,0,0,0).
 \end{equation*}
-
 So
 \begin{align*}
   \dim H^{-4,6} &= \dim \kernel(d) = 9-6 = 3, \\
   \dim H^{-4,7} &= \dim \coker(d) = 9-6 = 3.
 \end{align*}
 
-$\gr^{5}:$
+In grade $5$ we have the chain complex
 \[
   \begin{tikzcd}[ampersand replacement=\&]
     0 \ar[r] \& \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \ar[r,"d_{2}^{\top}"] \& \begin{aligned} &\lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{3} \\ &\oplus \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \end{aligned} \ar[r,"d_{1}^{\top}"] \& \lie{g}^{2} \wedge \lie{g}^{3} \ar[r] \& 0
   \end{tikzcd}
 \]
-
+which gives us the grade $-5$ cochain complex
 \[
   \begin{tikzcd}[column sep=1em]
-    0 & \ar[l] \Hom_{k}^{-5}\bigl( \bigwedge^{4}\lie{g}, k \bigr) & \ar[l,"d_{2}"' {yshift=2pt}] \Hom_{k}^{-5}\bigl( \bigwedge^{3}\lie{g}, k \bigr) & \ar[l,"d_{1}"' {yshift=2pt}] \Hom_{k}^{-5}\bigl( \bigwedge^{2}\lie{g}, k \bigr) & \ar[l] 0
+    0 & \ar[l] \Hom_{k}^{-5}\bigl( \bigwedge^{4}\lie{g}, k \bigr) & \ar[l,"d_{2}"' {yshift=2pt}] \Hom_{k}^{-5}\bigl( \bigwedge^{3}\lie{g}, k \bigr) & \ar[l,"d_{1}"' {yshift=2pt}] \Hom_{k}^{-5}\bigl( \bigwedge^{2}\lie{g}, k \bigr) & \ar[l] 0,
   \end{tikzcd}
 \]
-
+where
 \begin{align*}
   d_{1} &\snfsim \SNF_{15\times6}(1,1,1,1,1,1), \\
   d_{2} &\snfsim \SNF_{3\times15}(1,1,1).
 \end{align*}
-
 So
 \begin{align*}
   \dim H^{-5,7} &= \dim \kernel(d_{1}) = 6-6 = 0, \\
@@ -1475,24 +1549,23 @@ So
   \dim H^{-5,9} &= \dim \coker(d_{2}) = 3 - 3 = 0.
 \end{align*}
 
-$\gr^{6}:$
+In grade $6$ we have the chain complex
 \[
   \begin{tikzcd}[ampersand replacement=\&]
     0 \ar[r] \& \begin{aligned} &\lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{3} \\ &\oplus \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \end{aligned} \ar[r,"d_{2}^{\top}"] \& \begin{aligned} &\lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \\ &\oplus \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \end{aligned} \ar[r,"d_{1}^{\top}"] \& \lie{g}^{3} \wedge \lie{g}^{3} \ar[r] \& 0
   \end{tikzcd}
 \]
-
+which gives us the grade $-6$ cochain complex
 \[
   \begin{tikzcd}[column sep=1em]
-    0 & \ar[l] \Hom_{k}^{-6}\bigl( \bigwedge^{4}\lie{g}, k \bigr) & \ar[l,"d_{2}"' {yshift=2pt}] \Hom_{k}^{-6}\bigl( \bigwedge^{3}\lie{g}, k \bigr) & \ar[l,"d_{1}"' {yshift=2pt}] \Hom_{k}^{-6}\bigl( \bigwedge^{2}\lie{g}, k \bigr) & \ar[l] 0
+    0 & \ar[l] \Hom_{k}^{-6}\bigl( \bigwedge^{4}\lie{g}, k \bigr) & \ar[l,"d_{2}"' {yshift=2pt}] \Hom_{k}^{-6}\bigl( \bigwedge^{3}\lie{g}, k \bigr) & \ar[l,"d_{1}"' {yshift=2pt}] \Hom_{k}^{-6}\bigl( \bigwedge^{2}\lie{g}, k \bigr) & \ar[l] 0,
   \end{tikzcd}
 \]
-
+where
 \begin{align*}
   d_{1} &\snfsim \SNF_{19\times1}(1), \\
   d_{2} &\snfsim \SNF_{11\times19}(1,1,1,1,1,1,1,1,1,1,2).
 \end{align*}
-
 So
 \begin{align*}
   \dim H^{-6,8} &= \dim \kernel(d_{1}) = 1-1 = 0, \\
@@ -1500,24 +1573,23 @@ So
   \dim H^{-6,10} &= \dim \coker(d_{2}) = 11 - 11 = 0.
 \end{align*}
 
-$\gr^{7}:$
+In grade $7$ we have the chain complex
 \[
   \begin{tikzcd}[ampersand replacement=\&, column sep=1em]
     0 \ar[r] \& \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \ar[r,"d_{2}^{\top}" {yshift=2pt}] \& \begin{aligned} &\lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \\ &\oplus \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \end{aligned} \ar[r,"d_{1}^{\top}" {yshift=2pt}] \& \begin{aligned} &\lie{g}^{1} \wedge \lie{g}^{3} \wedge \lie{g}^{3} \\ &\oplus \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \end{aligned}\ar[r] \& 0
   \end{tikzcd}
 \]
-
+which gives us the grade $-7$ cochain complex
 \[
   \begin{tikzcd}[column sep=1em]
-    0 & \ar[l] \Hom_{k}^{-7}\bigl( \bigwedge^{5}\lie{g}, k \bigr) & \ar[l,"d_{2}"' {yshift=2pt}] \Hom_{k}^{-7}\bigl( \bigwedge^{4}\lie{g}, k \bigr) & \ar[l,"d_{1}"' {yshift=2pt}] \Hom_{k}^{-7}\bigl( \bigwedge^{3}\lie{g}, k \bigr) & \ar[l] 0
+    0 & \ar[l] \Hom_{k}^{-7}\bigl( \bigwedge^{5}\lie{g}, k \bigr) & \ar[l,"d_{2}"' {yshift=2pt}] \Hom_{k}^{-7}\bigl( \bigwedge^{4}\lie{g}, k \bigr) & \ar[l,"d_{1}"' {yshift=2pt}] \Hom_{k}^{-7}\bigl( \bigwedge^{3}\lie{g}, k \bigr) & \ar[l] 0,
   \end{tikzcd}
 \]
-
+where
 \begin{align*}
   d_{1} &\snfsim \SNF_{21\times9}(1,1,1,1,1,1,1,1,1), \\
   d_{2} &\snfsim \SNF_{3\times21}(1,1,1).
 \end{align*}
-
 So
 \begin{align*}
   \dim H^{-7,10} &= \dim \kernel(d_{1}) = 9-9 = 0, \\
@@ -1525,15 +1597,13 @@ So
   \dim H^{-7,12} &= \dim \coker(d_{2}) = 3 - 3 = 0.
 \end{align*}
 
-The following calculations are not necessary, since we can get the results using a version of Poincaré duality for Lie algebra cohomology, but we keep the sketch work to make it clear that nothing goes wrong.
+By \cite[§3.6 and §3.7]{Fuks}, we can now find the rest of the cohomology using a version of Poincaré duality for Lie algebra cohomology. But we keep the sketch work to make it clear that nothing goes wrong. We refer to \cite{code} for the calculations.
 
-$\gr^{8}:$
-
+In grade $-8$ we get coboundary maps
 \begin{align*}
   d_{1} &\snfsim \SNF_{21\times3}(1,1,1), \\
   d_{2} &\snfsim \SNF_{9\times21}(1,1,1,1,1,1,1,1,1).
 \end{align*}
-
 So
 \begin{align*}
   \dim H^{-8,11} &= \dim \kernel(d_{1}) = 3-3 = 0, \\
@@ -1542,13 +1612,11 @@ So
 \end{align*}
 
 
-$\gr^{9}:$
-
+In grade $-9$ we get coboundary maps
 \begin{align*}
   d_{1} &\snfsim \SNF_{19\times11}(1,1,1,1,1,1,1,1,1,1,1), \\
   d_{2} &\snfsim \SNF_{1\times19}(1).
 \end{align*}
-
 So
 \begin{align*}
   \dim H^{-9,13} &= \dim \kernel(d_{1}) = 11-11 = 0, \\
@@ -1556,13 +1624,11 @@ So
   \dim H^{-9,15} &= \dim \coker(d_{2}) = 1 - 1 = 0.
 \end{align*}
 
-$\gr^{10}:$
-
+In grade $-10$ we get coboundary maps
 \begin{align*}
   d_{1} &\snfsim \SNF_{15\times3}(1,1,1), \\
   d_{2} &\snfsim \SNF_{6\times15}(1,1,1,1,1,1).
 \end{align*}
-
 So
 \begin{align*}
   \dim H^{-10,14} &= \dim \kernel(d_{1}) = 3-3 = 0, \\
@@ -1570,25 +1636,21 @@ So
   \dim H^{-10,16} &= \dim \coker(d_{2}) = 6-6 = 0.
 \end{align*}
 
-$\gr^{11}:$
-
+In grade $-11$ we get coboundary maps
 \begin{equation*}
   d \snfsim \SNF_{9\times9}(1,1,1,1,1,1,0,0,0).
 \end{equation*}
-
 So
 \begin{align*}
   \dim H^{-11,16} &= \dim \kernel(d) = 9-6 = 3, \\
   \dim H^{-11,17} &= \dim \coker(d) = 9-6 = 3.
 \end{align*}
 
-$\gr^{12}:$
-
+In grade $-12$ we get coboundary maps
 \begin{align*}
   d_{1} &\snfsim \SNF_{9\times1}(1), \\
   d_{2} &\snfsim \SNF_{2\times9}(1,1).
 \end{align*}
-
 So
 \begin{align*}
   \dim H^{-12,17} &= \dim \kernel(d_{1}) = 1-1 = 0, \\
@@ -1596,110 +1658,123 @@ So
   \dim H^{-12,19} &= \dim \coker(d_{2}) = 2-2 = 0.
 \end{align*}
 
-$\gr^{13}:$
-
+In grade $-13$ we get coboundary maps
 \begin{equation*}
   d \snfsim \SNF_{3\times3}(1,1,1).
 \end{equation*}
-
 So
 \begin{align*}
   \dim H^{-13,19} &= \dim \kernel(d) = 3-3 = 0, \\
   \dim H^{-13,20} &= \dim \coker(d) = 3-3 = 0.
 \end{align*}
 
-$\gr^{14}:$
+In grade $14$ we have the chain complex
 \[
   \begin{tikzcd}
     0 \ar[r] & \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3}  \ar[r] & 0
   \end{tikzcd}
 \]
-
+which gives us the grade $-14$ cochain complex
 \[
   \begin{tikzcd}
     0 & \ar[l] \Hom_{k}^{-14}\bigl( \bigwedge^{7}\lie{g},k \bigr) & \ar[l] 0
   \end{tikzcd}
 \]
-
 So $\dim H^{-14,21} = 3$ by \Cref{tab:graded-dims-SL3}.
 
-$\gr^{15}:$
+In grade $15$ we have the chain complex
 \[
   \begin{tikzcd}
     0 \ar[r] & \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{2} \wedge \lie{g}^{3} \wedge \lie{g}^{3}  \ar[r] & 0
   \end{tikzcd}
 \]
-
+which gives us the grade $-15$ cochain complex
 \[
   \begin{tikzcd}
     0 & \ar[l] \Hom_{k}^{-15}\bigl( \bigwedge^{8}\lie{g},k \bigr) & \ar[l] 0
   \end{tikzcd}
 \]
-
 So $H^{8} = H^{-15,23}$ with $\dim H^{-15,23} = 1$ by \Cref{tab:graded-dims-SL3}.
 
-Altogether:
-\begin{align*}
-  H^{0} &= H^{0,0}, \\
-  H^{1} &= H^{-1,2}, \\
-  H^{2} &= H^{-3,5} \oplus H^{-4,6}, \\
-  H^{3} &= H^{-4,7} \oplus H^{-5,8} \oplus H^{-6,9}, \\
-  H^{4} &= H^{-7,11} \oplus H^{-8,12}, \\
-  H^{5} &= H^{-9,14} \oplus H^{-10,15} \oplus H^{-11,16}, \\
-  H^{6} &= H^{-11,17} \oplus H^{-12,18}, \\
-  H^{7} &= H^{-14,21}, \\
-  H^{8} &= H^{-15,23}
-\end{align*}
-and we have the following table:
 \begin{table}[ht]
   \centering
-  \scalebox{0.8}{%
-  $\begin{NiceArray}{*{17}{c}}[hvlines]
-    \diagbox{t}{s} & 0 & -1 & -2 & -3 & -4 & -5 & -6 & -7 & -8 & -9 & -10 & -11 & -12 & -13 & -14 & -15 \\
-    0 & 1\\
-    1 \\
-    2 && 3 \\
-    3 \\
-    4 \\
-    5 &&&& 6\\
-    6 &&&&& 3 \\
-    7 &&&&& 3\\
-    8 &&&&&& 6\\
-    9 &&&&&&& 7\\
-    10 \\
-    11 &&&&&&&& 9 \\
-    12 &&&&&&&&& 9 \\
-    13 \\
-    14 &&&&&&&&&& 7 \\
-    15 &&&&&&&&&&& 6 \\
-    16 &&&&&&&&&&&& 3 \\
-    17 &&&&&&&&&&&& 3 \\
-    18 &&&&&&&&&&&&& 6 \\
-    19 \\
-    20 \\
-    21 &&&&&&&&&&&&&&& 3 \\
-    22 \\
-    23 &&&&&&&&&&&&&&&& 1
-  \end{NiceArray}$%
-  }
-  \caption[Graded cohomology dimensions for $I \subseteq \SL_{3}(\Z_{p})$]{Dimensions of $E_{1}^{s,t} = H^{s,t} = \gr^{s} H^{s+t}(\lie{g},k)$.}
+  \caption[Graded cohomology dimensions for the $I \subseteq \SL_{3}(\Z_{p})$ case]{Dimensions of $E_{1}^{s,t} = H^{s,t} = \gr^{s} H^{s+t}(\lie{g},k)$ for the $I \subseteq \SL_{3}(\Z_{p})$ case.}
   \label{tab:graded-coh-dims-SL3}
+  \renewcommand{\arraystretch}{1.5}
+  \scalebox{0.7}{%
+    $\begin{NiceArray}{*{17}{c}}[hvlines, columns-width=auto]
+      \diagbox{t}{s} & 0 & -1 & -2 & -3 & -4 & -5 & -6 & -7 & -8 & -9 & -10 & -11 & -12 & -13 & -14 & -15 \\
+      0 & 1\\
+      1 \\
+      2 && 3 \\
+      3 \\
+      4 \\
+      5 &&&& 6\\
+      6 &&&&& 3 \\
+      7 &&&&& 3\\
+      8 &&&&&& 6\\
+      9 &&&&&&& 7\\
+      10 \\
+      11 &&&&&&&& 9 \\
+      12 &&&&&&&&& 9 \\
+      13 \\
+      14 &&&&&&&&&& 7 \\
+      15 &&&&&&&&&&& 6 \\
+      16 &&&&&&&&&&&& 3 \\
+      17 &&&&&&&&&&&& 3 \\
+      18 &&&&&&&&&&&&& 6 \\
+      19 \\
+      20 \\
+      21 &&&&&&&&&&&&&&& 3 \\
+      22 \\
+      23 &&&&&&&&&&&&&&&& 1
+    \end{NiceArray}$%
+  }
+  \renewcommand{\arraystretch}{1}
 \end{table}
-Thus
-\begin{equation*}
-  \dim H^{i} =
+
+Altogether, we see that
+\begin{equation}
+  \label{eq:Hn-to-Hst-SL3}
+  \begin{aligned}
+    H^{0} &= H^{0,0}, \\
+    H^{1} &= H^{-1,2}, \\
+    H^{2} &= H^{-3,5} \oplus H^{-4,6}, \\
+    H^{3} &= H^{-4,7} \oplus H^{-5,8} \oplus H^{-6,9}, \\
+    H^{4} &= H^{-7,11} \oplus H^{-8,12}, \\
+    H^{5} &= H^{-9,14} \oplus H^{-10,15} \oplus H^{-11,16}, \\
+    H^{6} &= H^{-11,17} \oplus H^{-12,18}, \\
+    H^{7} &= H^{-14,21}, \\
+    H^{8} &= H^{-15,23}
+  \end{aligned}
+\end{equation}
+with dimension as described in \Cref{tab:graded-coh-dims-SL3}.
+
+\subsection{Describing the group cohomology, \texorpdfstring{$H^{n}(I,k)$}{Hn(I,k)}}%
+\label{subsec:group-coh-SL3}
+
+We note that all differentials $d_{r}^{s,t} \colon E_{r}^{s,t} \to E_{r}^{s+r,t+1-r}$ in \Cref{tab:graded-coh-dims-SL3} has bidegree $(r,1-r)$, i.e., they are all below the $(r,-r)$ arrow going $r$ to the left and $r$ up in the table, where $r \geq 1$. Looking at \Cref{tab:graded-coh-dims-SL3}, this clearly means that all differentials for $r \geq 1$ are trivial, and thus the spectral sequence collapses on the first page. Hence $H^{s,t}(\lie{g},k) = E_{1}^{s,t} \iso E_{\infty}^{s,t} = \gr^{s} H^{s+t}(I,k)$, and by \eqref{eq:Hn-to-Hst-SL3} and \Cref{tab:graded-coh-dims-SL3} we get that
+\begin{equation}
+  \label{eq:dim-HnI-SL3}
+  \dim H^{n}(I,k) =
   \begin{dcases}
-    1 & i=0, \\
-    3 & i=1, \\
-    9 & i=2, \\
-    16 & i=3, \\
-    18 & i=4, \\
-    16 & i=5, \\
-    9 & i=6, \\
-    3 & i=7, \\
-    1 & i=8.
+    1 & n=0, \\
+    3 & n=1, \\
+    9 & n=2, \\
+    16 & n=3, \\
+    18 & n=4, \\
+    16 & n=5, \\
+    9 & n=6, \\
+    3 & n=7, \\
+    1 & n=8.
   \end{dcases}
+\end{equation}
+
+Recalling that the spectral sequence is multiplicative, we also note, by \Cref{tab:graded-coh-dims-SL3}, that $H^{s,t} \cup H^{s',t'} \subseteq H^{s+s',t+t'}$ implies that the cup products
+\begin{equation*}
+  \gr^{s} H^{n}(I,k) \otimes \gr^{s'} H^{n'}(I,k) \to \gr^{s+s'} H^{n+n'}(I,k)
 \end{equation*}
+are trivial. But, since the spectral sequence collapses on the first page, we also have \eqref{eq:Hn-to-Hst-SL3} for $H^{n}(I,k)$, and thus the cup product is trivial.
 
 \section{\texorpdfstring{$I \subseteq \GL_{3}(\Z_{p})$}{I in GL3(Zp)}}%
 \label{sec:Iwa-GL3}
@@ -1714,50 +1789,128 @@ Thus
   \end{gathered}
 \end{equation}
 
-
 \begin{table}[ht]
   \centering
-  \scalebox{0.7}{%
-  $\begin{NiceArray}{*{20}{c}}[hvlines]
-    \diagbox{t}{s} & 0 & -1 & -2 & -3 & -4 & -5 & -6 & -7 & -8 & -9 & -10 & -11 & -12 & -13 & -14 & -15 & -16 & -17 & -18 \\
-    0 & 1\\
-    1 \\
-    2 && 3 \\
-    3 \\
-    4 &&&& 1 \\
-    5 &&&& 6 \\
-    6 &&&&& 6 \\
-    7 &&&&& 3\\
-    8 &&&&&& 6 \\
-    9 &&&&&&& 13 \\
-    10 &&&&&&&& 3 \\
-    11 &&&&&&&& 12 \\
-    12 &&&&&&&&& 15 \\
-    13 &&&&&&&&&& 7 \\
-    14 &&&&&&&&&& 7 \\
-    15 &&&&&&&&&&& 15 \\
-    16 &&&&&&&&&&&& 12 \\
-    17 &&&&&&&&&&&& 3 \\
-    18 &&&&&&&&&&&&& 13 \\
-    19 &&&&&&&&&&&&&& 6 \\
-    20 &&&&&&&&&&&&&&& 3 \\
-    21 &&&&&&&&&&&&&&& 6 \\
-    22 &&&&&&&&&&&&&&&& 6 \\
-    23 &&&&&&&&&&&&&&&& 1 \\
-    24 \\
-    25 &&&&&&&&&&&&&&&&&& 3 \\
-    26 \\
-    27 &&&&&&&&&&&&&&&&&&& 1
-  \end{NiceArray}$%
-  }
-  \caption[Graded cohomology dimensions for $I \subseteq \GL_{3}(\Z_{p})$]{Dimensions of $E_{1}^{s,t} = H^{s,t} = \gr^{s} H^{s+t}(\lie{g},k)$.}
+  \caption[Graded cohomology dimensions for the $I \subseteq \GL_{3}(\Z_{p})$ case]{Dimensions of $E_{1}^{s,t} = H^{s,t} = \gr^{s} H^{s+t}(\lie{g},k)$ for the $I \subseteq \GL_{3}(\Z_{p})$ case.}
   \label{tab:graded-coh-dims-GL3}
+  \renewcommand{\arraystretch}{1.5}
+  \scalebox{0.6}{%
+    $\begin{NiceArray}{*{20}{c}}[hvlines, columns-width=auto]
+      \diagbox{t}{s} & 0 & -1 & -2 & -3 & -4 & -5 & -6 & -7 & -8 & -9 & -10 & -11 & -12 & -13 & -14 & -15 & -16 & -17 & -18 \\
+      0 & 1\\
+      1 \\
+      2 && 3 \\
+      3 \\
+      4 &&&& 1 \\
+      5 &&&& 6 \\
+      6 &&&&& 6 \\
+      7 &&&&& 3\\
+      8 &&&&&& 6 \\
+      9 &&&&&&& 13 \\
+      10 &&&&&&&& 3 \\
+      11 &&&&&&&& 12 \\
+      12 &&&&&&&&& 15 \\
+      13 &&&&&&&&&& 7 \\
+      14 &&&&&&&&&& 7 \\
+      15 &&&&&&&&&&& 15 \\
+      16 &&&&&&&&&&&& 12 \\
+      17 &&&&&&&&&&&& 3 \\
+      18 &&&&&&&&&&&&& 13 \\
+      19 &&&&&&&&&&&&&& 6 \\
+      20 &&&&&&&&&&&&&&& 3 \\
+      21 &&&&&&&&&&&&&&& 6 \\
+      22 &&&&&&&&&&&&&&&& 6 \\
+      23 &&&&&&&&&&&&&&&& 1 \\
+      24 \\
+      25 &&&&&&&&&&&&&&&&&& 3 \\
+      26 \\
+      27 &&&&&&&&&&&&&&&&&&& 1
+    \end{NiceArray}$%
+  }
+  \renewcommand{\arraystretch}{1}
 \end{table}
+
+\section{\texorpdfstring{$I \subseteq \SL_{4}(\Z_{p})$ and $I \subseteq \GL_{4}(\Z_{p})$}{I in SL3(Zp) and GL3(Zp)}}%
+\label{sec:Iwa-SL4-GL4}
+
+\section{Nilpotency index}%
+\label{sec:nilp-index}
+
+Before ending this chapter with a brief discussion of future research directions, we will mention an interesting consequence of our above calculations.
+
+Given any cohomology theory $H$ (say over $k$), one can always think of the ring $H^{*}$ with the cup product as $H^{*} = k \oplus H^{+}$, where $k = H^{0}$ and $H^{+} = \bigoplus_{n>0} H^{n}$. Assuming that only finitely many $H^{n}$ are non-zero and that each $H^{n}$ is finite dimensional, one can note that $H^{+}$ must be nilpotent. Thus an interesting question becomes: what is the nilpotency index of $H^{+}$? I.e., what's the smallest positive integer $m$ such that $(H^{+})^{m} = 0$? In continuation of this, another slightly easier question to answer is, what is the nilpotency index of $H^{1}$? I.e., what's the smallest positive integer $m$ such that $(H^{1})^{m} = 0$.
+
+Furthermore, one can consider the exterior algebra $\Lambda(H^{*})$, which by definition is $T(H^{*})/I$, where $T(H^{*}) = \bigoplus_{\ell=0}^{\infty} (H^{*})^{\otimes \ell}$ is the tensor algebra with multiplication given by the canonical isomorphisms $(H^{*})^{\otimes m} \otimes (H^{*})^{\otimes \ell} \to (H^{*})^{\otimes(m+\ell)}$, and $I$ is the two-sided ideal generated by all elements of the form $x \otimes x$. Now another interesting question is, what's the smallest number of wedges needed to ensure that $H^{*} \wedge \dotsb \wedge H^{*} = 0$? Or simpler, what's the smallest number of wedges needed to ensure that $H^{1} \wedge \dotsb \wedge H^{1} = 0$? \dknote{Is this the correct setup? Otherwise, how to change it? Answer this part later. Should be fine for $\SL_{2}(\Z_{p})$ and $\GL_{2}(\Z_{p})$ cases.}
+
+We will now try to answer the above questions for the group cohomology $H^{*}(I,k)$ in each of the cases we have discussed in this chapter. Before beginning, recall that
+\begin{equation}\label{eq:graded-coh-inc}
+  H^{s,t} \cup H^{s',t'} \subseteq H^{s+s',t+t'}
+\end{equation}
+by \cite[§3.7]{Fuks}.
+
+In the $I \subseteq \SL_{2}(\Z_{p})$ case, we saw in \Cref{eq:dim-HnI-SL2} that the cup product is trivial, so $H^{*} \cup H^{*} = 0$ and thus also $H^{1} \cup H^{1} = 0$.
+
+In the $I \subseteq \GL_{2}(\Z_{p})$ case, we completely described the (graded) cup product in \Cref{eq:dim-HnI-GL2}, which should be enough to answer the questions. Looking at \Cref{tab:graded-coh-dims-GL2} and using \eqref{eq:graded-coh-inc}, we see that an upper bound for $H^{1}$ is that
+\begin{align*}
+  H^{1} \cup H^{1} \cup H^{1} &\neq 0,
+  H^{1} \cup H^{1} \cup H^{1} \cup H^{1} &= 0,
+\end{align*}
+by starting with $H^{-1,2} \cup H^{-2,3} \subseteq H^{-3,5} \neq 0$ and then using that $H^{-3,5} \cup H^{-1,2} \subseteq H^{-4,7} \neq 0$ or $H^{-3,5} \cup H^{-2,3} \subseteq H^{-5,8} \neq 0$, and finally  $H^{-4,7} \cup H^{-2,3} \subseteq H^{-6,10} \neq 0$ or $H^{-5,8} \cup H^{-1,2} \subseteq H^{-6,10}\neq0$. The question is whether we can follow those steps with non-zero cup products. We note by \eqref{eq:cup-products-GL2} that
+\begin{align*}
+  e_{1} \cup e_{3} &= e_{1,3}, & e_{4} \cup e_{3} &= e_{4,3},
+\end{align*}
+are the only non-zero cup product we can do in $H^{1} = H^{-1,2} \oplus H^{-2,3}$. But $H^{-1,2} = k[e_{1},e_{4}]$ and $H^{-2,3} = k[e_{3}]$ by \eqref{eq:Hst-spaces-GL2}, and we already noted in \Cref{subsec:group-coh-GL2} that $e_{i_{1},\dotsc,i_{m}} \cup e_{j_{1},\dotsc,j_{\ell}}$ if $\set{i_{1},\dotsc,i_{m}} \cap \set{j_{1},\dotsc,j_{\ell}} \neq \emptyset$, so we clearly can't cup with anything from $H^{1}$ without getting zero. Thus
+\begin{align*}
+  H^{1} \cup H^{1} &\neq 0,
+  H^{1} \cup H^{1} \cup H^{1} &= 0.
+\end{align*}
+Now, having only four possible numbers in the subscript and using the above equation, we note that we can only ever hope to have two cup products before getting zero (cf.\ \eqref{eq:Hst-spaces-GL2}). By \eqref{eq:cup-products-GL2}
+\begin{equation*}
+  e_{3} \cup (e_{1} \cup e_{4,2}) = e_{3} \cup e_{1,4,2} = -e_{1,4,2,3} \neq 0,
+\end{equation*}
+so
+\begin{align*}
+  H^{*} \cup H^{*} \cup H^{*} &\neq 0, \\
+  H^{*} \cup H^{*} \cup H^{*} \cup H^{*} &= 0,
+\end{align*}
+for $I \subseteq \GL_{2}(\Z_{p})$.
+
+In the $I \subseteq \SL_{2}(\Z_{p})$ case, we haven't described the cup product in detail, but we can tell purely from \eqref{eq:graded-coh-inc} and \Cref{tab:graded-coh-dims-SL3}, that $H^{1} \cup H^{1} = 0$. Going through \Cref{tab:graded-coh-dims-SL3}, we also note that an upper bound for $H^{*}$ is
+\begin{align*}
+  H^{*} \cup H^{*} \cup H^{*} &\neq 0, \\
+  H^{*} \cup H^{*} \cup H^{*} \cup H^{*} &= 0,
+\end{align*}
+\dknote{Check this one in more detail. Write a bit for the last few.}
 
 \section{Future work}%
 \label{sec:future}
 
-Mention spectral sequence talked about with Claus. Trying to generalize current work. Conjectures based on this chapter.
+An interesting research direction in the future is to try to work with the Serre spectral sequence in the following way.
+
+Assume we have the \enquote{standard} setup with $\gs{G} = \SL_{n}$, $\gs{U}$ unipotent upper triangular matrices and $\gs{T}$ diagonal matrices with determinant $1$. Let also $I \subseteq \SL_{n}(\Z_{p})$ be the pro-$p$ Iwahori subgroup of $\SL_{n}(\Q_{p})$ which is upper triangular and unipotent modulo $p$, and let
+\begin{equation*}
+  K \coloneqq \kernel\bigl( \red \colon \gs{G}(\Z_{p}) \to \gs{G}(\F_{p}) \bigr),
+\end{equation*}
+where $\red \colon \gs{G}(\Z_{p}) \to \gs{G}(\F_{p})$ is the reduction map. (Note that $I = \set{g \in \gs{G}(\Z_{p}) : \red(g) \in \gs{U}(\F_{p})}$ in this case, cf.\ \cite{Generators}.) Then
+\begin{equation*}
+  I/K \iso \gs{U}(\F_{p}),
+\end{equation*}
+and thus we get the Serre spectral sequence
+\begin{equation*}
+  E_{2}^{i,j} = H^{i}\bigl( \gs{U}(\F_{p}), H^{j}(K,\F_{p}) \bigr) \Longrightarrow H^{i+j}(I,\F_{p}),
+\end{equation*}
+which is also a multiplicative spectral sequence. Since $K$ is a uniformly powerful group (cf.\ \cite[Prop.~7.6]{SchOll-modular}), we know by \cite[p.~183]{Laz} that
+\begin{equation*}
+  H^{j}(K,\F_{p}) \iso \bigwedge^{j} \Hom_{\F_{p}}(K,\F_{p}).
+\end{equation*}
+Now we can let $\SL_{n}(\Z_{p})$ act by
+\begin{equation*}
+  (g \act f)(x) = f(g^{-1}xg)
+\end{equation*}
+for $g \in \SL_{n}(\Z_{p})$, $f \colon K \to \F_{p}$ and $x \in K$, and hope to split $\bigwedge^{j} \Hom_{\F_{p}}(K,\F_{p})$ into a direct sum of Verma modules $\bigoplus_{\lambda} V(\lambda)$ for $p$-restricted $\lambda$ ($\lambda$ with $0 \leq \inner{\lambda}{\alpha^{\vee}} \leq p-1$), similarly to what's done in \cite{PT} (as we used in \Cref{cha:cohunigps}). This description might generalize easier than what we have worked with in this chapter, but it's harder to get started with since the spectral sequence is more complicated. One can hope that the difference in the spectral sequence might make it so that it will collapse on the second page (the starting page in this case).
+\dknote{Maybe add a note about dimension of Lie algebra center conjecture.}
+
+
 
 %%% Local Variables:
 %%% mode: latex

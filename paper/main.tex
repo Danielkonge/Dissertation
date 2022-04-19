@@ -8,8 +8,6 @@
 % \date{\today}
 \author{Daniel Kongsgaard}
 
-
-
 \makeevenhead{ruled}{\scshape\leftmark}{}{\rightmark}
 \makeoddhead{ruled}{\scshape\leftmark}{}{\rightmark}
 \makeevenfoot{ruled}{}{\thepage}{}
@@ -40,7 +38,7 @@
 
 \frontmatter
 
-\tableofcontents*
+\tableofcontents
 
 \clearpage
 
@@ -49,11 +47,16 @@
 
 \clearpage
 
+\listoftables
+
+\clearpage
+
 \begin{vplace}[0.7]
   Some extra stuff.
 \end{vplace}
 
 \clearpage
+
 
 \mainmatter
 
@@ -69,7 +72,16 @@
 
 \input{Chapters/cohiwagps.tex}
 
-\chapter{List-Decodable Mean Estimation and Clustering}%
+\clearpage
+
+
+\appendix
+
+\chapter{Calculations}
+
+\input{Chapters/calculations.tex}
+
+\chapter{Other research}%
 \label{cha:robstat}
 
 \input{Chapters/robstat.tex}
