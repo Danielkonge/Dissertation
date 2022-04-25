@@ -303,7 +303,17 @@ Suppose now that we have found the dimensions of $H^{s,t} = H^{s,t}(\lie{g},k)$ 
 \end{equation*}
 and information about spectral sequences in general. We already know that this spectral sequence collapses at a finite page, and one can hope is that it will actually collapse at the first page. One way we can verify that the spectral sequence (in certain cases) collapses at the first page, is by considering the exact bidegrees of the differentials. We know that the differentials $d_{r}^{s,t} \colon E_{r}^{s,t} \to E_{r}^{s+r,t+1-r}$ has bidegree $(r,1-r)$, so if the non-zero modules on the first pages is distributed in such a way that all differentials $d_{r}^{s,t}$ are trivial for all $s,t$ and $r\geq1$, then we can be sure that the spectral sequence collapses on the first page. This will become clearer when we look at examples in the next few sections.
 
-Now note, by \cite[§3.7]{Fuks}, that the cup product is compatible with the gradings on the Lie algebra cohomology, in particular $H^{s,t} \cup H^{s',t'} \subseteq H^{s+s',t+t'}$ (where $H^{s,t} = H^{s,t}(\lie{g},k)$). Thus, since the spectral sequence is multiplicative, we can describe the cup product on $H^{*}(G,k)$ when the spectral sequence collapses on the first page.
+Now note, by \cite[§3.7]{Fuks}, that the cup product is compatible with the gradings on the Lie algebra cohomology, in particular
+\begin{equation}
+H^{s,t} \cup H^{s',t'} \subseteq H^{s+s',t+t'},\label{eq:Hst-Hst-subset}
+\end{equation}
+where $H^{s,t} = H^{s,t}(\lie{g},k)$. Thus, since the spectral sequence is multiplicative, we can describe the cup product on $H^{*}(G,k)$ when the spectral sequence collapses on the first page. Some cup products will be trivially zero by \eqref{eq:Hst-Hst-subset}, and for the rest of the cup product, we can calculate them with an explicit basis using the following.
+
+For $f \in \Hom_{k}\bigl( \bigwedge^{p}\lie{g}, k \bigr)$ and $g \in \Hom_{k}\bigl( \bigwedge^{q}\lie{g}, k \bigr)$, we know from \cite[Chap.~XIII, Sect.~8]{CartanHomAlg}, that the cup product in cohomology is induced by: $f \cup g \in \Hom_{k}\bigl( \bigwedge^{p+q}\lie{g}, k \bigr)$ defined by
+\begin{equation}
+  \label{eq:cup-prod-def}
+  (f \cup g)(x_{1} \wedge \dotsb \wedge x_{p+q})  = \sum_{\mathclap{\substack{ \sigma \in S_{p+q} \\ \sigma(1) < \dotsb < \sigma(p) \\ \sigma(p+1) < \dotsb < \sigma(p+q) }}} \sign(\sigma) f(x_{\sigma(1)} \wedge \dotsb \wedge x_{\sigma(p)}) g(x_{\sigma(p+1)} \wedge \dotsb \wedge x_{\sigma(p+q)}).
+\end{equation}
 
 Even when the spectral sequence doesn't (necessarily) collapse on the first page, we can still get some bounds on the dimensions of $H^{n}(G,k)$ that will allow us to draw some conclusions about the structure of $H^{*}(G,k)$.
 
@@ -613,12 +623,223 @@ Recalling that the spectral sequence is multiplicative, we also note, by \Cref{t
 \begin{equation*}
   \gr^{s} H^{n}(I,k) \otimes \gr^{s'} H^{n'}(I,k) \to \gr^{s+s'} H^{n+n'}(I,k)
 \end{equation*}
-are trivial. But, since the spectral sequence collapses on the first page, we also have \eqref{eq:Hn-to-Hst-SL2} for $H^{n}(I,k)$, and thus the cup product is trivial.
+are trivial, except for the obvious ones with $H^{0}(I,k)$ and $H^{1} \otimes H^{2} \to H^{3}$. We now want to describe the cup product $H^{1} \otimes H^{2} \to H^{3}$.
+
+Let $e_{i_{1},\dotsc,i_{m}} = (\xi_{i_{1}} \wedge \dotsb \wedge \xi_{i_{m}})^{*}$ be the element of the dual basis of $\Hom_{k}\bigl( \bigwedge^{m}\lie{g},k \bigr)$ corresponding to $\xi_{i_{1}} \wedge \dotsb \wedge \xi_{i_{m}}$ in the basis of $\bigwedge^{m}\lie{g}$. Looking at the cochain complexes and descriptions of the maps above together with the known bases of the graded chain complexes, we get the following precise descriptions of the of the graded cohomology spaces $H^{s,t} = H^{s,t}(\lie{g},k)$:
+\begin{equation}\label{eq:Hst-spaces-SL2}
+  \begin{aligned}
+    H^{-1,2} &= k[e_{1},e_{3}], \\
+    H^{-3,5} &= k[e_{1,2},e_{3,2}], \\
+    H^{-4,7} &= k[e_{1,3,2}].
+  \end{aligned}
+\end{equation}
+
+For $f \in \Hom_{k}\bigl( \bigwedge^{p}\lie{g}, k \bigr)$ and $g \in \Hom_{k}\bigl( \bigwedge^{q}\lie{g}, k \bigr)$, we recall from \eqref{eq:cup-prod-def} that the cup product in cohomology is induced by: $f \cup g \in \Hom_{k}\bigl( \bigwedge^{p+q}\lie{g}, k \bigr)$ defined by
+\begin{equation*}
+  (f \cup g)(x_{1} \wedge \dotsb \wedge x_{p+q})  = \sum_{\mathclap{\substack{ \sigma \in S_{p+q} \\ \sigma(1) < \dotsb < \sigma(p) \\ \sigma(p+1) < \dotsb < \sigma(p+q) }}} \sign(\sigma) f(x_{\sigma(1)} \wedge \dotsb \wedge x_{\sigma(p)}) g(x_{\sigma(p+1)} \wedge \dotsb \wedge x_{\sigma(p+q)}).
+\end{equation*}
+So, when finding
+\[
+  \begin{tikzcd}
+    H^{-1,2} \otimes H^{-3,5} \ar[r,"\cup"] & H^{-4,7},
+  \end{tikzcd}
+\]
+we need to calculate $e_{1} \cup e_{1,2}$, $e_{1} \cup e_{3,2}$, $e_{3} \cup e_{1,2}$ and $e_{3} \cup e_{3,2}$ on the basis $\basis = (\xi_{1} \wedge \xi_{3} \wedge \xi_{2})$ of $\gr^{4} \bigwedge^{3} \lie{g}$.
+
+We first note that \eqref{eq:cup-prod-def} simplifies to
+\begin{equation*}
+  (e_{i} \cup e_{j,k})(x_{1} \wedge x_{2} \wedge x_{3}) = \sum_{\substack{\sigma \in S_{3} \\ \sigma(2) < \sigma(3)}} \sign(\sigma) e_{i}(x_{\sigma(1)}) e_{j,k}(x_{\sigma(2)} \wedge x_{\sigma(3)})
+\end{equation*}
+in these cases. Here the terms of the sum on the right is only non-zero if $x_{\sigma(1)} = \xi_{i}$ and $x_{\sigma(2)} \wedge x_{\sigma(3)} = \xi_{j} \wedge \xi_{3}$ (up to constants). In the case $e_{1} \cup e_{1,2}$ (resp.\ $e_{3} \cup e_{3,2}$), we can only have this if $x_{1} \wedge x_{2} \wedge x_{3}$ contains two copies of $\xi_{1}$ (resp.\ $\xi_{3}$), which implies that $x_{1} \wedge x_{2} \wedge x_{3} = 0$. So $e_{1} \cup e_{1,2} = 0$ and $e_{3} \cup e_{3,2} = 0$. Alternatively, one can see this by plugging in $x_{1} \wedge x_{2} \wedge x_{3} = \xi_{1} \wedge \xi_{3} \wedge \xi_{2}$ and simply calculating the right side.
+
+In the case $e_{1} \cup e_{3,2}$, \eqref{eq:cup-prod-def} simplifies to
+\begin{equation*}
+  (e_{1} \cup e_{3,2})(x_{1} \wedge x_{2} \wedge x_{3}) = \sum_{\substack{\sigma \in S_{3} \\ \sigma(2) < \sigma(3)}} \sign(\sigma) e_{1}(x_{\sigma(1)}) e_{3,2}(x_{\sigma(2)} \wedge x_{\sigma(3)}).
+\end{equation*}
+When $x_{1} \wedge x_{2} \wedge x_{3} = \xi_{1} \wedge \xi_{3} \wedge \xi_{2}$, we see that the terms on the right side are only non-zero if $x_{\sigma(1)} = \xi_{1}$, i.e., $\sigma(1)=1$, and thus $\sigma = (1)$ since $\sigma(2) < \sigma(3)$. So $x_{\sigma(1)} = \xi_{1}$, $x_{\sigma(2)} \wedge x_{\sigma(3)} = \xi_{3} \wedge \xi_{2}$ and $\sign(\sigma) = 1$, which gives us $(e_{1} \cup e_{3,2})(\xi_{1} \wedge \xi_{3} \wedge \xi_{2}) = 1$. Hence $e_{1} \cup e_{3,2} = e_{1,3,2}$.
+
+In the case $e_{3} \cup e_{1,2}$, \eqref{eq:cup-prod-def} simplifies to
+\begin{equation*}
+  (e_{3} \cup e_{1,2})(x_{1} \wedge x_{2} \wedge x_{3}) = \sum_{\substack{\sigma \in S_{3} \\ \sigma(2) < \sigma(3)}} \sign(\sigma) e_{3}(x_{\sigma(1)}) e_{1,2}(x_{\sigma(2)} \wedge x_{\sigma(3)}).
+\end{equation*}
+When $x_{1} \wedge x_{2} \wedge x_{3} = \xi_{1} \wedge \xi_{3} \wedge \xi_{2}$, we see that the terms on the right side are only non-zero if $x_{\sigma(1)} = \xi_{3}$, i.e., $\sigma(1)=2$, and thus $\sigma = (1,2)$ since $\sigma(2) < \sigma(3)$. So $x_{\sigma(1)} = \xi_{3}$, $x_{\sigma(2)} \wedge x_{\sigma(3)} = \xi_{1} \wedge \xi_{2}$ and $\sign(\sigma) = -1$, which gives us $(e_{3} \cup e_{1,2})(\xi_{1} \wedge \xi_{3} \wedge \xi_{2}) = -1$. Hence $e_{3} \cup e_{1,2} = -e_{1,3,2}$.
+
+In conclusion, all the non-trivial and non-zero cup products (up to graded commutativity) are:
+\begin{equation}
+  \label{eq:cup-products-SL2}
+  \begin{aligned}
+    e_{1} \cup e_{3,2} &= e_{1,3,2}, \\
+    e_{3} \cup e_{1,2} &= -e_{1,3,2}.
+  \end{aligned}
+\end{equation}
+
+Now, since the spectral sequence collapses on the first page, all of the above work on the cup product of the Lie algebra cohomology transfers to the cup product on $H^{*}(I,k)$ as described above. In particular, since all $H^{n}(I,k)$ only have one graded component, this is a clear description of the cup product on $H^{*}(I,k)$, and not just a graded cup product.
+
+\begin{remark}\label{rem:quaternion}
+  Let $D$ be the division quaternion algebra over $\Q_{p}$ for a prime $p>3$ and let $G = (1+\idm_{D})^{\Nrd = 1}$, where $\Nrd = \Nrd_{D/\Q_{p}}$ is the norm from \cite[Def.~2.5]{Neukirch}. From \cite[Sect.~6.3]{Sor} (or from \cite[Prop.~7]{Henn}) we know that there is an isomorphism
+  \begin{equation*}
+    H^{*}(G,\F_{p}) \iso \F_{p} \oplus \F_{D} \oplus \F_{D} \oplus \F_{p}
+  \end{equation*}
+  of graded $\F_{p}$-algebras (where $\F_{D} \iso \F_{p^{2}}$ is viewed simply as a $\F_{p}$-vector space). I.e., $H^{n}(G,\F_{p})$ has the same dimensions as described in \eqref{eq:dim-HnI-SL2} (with $k=\F_{p}$). \cite{Sor} also shows that the only non-trivial and non-zero cup product is $H^{1}(G,\F_{p}) \times H^{2}(G,\F_{p}) \to H^{3}(G,\F_{p})$, which corresponds to the trace pairing $\F_{D} \times \F_{D} \to \F_{p}, (x,y) \mapsto \Tr(xy)$ (where $\Tr = \Tr_{\F_{D}/\F_{p}}$ from \cite[Def.~2.5]{Neukirch}). To be more explicit, let's assume that $p \equiv 3 \pmod{4}$. Then $x^{2}+1$ is irreducible over $\F_{p}$, so we can write $\F_{D} = \F_{p}[\alpha]$ with $\alpha^{2} = -1$, where $\F_{p}[\alpha]$ has $\F_{p}$-basis $1,\alpha$. Now, considering the maps $1\colon a+b\alpha \mapsto a+b\alpha$, $\alpha\colon a+b\alpha \mapsto -b + a\alpha$ and $\alpha^{2}=-1 \colon a+b\alpha \mapsto -a-b\alpha$, we see that the trace pairing is given by
+  \begin{align*}
+    \F_{D} \times \F_{D} &\to \F_{p} \\
+    (1,1) &\mapsto \Tr(1) = 2, \\
+    (1,\alpha) &\mapsto \Tr(\alpha) = 0, \\
+    (\alpha,1) &\mapsto \Tr(\alpha) = 0, \\
+    (\alpha,\alpha) &\mapsto \Tr(\alpha^{2}) = -2.
+  \end{align*}
+  This is (up to a multiple of $2$) the same as the description of the cup product on $H^{*}(I,\F_{p})$ above for $I \subseteq \SL_{2}(\Z_{p})$, so an interesting question is: Is there a nice relation between $G$ and $I$?
+
+  As a partial answer to the question in the $p \equiv 3 \pmod{4}$ case, we note that $\lie{g}_{D} = \F_{D} \oplus \F_{D}^{\Tr = 0}$ sitting in degree $1$ and $1$ has Lie bracket given by $[\overline{x},\overline{y}] = \overline{x}\overline{y}^{p} - \overline{y}\overline{x}^{p}$ for any $\overline{x},\overline{y} \in \F_{D}$ in degree $1$ (and $0$ otherwise) by \cite[(6.6)]{Sor}. So, with $\F_{D} = \F_{p}[\alpha]$, we note that
+  \begin{equation*}
+    [1,\alpha] = 1\cdot\alpha^{p} - \alpha\cdot1^{p} = -2\alpha,
+  \end{equation*}
+  since $p \equiv 3 \pmod{4}$ and $\alpha^{2} = -1$. Thus we have an obvious relation between $\lie{g}$ and $\lie{g}_{D}$ given by $\xi_{1},\xi_{3} \leftrightarrow 1,\alpha$ in degree $1$ and $\xi_{2} \leftrightarrow 2\alpha$ in degree $2$. The question is whether we can lift this to a relation between $I$ and $G$. Here it might be useful to note that we can assume that $i^{2} = -1$ and $j^{2} = p$ by \cite[Thm.~12.1.5]{Voight}, and furthermore that $\sO_{D}=\Z_{p}[i,j,k]$ (where $k=ij$) and $\idm_{D} = j\sO_{D}$, which has $\Z_{p}$-basis $p,pi,j,k$, by \cite[Thm.13.1.6]{Voight}. With this setup, we also have that
+  \begin{align*}
+    \F_{D} = \sO_{D}/\idm_{D} \iso \idm_{D}^{n}/\idm_{D}^{n+1} &\xrightarrow{\iso} (1+\idm_{D}^{n})/(1+\idm_{D}^{n+1}) \\
+    x &\mapsto 1+x
+  \end{align*}
+  is an isomorphism for all $n\geq1$, cf.\ \cite[13.5.8]{Voight}, which should help with translating from $G$ to $\lie{g}_{D}$. It only remains to find a (nice) ordered basis of $(1+\idm_{D})^{\Nrd = 1}$, and try to use all of the above to compare it with the basis $g_{1},g_{2},g_{3}$ of $I$ (or possibly with an alternative basis). One place to start might be, to try to use that $D^{\Nrd = 1} = [D^{\times},D^{\times}]$ by \cite[Exc.~30 of Chap.~7]{Voight}. Alternatively, it might be helpful to rewrite
+  \begin{equation*}
+    D \iso \set[\Big]{\pmat{ a+bi & c+di \\ p(c-di) & a-bi } \given a,b,c,d\in\Q_{p} } \subseteq M_{2}\bigl( \Q_{p}(i) \bigr),
+  \end{equation*}
+  using \cite[Cor.~13.3.14]{Voight}.
+\end{remark}
+
+\begin{conjecture}
+  There is a group isomorphism $I \iso G$, which lifts the $\F_{p}$-Lie algebra isomorphism $\lie{g} \iso \lie{g}_{D}$ of \Cref{rem:quaternion}.
+\end{conjecture}
+
 
 \subsection{Lower \texorpdfstring{$p$}{p}-series of \texorpdfstring{$I$}{I}}%
 \label{subsec:lower-p-series-SL2}
 
-Possibly do later. I can show that $I_{2} = [I,I]$ so $I_{3} \subseteq I^{p}$. I'm having a few problems with $I^{p} \subseteq I_{3}$. \dknote{Check back later.}
+One of the consequences of the cohomology calculations above is that $I$ is not a uniformly powerful group. To see this, note by the proof of \cite[Thm.~3.3.3]{Laz-complements} that a uniformly powerful pro-$p$ group is equi-$p$-valuable, and thus Lazard's famous isomorphism $H^{*}(G,k) \iso \bigwedge \Hom_{k}(\lie{g},k)$ for equi-$p$-valued groups $G$ can be applied to uniformly powerful groups. We refer to \cite[Cor.~6.3]{Sor} for a proof of the isomorphism with methods similar to what we use in this chapter. Now, since the dimensions from \eqref{eq:dim-HnI-SL2} don't match the dimensions of $\bigwedge \Hom_{k}(\lie{g},k)$ ($1,3,3,1$ since $\dim_{k} \lie{g} = 3$), we see that $I$ cannot be uniformly powerful (or equi-$p$-valuable). This leads to the interesting question of, whether we can describe the lower $p$-series of $I$, and see that $I$ is not uniformly powerful directly?
+
+Before answering this question, we recall the following definitions, cf.\ \cite[Def.~1.15, Cor.~1.20, Def.~3.1 and Def.~4.1]{analytic_pro-p_groups}.
+\begin{definition}
+  A $p$-valued group $G$ is \emph{equi-$p$-valuable} if it admits a $p$-valuation $\omega$ and an ordered basis $(g_{1},\dotsc,g_{d})$ such that $\omega(g_{i}) = \omega(g_{j})$ for all $i,j$.\index{group!equi-p-valued@equi-$p$-valued}
+\end{definition}
+
+\begin{definition}
+  Let $G$ be a finitely generated pro-$p$ group. The \emph{lower $p$-series}\index{lower p-series@lower $p$-series} $\dotsb \geq P_{3}(G) \geq P_{2}(G) \geq P_{1}(G)$ of $G$ is given by $P_{i}(G)$, where $P_{1}(G) = G$ and
+  \begin{equation*}
+    P_{i+1}(G) = P_{i}(G)^{p}\bigl[ P_{i}(G),G \bigr]
+  \end{equation*}
+  for $i \geq 1$.
+\end{definition}
+
+\begin{definition}
+  Let $p$ be an odd prime. A pro-$p$ group $G$ is \emph{uniformly powerful}\index{group!uniformly powerful} (often written as \emph{uniform}) if
+  \begin{enumerate}[(i)]
+    \item $G$ is finitely generated,
+    \item $G$ is \emph{powerful},\index{group!powerful} i.e., $G/\overline{G^{p}}$ is abelian, and
+    \item for all $i$, $[P_{i}(G) : P_{i+1}(G)] = [G : P_{2}(G)]$.
+  \end{enumerate}
+\end{definition}
+
+To show directly that $I$ is not uniformly powerful, we will calculate its lower $p$-series, for which we will introduce the notation $I_{i} = P_{i}(I)$ and work with generators of $I$. We already know that $I$ is generated by $g_{1},g_{2},g_{3}$ (note that this is similar to \cite[Thm.~2.4.1]{Generators} but with $\exp(p)$ instead of $1+p$ in the torus), and we now want to describe the generators of each $I_{i} = P_{i}(I)$. For this description we will use the following lemma.
+
+\begin{lemma}\label{lem:J-I-com}
+  Let $J$ be the subgroup of $I$ generated by $g_{1}^{p^{v_{1}}}, g_{2}^{p^{v_{2}}}, g_{3}^{p^{v_{3}}}$, and set $m_{1} = \min(v_{1},v_{2})$, $m_{2} = \min(v_{1},v_{3})$ and $m_{3} = \min(v_{2},v_{3})$. Then
+  \begin{enumerate}[(i)]
+    \item $J^{p}$ is the subgroup generated by $g_{1}^{p^{v_{1}+1}}, g_{2}^{p^{v_{2}+1}}, g_{3}^{p^{v_{3}+1}}$, and
+    \item $[J,I]$ is the subgroup generated by $g_{1}^{p^{m_{1}+1}}, g_{2}^{p^{m_{2}}}, g_{3}^{p^{m_{3}+1}}$.
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  By the definition of $J$, it is clear that $J^{p}$ is the subgroup generated by $g_{1}^{p^{v_{1}+1}}, g_{2}^{p^{v_{2}+1}}, g_{3}^{p^{v_{3}+1}}$, so we only need to show (ii).
+
+  To find generators of $[J,I]$, it's enough to calculate the commutators of the generators of $J$ and $I$, and we note that $g$ and $g^{x}$ generate the same subgroup for $g \in I$ if $x \in \Z_{p}^{\times}$. Now
+  \begin{align*}
+    \bigl[g_{1}^{p^{v_{1}}},g_{2}\bigr] &= \pmat{ 1 & 0 \\ p^{v_{1}+1}\bigl( 1 - \exp(-2p) \bigr) & 0 } = g_{1}^{p^{v_{1}}(1-\exp(-2p))}, \\
+    \bigl[g_{1},g_{2}^{p^{v_{2}}}\bigr] &= \pmat{ 1 & 0 \\ p\bigl( 1 - \exp(-2p^{v_{2}+1}) \bigr) } = g_{1}^{p^{v_{2}}(1-\exp(-2p^{v_{2}+1}))},
+  \end{align*}
+  where $\frac{1}{p}\bigl(1-\exp(-2p)\bigr) \in \Z_{p}^{\times}$ and $\frac{1}{p}\bigl( 1-\exp(-2p^{v_{2}+1}) \bigr) \in \Z_{p}^{\times}$ (since they both have $v_{p} = 0$), so these commutators are correspond to generators $g_{1}^{p^{v_{1}+1}}$ and $g_{1}^{p^{v_{2}+1}}$. Since $g_{1}^{p^{v_{1}+1}}$ and $g_{1}^{p^{v_{2}+1}}$ clearly generate the same group as $g_{1}^{p^{m_{1}+1}}$, we have the subgroup generated by $g_{1}^{p^{m_{1}+1}}$ in $[J,I]$.
+
+  Similarly
+  \begin{align*}
+    \bigl[ g_{2}^{p^{v_{2}}},g_{3} \bigr] &= \pmat{ 1 & \exp(2p^{v_{2}+1}) - 1 \\ 0 & 1 } = g_{3}^{\exp(2p^{v_{2}+1})-1}, \\
+    \bigl[ g_{2},g_{3}^{p^{v_{3}}} \bigr] &= \pmat{ 1 & p^{v_{3}}\bigl( \exp(2p)-1 \bigr) \\ 0 & 1 } = g_{3}^{p^{v_{3}}(\exp(2p)-1)},
+  \end{align*}
+  where $\frac{1}{p^{v_{2}+1}}\bigl( \exp(2p^{v_{2}+1})-1 \bigr) \in \Z_{p}^{\times}$ and $\frac{1}{p}\bigl( \exp(2p)-1 \bigr)$, so these commutators correspond to generators $g_{3}^{p^{v_{2}+1}}$ and $g_{3}^{p^{v_{3}+1}}$, which generate the same subgroup as $g_{3}^{p^{m_{3}+1}}$. Hence the subgroup generated by $g_{1}^{p^{m_{1}+1}}$ and $g_{3}^{p^{m_{3}+1}}$ is a subgroup of $J$.
+
+  Finally, comparing
+  \begin{equation*}
+    \bigl[ g_{1}^{p^{v_{1}}},g_{3} \bigr] = \pmat{ 1 - p^{v_{1}+1} & p^{v_{1}+1} \\ -p^{2v_{1}+2} & p^{2v_{1}+2} + p^{v_{1}+1} + 1 } = g_{1}^{x_{1}}g_{2}^{x_{2}}g_{3}^{x_{3}}
+  \end{equation*}
+  with \eqref{eq:gixi-SL2}, we see that
+  \begin{align*}
+    a_{11} &= \exp(px_{2}) = 1-p^{v_{1}+1}, \\
+    a_{12} &= x_{3}\exp(px_{2}) = x_{3}\bigl( 1-p^{v_{1}+1} \bigr) = p^{v_{1}+1}, \\
+    a_{21} &= px_{1}\exp(px_{2}) = px_{1}\bigl( 1-p^{v_{1}+1} \bigr) = -p^{2v_{1}+2},
+  \end{align*}
+  and thus
+  \begin{align*}
+    x_{2} &= \frac{1}{p}\log(1-p^{v_{1}+1}) = -p^{v_{1}} + O(p^{v_{1}+1}), \\
+    x_{3} &= \frac{p^{v_{1}+1}}{1-p^{v_{1}+1}} = p^{v_{1}+1} + O(p^{v_{1}+2}), \\
+    x_{1} &= \frac{-p^{2v_{1}+2}}{p(1-p^{v_{1}+1})} = -p^{2v_{1}+1} + O(p^{2v_{1}+2}).
+  \end{align*}
+  Using that $g_{1}^{m_{1}+1}$ and $g_{3}^{m_{3}+1}$ generate a subgroup of $J$ and that $m_{1} \leq v_{1}$ and $m_{3} \leq v_{3}$, we can see that the above adds a generator $g_{2}^{\frac{1}{p}(\log(1-p^{v_{1}+1}))}$, and since
+  \begin{equation*}
+    \frac{\frac{1}{p}\log(1-p^{v_{1}+1})}{p^{v_{1}}} \in \Z_{p}^{\times},
+  \end{equation*}
+  we see that this is equivalent to adding a generator $g_{2}^{p^{v_{2}}}$. Similarly, comparing
+  \begin{equation*}
+    \bigl[ g_{1},g_{3}^{p^{v_{3}}} \bigr] = \pmat{ 1 - p^{v_{3}+1} & p^{2v_{3}+1} \\ -p^{v_{3}+2} & p^{2v_{3}+2} + p^{v_{3}+1} + 1 } = g_{1}^{x_{1}}g_{2}^{x_{2}}g_{3}^{x_{3}}
+  \end{equation*}
+  with \eqref{eq:gixi-SL2}, we see that
+  \begin{align*}
+    a_{11} &= \exp(px_{2}) = 1-p^{v_{3}+1}, \\
+    a_{12} &= x_{3}\exp(px_{2}) = x_{3}\bigl( 1-p^{v_{3}+1} \bigr) = p^{2v_{3}+1}, \\
+    a_{21} &= px_{1}\exp(px_{2}) = px_{1}\bigl( 1-p^{v_{3}+1} \bigr) = -p^{v_{3}+2},
+  \end{align*}
+  and thus
+  \begin{align*}
+    x_{2} &= \frac{1}{p}\log(1-p^{v_{3}+1}) = -p^{v_{3}} + O(p^{v_{3}+1}), \\
+    x_{3} &= \frac{p^{2v_{3}+1}}{1-p^{v_{3}+1}} = p^{2v_{1}+1} + O(p^{2v_{1}+2}), \\
+    x_{1} &= \frac{-p^{v_{3}+2}}{p(1-p^{v_{3}+1})} = -p^{v_{3}+1} + O(p^{v_{3}+2}).
+  \end{align*}
+  Using that $g_{1}^{m_{1}+1}$ and $g_{3}^{m_{3}+1}$ generate a subgroup of $J$ and that $m_{1}\leq v_{1}$ and $m_{3}\leq v_{3}$, we can see that the above adds a generator $g_{2}^{\frac{1}{p}(\log(1-p^{v_{3}+1}))}$, and since
+  \begin{equation*}
+    \frac{\frac{1}{p}\log(1-p^{v_{3}+1})}{p^{v_{3}}} \in \Z_{p}^{\times},
+  \end{equation*}
+  we see that this is equivalent to adding a generator $g_{2}^{p^{v_{3}}}$. So we have added the generators $g_{2}^{p^{v_{1}}}$ and $g_{2}^{p^{v_{3}}}$, which is equivalent to adding the generator $g_{2}^{p^{m_{2}}}$.
+
+  Altogether, we see that $[J,I]$ is generated by $g_{1}^{p^{m_{1}+1}}$, $g_{2}^{p^{m_{2}}}$ and $g_{3}^{p^{m_{3}+1}}$.
+\end{proof}
+
+Now $I = I_{1}$ is generated by $g_{1},g_{2},g_{3}$, so by \Cref{lem:J-I-com} $I^{p}$ is generated by $g_{1}^{p},g_{2}^{p},g_{3}^{p}$ and $[I,I]$ is generated by $g_{1}^{p},g_{2},g_{3}^{p}$. Thus $I_{2} = I^{p}[I,I]$ is generated by $g_{1}^{p},g_{2},g_{3}^{p}$, and we see that $I_{2} = [I,I]$. Using \Cref{lem:J-I-com} again, we see that $[I,I]^{p}$ is generated by $g_{1}^{p^{2}},g_{2}^{p},g_{3}^{p^{2}}$ and $\bigl[ [I,I],I \bigr]$ is generated by $g_{1}^{p},g_{2}^{p},g_{3}^{p}$. So $I_{3}$ is generated by $g_{1}^{p},g_{2}^{p},g_{3}^{p}$, and we see that $I_{3} = I^{p}$. We now claim that
+\begin{equation*}
+  I_{i} =
+  \begin{dcases*}
+    I^{p^{n}} & if $i = 2n+1$, \\
+    [I,I]^{p^{n-1}} & if $i = 2n$,
+  \end{dcases*}
+\end{equation*}
+where $I_{2n+1}$ is generated by $g_{1}^{p^{n}},g_{2}^{p^{n}},g_{3}^{p^{n}}$ and $I_{2n}$ is generated by $g_{1}^{p^{n}},g_{2}^{p^{n-1}},g_{3}^{p^{n}}$. We will prove this by induction on $i$, where we already covered the base cases above. Assume first that $I_{2n} = [I,I]^{p^{n-1}}$ is generated by $g_{1}^{p^{n}},g_{2}^{p^{n-1}},g_{3}^{p^{n}}$. Then, by \Cref{lem:J-I-com}, $I_{2n}^{p}$ is generated by $g_{1}^{p^{n+1}},g_{2}^{p^{n}},g_{3}^{p^{n+1}}$ and $[I_{2n},I]$ is generated by $g_{1}^{p^{n}},g_{2}^{p^{n}},g_{3}^{p^{n}}$, so $I_{2n+1} = I_{2n}^{p}[I_{2n},I]$ is generated by $g_{1}^{p^{n}}, g_{2}^{p^{n}}, g_{3}^{p^{n}}$ and thus $I_{2n+1} = I^{p^{n}}$. Assume now, on the other hand, that $I_{2n+1} = I^{p^{n}}$ is generated by $g_{1}^{p^{n}}, g_{2}^{p^{n}}, g_{3}^{p^{n}}$. Then, by \Cref{lem:J-I-com}, $I_{2n+1}^{p}$ is generated by $g_{1}^{p^{n+1}}, g_{2}^{p^{n+1}}, g_{3}^{p^{n+1}}$ and $[I_{2n+1},I]$ is generated by $g_{1}^{p^{n+1}}, g_{2}^{p^{n}}, g_{3}^{p^{n+1}}$, so $I_{2n+2} = I_{2n+1}^{p}[I_{2n+1},I]$ is generated by $g_{1}^{p^{n+1}}, g_{2}^{p^{n}}, g_{3}^{p^{n+1}}$ and thus $I_{2n+2} = [I,I]^{p^{n}}$. Hence, by induction, we have proved:
+
+\begin{theorem}
+  Let $I$ be the pro-$p$ Iwahori subgroup of $\SL_{2}(\Q_{p})$ and let $g_{1},g_{2},g_{3}$ be the ordered basis of $I$ from \eqref{eq:gis-SL2}. Then the lower $p$-series is given by
+  \begin{equation*}
+    P_{i}(I) =
+    \begin{dcases*}
+      I^{p^{n}} & if $i = 2n+1$, \\
+      [I,I]^{p^{n-1}} & if $i = 2n$,
+    \end{dcases*}
+  \end{equation*}
+  where $P_{2n+1}(I) = I^{p^{n}}$ is the subgroup generated by $g_{1}^{p^{n}},g_{2}^{p^{n}},g_{3}^{p^{n}}$ and $P_{2n}(I) = [I,I]^{p^{n-1}}$ is the subgroup generated by $g_{1}^{p^{n}},g_{2}^{p^{n-1}},g_{3}^{p^{n}}$.
+
+  Thus
+  \begin{equation*}
+    [P_{i}(G) : P_{i+1}(G)] =
+    \begin{dcases*}
+      1 & if $i = 2n$, \\
+      2 & if $i = 2n+1$.
+    \end{dcases*}
+  \end{equation*}
+  In particular, $I$ is not uniformly powerful.
+\end{theorem}
 
 \section{\texorpdfstring{$I \subseteq \GL_{2}(\Z_{p})$}{I in GL2(Zp)}}%
 \label{sec:Iwa-GL2}
@@ -934,7 +1155,7 @@ Recalling that the spectral sequence is multiplicative, we also note, by \Cref{t
 \begin{equation*}
   \gr^{s} H^{n}(I,k) \otimes \gr^{s'} H^{n'}(I,k) \to \gr^{s+s'} H^{n+n'}(I,k)
 \end{equation*}
-are trivial except for the cases
+are trivial except for the cases with $H^{0}$ and
 \begin{equation}\label{eq:non-triv-cups-GL2}
   \begin{aligned}
     H^{-1,2} \cup H^{-2,3} &\subseteq H^{-3,5}, \\
@@ -961,11 +1182,10 @@ Let $e_{i_{1},\dotsc,i_{m}} = (\xi_{i_{1}} \wedge \dotsb \wedge \xi_{i_{m}})^{*}
   \end{aligned}
 \end{equation}
 
-For $f \in \Hom_{k}\bigl( \bigwedge^{p}\lie{g}, k \bigr)$ and $g \in \Hom_{k}\bigl( \bigwedge^{q}\lie{g}, k \bigr)$, we know from \cite[Chap.~XIII, Sect.~8]{CartanHomAlg}, that the cup product in cohomology is induced by: $f \cup g \in \Hom_{k}\bigl( \bigwedge^{p+q}\lie{g}, k \bigr)$ defined by\dknote{Move to techniques.}
-\begin{equation}
-  \label{eq:cup-prod-def}
+For $f \in \Hom_{k}\bigl( \bigwedge^{p}\lie{g}, k \bigr)$ and $g \in \Hom_{k}\bigl( \bigwedge^{q}\lie{g}, k \bigr)$, we recall from \eqref{eq:cup-prod-def} that the cup product in cohomology is induced by: $f \cup g \in \Hom_{k}\bigl( \bigwedge^{p+q}\lie{g}, k \bigr)$ defined by
+\begin{equation*}
   (f \cup g)(x_{1} \wedge \dotsb \wedge x_{p+q})  = \sum_{\mathclap{\substack{ \sigma \in S_{p+q} \\ \sigma(1) < \dotsb < \sigma(p) \\ \sigma(p+1) < \dotsb < \sigma(p+q) }}} \sign(\sigma) f(x_{\sigma(1)} \wedge \dotsb \wedge x_{\sigma(p)}) g(x_{\sigma(p+1)} \wedge \dotsb \wedge x_{\sigma(p+q)}).
-\end{equation}
+\end{equation*}
 
 We will now find all the cup products in \eqref{eq:non-triv-cups-GL2} by working with our given bases and the \eqref{eq:cup-prod-def}.
 % In the following it will be important to be aware that we use $\sigma \in S_{n}$ to describe a \enquote{positional} permutation when writing it as an action, and not a permutation of the numbers $\set{1,\dotsc,n}$. We will write e.g. $\sigma \act (1,4,2) = (4,1,2)$ for $\sigma=(1,2)$, when using $\sigma$ in this way, while $\sigma(1)=2$, $\sigma(2) = 1$, $\sigma(3) = 1$ will be written as usual. \dknote{Be more clear about the notation.}
@@ -1007,7 +1227,7 @@ Looking at \eqref{eq:Hst-spaces-GL2}, we need to describe the maps
 \end{align*}
 on the basis of $\gr^{4} \bigwedge^{3}\lie{g}$, i.e., on $\basis = (\xi_{1} \wedge \xi_{4} \wedge \xi_{2}, \xi_{1} \wedge \xi_{4} \wedge \xi_{3})$. In any case with repeat numbers, it's clear from \eqref{eq:cup-prod-def} (and the fact that there are no repeats in $\basis$) that the cup product will be zero, so we only need to consider $e_{1} \cup e_{4,2}$, $e_{1} \cup e_{4,3}$, $e_{4} \cup e_{1,2}$ and $e_{4} \cup e_{1,3}$. In all cases of $e_{i} \cup e_{j,k}$, \eqref{eq:cup-prod-def} simplifies to
 \begin{equation*}
-  (e_{i} \cup e_{j,k})(x_{2} \wedge x_{2} \wedge x_{3}) = \sum_{\substack{\sigma \in S_{3} \\ \sigma(2) < \sigma(3)}} \sign(\sigma) e_{i}(x_{\sigma(1)}) e_{j,k}(x_{\sigma(2)} \wedge x_{\sigma(3)}),
+  (e_{i} \cup e_{j,k})(x_{1} \wedge x_{2} \wedge x_{3}) = \sum_{\substack{\sigma \in S_{3} \\ \sigma(2) < \sigma(3)}} \sign(\sigma) e_{i}(x_{\sigma(1)}) e_{j,k}(x_{\sigma(2)} \wedge x_{\sigma(3)}),
 \end{equation*}
 i.e., the sum is over $\sigma \in \set{(1), (1,2), (1,3,2)}$. When $(i,j,k) = (1,4,2)$ or $(i,j,k) = (1,4,3)$, this sum is zero on all of $\basis$ except $\xi_{i} \wedge \xi_{j} \wedge \xi_{k}$ with $\sigma=(1)$, since $\sigma$ needs to fix $1$ and $\basis$ uses the same ordering. Here we get (using that $\sign\bigl((1)\bigr) = 1$)
 \begin{equation*}
@@ -1065,7 +1285,7 @@ which is only true for $\sigma = (2,3)$. Since $\sign\bigl((2,3)\bigr) = -1$, we
 \end{enumerate}
 which doesn't exist.\dknote{Or did I miss it?} Hence $e_{1,3} \cup e_{4,2} = 0$. Looking at \eqref{eq:Hst-spaces-GL2}, we see that $e_{1,4,2,3}$ it the basis elements of $H^{-6,10}$, so the above calculation caries over to the above cup products in cohomology. Also, since $H^{-3,5} = H^{2}$, we get, by graded commutativity of the cup product, that $e_{4,2} \cup e_{1,3} = 0$ and $e_{4,3} \cup e_{1,2} = (-1)^{2\times2} e_{1,2} \cup e_{4,3} = e_{1,4,2,3}$.
 
-In conclusion, all the non-zero cup products (up to graded commutativity) are:
+In conclusion, all the non-trivial and non-zero cup products (up to graded commutativity) are:
 \begin{equation}
   \label{eq:cup-products-GL2}
   \begin{aligned}
