@@ -688,28 +688,29 @@ Now, since the spectral sequence collapses on the first page, all of the above w
     (\alpha,1) &\mapsto \Tr(\alpha) = 0, \\
     (\alpha,\alpha) &\mapsto \Tr(\alpha^{2}) = -2.
   \end{align*}
-  This is (up to a multiple of $2$) the same as the description of the cup product on $H^{*}(I,\F_{p})$ above for $I \subseteq \SL_{2}(\Z_{p})$, so an interesting question is: Is there a nice relation between $G$ and $I$?
+  This is (up to a multiple of $2$) the same as the description of the cup product on $H^{*}(I,\F_{p})$ above for $I \subseteq \SL_{2}(\Z_{p})$, so an interesting question is: Is there a nice relation between mod $p$ representations of $G = (1+\idm_{D})^{\Nrd = 1}$ and $I$? We already have bijections between certain mod $p$ representations of $D^{\times}$ and $\GL_{2}(\Q_{p})$ from the Jacquet-Langlands correspondence for $\GL_{2}$ (cf.\ \cite{JL}), but by \cite[Rem.~4.5]{JL-remark} irreducible representations of $D^{\times}$ are trivial on $1+\idm_{D}$, so we need something new if we want a correspondence between mod $p$ representations of $G = (1+\idm_{D})^{\Nrd = 1}$ and $I \subseteq \SL_{2}(\Q_{p})$.
 
-  As a partial answer to the question in the $p \equiv 3 \pmod{4}$ case, we note that $\lie{g}_{D} = \F_{D} \oplus \F_{D}^{\Tr = 0}$ sitting in degree $1$ and $1$ has Lie bracket given by $[\overline{x},\overline{y}] = \overline{x}\overline{y}^{p} - \overline{y}\overline{x}^{p}$ for any $\overline{x},\overline{y} \in \F_{D}$ in degree $1$ (and $0$ otherwise) by \cite[(6.6)]{Sor}. So, with $\F_{D} = \F_{p}[\alpha]$, we note that
+  As a continuation to the question in the $p \equiv 3 \pmod{4}$ case, we note that $\lie{g}_{D} = \F_{D} \oplus \F_{D}^{\Tr = 0}$ sitting in degree $1$ and $2$ has Lie bracket given by $[\overline{x},\overline{y}] = \overline{x}\overline{y}^{p} - \overline{y}\overline{x}^{p}$ for any $\overline{x},\overline{y} \in \F_{D}$ in degree $1$ (and $0$ otherwise) by \cite[(6.6)]{Sor}. So, with $\F_{D} = \F_{p}[\alpha]$, we note that
   \begin{equation*}
     [1,\alpha] = 1\cdot\alpha^{p} - \alpha\cdot1^{p} = -2\alpha,
   \end{equation*}
-  since $p \equiv 3 \pmod{4}$ and $\alpha^{2} = -1$. Thus we have an obvious relation between $\lie{g}$ and $\lie{g}_{D}$ given by $\xi_{1},\xi_{3} \leftrightarrow 1,\alpha$ in degree $1$ and $\xi_{2} \leftrightarrow 2\alpha$ in degree $2$. The question is whether we can lift this to a relation between $I$ and $G$. Here it might be useful to note that we can assume that $i^{2} = -1$ and $j^{2} = p$ by \cite[Thm.~12.1.5]{Voight}, and furthermore that $\sO_{D}=\Z_{p}[i,j,k]$ (where $k=ij$) and $\idm_{D} = j\sO_{D}$, which has $\Z_{p}$-basis $p,pi,j,k$, by \cite[Thm.13.1.6]{Voight}. With this setup, we also have that
+  since $p \equiv 3 \pmod{4}$ and $\alpha^{2} = -1$. Thus we have an obvious relation between $\lie{g}$ and $\lie{g}_{D}$ given by $\xi_{1},\xi_{3} \leftrightarrow 1,\alpha$ in degree $1$ and $\xi_{2} \leftrightarrow 2\alpha$ in degree $2$. The question is whether we can lift this to a relation between (the representations of) $I$ and $G$. Here it might be useful to note that we can assume that $i^{2} = -1$ and $j^{2} = p$ by \cite[Thm.~12.1.5]{Voight}, and furthermore that $\sO_{D}=\Z_{p}[i,j,k]$ (where $k=ij$) and $\idm_{D} = j\sO_{D}$, which has $\Z_{p}$-basis $p,pi,j,k$, by \cite[Thm.13.1.6]{Voight}. With this setup, we also have that
   \begin{align*}
     \F_{D} = \sO_{D}/\idm_{D} \iso \idm_{D}^{n}/\idm_{D}^{n+1} &\xrightarrow{\iso} (1+\idm_{D}^{n})/(1+\idm_{D}^{n+1}) \\
     x &\mapsto 1+x
   \end{align*}
   is an isomorphism for all $n\geq1$, cf.\ \cite[13.5.8]{Voight}, which should help with translating from $G$ to $\lie{g}_{D}$. It only remains to find a (nice) ordered basis of $(1+\idm_{D})^{\Nrd = 1}$, and try to use all of the above to compare it with the basis $g_{1},g_{2},g_{3}$ of $I$ (or possibly with an alternative basis). One place to start might be, to try to use that $D^{\Nrd = 1} = [D^{\times},D^{\times}]$ by \cite[Exc.~30 of Chap.~7]{Voight}. Alternatively, it might be helpful to rewrite
   \begin{equation*}
-    D \iso \set[\Big]{\pmat{ a+bi & c+di \\ p(c-di) & a-bi } \given a,b,c,d\in\Q_{p} } \subseteq M_{2}\bigl( \Q_{p}(i) \bigr),
+    D \iso \set[\bigg]{\pmat{ a+bi & c+di \\ p(c-di) & a-bi } \given a,b,c,d\in\Q_{p} } \subseteq M_{2}\bigl( \Q_{p}(i) \bigr),
   \end{equation*}
-  using \cite[Cor.~13.3.14]{Voight}.
+  using \cite[Cor.~13.3.14]{Voight}, since this presentation seems more directly related to the pro-$p$ Iwahori.
 \end{remark}
 
 \begin{conjecture}
-  There is a group isomorphism $I \iso G$, which lifts the $\F_{p}$-Lie algebra isomorphism $\lie{g} \iso \lie{g}_{D}$ of \Cref{rem:quaternion}.
+  There is some correspondence between mod $p$ representations of $(1+\idm_{D})^{\Nrd = 1}$ and $I \subseteq \SL_{2}(\Z_{p})$.
 \end{conjecture}
 
+It might even be the case, that we have a group isomorphism between $(1+\idm_{D})^{\Nrd = 1}$ and $I$, which lifts the $\F_{p}$-Lie algebra isomorphism $\lie{g} \iso \lie{g}_{D}$ of \Cref{rem:quaternion}, but this seems less likely.
 
 \subsection{Lower \texorpdfstring{$p$}{p}-series of \texorpdfstring{$I$}{I}}%
 \label{subsec:lower-p-series-SL2}
@@ -1347,9 +1348,9 @@ where
   \end{aligned}
 \end{equation}
 
-Furthermore, write $g_{ij} = [g_{i},g_{j}]$ and $\xi_{ij} = [\xi_{i},\xi_{j}]$. Then we are ready to find $x_{1},\dotsc,x_{8}$ such that $g_{ij} = g_{1}^{x_{1}} \dotsb g_{8}^{x_{8}}$ for different $i<j$. (In the following we use that $\frac{1}{p-1} = 1 + p + p^{2} + \dotsb$ and $\log(1-p) = -p - \frac{p^{2}}{2} - \frac{p^{3}}{3} - \dotsb$.) Also, except in the first case, we will note that $x_{i} \in p\Z_{p}$ implies that the coefficient on $\xi_{k}$ in $\xi_{ij}$ is zero.
+Furthermore, write $g_{ij} = [g_{i},g_{j}]$ and $\xi_{ij} = [\xi_{i},\xi_{j}]$. Then we are ready to find $x_{1},\dotsc,x_{8}$ such that $g_{ij} = g_{1}^{x_{1}} \dotsb g_{8}^{x_{8}}$ for different $i<j$. (In the following we use that $\frac{1}{p-1} = 1 + p + p^{2} + \dotsb$ and $\log(1-p) = -p - \frac{p^{2}}{2} - \frac{p^{3}}{3} - \dotsb$.) Also, except in the first case, we will note that $x_{k} \in p\Z_{p}$ implies that the coefficient on $\xi_{k}$ in $\xi_{ij}$ is zero.
 
-We now list all non-identitiy commutators $g_{ij} = [g_{i},g_{j}]$ and find $\xi_{ij} = [\xi_{i},\xi_{j}]$ based on these. (For $g_{ij} = 1_{3}$ it's clear that $x_{1} = \cdots = x_{8} = 0$, and thus $\xi_{ij} = 0$.)
+We now list all non-identity commutators $g_{ij} = [g_{i},g_{j}]$ and find $\xi_{ij} = [\xi_{i},\xi_{j}]$ based on these. (For $g_{ij} = 1_{3}$ it's clear that $x_{1} = \cdots = x_{8} = 0$, and thus $\xi_{ij} = 0$.)
 
 \begin{description}
   \item[$g_{14} = \pmat{1 \\ & 1 \\ p\bigl( 1-\exp(-p) \bigr) && 1}$:] Comparing $g_{14}$ with \eqref{eq:gixi-SL3}, we see that $x_{2} = x_{4} = x_{7} = x_{8} = 0$, and thus also $x_{3} = x_{5} = x_{6} = 0$. This leaves $a_{31} = px_{1} = p\bigl( 1-\exp(-p) \bigr) = p^{2} + O(p^{3})$, which implies that $x_{1} = p + O(p^{2})$. Hence $\sigma(g_{14}) = \pi \act \sigma(g_{1})$, which implies that $\xi_{14} = 0$.
@@ -1431,7 +1432,7 @@ We now list all non-identitiy commutators $g_{ij} = [g_{i},g_{j}]$ and find $\xi
   \item[$g_{67} = \pmat{ 1 && -1 \\ & 1 \\ && 1}$:] Comparing $g_{67}$ with \eqref{eq:gixi-SL3}, we see that $x_{1} = x_{2} = x_{4} = x_{7} = 0$, and thus also $x_{3} = x_{5} = x_{6} = 0$. This leaves $a_{13} = x_{8} = -1$. Hence $\sigma(g_{67}) = -\sigma(g_{8})$, which implies that $\xi_{67} = -\xi_{8}$.
 \end{description}
 
-Thus the non-zero commutators are:
+Thus the non-zero commutators $[\xi_{i},\xi_{j}]$ with $i<j$ are:
 \begin{equation}
   \label{eq:xi_ij-SL3}
   \begin{aligned}

@@ -1,6 +1,230 @@
 \section{\texorpdfstring{$I \subseteq \SL_{4}(\Z_{p})$}{I in SL4(Zp)}}%
 \label{sec:SL4-calc}
 
+
+In this section we will describe the continuous group cohomology of the pro-$p$ Iwahori subgroup $I$ of $\SL_{4}(\Q_{p})$.
+
+When $I$ is the pro-$p$ Iwahori subgroup in $\SL_{4}(\Q_{p})$, we know by \Cref{sec:cohiwagps-intro} that we can take it to be of the form
+\begin{equation*}
+  I = \pmat{1+p\Z_{p} & \Z_{p} & \Z_{p} & \Z_{p} \\ p\Z_{p} & 1+p\Z_{p} & \Z_{p} & \Z_{p} \\ p\Z_{p} & p\Z_{p} & 1+p\Z_{p} & \Z_{p} \\ p\Z_{p} & p\Z_{p} & p\Z_{p} & 1+p\Z_{p}}^{\!\!\det = 1} \subseteq \SL_{4}(\Z_{p}),
+\end{equation*}
+and, by \Cref{sec:cohiwagps-intro}, we have an ordered basis
+\begin{equation}
+  \label{eq:gis-SL3}
+  \begin{gathered}
+    g_{1} = \pmat{ 1 \\ & 1 \\ && 1 \\ p && 1 }, \quad g_{2} = \pmat{ 1 \\ & 1 \\ p && 1 \\ &&& 1 }, \quad g_{3} = \pmat{ 1 \\ p & 1 \\ && 1 \\ &&& 1 }, \\
+    g_{4} = \pmat{ 1 \\ & 1 \\ && 1 \\ & 1 && 1 }, \quad g_{5} = \pmat{ 1 \\ & 1 \\ & p & 1 \\ &&& 1 }, \quad g_{6} = \pmat{ 1 \\ & 1 \\ && 1 \\ && p & 1 }, \\
+    g_{7} = \pmat{ \exp(p) \\ & \exp(-p) \\ && 1 \\ &&& 1 }, \quad g_{8} = \pmat{ 1 \\ & \exp(p) \\ && \exp(-p) \\ &&& 1 }, \\
+    g_{9} = \pmat{ 1 \\ & 1 \\ && \exp(p) \\ &&& \exp(-p) }, \\
+    g_{10} = \pmat{ 1 &&& 1 \\ & 1 \\ && 1 \\ &&& 1 }, \quad g_{11} = \pmat{ 1 \\ & 1 && 1 \\ && 1 \\ &&& 1 }, \quad g_{12} = \pmat{ 1 \\ & 1 \\ && 1 & 1 \\ &&& 1 }, \\
+    g_{13} = \pmat{1 && 1 \\ & 1 \\ && 1 \\ &&& 1 }, \quad g_{14} = \pmat{ 1 \\ & 1 & 1 \\ && 1 \\ &&& 1 }, \quad g_{15} = \pmat{ 1 & 1 \\ & 1 \\ && 1 \\ &&& 1 }.
+  \end{gathered}
+\end{equation}
+Here we write any zeros as blank space in matrices, to make the notation easier to read for the bigger matrices.
+
+\begin{remark}
+  Note that the order is not going from the lower left corner to the upper right corner along ``diagonals'', which might be a more standard ordering to chose. The reason we choose this alternative order is to simplify some calculations. In particular, this order gives simpler $a_{ij}$ below.
+\end{remark}
+
+\subsection{Finding the commutators \texorpdfstring{$[\xi_{i},\xi_{j}]$}{[xi-i,xi-j]}}%
+\label{subsec:non-id-xi_ij-SL4}
+
+Now
+\begin{equation*}
+    g_{1}^{x_{1}}g_{2}^{x_{2}} \dotsb g_{15}^{x_{15}} = \pmat{ a_{11} & a_{12} & a_{13} & a_{14} \\ a_{21} & a_{22} & a_{23} & a_{24} \\ a_{31} & a_{32} & a_{33} & a_{34} \\ a_{41} & a_{42} & a_{43} & a_{44} },
+\end{equation*}
+where
+\begin{equation}
+  \label{eq:gixi-SL4}
+  \begin{aligned}
+    a_{11} &= \exp(px_{7}), \\
+    a_{12} &= x_{15}\exp(px_{7}), \\
+    a_{13} &= x_{13}\exp(px_{7}), \\
+    a_{14} &= x_{10}\exp(px_{7}), \\
+    a_{21} &= px_{3}\exp(px_{7}), \\
+    a_{22} &= px_{15}x_{3}\exp(px_{7}) + \exp\bigl( p(x_{8}-x_{7}) \bigr), \\
+    a_{23} &= px_{13}x_{3}\exp(px_{7}) + x_{14}\exp\bigl( p(x_{8}-x_{7}) \bigr), \\
+    a_{24} &= px_{10}x_{3}\exp(px_{7}) + x_{11}\exp\bigl( p(x_{8}-x_{7}) \bigr), \\
+    a_{31} &= px_{2}\exp(px_{7}), \\
+    a_{32} &= px_{15}x_{2}\exp(px_{7}) + px_{5}\exp\bigl( p(x_{8}-x_{7}) \bigr), \\
+    a_{33} &= px_{13}x_{2}\exp(px_{7}) + px_{14}x_{5}\exp\bigl( p(x_{8}-x_{7}) \bigr) + \exp\bigl( p(x_{9}-x_{8}) \bigr), \\
+    a_{34} &= px_{10}x_{2}\exp(px_{7}) + px_{11}x_{5}\exp\bigl( p(x_{8}-x_{7}) \bigr) + x_{12}\exp\bigl( p(x_{9}-x_{8}) \bigr), \\
+    a_{41} &= px_{1}\exp(px_{7}), \\
+    a_{42} &= px_{1}x_{15}\exp(px_{7}) + px_{4}\exp\bigl( p(x_{8}-x_{7}) \bigr) \\
+    a_{43} &= px_{1}x_{13}\exp(px_{7}) + px_{14}x_{4}\exp\bigl( p(x_{8}-x_{7}) \bigr) + px_{6}\exp\bigl( p(x_{9}-x_{8}) \bigr), \\
+    a_{44} &= px_{1}x_{10}\exp(px_{7}) + px_{11}x_{4}\exp\bigl( p(x_{8}-x_{7}) \bigr) + px_{12}x_{6}\exp\bigl( p(x_{9}-x_{8}) \bigr) \\*
+    &\phantom{{}={}} + \exp(-px_{9}).
+  \end{aligned}
+\end{equation}
+
+Furthermore, write $g_{i,j} = [g_{i},g_{j}]$ and $\xi_{i,j} = [\xi_{i},\xi_{j}]$. Then we are ready to find $x_{1},\dotsc,x_{15}$ such that $g_{i,j} = g_{1}^{x_{1}} \dotsb g_{15}^{x_{15}}$ for different $i<j$. (In the following we use that $\frac{1}{p-1} = 1 + p + p^{2} + \dotsb$ and $\log(1-p) = -p - \frac{p^{2}}{2} - \frac{p^{3}}{3} - \dotsb$.) Also, except in the first case, we will note that $x_{k} \in p\Z_{p}$ implies that the coefficient on $\xi_{k}$ in $\xi_{i,j}$ is zero.
+
+We now list all non-identity commutators $g_{i,j} = [g_{i},g_{j}]$ and find $\xi_{i,j} = [\xi_{i},\xi_{j}]$ based on these. (For $g_{i,j} = 1_{4}$ it's clear that $x_{1} = \cdots = x_{15} = 0$, and thus $\xi_{i,j} = 0$.)
+
+\begin{description}
+  \item[$g_{1,7} = \pmat{1 \\ & 1 \\ && 1 \\  p\bigl( 1-\exp(-p) \bigr) &&& 1 }$:] Comparing $g_{1,7}$ with \eqref{eq:gixi-SL4}, we see that $x_{2} = x_{3} = x_{7} = x_{10} = x_{13} = x_{15} = 0$, and thus also $x_{4} = x_{5} = x_{8} = x_{11} = x_{14} = 0$, which implies that $x_{6} = x_{9} = x_{12} = 0$. This leaves $a_{41} = px_{1} = p\bigl( 1-\exp(-p) \bigr) = p^{2} + O(p^{3})$, which implies that $x_{1} = p + O(p^{2})$. Hence $\sigma(g_{1,7}) = \pi \act \sigma(g_{1})$, which implies that $\xi_{1,7} = 0$.
+
+  \item[$g_{1,9} = \pmat{1 \\ & 1 \\ && 1 \\  p\bigl( 1-\exp(-p) \bigr) &&& 1 }$:] Since $g_{1,9} = g_{1,7}$, the above calculation shows that $\xi_{1,8} = 0$.
+
+  \item[$g_{1,10} = \pmat{1-p &&& p \\ & 1 \\ && 1 \\ -p^{2} &&& 1+p+p^{2}}$:] Comparing $g_{1,10}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$ except $x_{7} = x_{8} = x_{9}$, for which we have $a_{11} = \exp(px_{7}) = 1-p$, and thus $x_{7} = \frac{1}{p}\log(1-p) = -1 + O(p)$. Hence $\xi_{1,10} = -\xi_{7}-\xi_{8}-\xi_{9}$.
+
+  \item[$g_{1,11} = \pmat{1 \\ -p & 1 \\ && 1 \\ &&& 1}$:] Comparing $g_{1,11}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$ except $x_{3}$, for which we have $a_{21} = px_{3} = -p$, and thus $x_{3} = -1$. Hence $\xi_{1,11} = -\xi_{3}$.
+
+  \item[$g_{1,12} = \pmat{1 \\ & 1 \\ -p && 1 \\ &&& 1}$:] Comparing $g_{1,12}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$ except $x_{2}$, for which we have $a_{31} = px_{2} = -p$, and thus $x_{2} = -1$. Hence $\xi_{1,12} = -\xi_{2}$.
+
+  \item[$g_{1,13} = \pmat{1 \\ & 1 \\ && 1 \\ && p & 1}$:] Comparing $g_{1,13}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$ except $x_{6}$, for which we have $a_{43} = px_{6} = p$, and thus $x_{6} = 1$. Hence $\xi_{1,13} = \xi_{6}$.
+
+  \item[$g_{1,15} = \pmat{1 \\ & 1 \\ && 1 \\ & p && 1}$:] Comparing $g_{1,15}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$ except $x_{4}$, for which we have $a_{42} = px_{4} = p$, and thus $x_{4} = 1$. Hence $\xi_{1,15} = \xi_{4}$.
+
+  \item[$g_{2,6} = \pmat{1 \\ & 1 \\ && 1 \\ -p^{2} &&& 1}$:] Comparing $g_{2,6}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{2,6} = 0$.
+
+  \item[$g_{2,7} = \pmat{1 \\ & 1 \\ p\bigl( 1-\exp(-p) \bigr) && 1 \\ &&& 1}$:] Comparing $g_{2,7}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{2,7} = 0$.
+
+  \item[$g_{2,8} = \pmat{1 \\ & 1 \\ p\bigl( 1-\exp(-p) \bigr) && 1 \\ &&& 1 }$:] Since $g_{2,8} = g_{2,7}$, the above shows that $\xi_{2,8} = 0$.
+
+  \item[$g_{2,9} = \pmat{1 \\ & 1 \\ p\bigl( 1-\exp(p) \bigr) && 1 \\ &&& 1}$:] Comparing $g_{2,9}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{2,9} = 0$.
+
+  \item[$g_{2,10} = \pmat{1 \\ & 1 \\ && 1 & p \\ &&& 1}$:] Comparing $g_{2,10}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{2,10} = 0$.
+
+  \item[$g_{2,13} = \pmat{1-p && p \\ & 1 \\ -p^{2} && 1+p+p^{2} \\ &&& 1}$:] Comparing $g_{2,13}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$ except $x_{7} = x_{8}$, for which we have $a_{11} = \exp(px_{7}) = 1-p$, and thus $x_{7} = \frac{1}{p}\log(1-p) = -1 + O(p)$. Hence $\xi_{2,13} = -\xi_{7}-\xi_{8}$.
+
+  \item[$g_{2,14} = \pmat{1 \\ -p & 1 \\ && 1 \\ &&& 1}$:] Comparing $g_{2,14}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$ except $x_{3}$, for which we have $a_{21} = px_{3} = -p$, and thus $x_{3} = -1$. Hence $\xi_{2,14} = -\xi_{3}$.
+
+  \item[$g_{2,15} = \pmat{1 \\ & 1 \\ & p & 1 \\ &&& 1}$:] Comparing $g_{2,15}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$ except $x_{5}$, for which we have $a_{32} = px_{5} = p$, and thus $x_{5} = 1$. Hence $\xi_{2,15} = \xi_{5}$.
+
+  \item[$g_{3,4} = \pmat{1 \\ & 1 \\ && 1 \\ -p^{2} &&& 1}$:] Comparing $g_{3,4}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{3,4} = 0$.
+
+  \item[$g_{3,5} = \pmat{1 \\ & 1 \\ -p^{2} && 1 \\ &&& 1}$:] Comparing $g_{3,5}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{3,5} = 0$.
+
+  \item[$g_{3,7} = \pmat{1 \\ p\bigl( 1-\exp(-2p) \bigr) & 1 \\ && 1 \\ &&& 1}$:] Comparing $g_{3,7}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{3,7} = 0$.
+
+  \item[$g_{3,8} = \pmat{1 \\ p\bigl( 1-\exp(p) \bigr) & 1 \\ && 1 \\ &&& 1}$:] Comparing $g_{3,8}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{3,8} = 0$.
+
+  \item[$g_{3,10} = \pmat{1 \\ & 1 && p \\ && 1 \\ &&& 1}$:] Comparing $g_{3,10}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{3,10} = 0$.
+
+  \item[$g_{3,13} = \pmat{1 \\ & 1 & p \\ && 1 \\ &&& 1}$:] Comparing $g_{3,13}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{3,13} = 0$.
+
+  \item[$g_{3,15} = \pmat{1-p & p \\ -p^{2} & 1+p+p^{2} \\ && 1 \\ &&& 1}$:] Comparing $g_{3,15}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$ except $x_{7}$, for which we have $a_{11} = \exp(px_{7}) = 1-p$, and thus $x_{7} = \frac{1}{p}\log(1-p) = -1 + O(p)$. Hence $\xi_{3,15} = -\xi_{7}$.
+
+  \item[$g_{4,7} = \pmat{1 \\ & 1 \\ && 1 \\ & p\bigl( 1-\exp(p) \bigr) && 1}$:] Comparing $g_{4,7}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{4,7} = 0$.
+
+  \item[$g_{4,8} = \pmat{1 \\ & 1 \\ && 1 \\ & p\bigl( 1-\exp(-p) \bigr) && 1}$:] Comparing $g_{4,8}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{4,8} = 0$.
+
+  \item[$g_{4,9} = \pmat{1 \\ & 1 \\ && 1 \\ & p\bigl( 1-\exp(-p) \bigr) && 1 }$:] Since $g_{4,9} = g_{4,8}$, the above shows that $\xi_{4,9} = 0$.
+
+  \item[$g_{4,10} = \pmat{1 & -p \\ & 1 \\ && 1 \\ &&& 1}$:] Comparing $g_{4,10}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{4,10} = 0$.
+
+  \item[$g_{4,11} = \pmat{1 \\ & 1-p && p \\ && 1 \\ & -p^{2} && 1+p+p^{2}}$:] Comparing $g_{4,11}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$ except $x_{8}=x_{9}$, for which we have $a_{22} = \exp(px_{8}) = 1-p$, and thus $x_{8} = \frac{1}{p}\log(1-p) = -1 + O(p)$. Hence $\xi_{4,11} = -\xi_{8}-\xi_{9}$.
+
+  \item[$g_{4,12} = \pmat{1 \\ & 1 \\ & -p & 1 \\ &&& 1}$:] Comparing $g_{4,12}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$ except $x_{5}$, for which we have $a_{32} = px_{5} = -p$, and thus $x_{5} = -1$. Hence $\xi_{4,12} = -\xi_{5}$.
+
+  \item[$g_{4,14} = \pmat{1 \\ & 1 \\ && 1 \\ && p & 1}$:] Comparing $g_{4,14}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$ except $x_{6}$, for which we have $a_{43} = px_{6} = p$, and thus $x_{6} = 1$. Hence $\xi_{4,14} = \xi_{6}$.
+
+  \item[$g_{5,6} = \pmat{1 \\ & 1 \\ && 1 \\ & -p^{2} && 1}$:] Comparing $g_{5,6}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{5,6} = 0$.
+
+  \item[$g_{5,7} = \pmat{1 \\ & 1 \\ & p\bigl( 1-\exp(p) \bigr) & 1 \\ &&& 1}$:] Comparing $g_{5,7}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{5,7} = 0$.
+
+  \item[$g_{5,8} = \pmat{1 \\ & 1 \\ & p\bigl( 1-\exp(-2p) \bigr) & 1 \\ &&& 1}$:] Comparing $g_{5,8}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{5,8} = 0$.
+
+  \item[$g_{5,9} = \pmat{1 \\ & 1 \\ & p\bigl( 1-\exp(p) \bigr) & 1 \\ &&& 1}$:] Since $g_{5,9} = g_{5,7}$, the above shows that $\xi_{5,9} = 0$.
+
+  \item[$g_{5,11} = \pmat{1 \\ & 1 \\ && 1 & p \\ &&& 1}$:] Comparing $g_{5,11}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{5,11} = 0$.
+
+  \item[$g_{5,13} = \pmat{1 & -p \\ & 1 \\ && 1 \\ &&& 1}$:] Comparing $g_{5,13}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{5,13} = 0$.
+
+  \item[$g_{5,14} = \pmat{1 \\ & 1-p & p \\ & -p^{2} & 1+p+p^{2} \\ &&& 1}$:] Comparing $g_{5,14}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$ except $x_{8}$, for which we have $a_{22} = \exp(px_{8}) = 1-p$, and thus $x_{8} = \frac{1}{p}\log(1-p) = -1 + O(p)$. Hence $\xi_{5,14} = -\xi_{8}$.
+
+  \item[$g_{6,8} = \pmat{1 \\ & 1 \\ && 1 \\ && p\bigl( 1-\exp(p) \bigr) & 1}$:] Comparing $g_{6,8}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{6,8} = 0$.
+
+  \item[$g_{6,9} = \pmat{1 \\ & 1 \\ && 1 \\ && p\bigl( 1-\exp(-2p) \bigr) & 1}$:] Comparing $g_{6,9}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{6,9} = 0$.
+
+  \item[$g_{6,10} = \pmat{1 && -p \\ & 1 \\ && 1 \\ &&& 1}$:] Comparing $g_{6,10}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{6,10} = 0$.
+
+  \item[$g_{6,11} = \pmat{1 \\ & 1 & -p \\ && 1 \\ &&& 1}$:] Comparing $g_{6,11}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{6,11} = 0$.
+
+  \item[$g_{6,12} = \pmat{1 \\ & 1 \\ && 1-p & p \\ && -p^{2} & 1+p+p^{2}}$:] Comparing $g_{6,12}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$ except $x_{9}$, for which we have $a_{33} = \exp(px_{9}) = 1-p$, and thus $x_{9} = \frac{1}{p}\log(1-p) = -1 + O(p)$. Hence $\xi_{6,12} = -\xi_{9}$.
+
+  \item[$g_{7,10} = \pmat{1 &&& \exp(p)-1 \\ & 1 \\ && 1 \\ &&& 1}$:] Comparing $g_{7,10}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{7,10} = 0$.
+
+  \item[$g_{7,11} = \pmat{1 \\ & 1 && \exp(-p)-1 \\ && 1 \\ &&& 1}$:] Comparing $g_{7,11}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{7,11} = 0$.
+
+  \item[$g_{7,13} = \pmat{1 && \exp(p)-1 \\ & 1 \\ && 1 \\ &&& 1}$:] Comparing $g_{7,13}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{7,13} = 0$.
+
+  \item[$g_{7,14} = \pmat{1 \\ & 1 & \exp(-p)-1 \\ && 1 \\ &&& 1}$:] Comparing $g_{7,14}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{7,14} = 0$.
+
+  \item[$g_{7,15} = \pmat{1 & \exp(2p)-1 \\ & 1 \\ && 1 \\ &&& 1}$:] Comparing $g_{7,15}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{7,15} = 0$.
+
+  \item[$g_{8,11} = \pmat{1 \\ & 1 && \exp(p)-1 \\ && 1 \\ &&& 1}$:] Comparing $g_{8,11}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{8,11} = 0$.
+
+  \item[$g_{8,12} = \pmat{1 \\ & 1 \\ && 1 & \exp(-p)-1 \\ &&& 1}$:] Comparing $g_{8,12}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{8,12} = 0$.
+
+  \item[$g_{8,13} = \pmat{1 && \exp(p)-1 \\ & 1 \\ && 1 \\ &&& 1}$:] Since $g_{8,13} = g_{7,13}$, the above shows that $\xi_{8,13} = 0$.
+
+  \item[$g_{8,14} = \pmat{1 \\ & 1 & \exp(2p)-1 \\ && 1 \\ &&& 1}$:] Comparing $g_{8,14}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{8,14} = 0$.
+
+  \item[$g_{8,15} = \pmat{1 & \exp(-p)-1 \\ & 1 \\ && 1 \\ &&& 1}$:] Comparing $g_{8,15}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{8,15} = 0$.
+
+  \item[$g_{9,10} = \pmat{1 &&& \exp(p)-1 \\ & 1\\ && 1 \\ &&& 1}$:] Since $g_{9,10} = g_{7,10}$, the above shows that $\xi_{8,15} = 0$.
+
+  \item[$g_{9,11} = \pmat{1 \\ & 1 && \exp(p)-1 \\ && 1 \\ &&& 1}$:] Since $g_{9,11} = g_{8,11}$, the above shows that $\xi_{9,11} = 0$.
+
+  \item[$g_{9,12} = \pmat{1 \\ & 1 \\ && 1 & \exp(2p)-1 \\ &&& 1}$:] Comparing $g_{9,12}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{9,12} = 0$.
+
+  \item[$g_{9,13} = \pmat{1 && \exp(-p)-1 \\ & 1 \\ && 1 \\ &&& 1}$:] Comparing $g_{9,13}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{9,13} = 0$.
+
+  \item[$g_{9,14} = \pmat{1 \\ & 1 & \exp(-p)-1 \\ && 1 \\ &&& 1}$:] Comparing $g_{9,14}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$. Hence $\xi_{9,14} = 0$.
+
+  \item[$g_{11,15} = \pmat{1 &&& -1 \\ & 1 \\ && 1 \\ &&& 1}$:] Comparing $g_{11,15}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$ except $x_{10}$, for which we have $a_{14} = x_{10} = -1$. Hence $\xi_{11,15} = -\xi_{10}$.
+
+  \item[$g_{12,13} = \pmat{1 &&& -1 \\ & 1 \\ && 1 \\ &&& 1}$:] Since $g_{12,13} = g_{11,15}$, the above shows that $\xi_{12,13} = -\xi_{10}$.
+
+  \item[$g_{12,14} = \pmat{1 \\ & 1 && -1 \\ && 1 \\ &&& 1}$:] Comparing $g_{12,14}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$ except $x_{11}$, for which we have $a_{24} = x_{11} = -1$. Hence $\xi_{12,14} = -\xi_{11}$.
+
+  \item[$g_{14,15} = \pmat{1 && -1 \\ & 1 \\ && 1 \\ &&& 1}$:] Comparing $g_{14,15}$ with \eqref{eq:gixi-SL4}, we see that all $x_{i}$ are in $p\Z_{p}$ except $x_{13}$, for which we have $a_{13} = x_{13} = -1$. Hence $\xi_{14,15} = -\xi_{13}$.
+\end{description}
+
+Thus the non-zero commutators $[\xi_{i},\xi_{j}]$ with $i<j$ are:
+\begin{equation}
+  \label{eq:xi_ij-SL4}
+  \begin{aligned}
+    [\xi_{1},\xi_{10}] &= -(\xi_{7}+\xi_{8}+\xi_{9}), & [\xi_{1},\xi_{11}] &= -\xi_{3}, & [\xi_{1},\xi_{12}] &= -\xi_{2}, \\
+    [\xi_{1},\xi_{13}] &= \xi_{6}, & [\xi_{1},\xi_{15}] &= \xi_{4}, & [\xi_{2},\xi_{13}] &= -(\xi_{7}+\xi_{8}), \\
+    [\xi_{2},\xi_{14}] &= -\xi_{3}, & [\xi_{2},\xi_{15}] &= \xi_{5}, & [\xi_{3},\xi_{15}] &= -\xi_{7}, \\
+    [\xi_{4},\xi_{11}] &= -(\xi_{8}+\xi_{9}), & [\xi_{4},\xi_{12}] &= -\xi_{5}, & [\xi_{4},\xi_{14}] &= \xi_{6}, \\
+    [\xi_{5},\xi_{14}] &= -\xi_{8}, & [\xi_{6},\xi_{12}] &= -\xi_{9}, & [\xi_{11},\xi_{15}] &= -\xi_{10}, \\
+    [\xi_{12},\xi_{13}] &= -\xi_{10}, & [\xi_{12},\xi_{14}] &= -\xi_{11}, & [\xi_{14},\xi_{15}] &= -\xi_{13}.
+  \end{aligned}
+\end{equation}
+
+\subsection{Describing the graded chain complex, \texorpdfstring{$\gr^{j}\bigl(\bigwedge^{n}\lie{g}\bigr)$}{grj(wedge-n g)}}%
+\label{subsec:graded-complex-SL4}
+
+Looking at \eqref{eq:Iwa-p-val-basis-SLn} (with $e=1$ and $h=3$), we see that
+\begin{align*}
+  \omega(g_{1}) &= 1-\frac{2}{3} = \frac{1}{3}, \\
+  \omega(g_{2}) &= 1-\frac{1}{3} = \frac{2}{3}, \\
+  \omega(g_{3}) &= 1-\frac{1}{3} = \frac{2}{3}, \\
+  \omega(g_{4}) &= 1, \\
+  \omega(g_{5}) &= 1, \\
+  \omega(g_{6}) &= \frac{1}{3}, \\
+  \omega(g_{7}) &= \frac{1}{3}, \\
+  \omega(g_{8}) &= \frac{2}{3}.
+\end{align*}
+Hence
+\begin{equation*}
+  \lie{g} = k \otimes_{\F_{p}[\pi]} \gr I = \Span_{k}(\xi_{1},\dotsc,\xi_{8}) = \lie{g}^{1} \oplus \lie{g}^{2} \oplus \lie{g}^{3},
+\end{equation*}
+where
+\begin{align*}
+  \lie{g}^{1} &= \lie{g}_{\frac{1}{3}} = \Span_{k}(\xi_{1},\xi_{6},\xi_{7}), \\
+  \lie{g}^{2} &= \lie{g}_{\frac{2}{3}} = \Span_{k}(\xi_{2},\xi_{3},\xi_{8}), \\
+  \lie{g}^{3} &= \lie{g}_{1} = \Span_{k}(\xi_{4},\xi_{5}).
+\end{align*}
+See \Cref{rem:g-Z-grading} for more details.
+
+
+
+
 \section{\texorpdfstring{$I \subseteq \GL_{4}(\Z_{p})$}{I in GL4(Zp)}}%
 \label{sec:GL4-calc}
 
