@@ -2,7 +2,7 @@
 \label{sec:SL4-calc}
 
 
-In this section we will describe the continuous group cohomology of the pro-$p$ Iwahori subgroup $I$ of $\SL_{4}(\Q_{p})$.
+In this section we will describe the work need to find the continuous group cohomology of the pro-$p$ Iwahori subgroup $I$ of $\SL_{4}(\Q_{p})$.
 
 When $I$ is the pro-$p$ Iwahori subgroup in $\SL_{4}(\Q_{p})$, we know by \Cref{sec:cohiwagps-intro} that we can take it to be of the form
 \begin{equation*}
@@ -10,10 +10,10 @@ When $I$ is the pro-$p$ Iwahori subgroup in $\SL_{4}(\Q_{p})$, we know by \Cref{
 \end{equation*}
 and, by \Cref{sec:cohiwagps-intro}, we have an ordered basis
 \begin{equation}
-  \label{eq:gis-SL3}
+  \label{eq:gis-SL4}
   \begin{gathered}
-    g_{1} = \pmat{ 1 \\ & 1 \\ && 1 \\ p && 1 }, \quad g_{2} = \pmat{ 1 \\ & 1 \\ p && 1 \\ &&& 1 }, \quad g_{3} = \pmat{ 1 \\ p & 1 \\ && 1 \\ &&& 1 }, \\
-    g_{4} = \pmat{ 1 \\ & 1 \\ && 1 \\ & 1 && 1 }, \quad g_{5} = \pmat{ 1 \\ & 1 \\ & p & 1 \\ &&& 1 }, \quad g_{6} = \pmat{ 1 \\ & 1 \\ && 1 \\ && p & 1 }, \\
+    g_{1} = \pmat{ 1 \\ & 1 \\ && 1 \\ p &&& 1 }, \quad g_{2} = \pmat{ 1 \\ & 1 \\ p && 1 \\ &&& 1 }, \quad g_{3} = \pmat{ 1 \\ p & 1 \\ && 1 \\ &&& 1 }, \\
+    g_{4} = \pmat{ 1 \\ & 1 \\ && 1 \\ & p && 1 }, \quad g_{5} = \pmat{ 1 \\ & 1 \\ & p & 1 \\ &&& 1 }, \quad g_{6} = \pmat{ 1 \\ & 1 \\ && 1 \\ && p & 1 }, \\
     g_{7} = \pmat{ \exp(p) \\ & \exp(-p) \\ && 1 \\ &&& 1 }, \quad g_{8} = \pmat{ 1 \\ & \exp(p) \\ && \exp(-p) \\ &&& 1 }, \\
     g_{9} = \pmat{ 1 \\ & 1 \\ && \exp(p) \\ &&& \exp(-p) }, \\
     g_{10} = \pmat{ 1 &&& 1 \\ & 1 \\ && 1 \\ &&& 1 }, \quad g_{11} = \pmat{ 1 \\ & 1 && 1 \\ && 1 \\ &&& 1 }, \quad g_{12} = \pmat{ 1 \\ & 1 \\ && 1 & 1 \\ &&& 1 }, \\
@@ -199,36 +199,72 @@ Thus the non-zero commutators $[\xi_{i},\xi_{j}]$ with $i<j$ are:
 \subsection{Describing the graded chain complex, \texorpdfstring{$\gr^{j}\bigl(\bigwedge^{n}\lie{g}\bigr)$}{grj(wedge-n g)}}%
 \label{subsec:graded-complex-SL4}
 
-Looking at \eqref{eq:Iwa-p-val-basis-SLn} (with $e=1$ and $h=3$), we see that
+Looking at \eqref{eq:Iwa-p-val-basis-SLn} (with $e=1$ and $h=4$), we see that
 \begin{align*}
-  \omega(g_{1}) &= 1-\frac{2}{3} = \frac{1}{3}, \\
-  \omega(g_{2}) &= 1-\frac{1}{3} = \frac{2}{3}, \\
-  \omega(g_{3}) &= 1-\frac{1}{3} = \frac{2}{3}, \\
-  \omega(g_{4}) &= 1, \\
-  \omega(g_{5}) &= 1, \\
-  \omega(g_{6}) &= \frac{1}{3}, \\
-  \omega(g_{7}) &= \frac{1}{3}, \\
-  \omega(g_{8}) &= \frac{2}{3}.
+  \omega(g_{1}) &= 1-\frac{3}{4} = \frac{1}{4}, & \omega(g_{2}) &= 1-\frac{2}{4} = \frac{1}{2}, & \omega(g_{3}) &= 1-\frac{1}{4} = \frac{3}{4}, \\
+  \omega(g_{4}) &= 1-\frac{2}{4} = \frac{1}{2}, & \omega(g_{5}) &= 1-\frac{1}{4} = \frac{3}{4}, & \omega(g_{6}) &= 1-\frac{1}{4} = \frac{3}{4},
+  \omega(g_{7}) &= 1, & \omega(g_{8}) &= 1, & \omega(g_{8}) &= 1, & \omega(g_{9}) &= 1, \\
+  \omega(g_{10}) &= \frac{3}{4}, &  \omega(g_{11}) &= \frac{2}{4} = \frac{1}{2}, & \omega(g_{12}) &= \frac{1}{4}, \\
+  \omega(g_{13}) &= \frac{2}{4} = \frac{1}{2}, & \omega(g_{14}) &= \frac{1}{4}, & \omega(g_{15}) &= \frac{1}{4}.
 \end{align*}
 Hence
 \begin{equation*}
-  \lie{g} = k \otimes_{\F_{p}[\pi]} \gr I = \Span_{k}(\xi_{1},\dotsc,\xi_{8}) = \lie{g}^{1} \oplus \lie{g}^{2} \oplus \lie{g}^{3},
+  \lie{g} = k \otimes_{\F_{p}[\pi]} \gr I = \Span_{k}(\xi_{1},\dotsc,\xi_{15}) = \lie{g}^{1} \oplus \lie{g}^{2} \oplus \lie{g}^{3} \oplus \lie{g}^{4},
 \end{equation*}
 where
 \begin{align*}
-  \lie{g}^{1} &= \lie{g}_{\frac{1}{3}} = \Span_{k}(\xi_{1},\xi_{6},\xi_{7}), \\
-  \lie{g}^{2} &= \lie{g}_{\frac{2}{3}} = \Span_{k}(\xi_{2},\xi_{3},\xi_{8}), \\
-  \lie{g}^{3} &= \lie{g}_{1} = \Span_{k}(\xi_{4},\xi_{5}).
+  \lie{g}^{1} &= \lie{g}_{\frac{1}{4}} = \Span_{k}(\xi_{1},\xi_{12},\xi_{14},\xi_{15}), \\
+  \lie{g}^{2} &= \lie{g}_{\frac{1}{2}} = \Span_{k}(\xi_{2},\xi_{4},\xi_{11},\xi_{13}), \\
+  \lie{g}^{3} &= \lie{g}_{\frac{3}{4}} = \Span_{k}(\xi_{3},\xi_{5},\xi_{6},\xi_{10}), \\
+  \lie{g}^{4} &= \lie{g}_{1} = \Span_{k}(\xi_{7},\xi_{8},\xi_{9}).
 \end{align*}
 See \Cref{rem:g-Z-grading} for more details.
 
-
-
+This is enough to calculate the graded mod $p$ cohomology of $\lie{g}$, see \cite{code} for the details. We write the result in \Cref{tab:graded-coh-dims-SL4}.
 
 \section{\texorpdfstring{$I \subseteq \GL_{4}(\Z_{p})$}{I in GL4(Zp)}}%
 \label{sec:GL4-calc}
 
+In this section we will briefly describe the work needed to find continuous group cohomology of the pro-$p$ Iwahori subgroup $I$ of $\GL_{4}(\Q_{p})$.
 
+When $I$ is the pro-$p$ Iwahori subgroup in $\GL_{4}(\Q_{p})$, we know by \Cref{sec:cohiwagps-intro} that we can take it to be of the form
+\begin{equation*}
+  I = \pmat{1+p\Z_{p} & \Z_{p} & \Z_{p} & \Z_{p} \\ p\Z_{p} & 1+p\Z_{p} & \Z_{p} & \Z_{p} \\ p\Z_{p} & p\Z_{p} & 1+p\Z_{p} & \Z_{p} \\ p\Z_{p} & p\Z_{p} & p\Z_{p} & 1+p\Z_{p}} \subseteq \GL_{4}(\Z_{p}),
+\end{equation*}
+and, by \Cref{sec:cohiwagps-intro}, we have an ordered basis
+\begin{equation}
+  \label{eq:gis-GL4}
+  \begin{gathered}
+    g_{1} = \pmat{ 1 \\ & 1 \\ && 1 \\ p && 1 }, \quad g_{2} = \pmat{ 1 \\ & 1 \\ p && 1 \\ &&& 1 }, \quad g_{3} = \pmat{ 1 \\ p & 1 \\ && 1 \\ &&& 1 }, \\
+    g_{4} = \pmat{ 1 \\ & 1 \\ && 1 \\ & 1 && 1 }, \quad g_{5} = \pmat{ 1 \\ & 1 \\ & p & 1 \\ &&& 1 }, \quad g_{6} = \pmat{ 1 \\ & 1 \\ && 1 \\ && p & 1 }, \\
+    g_{7} = \pmat{ \exp(p) \\ & \exp(-p) \\ && 1 \\ &&& 1 }, \quad g_{8} = \pmat{ 1 \\ & \exp(p) \\ && \exp(-p) \\ &&& 1 }, \\
+    g_{9} = \pmat{ 1 \\ & 1 \\ && \exp(p) \\ &&& \exp(-p) }, \quad g_{10} = \pmat{ \exp(p) \\ & \exp(p) \\ && \exp(p) \\ &&& \exp(p) }, \\
+    g_{11} = \pmat{ 1 &&& 1 \\ & 1 \\ && 1 \\ &&& 1 }, \quad g_{12} = \pmat{ 1 \\ & 1 && 1 \\ && 1 \\ &&& 1 }, \quad g_{13} = \pmat{ 1 \\ & 1 \\ && 1 & 1 \\ &&& 1 }, \\
+    g_{14} = \pmat{1 && 1 \\ & 1 \\ && 1 \\ &&& 1 }, \quad g_{15} = \pmat{ 1 \\ & 1 & 1 \\ && 1 \\ &&& 1 }, \quad g_{16} = \pmat{ 1 & 1 \\ & 1 \\ && 1 \\ &&& 1 }.
+  \end{gathered}
+\end{equation}
+Since we just renamed some elements and added an element of the center of $\GL_{4}(\Z_{p})$ when comparing to the ordered basis of $I \subseteq \SL_{4}(\Z_{p})$ from \Cref{sec:SL4-calc}, it's clear from \Cref{eq:xi_ij-SL4} that the only non-zero commutators $[\xi_{i},\xi_{j}]$ with $i<j$ are:
+\begin{equation}
+  \label{eq:xi_ij-GL4}
+  \begin{aligned}
+    [\xi_{1},\xi_{11}] &= -(\xi_{7}+\xi_{8}+\xi_{9}), & [\xi_{1},\xi_{12}] &= -\xi_{3}, & [\xi_{1},\xi_{12}] &= -\xi_{2}, \\
+    [\xi_{1},\xi_{14}] &= \xi_{6}, & [\xi_{1},\xi_{16}] &= \xi_{4}, & [\xi_{2},\xi_{14}] &= -(\xi_{7}+\xi_{8}), \\
+    [\xi_{2},\xi_{15}] &= -\xi_{3}, & [\xi_{2},\xi_{16}] &= \xi_{5}, & [\xi_{3},\xi_{16}] &= -\xi_{7}, \\
+    [\xi_{4},\xi_{12}] &= -(\xi_{8}+\xi_{9}), & [\xi_{4},\xi_{13}] &= -\xi_{5}, & [\xi_{4},\xi_{15}] &= \xi_{6}, \\
+    [\xi_{5},\xi_{15}] &= -\xi_{8}, & [\xi_{6},\xi_{13}] &= -\xi_{9}, & [\xi_{12},\xi_{16}] &= -\xi_{11}, \\
+    [\xi_{12},\xi_{14}] &= -\xi_{11}, & [\xi_{12},\xi_{15}] &= -\xi_{12}, & [\xi_{15},\xi_{16}] &= -\xi_{14}.
+  \end{aligned}
+\end{equation}
+
+Looking at \Cref{sec:SL4-calc}, we easily see that
+\begin{align*}
+  \lie{g}^{1} &= \lie{g}_{\frac{1}{4}} = \Span_{k}(\xi_{1},\xi_{13},\xi_{15},\xi_{16}), \\
+  \lie{g}^{2} &= \lie{g}_{\frac{1}{2}} = \Span_{k}(\xi_{2},\xi_{4},\xi_{12},\xi_{14}), \\
+  \lie{g}^{3} &= \lie{g}_{\frac{3}{4}} = \Span_{k}(\xi_{3},\xi_{5},\xi_{6},\xi_{11}), \\
+  \lie{g}^{4} &= \lie{g}_{1} = \Span_{k}(\xi_{7},\xi_{8},\xi_{9},\xi_{10}).
+\end{align*}
+
+This is enough to calculate the graded mod $p$ cohomology of $\lie{g}$, see \cite{code} for the details. We write the result in \Cref{tab:graded-coh-dims-GL4}.
 
 %%% Local Variables:
 %%% mode: latex

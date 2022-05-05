@@ -1,12 +1,14 @@
 \section{Intoduction}%
 \label{sec:cohiwagps-intro}
 
-In this chapter we will calculate the cohomology over perfect fields $k$ of a collection of pro-$p$ Iwahori subgroups of $\SL_{n}$ and $\GL_{n}$ over $\Z_{p}$ or (low degree) extensions of $\Z_{p}$.\dknote{Maybe change perfect fields to just $\F_{p}$.}
+In this chapter we will calculate the cohomology over perfect fields $k$ (or just $k = \F_{p}$) of a collection of pro-$p$ Iwahori subgroups of $\SL_{n}$ and $\GL_{n}$ over $\Z_{p}$ or $\sO_{F}$ for quadratic extensions $F/\Q_{p}$.
 
 \subsection{Background and motivation}%
 \label{subsec:background-iwa}
 
-Write later.
+
+The cohomology of Lie groups has a long history. In particular, the mod $p$ cohomology of a connected compact real Lie group has been well understood by Kac since the eighties, and the mod $p$ cohomology $H^*(G,\F_p)$ of a equi-$p$-valued compact $p$-adic Lie group $G$ was already described by Lazard in the sixties. This chapters work will build on several ideas of Lazard and Serre in their more general (but not yet finished) description of the case when $G$ is not equi-$p$-valued, but we will focus only on pro-$p$ Iwahori subgroups of $\SL_{n}$ and $\GL_{n}$ over $\Q_{p}$ for $n=2,3,4$ or over quadratic extensions $F/\Q_{p}$ for $n=2$.
+\dknote{Add more.}
 
 \subsection{Setup and notation}%
 \label{subsec:setup-iwa}
@@ -36,16 +38,19 @@ Note that this implies that a $\Z_{p}$-basis of $\idm$ translates to a $\Z_{p}$-
 \paragraph{Smith normal form.} Let $R$ be an integral domain and consider only non-zero matrices over $R$ in this paragraph. Given an $n \times m$ matrix $A$, there exist invertible $m \times m$ and $n \times n$ matrices $S$ and $T$ such that
 \begin{equation*}
   SAT =
+  \begingroup
+  \linespread{1}\selectfont
   \begin{pNiceMatrix}[nullify-dots]
-    a_{1} & 0 & \Cdots \hspace*{5mm} & & & & & 0 \\
+    a_{1} & 0 & \Cdots \hspace*{1mm} & & & & & 0 \\
     0 & a_{2} & \Ddots & & & & & \Vdots \\
     \Vdots & \Ddots & \Ddots \\
     & & & a_{r} \\
-    & & & & 0 & \Ddots \hspace*{5mm} \\
+    & & & & 0 & \Ddots \hspace*{1mm} \\
     & & & & & \Ddots \\
     & & & & & & & 0 \\
     0 & \Cdots & & & & & 0 & 0
   \end{pNiceMatrix}
+  \endgroup
 \end{equation*}
 and the diagonal entries $a_{i}$ satisfy $a_{i} \mid a_{i+1}$ for $i=1,\dotsc,r-1$. This matrix is called the Smith normal form\index{Smith normal form} of the matrix $A$. Given $n \times m$ matrices $A,B$, we write $A \snfsim B$ if $A$ and $B$ have the same Smith normal form. This notation will mainly be used when $B$ is already a matrix in Smith normal form. Finally we introduce the notation $A = \SNF_{n\times m}(a_{1},\dotsc,a_{r},0,\dotsc,0)$ for the $n \times m$ matrix with $a_{ii} = a_{i}$ for $i=1,\dotsc,r$ and zeroes in all other entries as above. In next subsection, we will note that the Smith normal form will be useful for our cohomology calculations.
 
@@ -73,6 +78,10 @@ and the diagonal entries $a_{i}$ satisfy $a_{i} \mid a_{i+1}$ for $i=1,\dotsc,r-
 
 Let $\Phi = \Phi(\gs{G},\gs{T})$\nomiwa[Phi]{$\Phi$}{${} = \Phi(\gs{G},\gs{T})$, the root system of $\gs{G}$ with respect to $\gs{T}$} be the \emph{root system}\index{root!system} of $\gs{G}$ with respect to $\gs{T}$, and let $(X^{*}(T),\Phi,X_{*}(T),\Phi^{\vee})$\nomiwa[XTPhi]{$(X^{*}(T),\Phi,X_{*}(T),\Phi^{\vee})$}{the root datum associated with $\Phi = \Phi(\gs(G),\gs{T})$} be the associated root datum.\index{root!datum} Fix a system of positive roots $\Phi^{+}$ and let $\Pi \subseteq \Phi^{+}$ be the simple roots.\index{root!simple}\dknote{Write $\Delta$ instead of $\Pi$?} For any $\alpha \in \Phi$ we have the root subgroup\index{root!subgroup} $\gs{U}_{\alpha} \subseteq \gs{G}$ with Lie algebra $\Lie \gs{U}_{\alpha} =  (\Lie \gs{G})_{\alpha}$. We let $U_{\alpha} = \gs{U}_{\alpha}(F)$ and choose an isomorphism $x_{\alpha} \colon F \xrightarrow{\iso} U_{\alpha}$\nomiwa[xa]{$x_{\alpha} \colon F \xrightarrow{\iso} U_{\alpha}$}{an isomorphism such that $tx_{\alpha}(x)t^{-1} = x_{\alpha}(\alpha(t)x)$ for $t \in T$ and $x \in F$} such that $tx_{\alpha}(x)t^{-1} = x_{\alpha}(\alpha(t)x)$ for $t \in T$ and $x \in F$. For $r \in \Z_{\geq 0}$ we let $U_{\alpha,r} = x_{\alpha}(\idm_{F}^{r})$.\nomiwa[Uar]{$U_{\alpha,r}$}{${} = x_{\alpha}(\idm_{F}^{r})$}
 
+\begin{remark}
+  In this chapter we write $\Pi$ instead of $\Delta$ and $\gs{U}$ instead of $\gs{N}$ since we try to stick to the notation of surrounding literature.
+\end{remark}
+
 \paragraph{Coxeter number and $p$.} Let $h$\nomiwa[h]{$h$}{the Coxeter number of $\gs{G}$} be the Coxeter number of $\gs{G}$ and assume from now on that $p-1 > eh$.\nomiwa[p]{$p$}{a prime, $p-1 \geq eh$, where $h$ is the Coxeter number of $\gs{G}$}
 
 % We furthermore fix a basis $\Delta \subseteq \Phi$\nomiwa[Delta]{$\Delta$}{a (fixed) basis of the root system $\Phi$} of the root system,\index{root system} so we get a decomposition $\Phi = \Phi^+ \cup \Phi^-$\nomiwa[Phi+]{$\Phi^{+}$ / $\Phi^{-}$}{the positive/negative roots in $\Phi$ with respect to $\Delta$} into positive and negative roots. Let $\gs{B} = \gs{T}\gs{U}$\nomiwa[B]{$\gs{B}$ / $\gs{B}^{+}$}{(${} = \gs{T}\gs{U}$ / ${} = \gs{T}\gs{U}^{+}$) the Borel subgroups of $\gs{G}$ corresponding to $\Phi^{-}$ / $\Phi^{+}$} and $\gs{B}^+ = \gs{T}\gs{U}^+$ denote the Borel subgroups of $\gs{G}$ corresponding to $\Phi^-$ and $\Phi^+$, respectively, with unipotent radicals $\gs{U}$ and $\gs{U}^+$.\nomuni[U]{$\gs{U}$ / $\gs{U}^{+}$}{the unipotent radical of $\gs{B}$ / $\gs{B}^{+}$}\index{U@$\gs{U}$}
@@ -83,7 +92,7 @@ Let $\Phi = \Phi(\gs{G},\gs{T})$\nomiwa[Phi]{$\Phi$}{${} = \Phi(\gs{G},\gs{T})$,
 \end{equation*}
 where the products are ordered in an arbitrarily chosen way. For a more detailed introduction to these pro-$p$ groups we refer to \cite{SchOll-modular}.\dknote{Maybe add a more general reference too.}
 
-\paragraph{Pro-$p$ Iwahori subgroups of $\GL_{n}(\Z_{p})$ and $\SL_{n}(\Z_{p})$.} In this chapter, we will only work with pro-$p$ Iwahori subgroups of $\GL_{n}(F)$ or $\SL_{n}(F)$, which simplifies the definitions. When $\gs{G} = \GL_{n}$ or $\gs{G} = \SL_{n}$, we can always take $\gs{T}$ the diagonal maximal torus, and we can take $I$ to be the subgroup of $\gs{G}(\sO_{F})$ which is upper triangular and unipotent modulo $\varpi$. In this case we have that $U_{\alpha,1}$ for $\alpha \in \Phi^{-}$ correspond to entries below the diagonal and $U_{\alpha,0}$ for $\alpha \in \Phi^{+}$ corresponds to the entries above the diagonal.
+\paragraph{Pro-$p$ Iwahori subgroups of $\GL_{n}(F)$ and $\SL_{n}(F)$.} In this chapter, we will only work with pro-$p$ Iwahori subgroups of $\GL_{n}(F)$ or $\SL_{n}(F)$, which simplifies the definitions. When $\gs{G} = \GL_{n}$ or $\gs{G} = \SL_{n}$, we can always take $\gs{T}$ the diagonal maximal torus, and we can take $I$ to be the subgroup of $\gs{G}(\sO_{F})$ which is upper triangular and unipotent modulo $\varpi$. In this case we have that $U_{\alpha,1}$ for $\alpha \in \Phi^{-}$ correspond to entries below the diagonal and $U_{\alpha,0}$ for $\alpha \in \Phi^{+}$ corresponds to the entries above the diagonal.
 
 \paragraph{$p$-valuation on $I$.} By a recent pre-print by Lahiri and Sørensen (not yet published),\dknote{Figure out exactly how to write this. Probably cite as (unpublished).} we know (since $p-1 > eh$) that $I$ admits a $p$-valuation $\omega$ with the property
 \begin{equation}\label{eq:Iwa-p-val}
@@ -134,9 +143,9 @@ Finally note that an ordered basis of $\GL_{n}$ can be obtained from an ordered 
 
 \paragraph{Cohomology.} We denote (using the Chevalley-Eilenberg complex) the Lie algebra cohomology\index{cohomology!Lie algebra} of any $k$-Lie algebra $\lie{g}$ by $H^{\bullet}(\lie{g}, \edot)$,\nomiwa[Hg]{$H^{\bullet}(\lie{g},\edot)$}{the cohomology of the Lie algebra $\lie{g}$} while we write $H^{\bullet}(G,\edot)$\nomiwa[HG]{$H^{\bullet}(G,\edot)$}{the continuous group cohomology of the topological group $G$} for the continuous group cohomology of a topological group $G$. Here we let the entries distinguish between different types of cohomology without any ambiguity. As in \Cref{sec:cohunigps-intro}, we introduce filtrations and then gradings on the cohomology and use the notation $H^{s,t} = \gr^{s}H^{s+t}$\nomiwa[Hst]{$H^{s,t}$}{${} = \gr^{s}H^{s+t}$ for some cohomology $H$} for any type of cohomology $H$.
 
-\paragraph{Spectral sequences.} Given a ring $R$, a cohomological spectral sequence\index{spectral sequence}\index{spectral sequence!cohomological} is a choice of $r_0 \in \N$ and a collection of
+\paragraph{Spectral sequences.} A cohomological spectral sequence\index{spectral sequence} is a choice of $r_0 \in \N$ and a collection of
 \begin{enumerate}[$\bullet$]
-  \item $R$-modules $E_r^{s,t}$ for each $s,t \in \Z$ and all integers $r \geq r_0$
+  \item $k$-modules $E_r^{s,t}$ for each $s,t \in \Z$ and all integers $r \geq r_0$
   \item differentials $d_r^{s,t} \colon E_r^{s,t} \to E_r^{s+r,t+1-r}$ such that $d_r^2 = 0$ and $E_{r+1}$ is isomorphic to the homology of $(E_r,d_r)$, i.e.,
   \[
     E_{r+1}^{s,t} = \frac{\kernel(d_r^{s,t} \colon E_r^{s,t} \to E_r^{s+r,t+1-r})}{\image(d_r^{s-r,t+r-1} \colon E_r^{s-r,t+r-1} \to E_r^{s,t})}.
@@ -146,7 +155,7 @@ For a given $r$, the collection $(E_r^{s,t},d_r^{s,t})_{s,t\in\Z}$ is called the
   \[
     E_{r}^{s,t} \Longrightarrow E_\infty^{s+t}.
   \]
-Also, we say that the spectral sequence collapses at the $r'$-th page if $E_{r} = E_{\infty}$ for all $r \geq r'$, but not for $r < r'$. Finally, when we have terms $E_\infty^{n}$  with a natural filtration $F^\bullet E_\infty^n$ (but no natural double grading), we set $E_\infty^{s,t} = \gr^{s} E_\infty^{s,t}= F^{s}E_\infty^{s+t}/F^{s+1}E_\infty^{s+t}$.
+Also, we say that the spectral sequence collapses at the $r'$-th page if $E_{r} = E_{\infty}$ for all $r \geq r'$, but not for $r < r'$. Finally, when we have terms $E_\infty^{n}$  with a natural filtration $F^\bullet E_\infty^n$ (but no natural double grading), we set $E_\infty^{s,t} = \gr^{s} E_\infty^{s+t}= F^{s}E_\infty^{s+t}/F^{s+1}E_\infty^{s+t}$.
 
 \subsection{Smith normal form and cohomology}%
 \label{subsec:SNF-coh}
@@ -166,7 +175,6 @@ It's well known that the Smith normal form of a matrices are useful when calcula
   \end{equation*}
   Here $r = \rank(d_{1})$, $s = \rank(d_{2})$ and $a_{1},\dotsc,a_{r}$ are the non-zero diagonal elements of the Smith normal form of $d_{1}$.
 \end{fact}
-\dknote{Fact is still italic.}
 
 We will not directly use this result, but instead we will follow the same ideas but reduce modulo $p$ to get matrices over $k$ (using the natural embedding $\F_{p} \hookrightarrow k$). Assuming that the non-zero diagonal entries $a_{i}$ of the Smith normal form of a matrix $d$ are in $\set{1,2,\dotsc,p-1}$ (or more generally $\gcd(a_{i},p) = 1$), we note that $a_{i} \pmod{p} \in k^{\times}$. So, given an $n \times m$ matrix $d$ with integer entries such that
 \begin{equation*}
@@ -183,7 +191,7 @@ where $a_{1},\dotsc,a_{r}$ are non-zero and $\gcd(a_{i},p) = 1$, we get by consi
 \end{equation}
 
 \begin{remark}
-  Note that finding the Smith normal form of all matrices used in our (co)homology calculations, will thus allow us to calculated (co)homological dimensions for $p$ relatively prime to all non-zero diagonal entries of the Smith normal form matrices. This is what makes this method preferable to just calculating the rank of the matrices directly, since that would just allow us to find (co)homological dimensions for $p \gg 0$, but not give us the precise $p$ it will work for.
+  Note that finding the Smith normal form of all matrices used in our (co)homology calculations, will thus allow us to calculate (co)homological dimensions for $p$ relatively prime to all non-zero diagonal entries of the Smith normal form matrices. This is what makes this method preferable to just calculating the rank of the matrices directly, since that would just allow us to find (co)homological dimensions for $p \gg 0$, but not give us the precise $p$ it will work for.
 \end{remark}
 
 So, when calculating dimensions of homology over $k$ of the middle term in a given complex
@@ -195,22 +203,22 @@ So, when calculating dimensions of homology over $k$ of the middle term in a giv
 where $d_{1}$ and $d_{2}$ can be described by matrices with integer entries, and $d_{1} \snfsim \SNF_{m \times n}(a_{1},\dotsc,a_{r},0,\dotsc,0)$ and $d_{2} \snfsim \SNF_{\ell \times m}(b_{1},\dotsc,b_{r},0,\dotsc,0)$, then we can do it as follows:
 \begin{enumerate}[align=left]
   \item[$n=0$:] The dimension of the homology of the middle term is $\dim_{k} \kernel(d_{2}) = m-s$.
-  \item[$\ell=0$:] The dimension of the homology of the middle term is $\dim_{k} \coker(d_{1}) = r$.
-  \item[$n,\ell \neq 0$:] The dimension of the homology of the middle term is $\dim_{k} \frac{\kernel(d_{2})}{\image(d_{1})} = (m-s) - (r) = m-s-r$.
+  \item[$\ell=0$:] The dimension of the homology of the middle term is $\dim_{k} \coker(d_{1}) = m-r$.
+  \item[$n,\ell \neq 0$:] The dimension of the homology of the middle term is $\dim_{k} \frac{\kernel(d_{2})}{\image(d_{1})} = m-s-r$, since $d_{2} \circ d_{1} = 0$.
 \end{enumerate}
 
 \begin{remark}
-  Here the general formula is obviously just that the dimension of the homology of the middle term is $m-s-r$, but when implementing this, it will be useful to split it into the above cases. Also, note that this is what we directly get from \Cref{fact:SNF-Z-coh} in the case $k = \F_{p}$, recalling that $\Z/m\Z \otimes \Z/n\Z \iso \Z/\gcd(n,m)\Z$.
+  Here the general formula is obviously just that the dimension of the homology of the middle term is $m-s-r$. Also, note that this is what we directly get from \Cref{fact:SNF-Z-coh} in the case $k = \F_{p}$, recalling that $\Z/m\Z \otimes \Z/n\Z \iso \Z/\gcd(n,m)\Z$.
 \end{remark}
 
 \begin{remark}
-  When the dimensions of the vector spaces we work with get sufficiently large, the runtime of calculating the full Smith normal form of integer matrices becomes prohibitively high, so we will have to use an alternative solution. In this case, we can utilize that we know such a form exists, and that $\rank_{\Z}(A) = \rank_{\Z}(B)$ when $A \snfsim B$. Considering the $n \times m$ matrix $A$ with integer entries as a matrix over $\R$, we can then find the Singular value decomposition\index{Singular value decomposition} (SVD)\index{SVD} of $A$, i.e., complex matrices $U,\Sigma,V$ such that $A = U\Sigma V^{*}$. Here $U$ is an $n \times n$ unitary matrix, $\Sigma$ is a rectangular diagonal $n \times m$ matrix (a matrix like in the Smith normal form) with non-negative real numbers on the diagonal, and $V$ is an $m \times m$ unitary matrix. Now $\rank_{\R} \Sigma = \rank_{\Z} A$ allows us to find dimensions of (co)homology as in the case where we know the Smith normal form, but we use information about which $p$ exactly the calculations work for. Thus we will only be able to find the (co)homological dimensions for $p \gg 0$ in this case.
+  When the dimensions of the vector spaces we work with get sufficiently large, the runtime of calculating the full Smith normal form of integer matrices becomes prohibitively high, so we can use an alternative solution. In this case, we can utilize that we know such a form exists, and that $\rank_{\Z}(A) = \rank_{\Z}(B)$ when $A \snfsim B$. Considering the $n \times m$ matrix $A$ with integer entries as a matrix over $\R$, we can then find the Singular value decomposition\index{Singular value decomposition} (SVD)\index{SVD} of $A$, i.e., complex matrices $U,\Sigma,V$ such that $A = U\Sigma V^{*}$. Here $U$ is an $n \times n$ unitary matrix, $\Sigma$ is a rectangular diagonal $n \times m$ matrix (a matrix like in the Smith normal form) with non-negative real numbers on the diagonal, and $V$ is an $m \times m$ unitary matrix. Now $\rank_{\R} \Sigma = \rank_{\Z} A$ allows us to find dimensions of (co)homology as in the case where we know the Smith normal form, but we use information about which $p$ exactly the calculations work for. Thus we will only be able to find the (co)homological dimensions for $p \gg 0$ in this case.
 \end{remark}
 
 \section{Techniques}%
 \label{sec:tech-iwa}
 
-In this section we will describe how to calculate information about the cohomology of a $p$-valuable group by using it's Lazard Lie algebra. Note that this section uses a lot of concepts and notation from \Cref{subsec:Laz-theory}.
+In this section we will describe how to calculate information about the cohomology of a $p$-valuable group by using its Lazard Lie algebra. Note that this section uses a lot of concepts and notation from \Cref{subsec:Laz-theory}.
 
 Let $(G, \omega)$ be a $p$-valuable group and let $k$ be a perfect field of characteristic $p$. In this section we will describe how the spectral sequence
 \begin{equation}\label{eq:spec-sec-tech}
@@ -243,7 +251,7 @@ Now we have a basis $(\xi_{1},\dotsc,\xi_{d})$ of $\lie{g} = k \otimes_{\F_{p}[\
 Assume from now on that the Lie algebra $\lie{g}$ is unitary,\index{unitary} i.e., that $[\xi_{i},\xi_{j}] = \sum_{\ell=1}^{d} c_{ij\ell} \xi_{\ell}$ has $\sum_{j=1}^{d} c_{ijj} = 0$. This will be the case for all Lie algebras, we will work with in this chapter. Suppose furthermore that $\lie{g}$ is a graded Lie algebra, graded by finitely many positive integers, $\lie{g} = \lie{g}^{1} \oplus \lie{g}^{2} \oplus \dotsb \oplus \lie{g}^{m}$, which will also be the case for all Lie algebras we are work with in this chapter.
 
 \begin{remark}\label{rem:g-Z-grading}
-  Note that any $p$-valuable group $G$ admits a $p$-valuation $\omega$ with values in $\frac{1}{m}\Z$ for some $m \in \N$, cf.\ \cite[Cor.~33.3]{Sch}. Thus we can reindex the filtration of $G$ by letting $G^{i} = G_{\frac{i}{e}}$ for $i=0,1,\dotsc$, and this translates to $\gr^{i} G = \gr_{\frac{i}{e}} G$ and $\lie{g}^{i} = \lie{g}_{\frac{i}{e}}$ in general. In the cases we care about there will be no zero graded part, which allows us to make the above assumption.
+  Note that any $p$-valuable group $G$ admits a $p$-valuation $\omega$ with values in $\frac{1}{m}\Z$ for some $m \in \N$, cf.\ \cite[Cor.~33.3]{Sch}. Thus we can reindex the filtration of $G$ by letting $G^{i} = G_{\frac{i}{m}}$ for $i=0,1,\dotsc$, and this translates to $\gr^{i} G = \gr_{\frac{i}{m}} G$ and $\lie{g}^{i} = \lie{g}_{\frac{i}{m}}$ in general. In the cases we care about there will be no zero graded part, which allows us to make the above assumption.
 \end{remark}
 
 Then $\bigwedge^{n} \lie{g}$ is graded as well by letting
@@ -295,13 +303,13 @@ and thus we can find matrices describing all graded linear maps
   \Hom_{k}^{s}\Bigl( \bigwedge^{n-1}\lie{g},k \Bigr) \to \Hom_{k}^{s}\Bigl( \bigwedge^{n}\lie{g}, k \Bigr).
 \end{equation*}
 
-Noting that all the structure constants can be lifted to $\Z$ and looking at the formula for the boundary maps, it's clear that the above matrices describing the (co)boundary maps can be lifted to $\Z$. Finding the Smith normal form of these lifts, we can calculate the cohomology over $k$ by \Cref{subsec:SNF-coh} for $p$ large enough. (In most examples, $p\geq5$ will be enough.)
+Noting that all the structure constants can be lifted to $\Z$ (in the examples we work with) and looking at the formula for the boundary maps, it's clear that the above matrices describing the (co)boundary maps can be lifted to $\Z$. Finding the Smith normal form of these lifts, we can calculate the cohomology over $k$ by \Cref{subsec:SNF-coh} for $p$ large enough. (In most examples, $p\geq5$ will be enough.)
 
 Suppose now that we have found the dimensions of $H^{s,t} = H^{s,t}(\lie{g},k)$ for all $s,t$. To get information about the cohomology $H^{n}(G,k)$, we need to use the multiplicative spectral sequence \eqref{eq:spec-sec-tech}, i.e.,
 \begin{equation*}
   E_{1}^{s,t} = H^{s,t}(\lie{g}, k) \Longrightarrow H^{s+t}(G,k)
 \end{equation*}
-and information about spectral sequences in general. We already know that this spectral sequence collapses at a finite page, and one can hope is that it will actually collapse at the first page. One way we can verify that the spectral sequence (in certain cases) collapses at the first page, is by considering the exact bidegrees of the differentials. We know that the differentials $d_{r}^{s,t} \colon E_{r}^{s,t} \to E_{r}^{s+r,t+1-r}$ has bidegree $(r,1-r)$, so if the non-zero modules on the first pages is distributed in such a way that all differentials $d_{r}^{s,t}$ are trivial for all $s,t$ and $r\geq1$, then we can be sure that the spectral sequence collapses on the first page. This will become clearer when we look at examples in the next few sections.
+and information about spectral sequences in general. We already know that this spectral sequence collapses at a finite page, and one can hope is that it will actually collapse at the first page. One way we can verify that the spectral sequence (in certain cases) collapses at the first page, is by considering the exact bidegrees of the differentials. We know that the differentials $d_{r}^{s,t} \colon E_{r}^{s,t} \to E_{r}^{s+r,t+1-r}$ have bidegree $(r,1-r)$, so if the non-zero modules on the first pages is distributed in such a way that all differentials $d_{r}^{s,t}$ are trivial for all $s,t$ and $r\geq1$, then we can be sure that the spectral sequence collapses on the first page. This will become clearer when we look at examples in the next few sections.
 
 Now note, by \cite[§3.7]{Fuks}, that the cup product is compatible with the gradings on the Lie algebra cohomology, in particular
 \begin{equation}
@@ -317,7 +325,7 @@ For $f \in \Hom_{k}\bigl( \bigwedge^{p}\lie{g}, k \bigr)$ and $g \in \Hom_{k}\bi
 
 Even when the spectral sequence doesn't (necessarily) collapse on the first page, we can still get some bounds on the dimensions of $H^{n}(G,k)$ that will allow us to draw some conclusions about the structure of $H^{*}(G,k)$.
 
-In the rest of this chapter we will focus on using the techniques described in this section to get as much as possible information about the cohomology of $H^{*}(I,k)$, where $I$ is the pro-$p$ Iwahori subgroup of $\SL_{n}(\Z_{p})$ or $\GL_{n}(\Z_{p})$.
+In the rest of this chapter we will focus on using the techniques described in this section to get as much as possible information about the cohomology of $H^{*}(I,k)$, where $I$ is the pro-$p$ Iwahori subgroup of $\SL_{n}(\Q_{p})$ or $\GL_{n}(\Q_{p})$ $n=2,3,4$ or the pro-$p$ Iwahori subgroup of $\SL_{2}(F)$ or $\GL_{2}(F)$ for $F/\Q_{p}$ a quadratic extension.
 
 
 \section{\texorpdfstring{$I \subseteq \SL_{2}(\Z_{p})$}{I in SL2(Zp)}}%
@@ -676,7 +684,7 @@ In conclusion, all the non-trivial and non-zero cup products (up to graded commu
 Now, since the spectral sequence collapses on the first page, all of the above work on the cup product of the Lie algebra cohomology transfers to the cup product on $H^{*}(I,k)$ as described above. In particular, since all $H^{n}(I,k)$ only have one graded component, this is a clear description of the cup product on $H^{*}(I,k)$, and not just a graded cup product.
 
 \begin{remark}\label{rem:quaternion}
-  Let $D$ be the division quaternion algebra over $\Q_{p}$ for a prime $p>3$ and let $G = (1+\idm_{D})^{\Nrd = 1}$, where $\Nrd = \Nrd_{D/\Q_{p}}$ is the norm from \cite[Def.~2.5]{Neukirch}. From \cite[Sect.~6.3]{Sor} (or from \cite[Prop.~7]{Henn}) we know that there is an isomorphism
+  Let $D$ be the division quaternion algebra over $\Q_{p}$ for a prime $p>3$ and let $G = (1+\idm_{D})^{\Nrd = 1}$, where $\Nrd = \Nrd_{D/\Q_{p}}$ is the norm form. From \cite[Sect.~6.3]{Sor} (or from \cite[Prop.~7]{Henn}) we know that there is an isomorphism
   \begin{equation*}
     H^{*}(G,\F_{p}) \iso \F_{p} \oplus \F_{D} \oplus \F_{D} \oplus \F_{p}
   \end{equation*}
@@ -688,27 +696,29 @@ Now, since the spectral sequence collapses on the first page, all of the above w
     (\alpha,1) &\mapsto \Tr(\alpha) = 0, \\
     (\alpha,\alpha) &\mapsto \Tr(\alpha^{2}) = -2.
   \end{align*}
-  This is (up to a multiple of $2$) the same as the description of the cup product on $H^{*}(I,\F_{p})$ above for $I \subseteq \SL_{2}(\Z_{p})$, so an interesting question is: Is there a nice relation between mod $p$ representations of $G = (1+\idm_{D})^{\Nrd = 1}$ and $I$? We already have bijections between certain mod $p$ representations of $D^{\times}$ and $\GL_{2}(\Q_{p})$ from the Jacquet-Langlands correspondence for $\GL_{2}$ (cf.\ \cite{JL}), but by \cite[Rem.~4.5]{JL-remark} irreducible representations of $D^{\times}$ are trivial on $1+\idm_{D}$, so we need something new if we want a correspondence between mod $p$ representations of $G = (1+\idm_{D})^{\Nrd = 1}$ and $I \subseteq \SL_{2}(\Q_{p})$.
+  This is (up to a multiple of $2$) the same as the description of the cup product on $H^{*}(I,\F_{p})$ above for $I \subseteq \SL_{2}(\Z_{p})$, so an interesting question is: Is there a nice relation between mod $p$ representations of $G = (1+\idm_{D})^{\Nrd = 1}$ and $I$? We already have bijections between \emph{certain} mod $p$ representations of $D^{\times}$ and $\GL_{2}(\Q_{p})$ from the Jacquet-Langlands correspondence for $\GL_{2}$ (cf.\ \cite{JL}), but by \cite[Rem.~4.5]{JL-remark} irreducible representations of $D^{\times}$ are trivial on $1+\idm_{D}$, so we need something new if we want a correspondence between mod $p$ representations of $G = (1+\idm_{D})^{\Nrd = 1}$ and $I \subseteq \SL_{2}(\Q_{p})$.
 
   As a continuation to the question in the $p \equiv 3 \pmod{4}$ case, we note that $\lie{g}_{D} = \F_{D} \oplus \F_{D}^{\Tr = 0}$ sitting in degree $1$ and $2$ has Lie bracket given by $[\overline{x},\overline{y}] = \overline{x}\overline{y}^{p} - \overline{y}\overline{x}^{p}$ for any $\overline{x},\overline{y} \in \F_{D}$ in degree $1$ (and $0$ otherwise) by \cite[(6.6)]{Sor}. So, with $\F_{D} = \F_{p}[\alpha]$, we note that
   \begin{equation*}
     [1,\alpha] = 1\cdot\alpha^{p} - \alpha\cdot1^{p} = -2\alpha,
   \end{equation*}
-  since $p \equiv 3 \pmod{4}$ and $\alpha^{2} = -1$. Thus we have an obvious relation between $\lie{g}$ and $\lie{g}_{D}$ given by $\xi_{1},\xi_{3} \leftrightarrow 1,\alpha$ in degree $1$ and $\xi_{2} \leftrightarrow 2\alpha$ in degree $2$. The question is whether we can lift this to a relation between (the representations of) $I$ and $G$. Here it might be useful to note that we can assume that $i^{2} = -1$ and $j^{2} = p$ by \cite[Thm.~12.1.5]{Voight}, and furthermore that $\sO_{D}=\Z_{p}[i,j,k]$ (where $k=ij$) and $\idm_{D} = j\sO_{D}$, which has $\Z_{p}$-basis $p,pi,j,k$, by \cite[Thm.13.1.6]{Voight}. With this setup, we also have that
-  \begin{align*}
-    \F_{D} = \sO_{D}/\idm_{D} \iso \idm_{D}^{n}/\idm_{D}^{n+1} &\xrightarrow{\iso} (1+\idm_{D}^{n})/(1+\idm_{D}^{n+1}) \\
-    x &\mapsto 1+x
-  \end{align*}
-  is an isomorphism for all $n\geq1$, cf.\ \cite[13.5.8]{Voight}, which should help with translating from $G$ to $\lie{g}_{D}$. It only remains to find a (nice) ordered basis of $(1+\idm_{D})^{\Nrd = 1}$, and try to use all of the above to compare it with the basis $g_{1},g_{2},g_{3}$ of $I$ (or possibly with an alternative basis). One place to start might be, to try to use that $D^{\Nrd = 1} = [D^{\times},D^{\times}]$ by \cite[Exc.~30 of Chap.~7]{Voight}. Alternatively, it might be helpful to rewrite
-  \begin{equation*}
-    D \iso \set[\bigg]{\pmat{ a+bi & c+di \\ p(c-di) & a-bi } \given a,b,c,d\in\Q_{p} } \subseteq M_{2}\bigl( \Q_{p}(i) \bigr),
-  \end{equation*}
-  using \cite[Cor.~13.3.14]{Voight}, since this presentation seems more directly related to the pro-$p$ Iwahori.
+  since $p \equiv 3 \pmod{4}$ and $\alpha^{2} = -1$. Thus we have an obvious relation between $\lie{g}$ and $\lie{g}_{D}$ given by $\xi_{1},\xi_{3} \leftrightarrow 1,\alpha$ in degree $1$ and $\xi_{2} \leftrightarrow 2\alpha$ in degree $2$. The question is whether we can lift this to a relation between (the representations of) $I$ and $G$. Which we will explore in more detail in \Cref{subsec:quat-algs}.
+
+  % Here it might be useful to note that we can assume that $i^{2} = -1$ and $j^{2} = p$ by \cite[Thm.~12.1.5]{Voight}, and furthermore that $\sO_{D}=\Z_{p}[i,j,k]$ (where $k=ij$) and $\idm_{D} = j\sO_{D}$, which has $\Z_{p}$-basis $p,pi,j,k$, by \cite[Thm.13.1.6]{Voight}. With this setup, we also have that
+  % \begin{align*}
+  %   \F_{D} = \sO_{D}/\idm_{D} \iso \idm_{D}^{n}/\idm_{D}^{n+1} &\xrightarrow{\iso} (1+\idm_{D}^{n})/(1+\idm_{D}^{n+1}) \\
+  %   x &\mapsto 1+x
+  % \end{align*}
+  % is an isomorphism for all $n\geq1$, cf.\ \cite[13.5.8]{Voight}, which should help with translating from $G$ to $\lie{g}_{D}$. It only remains to find a (nice) ordered basis of $(1+\idm_{D})^{\Nrd = 1}$, and try to use all of the above to compare it with the basis $g_{1},g_{2},g_{3}$ of $I$ (or possibly with an alternative basis). One place to start might be, to try to use that $D^{\Nrd = 1} = [D^{\times},D^{\times}]$ by \cite[Exc.~30 of Chap.~7]{Voight}. Alternatively, it might be helpful to rewrite
+  % \begin{equation*}
+  %   D \iso \set[\bigg]{\pmat{ a+bi & c+di \\ p(c-di) & a-bi } \given a,b,c,d\in\Q_{p} } \subseteq M_{2}\bigl( \Q_{p}(i) \bigr),
+  % \end{equation*}
+  % using \cite[Cor.~13.3.14]{Voight}, since this presentation seems more directly related to the pro-$p$ Iwahori.
 \end{remark}
 
-\begin{conjecture}
-  There is some correspondence between mod $p$ representations of $(1+\idm_{D})^{\Nrd = 1}$ and $I \subseteq \SL_{2}(\Z_{p})$.
-\end{conjecture}
+% \begin{conjecture}
+%   There is some correspondence between mod $p$ representations of $(1+\idm_{D})^{\Nrd = 1}$ and $I \subseteq \SL_{2}(\Z_{p})$.
+% \end{conjecture}
 
 It might even be the case, that we have a group isomorphism between $(1+\idm_{D})^{\Nrd = 1}$ and $I$, which lifts the $\F_{p}$-Lie algebra isomorphism $\lie{g} \iso \lie{g}_{D}$ of \Cref{rem:quaternion}, but this seems less likely.
 
@@ -859,7 +869,7 @@ and, by \Cref{sec:cohiwagps-intro}, we have an ordered basis
     g_{3} = \pmat{\exp(p) & 0 \\ 0 & \exp(p)}, \qquad g_{4} = \pmat{1 & 1 \\ 0 & 1}.
   \end{gathered}
 \end{equation}
-Since we just renamed some elements and added an element of the center of $\GL(\Z_{p})$ when comparing to the ordered basis of $I \subseteq \SL_{2}(\Z_{p})$ from \Cref{sec:Iwa-SL2}, it's clear from \Cref{eq:xi_ij-SL2} that the only non-zero commutator in $\lie{g} = k \otimes \gr G$ is
+Since we just renamed some elements and added an element of the center of $\GL_{2}(\Z_{p})$ when comparing to the ordered basis of $I \subseteq \SL_{2}(\Z_{p})$ from \Cref{sec:Iwa-SL2}, it's clear from \Cref{eq:xi_ij-SL2} that the only non-zero commutator in $\lie{g} = k \otimes \gr G$ is
 \begin{equation*}
   [\xi_{1},\xi_{4}] = -\xi_{2},
 \end{equation*}
@@ -1139,7 +1149,7 @@ with dimension as described in \Cref{tab:graded-coh-dims-GL2}.
 \subsection{Describing the group cohomology, \texorpdfstring{$H^{n}(I,k)$}{Hn(I,k)}}%
 \label{subsec:group-coh-GL2}
 
-We note that all differentials $d_{r}^{s,t} \colon E_{r}^{s,t} \to E_{r}^{s+r,t+1-r}$ in \Cref{tab:graded-coh-dims-SL2} has bidegree $(r,1-r)$, i.e., they are all below the $(r,-r)$ arrow going $r$ to the left and $r$ up in the table, where $r \geq 1$. Looking at \Cref{tab:graded-coh-dims-GL2}, this clearly means that all differentials for $r \geq 1$ are trivial, and thus the spectral sequence collapses on the first page. Hence $H^{s,t}(\lie{g},k) = E_{1}^{s,t} \iso E_{\infty}^{s,t} = \gr^{s} H^{s+t}(I,k)$, and by \eqref{eq:Hn-to-Hst-GL2} and \Cref{tab:graded-coh-dims-GL2} we get that
+We note that all differentials $d_{r}^{s,t} \colon E_{r}^{s,t} \to E_{r}^{s+r,t+1-r}$ in \Cref{tab:graded-coh-dims-GL2} have bidegree $(r,1-r)$, i.e., they are all below the $(r,-r)$ arrow going $r$ to the left and $r$ up in the table, where $r \geq 1$. Looking at \Cref{tab:graded-coh-dims-GL2}, this clearly means that all differentials for $r \geq 1$ are trivial, and thus the spectral sequence collapses on the first page. Hence $H^{s,t}(\lie{g},k) = E_{1}^{s,t} \iso E_{\infty}^{s,t} = \gr^{s} H^{s+t}(I,k)$, and by \eqref{eq:Hn-to-Hst-GL2} and \Cref{tab:graded-coh-dims-GL2} we get that
 \begin{equation}
   \label{eq:dim-HnI-GL2}
   \dim H^{n}(I,k) =
@@ -1284,7 +1294,7 @@ which is only true for $\sigma = (2,3)$. Since $\sign\bigl((2,3)\bigr) = -1$, we
   \item $\set{\sigma(3),\sigma(4)} = \set{2,3}$ (putting $\xi_{4}$ and $\xi_{2}$ in $e_{4,2}$),
   \item $\sigma(1) < \sigma(2)$ and $\sigma(3) < \sigma(4)$,
 \end{enumerate}
-which doesn't exist.\dknote{Or did I miss it?} Hence $e_{1,3} \cup e_{4,2} = 0$. Looking at \eqref{eq:Hst-spaces-GL2}, we see that $e_{1,4,2,3}$ it the basis elements of $H^{-6,10}$, so the above calculation caries over to the above cup products in cohomology. Also, since $H^{-3,5} = H^{2}$, we get, by graded commutativity of the cup product, that $e_{4,2} \cup e_{1,3} = 0$ and $e_{4,3} \cup e_{1,2} = (-1)^{2\times2} e_{1,2} \cup e_{4,3} = e_{1,4,2,3}$.
+which is only true for $\sigma = (2,4,3)$. Since $\sign\bigl( (2,4,3) \bigr) = 1$, we get that $e_{1,3} \cup e_{4,2} = e_{1,4,2,3}$. Looking at \eqref{eq:Hst-spaces-GL2}, we see that $e_{1,4,2,3}$ it the basis elements of $H^{-6,10}$, so the above calculation caries over to the above cup products in cohomology. Also, since $H^{-3,5} = H^{2}$, we get, by graded commutativity of the cup product, that $e_{4,2} \cup e_{1,3} = (-1)^{2\times2} e_{1,3} \cup e_{4,2} = e_{1,4,2,3}$ and $e_{4,3} \cup e_{1,2} = (-1)^{2\times2} e_{1,2} \cup e_{4,3} = -e_{1,4,2,3}$.
 
 In conclusion, all the non-trivial and non-zero cup products (up to graded commutativity) are:
 \begin{equation}
@@ -1299,11 +1309,65 @@ In conclusion, all the non-trivial and non-zero cup products (up to graded commu
     e_{3} \cup e_{1,2} &= e_{1,2,3}, \\
     e_{3} \cup e_{4,2} &= e_{4,2,3}, \\
     e_{3} \cup e_{1,4,2} &= -e_{1,4,2,3}, \\
+    e_{1,3} \cup e_{4,2} &= e_{1,4,2,3}, \\
     e_{1,2} \cup e_{4,3} &= -e_{1,4,2,3}.
   \end{aligned}
 \end{equation}
 
 Now, since the spectral sequence collapses on the first page, all of the above work on the cup product of the Lie algebra cohomology transfers to the cup product on $H^{*}(I,k)$ as described above.
+
+\begin{remark}\label{rem:GL2-SL2-coh-iso}
+  Let $\F_{p}[\varepsilon]$ denote the dual numbers ($\varepsilon^{2} = 0$), where $\varepsilon$ sits in grade $-2$. The above cup product calculations show that $H^{*}(I_{\SL_{2}(\Q_{p})}, \F_{p}) \otimes_{\F_{p}} \F_{p}[\varepsilon] \iso H^{*}(I_{\GL_{2}(\Q_{p})},\F_{p})$ as algebras, where $I_{G}$ is the pro-$p$ Iwahori subgroup of $G$. To see this, note that the both algebras are $12$ dimensional, and on $H^{*}(I_{\SL_{2}(\Q_{p})}, \F_{p})$, and we know from \eqref{eq:Hst-spaces-SL2} that
+  \begin{align*}
+    H^{0} &= \F_{p}, \\
+    H^{1} &= H^{-1,2} = \F_{p}[e_{1},e_{3}] = \F_{p}[x_{1},x_{2}], \\
+    H^{2} &= H^{-3,5} = \F_{p}[e_{1,2},e_{3,2}] = \F_{p}[y_{1},y_{2}], \\
+    H^{3} &= H^{-4,7} = \F_{p}[e_{1,3,2}] = \F_{p}[z],
+  \end{align*}
+  where we write $x_{1}=e_{1}, x_{2}=e_{3}, y_{1} = e_{1,2}, y_{2} = e_{3,2}, z = e_{1,3,2}$, and from \eqref{eq:cup-products-SL2} that
+  \begin{align*}
+    x_{1} \cup y_{2} &= z, & x_{2} \cup y_{1} &= -z, \\
+    y_{2} \cup x_{1} &= (-1)^{1\times2}x_{1} \cup y_{2} = z, & y_{1} \cup x_{2} = (-1)^{1\times2}x_{2} \cup y_{1} &= -z.
+  \end{align*}
+  are the only non-trivial and non-zero cup products. Now $\F_{p}[\varepsilon] \iso \F_{p} \oplus \F_{p}\varepsilon$ and
+  \begin{align*}
+    &H^{*}(I_{\SL_{2}(\Q_{p})},\F_{p}) \otimes_{\F_{p}} \F_{p}[\varepsilon] \\
+    &= \bigl( \F_{p} \oplus \F_{p}[x_{1},x_{2}] \oplus \F_{p}[y_{1},y_{2}] \oplus \F_{p}[z] \bigr) \otimes_{\F_{p}} \F_{p}[\varepsilon] \\
+    &\iso \F_{p}[\varepsilon] \oplus \F_{p}[\varepsilon][x_{1},x_{2}] \oplus \F_{p}[\varepsilon][y_{1},y_{2}] \oplus \F_{p}[\varepsilon][z] \\
+    &\iso \underbrace{\F_{p}}_{H^{0,0}} \oplus \underbrace{\F_{p}\varepsilon}_{H^{-1,2}} \oplus \underbrace{\F_{p}x_{1} \oplus \F_{p}x_{2}}_{H^{-1,2}} \oplus \underbrace{\F_{p}x_{1}\varepsilon \oplus \F_{p}x_{2}\varepsilon \oplus \F_{p}y_{1} \oplus \F_{p}y_{2}}_{H^{-3,5}} \\*
+    &\phantom{{}={}} \oplus \underbrace{\F_{p}y_{1} \oplus \F_{p}y_{2}}_{H^{-5,8}} \oplus \underbrace{\F_{p}y_{1}\varepsilon \oplus \F_{p}y_{2}\varepsilon}_{H^{-5,8}} \oplus \underbrace{\F_{p}z}_{H^{-4,7}} \oplus \underbrace{\F_{p}z\varepsilon}_{H^{-6,10}},
+  \end{align*}
+  and the map
+  \begin{align*}
+    H^{*}(I_{\SL_{2}(\Q_{p})},\F_{p}) \otimes_{\F_{p}} \F_{p}[\varepsilon] &\to H^{*}(I_{\GL_{2}(\Q_{p})},\F_{p}) \\
+    1 &\mapsto 1, \\
+    \varepsilon &\mapsto e_{3}, \\
+    x_{1} &\mapsto e_{1}, \\
+    x_{2} &\mapsto e_{4}, \\
+    x_{1}\varepsilon &\mapsto e_{1,3}, \\
+    x_{1}\varepsilon &\mapsto e_{4,3}, \\
+    y_{1} &\mapsto e_{1,2}, \\
+    y_{2} &\mapsto e_{4,2}, \\
+    y_{1}\varepsilon &\mapsto e_{1,2,3}, \\
+    y_{2}\varepsilon &\mapsto e_{4,2,3}, \\
+    z &\mapsto e_{1,4,2}, \\
+    z\varepsilon &\mapsto e_{1,4,2,3},
+  \end{align*}
+  is an isomorphism of algebras (cf.\ \eqref{eq:Hst-spaces-GL2}) since the above and \eqref{eq:cup-products-GL2} gives us (writing $\times$ for the product in the algebra on the left)
+  \begin{align*}
+    x_{1} \times \varepsilon &= x_{1}\varepsilon & e_{1} \cup e_{3} &= e_{1,3}, \\
+    x_{2} \times \varepsilon &= x_{2}\varepsilon & e_{4} \cup e_{3} &= e_{4,3}, \\
+    x_{1} \times y_{1} &= z & e_{1} \cup e_{4,2} &= e_{1,4,2}, \\
+    x_{2} \times y_{1} &= -z & e_{4} \cup e_{1,2} &= -e_{1,4,2}, \\
+    x_{1} \times y_{1}\varepsilon &= z\varepsilon & e_{1} \cup e_{4,2,3} &= e_{1,4,2,3}, \\
+    x_{2} \times y_{1}\varepsilon &= -z\varepsilon & e_{4} \cup e_{1,2,3} &= -e_{1,4,2,3}, \\
+    \varepsilon \times y_{1} = (-1)^{1\times2} y_{1} \times \varepsilon &= y_{1}\varepsilon & e_{3} \cup e_{1,2} &= e_{1,2,3}, \\
+    \varepsilon \times y_{2} = (-1)^{1\times2} y_{2} \times \varepsilon &= y_{2}\varepsilon & e_{3} \cup e_{4,2} &= e_{4,2,3}, \\
+    \varepsilon \times z = (-1)^{1\times3} z \times \varepsilon &= -z\varepsilon & e_{3} \cup e_{1,4,2} &= -e_{1,4,2,3}, \\
+    y_{1} \times x_{2}\varepsilon &= -z\varepsilon & e_{1,2} \cup e_{4,3} &= -e_{1,4,2,3}, \\
+    y_{2} \times x_{1}\varepsilon &= z\varepsilon & e_{4,2} \cup e_{1,3} &= e_{1,4,2}.
+  \end{align*}
+\end{remark}
 
 \section{\texorpdfstring{$I \subseteq \SL_{3}(\Z_{p})$}{I in SL3(Zp)}}%
 \label{sec:Iwa-SL3}
@@ -1348,7 +1412,7 @@ where
   \end{aligned}
 \end{equation}
 
-Furthermore, write $g_{ij} = [g_{i},g_{j}]$ and $\xi_{ij} = [\xi_{i},\xi_{j}]$. Then we are ready to find $x_{1},\dotsc,x_{8}$ such that $g_{ij} = g_{1}^{x_{1}} \dotsb g_{8}^{x_{8}}$ for different $i<j$. (In the following we use that $\frac{1}{p-1} = 1 + p + p^{2} + \dotsb$ and $\log(1-p) = -p - \frac{p^{2}}{2} - \frac{p^{3}}{3} - \dotsb$.) Also, except in the first case, we will note that $x_{k} \in p\Z_{p}$ implies that the coefficient on $\xi_{k}$ in $\xi_{ij}$ is zero.
+Writing $g_{ij} = [g_{i},g_{j}]$ and $\xi_{ij} = [\xi_{i},\xi_{j}]$, we are now ready to find $x_{1},\dotsc,x_{8}$ such that $g_{ij} = g_{1}^{x_{1}} \dotsb g_{8}^{x_{8}}$ for different $i<j$. (In the following we use that $\frac{1}{p-1} = 1 + p + p^{2} + \dotsb$ and $\log(1-p) = -p - \frac{p^{2}}{2} - \frac{p^{3}}{3} - \dotsb$.) Also, except in the first case, we will note that $x_{k} \in p\Z_{p}$ implies that the coefficient on $\xi_{k}$ in $\xi_{ij}$ is zero.
 
 We now list all non-identity commutators $g_{ij} = [g_{i},g_{j}]$ and find $\xi_{ij} = [\xi_{i},\xi_{j}]$ based on these. (For $g_{ij} = 1_{3}$ it's clear that $x_{1} = \cdots = x_{8} = 0$, and thus $\xi_{ij} = 0$.)
 
@@ -1818,7 +1882,7 @@ So
   \dim H^{-7,12} &= \dim \coker(d_{2}) = 3 - 3 = 0.
 \end{align*}
 
-By \cite[§3.6 and §3.7]{Fuks}, we can now find the rest of the cohomology using a version of Poincaré duality for Lie algebra cohomology. But we keep the sketch work to make it clear that nothing goes wrong. We refer to \cite{code} for the calculations.
+By \cite[§3.6 and §3.7]{Fuks}, we can now find the rest of the cohomology using a version of Poincaré duality for Lie algebra cohomology. But we keep the sketch work to make it clear that this works. We refer to \cite{code} for the calculations.
 
 In grade $-8$ we get coboundary maps
 \begin{align*}
@@ -1921,7 +1985,7 @@ So $H^{8} = H^{-15,23}$ with $\dim H^{-15,23} = 1$ by \Cref{tab:graded-dims-SL3}
   \centering
   \caption[Graded cohomology dimensions for the $I \subseteq \SL_{3}(\Z_{p})$ case]{Dimensions of $E_{1}^{s,t} = H^{s,t} = \gr^{s} H^{s+t}(\lie{g},k)$ for the $I \subseteq \SL_{3}(\Z_{p})$ case.}
   \label{tab:graded-coh-dims-SL3}
-  \renewcommand{\arraystretch}{1.5}
+  \renewcommand{\arraystretch}{1.7}
   \scalebox{0.7}{%
     $\begin{NiceArray}{*{17}{c}}[hvlines, columns-width=auto]
       \diagbox{t}{s} & 0 & -1 & -2 & -3 & -4 & -5 & -6 & -7 & -8 & -9 & -10 & -11 & -12 & -13 & -14 & -15 \\
@@ -2000,6 +2064,13 @@ are trivial. But, since the spectral sequence collapses on the first page, we al
 \section{\texorpdfstring{$I \subseteq \GL_{3}(\Z_{p})$}{I in GL3(Zp)}}%
 \label{sec:Iwa-GL3}
 
+In this section we will describe the continuous group cohomology of the pro-$p$ Iwahori subgroup $I$ of $\GL_{3}(\Q_{p})$.
+
+When $I$ is the pro-$p$ Iwahori subgroup in $\GL_{3}(\Q_{p})$, we know by \Cref{sec:cohiwagps-intro} that we can take it to be of the form
+\begin{equation*}
+  I = \pmat{1+p\Z_{p} & \Z_{p} & \Z_{p} \\ p\Z_{p} & 1+p\Z_{p} & \Z_{p} \\ p\Z_{p} & p\Z_{p} & 1+p\Z_{p}} \subseteq \GL_{3}(\Z_{p}),
+\end{equation*}
+and, by \Cref{sec:cohiwagps-intro}, we have an ordered basis
 \begin{equation}
   \label{eq:gis-GL3}
   \begin{gathered}
@@ -2009,12 +2080,29 @@ are trivial. But, since the spectral sequence collapses on the first page, we al
     g_{7} = \pmat{ 1 \\ & 1 & 1 \\ && 1 }, \quad g_{8} = \pmat{ 1 & 1 \\ & 1 \\ && 1 }, \quad g_{9} = \pmat{ 1 && 1 \\ & 1 \\ && 1 }.
   \end{gathered}
 \end{equation}
+Since we just renamed some elements and added an element of the center of $\GL_{3}(\Z_{p})$ when comparing to the ordered basis of $I \subseteq \SL_{3}(\Z_{p})$ from \Cref{sec:Iwa-SL3}, it's clear from \Cref{eq:xi_ij-SL3} that the only non-zero commutators $[\xi_{i},\xi_{j}]$ with $i<j$ are:
+\begin{equation}
+  \label{eq:xi_ij-GL3}
+  \begin{aligned}
+    [\xi_{1},\xi_{7}] &= -\xi_{2}, & [\xi_{1},\xi_{8}] &= \xi_{3}, & [\xi_{1},\xi_{9}] &= -(\xi_{4}+\xi_{5}), \\
+    [\xi_{2},\xi_{8}] &= -\xi_{4}, & [\xi_{3},\xi_{7}] &= -\xi_{5}, & [\xi_{7},\xi_{8}] &= -\xi_{9}.
+  \end{aligned}
+\end{equation}
+
+Looking at \Cref{subsec:graded-coh-SL3}, we easily see that
+\begin{align*}
+  \lie{g}^{1} &= \lie{g}_{\frac{1}{3}} = \Span_{k}(\xi_{1},\xi_{6},\xi_{7}), \\
+  \lie{g}^{2} &= \lie{g}_{\frac{2}{3}} = \Span_{k}(\xi_{2},\xi_{3},\xi_{8}), \\
+  \lie{g}^{3} &= \lie{g}_{1} = \Span_{k}(\xi_{4},\xi_{5}).
+\end{align*}
+
+This is enough to calculate the graded mod $p$ cohomology of $\lie{g}$, see \cite{code} for the details. We write the result in \Cref{tab:graded-coh-dims-GL3}.
 
 \begin{table}[ht]
   \centering
   \caption[Graded cohomology dimensions for the $I \subseteq \GL_{3}(\Z_{p})$ case]{Dimensions of $E_{1}^{s,t} = H^{s,t} = \gr^{s} H^{s+t}(\lie{g},k)$ for the $I \subseteq \GL_{3}(\Z_{p})$ case.}
   \label{tab:graded-coh-dims-GL3}
-  \renewcommand{\arraystretch}{1.5}
+  \renewcommand{\arraystretch}{1.7}
   \scalebox{0.6}{%
     $\begin{NiceArray}{*{20}{c}}[hvlines, columns-width=auto]
       \diagbox{t}{s} & 0 & -1 & -2 & -3 & -4 & -5 & -6 & -7 & -8 & -9 & -10 & -11 & -12 & -13 & -14 & -15 & -16 & -17 & -18 \\
@@ -2051,8 +2139,511 @@ are trivial. But, since the spectral sequence collapses on the first page, we al
   \renewcommand{\arraystretch}{1}
 \end{table}
 
-\section{\texorpdfstring{$I \subseteq \SL_{4}(\Z_{p})$ and $I \subseteq \GL_{4}(\Z_{p})$}{I in SL3(Zp) and GL3(Zp)}}%
+\section[\texorpdfstring{$I \subseteq \SL_{4}(\Z_{p}),\GL_{4}(\Z_{p})$}{I in SL4(Zp) and GL4()}]{\texorpdfstring{$I \subseteq \SL_{4}(\Z_{p})$ and $I \subseteq \GL_{4}(\Z_{p})$}{I in SL4(Zp) and GL4(Zp)}}%
 \label{sec:Iwa-SL4-GL4}
+
+In this section we will briefly describe the problem with finding continuous group cohomology of the pro-$p$ Iwahori subgroup $I$ of $\SL_{4}(\Q_{p})$ and $\GL_{4}(\Q_{p})$.
+
+We leave all the calculations of commutators and $p$-valuations to the appendix, cf.\ \Cref{sec:SL4-calc} and \Cref{sec:GL4-calc}, and note that the dimensions of the graded cohomology $H^{s,t}(\lie{g},k)$ for $\lie{g} = k \otimes_{\F_{p}[\pi]} \gr I$ are shown in \Cref{tab:graded-coh-dims-SL4} and \Cref{tab:graded-coh-dims-GL4}.
+
+Looking at \Cref{tab:graded-coh-dims-SL4}, we see that it's no longer clear that the spectral sequence collapses on the first page. To see this, recall that all differentials on the first page are of the form $d_{1}^{s,t} \colon E_{1}^{s,t} \to E_{1}^{s+1,t}$, so we have maps like $d_{1}^{-5,7} \colon H^{-5,7}(\lie{g},k) \to H^{-4,7}(\lie{g},k)$ that are not obviously trivial, since $\dim_{k} H^{-5,7} = 4$ and $\dim_{k} H^{-4,7} = 4$. To figure out at what page the spectral sequence collapses in this case, one needs to look more carefully at how exactly the spectral sequence is obtained in \cite{Sor}, which is much more complicated than what we have done so far.
+
+\begin{table}[ht]
+  \centering
+  \caption[Graded cohomology dimensions for the $I \subseteq \SL_{4}(\Z_{p})$ case]{Dimensions of $E_{1}^{s,t} = H^{s,t} = \gr^{s} H^{s+t}(\lie{g},k)$ for the $I \subseteq \SL_{4}(\Z_{p})$ case. This table only shows the graded dimensions of $H^{0},\dotsc,H^{7}$. We note that the graded dimensions of $H^{8},\dotsc,H^{15}$ can be found using Poincaré duality, which gives us $\dim_{k} H^{s,t} = \dim_{k} H^{-36-s,51-t}$ for $(s,t)$ from the table.}
+  \label{tab:graded-coh-dims-SL4}
+  \renewcommand{\arraystretch}{1.7}
+  \scalebox{0.6}{%
+    $\begin{NiceArray}{*{21}{c}}[hvlines, columns-width=auto]
+      \diagbox{t}{s} & 0 & -1 & -2 & -3 & -4 & -5 & -6 & -7 & -8 & -9 & -10 & -11 & -12 & -13 & -14 & -15 & -16 & -17 & -18 & -19 \\
+      0 & 1\\
+      1 \\
+      2 && 4 \\
+      3 \\
+      4 &&& 2 \\
+      5 &&&& 8 \\
+      6 &&&&& \\
+      7 &&&&& 4 & 4 \\
+      8 &&&&&& 8 \\
+      9 &&&&&&& 20 \\
+      10 &&&&&&&& 8 \\
+      11 &&&&&&&& 20 & 1 \\
+      12 &&&&&&&&& 34 \\
+      13 &&&&&&&&&& 16 \\
+      14 &&&&&&&&&& 12 & 18 \\
+      15 &&&&&&&&&&& 26 \\
+      16 &&&&&&&&&&& 4 & 76 \\
+      17 &&&&&&&&&&&&& 39 \\
+      18 &&&&&&&&&&&&& 28 & 8 \\
+      19 &&&&&&&&&&&&&& 68 \\
+      20 &&&&&&&&&&&&&&& 72 \\
+      21 &&&&&&&&&&&&&&& 12 & 68 \\
+      22 &&&&&&&&&&&&&&&& 24 & 8 \\
+      23 &&&&&&&&&&&&&&&&& 121 \\
+      24 &&&&&&&&&&&&&&&&&& 80 \\
+      25 &&&&&&&&&&&&&&&&&&& 54 \\
+      26 &&&&&&&&&&&&&&&&&&&& 12
+    \end{NiceArray}$%
+  }
+  \renewcommand{\arraystretch}{1}
+\end{table}
+
+\begin{table}[ht]
+  \centering
+  \caption[Graded cohomology dimensions for the $I \subseteq \GL_{4}(\Z_{p})$ case]{Dimensions of $E_{1}^{s,t} = H^{s,t} = \gr^{s} H^{s+t}(\lie{g},k)$ for the $I \subseteq \GL_{4}(\Z_{p})$ case. This table only shows the graded dimensions of $H^{0},\dotsc,H^{7}$. We note that the graded dimensions of $H^{8},\dotsc,H^{15}$ can be found using Poincaré duality, which gives us $\dim_{k} H^{s,t} = \dim_{k} H^{-40-s,56-t}$ for $(s,t)$ from the table.}
+  \label{tab:graded-coh-dims-GL4}
+  \renewcommand{\arraystretch}{1.7}
+  \scalebox{0.5}{%
+    $\begin{NiceArray}{*{25}{c}}[hvlines, columns-width=auto]
+      \diagbox{t}{s} & 0 & -1 & -2 & -3 & -4 & -5 & -6 & -7 & -8 & -9 & -10 & -11 & -12 & -13 & -14 & -15 & -16 & -17 & -18 & -19 & -20 & -21 & -22 & -23 \\
+      0 & 1\\
+      1 \\
+      2 && 4 \\
+      3 \\
+      4 &&& 2 \\
+      5 &&&& 8 & 1 \\
+      6 &&&&& \\
+      7 &&&&& 4 & 8 \\
+      8 &&&&&& 8 \\
+      9 &&&&&&& 22 \\
+      10 &&&&&&&& 16 \\
+      11 &&&&&&&& 20 & 1 \\
+      12 &&&&&&&&& 38 & 4 \\
+      13 &&&&&&&&&& 24 \\
+      14 &&&&&&&&&& 12 & 38 \\
+      15 &&&&&&&&&&& 26 & 8 \\
+      16 &&&&&&&&&&& 4 & 96 & 1 \\
+      17 &&&&&&&&&&&&& 73 \\
+      18 &&&&&&&&&&&&& 28 & 24 \\
+      19 &&&&&&&&&&&&&& 80 & 18 \\
+      20 &&&&&&&&&&&&&&& 98 \\
+      21 &&&&&&&&&&&&&&& 16 & 144 \\
+      22 &&&&&&&&&&&&&&&& 24 & 47 \\
+      23 &&&&&&&&&&&&&&&&& 149 & 8 \\
+      24 &&&&&&&&&&&&&&&&&& 148 \\
+      25 &&&&&&&&&&&&&&&&&& 12 & 126 \\
+      26 &&&&&&&&&&&&&&&&&&& 66 & 80 \\
+      27 &&&&&&&&&&&&&&&&&&&& 104 & 8 \\
+      28 &&&&&&&&&&&&&&&&&&&&& 242 \\
+      29 &&&&&&&&&&&&&&&&&&&&&& 104 \\
+      30 &&&&&&&&&&&&&&&&&&&&&&& 66 \\
+      31 &&&&&&&&&&&&&&&&&&&&&&&& 12
+    \end{NiceArray}$%
+  }
+  \renewcommand{\arraystretch}{1}
+\end{table}
+
+
+
+\section[\texorpdfstring{$I \subseteq \SL_{2}(\sO_{F})$}{I in SL2(OF)}, quadratic]{\texorpdfstring{$I \subseteq \SL_{2}(\sO_{F})$}{I in SL3(OF)} for quadratic extensions \texorpdfstring{$F/\Q_{p}$}{F/Qp}}%
+\label{sec:Iwa-SL2-F}
+
+In this section we will describe the continuous group cohomology of the pro-$p$ Iwahori subgroup $I$ of $\SL_{2}(F)$ for quadratic extensions $F/\Q_{p}$.
+
+We write $F = \Q_{p}(\alpha)$, and we will focus on the cases $\alpha = i$ (when $p \equiv 3 \pmod{4}$) and $\alpha = \sqrt{p}$.
+
+When $I$ is the pro-$p$ Iwahori subgroup in $\SL_{2}(F)$, we know by \Cref{sec:cohiwagps-intro} that we can take it to be of the form
+\begin{equation*}
+  I = \pmat{1+\varpi_{F}\sO_{F} & \sO_{F} \\ \varpi_{F}\sO_{F} & 1+\varpi_{F}\sO_{F}}^{\!\!\det = 1} \subseteq \SL_{2}(\sO_{F}),
+\end{equation*}
+where $\varpi_{F} = p$ when $F = \Q_{p}(i)$ and $\varpi_{F} = \sqrt{p}$ when $F = \Q_{p}(\sqrt{p})$. By \Cref{sec:cohiwagps-intro}, we have an ordered basis
+\begin{equation}
+  \label{eq:gis-SL2-F}
+  \begin{gathered}
+    g_{1} = \pmat{ 1 & 0 \\ \varpi_{F} & 1 }, \quad g_{2} = \pmat{ 1 & 0 \\ \varpi_{F}\alpha & 1 }, \\
+    g_{3} = \pmat{ \exp(\varpi_{F}) & 0 \\ 0 & \exp(-\varpi_{F}) }, \quad g_{4} = \pmat{ \exp(\varpi_{F}\alpha) & 0 \\ 0 & \exp(-\varpi_{F}\alpha) }, \\
+    g_{5} = \pmat{ 1 & 1 \\ 0 & 1 }, \quad g_{6} = \pmat{ 1 & \alpha \\ 1 & 1 },
+  \end{gathered}
+\end{equation}
+since $1,\alpha$ is a $\Z_{p}$-basis of $\sO_{F}$.
+
+
+\subsection{Finding the commutators \texorpdfstring{$[\xi_{i},\xi_{j}]$}{[xi-i,xi-j]}}%
+\label{subsec:non-id-xi_ij-SL2-F}
+
+Now
+\begin{equation*}
+    g_{1}^{x_{1}}g_{2}^{x_{2}}g_{3}^{x_{3}}g_{4}^{x_{4}}g_{5}^{x_{5}}g_{6}^{x_{6}} = \pmat{ a_{11} & a_{12}  \\ a_{21} & a_{22} },
+\end{equation*}
+where
+\begin{equation}
+  \label{eq:gixi-SL2-F}
+  \begin{aligned}
+    a_{11} &= \exp\bigl( \varpi_{F}(x_{3} + \alpha x_{4}) \bigr), \\
+    a_{12} &= (x_{5} + \alpha x_{6}) \exp\bigl( \varpi_{F}(x_{3} + \alpha x_{4}) \bigr), \\
+    a_{21} &= \varpi_{F}(x_{1} + \alpha x_{2}) \exp\bigl( \varpi_{F}(x_{3} + \alpha x_{4}) \bigr), \\
+    a_{22} &= \varpi_{F}(x_{1}+\alpha x_{2})(x_{5} + \alpha x_{6})\exp\bigl( \varpi_{F}(x_{3} + \alpha x_{4}) \bigr) + \exp\bigl( -\varpi_{F}(x_{3} + \alpha x_{4}) \bigr).
+  \end{aligned}
+\end{equation}
+
+Writing $g_{ij} = [g_{i},g_{j}]$ and $\xi_{ij} = [\xi_{i},\xi_{j}]$, we are now ready to find $x_{1},\dotsc,x_{8}$ such that $g_{ij} = g_{1}^{x_{1}} \dotsb g_{6}^{x_{6}}$ for different $i<j$. (In the following we use that $\frac{1}{1-x} = 1 + x + x^{2} + \dotsb$ and $\log(1-x) = -x - \frac{x^{2}}{2} - \frac{x^{3}}{3} - \dotsb$ for $x \in (\varpi_{F})$.)
+
+We now list all non-identity commutators $g_{ij} = [g_{i},g_{j}]$ and find $\xi_{ij} = [\xi_{i},\xi_{j}]$ based on these. (For $g_{ij} = 1_{2}$ it's clear that $x_{1} = \cdots = x_{6} = 0$, and thus $\xi_{ij} = 0$.) To avoid confusion, we will do the $F = \Q_{p}(i)$ case (with $p \equiv 3 \pmod{4}$) first, and then the $F = \Q_{p}(\sqrt{p})$ case afterwards. So for now $\varpi_{F} = p$ and $\alpha = i$. Also, note that we adapt the $O(p)$ notation to $\sO_{F}$ in the obvious way.
+
+\begin{description}
+  \item[$g_{13} = \pmat{ 1 & 0 \\ p\bigl( 1 - \exp(-2p) \bigr) & 1 }$:] Comparing $g_{13}$ with \eqref{eq:gixi-SL2-F}, we see that $x_{3} = x_{4} = x_{5} = x_{6} = 0$. This leaves $a_{21} = p(x_{1} + i x_{2}) = p\bigl( 1 - \exp(-2p) \bigr) = 2p^{2} + O(p^{3})$, which implies that $x_{1}, x_{2} \in p\Z_{p}$. Hence $\xi_{13} = 0$.
+
+  \item[$g_{14} = \pmat{ 1 & 0 \\ p\bigl( 1 - \exp(-2pi) \bigr) & 1 }$:] Comparing $g_{14}$ with \eqref{eq:gixi-SL2-F}, we see that $x_{3} = x_{4} = x_{5} = x_{6} = 0$. This leaves $a_{21} = p(x_{1} + i x_{2}) = p\bigl( 1 - \exp(-2pi) \bigr) = 2p^{2}i + O(p^{3})$, which implies that $x_{1}, x_{2} \in p\Z_{p}$. Hence $\xi_{14} = 0$.
+
+  \item[$g_{15} = \pmat{ 1-p & p \\ -p^{2} & 1+p+p^{2} }$:] Comparing $g_{15}$ with \eqref{eq:gixi-SL2-F}, we see that
+        \begin{align*}
+          a_{11} &= \exp\bigl( p(x_{3} + i x_{4}) \bigr) = 1-p, \\
+          a_{12} &= (x_{5} + i x_{6}) \exp\bigl( p(x_{3} + i x_{4}) \bigr) = (x_{5} + i x_{6})(1-p) = p, \\
+          a_{21} &= p(x_{1} + ix_{2}) \exp\bigl( p(x_{3} + i x_{4}) \bigr) = p(x_{1} + i x_{2})(1-p) = -p^{2},
+        \end{align*}
+        and thus
+        \begin{align*}
+          x_{3} + ix_{4} &= \dfrac{1}{p}\log(1-p) = \dfrac{1}{p}\bigl( (-p) + O(p^{2}) \bigr) = -1 + O(p), \\
+          x_{5} + ix_{6} &= \dfrac{p}{1-p} = p + O(p^{2}), \\
+          x_{1} + ix_{2} &= \dfrac{-p^{2}}{p(1-p)} = -p + O(p^{2}).
+        \end{align*}
+        Hence $x_{1},x_{2},x_{4}, x_{5},x_{6} \in p\Z_{p}$ and $x_{3} \in -1 + p\Z_{p}$, which implies that $\xi_{15} = -\xi_{3}$.
+
+  \item[$g_{16} = \pmat{ 1-pi & pi^{2} \\ -p^{2}i & 1+pi+p^{2}i^{2} }$:] Comparing $g_{16}$ with \eqref{eq:gixi-SL2-F}, we see that
+        \begin{align*}
+          a_{11} &= \exp\bigl( p(x_{3} + i x_{4}) \bigr) = 1-pi, \\
+          a_{12} &= (x_{5} + i x_{6}) \exp\bigl( p(x_{3} + i x_{4}) \bigr) = (x_{5} + i x_{6})(1-pi) = -p, \\
+          a_{21} &= p(x_{1} + ix_{2}) \exp\bigl( p(x_{3} + i x_{4}) \bigr) = p(x_{1} + i x_{2})(1-pi) = -p^{2}i,
+        \end{align*}
+        and thus
+        \begin{align*}
+          x_{3} + ix_{4} &= \dfrac{1}{p}\log(1-pi) = \dfrac{1}{p}\bigl( (-pi) + O(p^{2}) \bigr) = -i + O(p), \\
+          x_{5} + ix_{6} &= \dfrac{-p}{1-p} = -p + O(p^{2}), \\
+          x_{1} + ix_{2} &= \dfrac{-p^{2}i}{p(1-pi)} = -pi + O(p^{2}).
+        \end{align*}
+        Hence $x_{1},x_{2},x_{3}, x_{5},x_{6} \in p\Z_{p}$ and $x_{4} \in -1 + p\Z_{p}$, which implies that $\xi_{16} = -\xi_{4}$.
+
+  \item[$g_{23} = \pmat{ 1 & 0 \\ pi\bigl( 1 - \exp(-2p) \bigr) & 1 }$:] Comparing $g_{23}$ with $g_{13}$, it's not hard to see that $\xi_{23} = 0$.
+
+  \item[$g_{24} = \pmat{ 1 & 0 \\ pi\bigl( 1 - \exp(-2pi) \bigr) & 1 }$:] Comparing $g_{24}$ with $g_{14}$, it's not hard to see that $\xi_{24} = 0$.
+
+  \item[$g_{25} = \pmat{ 1-pi & pi \\ -p^{2}i^{2} & 1+pi+p^{2}i^{2} }$:] Comparing $g_{25}$ with $g_{16}$, it's not hard to see that $\xi_{25} = -\xi_{4}$.
+
+  \item[$g_{26} = \pmat{ 1-pi^{2} & pi^{3} \\ -p^{2}i^{3} & 1+pi^{2}+p^{2}i^{4} }$:] Comparing $g_{26}$ with $g_{15}$ (noting that $i^{2} = -1$, so $1-pi^{2} = 1+p$), it's not hard to see that $\xi_{25} = \xi_{3}$.
+
+  \item[$g_{35} = \pmat{ 1 & \exp(2p)-1 \\ 0 & 1 }$:] Comparing $g_{35}$ with \eqref{eq:gixi-SL2-F}, we see that $x_{1} = x_{2} = x_{3} = x_{4} = 0$. This leaves $a_{12} = x_{5} + i x_{6} = \exp(2p)-1 = 2p + O(p^{2})$, which implies that $x_{5}, x_{6} \in p\Z_{p}$. Hence $\xi_{35} = 0$.
+
+  \item[$g_{36} = \pmat{ 1 & i\bigl(\exp(2p)-1\bigr) \\ 0 & 1 }$:] Comparing $g_{36}$ with $g_{35}$, it's not hard to see that $\xi_{36} = 0$.
+
+  \item[$g_{45} = \pmat{ 1 & \exp(2pi)-1 \\ 0 & 1 }$:] Comparing $g_{45}$ with \eqref{eq:gixi-SL2-F}, we see that $x_{1} = x_{2} x_{3} = x_{4} = 0$. This leaves $a_{12} = x_{5} + i x_{6} = \exp(2pi)-1 = 2pi + O(p^{2})$, which implies that $x_{5}, x_{6} \in p\Z_{p}$. Hence $\xi_{45} = 0$.
+
+  \item[$g_{46} = \pmat{ 1 & i\bigl( \exp(2pi)-1 \bigr) \\ 0 & 1 }$:] Comparing $g_{46}$ with $g_{45}$, it's not hard to see that $\xi_{45} = 0$.
+\end{description}
+
+Let's now do the calculations for $F = \Q_{p}(\sqrt{p})$, and note that we again adapt the $O(p)$ notation in the obvious way. Now $\varpi_{F} = \sqrt{p}$ and $\alpha = \sqrt{p}$.
+
+\begin{description}
+  \item[$g_{13} = \pmat{ 1 & 0 \\ \sqrt{p}\bigl( 1 - \exp(-2\sqrt{p}) \bigr) & 1 }$:] Comparing $g_{13}$ with \eqref{eq:gixi-SL2-F}, we see that $x_{3} = x_{4} = x_{5} = x_{6} = 0$. This leaves $a_{21} = \sqrt{p}(x_{1} + \sqrt{p} x_{2}) = \sqrt{p}\bigl( 1 - \exp(-2\sqrt{p}) \bigr) = 2p + O(p^{3/2})$, which implies that $x_{1} \in p\Z_{p}$ and $x_{2} \in 2 + p\Z_{p}$. Hence $\xi_{13} = 2\xi_{2}$.
+
+  \item[$g_{14} = \pmat{ 1 & 0 \\ \sqrt{p}\bigl( 1 - \exp(-2p) \bigr) & 1 }$:] Comparing $g_{14}$ with \eqref{eq:gixi-SL2-F}, we see that $x_{3} = x_{4} = x_{5} = x_{6} = 0$. This leaves $a_{21} = \sqrt{p}(x_{1} + \sqrt{p} x_{2}) = \sqrt{p}\bigl( 1 - \exp(-2p) \bigr) = 2p\sqrt{p} + O(p^{2})$, which implies that $x_{1}, x_{2} \in p\Z_{p}$. Hence $\xi_{14} = 0$.
+
+  \item[$g_{15} = \pmat{ 1-\sqrt{p} & \sqrt{p} \\ -p & 1+\sqrt{p}+p }$:] Comparing $g_{15}$ with \eqref{eq:gixi-SL2-F}, we see that
+        \begin{align*}
+          a_{11} &= \exp\bigl( \sqrt{p}(x_{3} + \sqrt{p} x_{4}) \bigr) = 1-\sqrt{p}, \\
+          a_{12} &= (x_{5} + \sqrt{p} x_{6}) \exp\bigl( \sqrt{p}(x_{3} + \sqrt{p} x_{4}) \bigr) = (x_{5} + \sqrt{p} x_{6})(1-\sqrt{p}) = \sqrt{p}, \\
+          a_{21} &= \sqrt{p}(x_{1} + \sqrt{p}x_{2}) \exp\bigl( \sqrt{p}(x_{3} + \sqrt{p} x_{4}) \bigr) = \sqrt{p}(x_{1} + \sqrt{p} x_{2})(1-\sqrt{p}) = -p,
+        \end{align*}
+        and thus
+        \begin{align*}
+          x_{3} + \sqrt{p} x_{4} &= \dfrac{1}{\sqrt{p}}\log(1-\sqrt{p}) = \dfrac{1}{\sqrt{p}}\bigl( (-\sqrt{p}) - \frac{p}{2} + O(p^{3/2}) \bigr) = -1 - \frac{\sqrt{p}}{2} + O(p), \\
+          x_{5} + \sqrt{p} x_{6} &= \dfrac{\sqrt{p}}{1-\sqrt{p}} = \sqrt{p} + O(p), \\
+          x_{1} + \sqrt{p} x_{2} &= \dfrac{-p}{\sqrt{p}(1-\sqrt{p})} = -\sqrt{p} + O(p).
+        \end{align*}
+        Hence $x_{1}, x_{5} \in p\Z_{p}$, $x_{2}, x_{3}, x_{4} \in -1 + p\Z_{p}$ and $x_{6} \in 1 + p\Z_{p}$, which implies that $\xi_{15} = -\xi_{2} - \xi_{3} - \frac{1}{2}\xi_{4} + \xi_{6}$. (Here $-\frac{1}{2} = \frac{p-1}{2}$ since the characteristic of $k$ is $p$.)
+
+  \item[$g_{16} = \pmat{ 1-p & p\sqrt{p} \\ -p\sqrt{p} & 1+p+p^{2} }$:] Comparing $g_{16}$ with \eqref{eq:gixi-SL2-F}, we see that
+        \begin{align*}
+          a_{11} &= \exp\bigl( \sqrt{p}(x_{3} + \sqrt{p} x_{4}) \bigr) = 1-p, \\
+          a_{12} &= (x_{5} + \sqrt{p} x_{6}) \exp\bigl( \sqrt{p}(x_{3} + \sqrt{p} x_{4}) \bigr) = (x_{5} + \sqrt{p} x_{6})(1-p) = p\sqrt{p}, \\
+          a_{21} &= \sqrt{p}(x_{1} + \sqrt{p} x_{2}) \exp\bigl( \sqrt{p}(x_{3} + \sqrt{p} x_{4}) \bigr) = \sqrt{p}(x_{1} + \sqrt{p} x_{2})(1-p) = -p\sqrt{p},
+        \end{align*}
+        and thus
+        \begin{align*}
+          x_{3} + \sqrt{p} x_{4} &= \dfrac{1}{\sqrt{p}}\log(1-p) = \dfrac{1}{\sqrt{p}}\bigl( (-p) + O(p^{3/2}) \bigr) = -\sqrt{p} + O(p), \\
+          x_{5} + \sqrt{p} x_{6} &= \dfrac{p\sqrt{p}}{1-p} = p\sqrt{p} + O(p^{2}), \\
+          x_{1} + \sqrt{p} x_{2} &= \dfrac{-p\sqrt{p}}{\sqrt{p}(1-p)} = -p + O(p^{3/2}).
+        \end{align*}
+        Hence $x_{1},x_{2},x_{3}. x_{5},x_{6} \in p\Z_{p}$ and $x_{4} \in -1 + p\Z_{p}$, which implies that $\xi_{16} = -\xi_{4}$.
+
+  \item[$g_{23} = \pmat{ 1 & 0 \\ p\bigl( 1 - \exp(-2\sqrt{p}) \bigr) & 1 }$:] Comparing $g_{23}$ with $g_{13}$, it's not hard to see that $\xi_{23} = 0$.
+
+  \item[$g_{24} = \pmat{ 1 & 0 \\ p\bigl( 1 - \exp(-2p) \bigr) & 1 }$:] Comparing $g_{24}$ with $g_{14}$, it's not hard to see that $\xi_{24} = 0$.
+
+  \item[$g_{25} = \pmat{ 1-p & p \\ -p^{2} & 1+p+p^{2} }$:] Comparing $g_{25}$ with \eqref{eq:gixi-SL2-F}, we see that
+        \begin{align*}
+          a_{11} &= \exp\bigl( \sqrt{p}(x_{3} + \sqrt{p} x_{4}) \bigr) = 1-p, \\
+          a_{12} &= (x_{5} + \sqrt{p} x_{6}) \exp\bigl( \sqrt{p}(x_{3} + \sqrt{p} x_{4}) \bigr) = (x_{5} + \sqrt{p} x_{6})(1-p) = p, \\
+          a_{21} &= \sqrt{p}(x_{1} + \sqrt{p} x_{2}) \exp\bigl( \sqrt{p}(x_{3} + \sqrt{p} x_{4}) \bigr) = \sqrt{p}(x_{1} + \sqrt{p} x_{2})(1-p) = -p^{2},
+        \end{align*}
+        and thus
+        \begin{align*}
+          x_{3} + \sqrt{p} x_{4} &= \dfrac{1}{\sqrt{p}}\log(1-p) = \dfrac{1}{\sqrt{p}}\bigl( (-p) + O(p^{3/2}) \bigr) = -\sqrt{p} + O(p), \\
+          x_{5} + \sqrt{p} x_{6} &= \dfrac{p}{1-p} = p + O(p^{2}), \\
+          x_{1} + \sqrt{p} x_{2} &= \dfrac{-p^{2}}{\sqrt{p}(1-p)} = -p^{3/2} + O(p^{2}).
+        \end{align*}
+        Hence $x_{1},x_{2},x_{3}. x_{5},x_{6} \in p\Z_{p}$ and $x_{4} \in -1 + p\Z_{p}$, which implies that $\xi_{25} = -\xi_{4}$.
+
+  \item[$g_{26} = \pmat{ 1-p\sqrt{p} & p^{2} \\ -p^{2}\sqrt{p} & 1+p\sqrt{p}+p^{3} }$:] Comparing $g_{26}$ with \eqref{eq:gixi-SL2-F}, we see that
+        \begin{align*}
+          a_{11} &= \exp\bigl( \sqrt{p}(x_{3} + \sqrt{p} x_{4}) \bigr) = 1-p\sqrt{p}, \\
+          a_{12} &= (x_{5} + \sqrt{p} x_{6}) \exp\bigl( \sqrt{p}(x_{3} + \sqrt{p} x_{4}) \bigr) = (x_{5} + \sqrt{p} x_{6})(1-p\sqrt{p}) = p^{2}, \\
+          a_{21} &= \sqrt{p}(x_{1} + \sqrt{p}x_{2}) \exp\bigl( \sqrt{p}(x_{3} + \sqrt{p} x_{4}) \bigr) = \sqrt{p}(x_{1} + \sqrt{p} x_{2})(1-p\sqrt{p}) = -p^{2}\sqrt{p},
+        \end{align*}
+        and thus
+        \begin{align*}
+          x_{3} + \sqrt{p} x_{4} &= \dfrac{1}{\sqrt{p}}\log(1-p\sqrt{p}) = \dfrac{1}{\sqrt{p}}\bigl( (-p\sqrt{p}) + O(p^{2}) \bigr) = -p + O(p^{3/2}), \\
+          x_{5} + \sqrt{p} x_{6} &= \dfrac{p^{2}}{1-p\sqrt{p}} = p^{2} + O(p^{5/2}), \\
+          x_{1} + \sqrt{p} x_{2} &= \dfrac{-p^{2}\sqrt{p}}{\sqrt{p}(1-p\sqrt{p})} = -p^{2} + O(p^{5/2}).
+        \end{align*}
+        Hence $x_{1},x_{2},x_{3},x_{4}, x_{5},x_{6} \in p\Z_{p}$, which implies that $\xi_{26} = 0$.
+
+  \item[$g_{35} = \pmat{ 1 & \exp(2\sqrt{p})-1 \\ 0 & 1 }$:] Comparing $g_{35}$ with \eqref{eq:gixi-SL2-F}, we see that $x_{1} = x_{2} = x_{3} = x_{4} = 0$. This leaves $a_{12} = x_{5} + i x_{6} = \exp(2\sqrt{p})-1 = 2\sqrt{p} + O(p)$, which implies that $x_{5} \in p\Z_{p}$ and $x_{6} \in 2 + p\Z_{p}$. Hence $\xi_{35} = 2\xi_{6}$.
+
+  \item[$g_{36} = \pmat{ 1 & \sqrt{p}\bigl(\exp(2\sqrt{p})-1\bigr) \\ 0 & 1 }$:] Comparing $g_{36}$ with $g_{35}$, it's not hard to see that $\xi_{36} = 0$.
+
+  \item[$g_{45} = \pmat{ 1 & \exp(2p)-1 \\ 0 & 1 }$:] Comparing $g_{45}$ with \eqref{eq:gixi-SL2-F}, we see that $x_{1} = x_{2} = x_{3} = x_{4} = 0$. This leaves $a_{12} = x_{5} + i x_{6} = \exp(2p)-1 = 2p + O(p^{2})$, which implies that $x_{5}, x_{6} \in p\Z_{p}$. Hence $\xi_{45} = 0$.
+
+  \item[$g_{46} = \pmat{ 1 & \sqrt{p}\bigl( \exp(2p)-1 \bigr) \\ 0 & 1 }$:] Comparing $g_{46}$ with $g_{45}$, it's not hard to see that $\xi_{45} = 0$.
+\end{description}
+
+In summary, the only non-zero commutators $[\xi_{i},\xi_{j}]$ with $i<j$ are
+\begin{equation}
+  \label{eq:xi_ij-SL2-F-unram}
+  \begin{aligned}
+    [\xi_{1},\xi_{5}] &= -\xi_{3}, & [\xi_{1},\xi_{6}] &= -\xi_{4}, \\
+    [\xi_{2},\xi_{5}] &= -\xi_{4}, & [\xi_{2},\xi_{6}] &= \xi_{3},
+  \end{aligned}
+\end{equation}
+when $p\equiv3 \pmod{4}$ and $F = \Q_{p}(i)$, and
+\begin{align*}
+  [\xi_{1},\xi_{3}] &= 2\xi_{2} & [\xi_{1},\xi_{5}] &= -\xi_{2} - \xi_{3} - \frac{1}{2}\xi_{4} + \xi_{6}, \\
+  [\xi_{1},\xi_{6}] &= -\xi_{4}, & [\xi_{2},\xi_{5}] &= -\xi_{4}, \\
+  [\xi_{3},\xi_{5}] &= 2\xi_{6},
+\end{align*}
+when $F = \Q_{p}(\sqrt{p})$. To make the $F = \Q_{p}(\sqrt{p})$ case easier to work with, we make a base change $\xi_{5}' = \xi_{5} - \frac{1}{2}\xi_{6}$ and $\xi_{i}' = \xi_{i}$ for $i \neq 5$, which gives us commutators
+\begin{equation}
+  \label{eq:xi_ij-SL2-F-ram}
+  \begin{aligned}
+    [\xi_{1}',\xi_{3}'] &= 2\xi_{2}' & [\xi_{1}',\xi_{5}'] &= -\xi_{2}' - \xi_{3}' + \xi_{6}', \\
+    [\xi_{1}',\xi_{6}'] &= -\xi_{4}', & [\xi_{2}',\xi_{5}'] &= -\xi_{4}', \\
+    [\xi_{3}',\xi_{5}'] &= 2\xi_{6}'.
+  \end{aligned}
+\end{equation}
+
+
+\subsection{Finding the cohomology}%
+\label{subsec:graded-coh-SL2-F}
+
+Looking at \eqref{eq:Iwa-p-val-basis-SLn} in the $p\equiv 3\pmod{4}$ and $F = \Q_{p}(i)$ case (with $e=1$ and $h=2$), we see that
+\begin{align*}
+  \omega(g_{1}) &= 1-\frac{1}{2} = \frac{1}{2}, & \omega(g_{2}) &= 1-\frac{1}{2} = \frac{1}{2}, \\
+  \omega(g_{3}) &= 1, & \omega(g_{4}) &= 1, \\
+  \omega(g_{5}) &= \frac{1}{2}, & \omega(g_{6}) &= \frac{1}{2}.
+\end{align*}
+Hence
+\begin{equation*}
+  \lie{g} = k \otimes_{\F_{p}[\pi]} \gr I = \Span_{k}(\xi_{1},\dotsc,\xi_{6}) = \lie{g}^{1} \oplus \lie{g}^{2},
+\end{equation*}
+where
+\begin{align*}
+  \lie{g}^{1} &= \lie{g}_{\frac{1}{2}} = \Span_{k}(\xi_{1},\xi_{2},\xi_{5},\xi_{6}), \\
+  \lie{g}^{2} &= \lie{g}_{1} = \Span_{k}(\xi_{3},\xi_{4}).
+\end{align*}
+
+In the $F = \Q_{p}(\sqrt{p})$ case (with $e=2$ and $h=2$) \eqref{eq:Iwa-p-val-basis-SLn} gives us
+\begin{align*}
+  \omega(g_{1}) &= \frac{1}{2}\Bigl( 1-\frac{1}{2} \Bigr) = \frac{1}{4}, & \omega(g_{2}) &= \frac{1}{2}\Bigl( 1-\frac{1}{2} \Bigr) = \frac{1}{4}, \\
+  \omega(g_{3}) &= \frac{1}{2}, & \omega(g_{4}) &= \frac{1}{2}, \\
+  \omega(g_{5}) &= \frac{1}{4}, & \omega(g_{6}) &= \frac{1}{4}.
+\end{align*}
+Hence
+\begin{equation*}
+  \lie{g} = k \otimes_{\F_{p}[\pi]} \gr I = \Span_{k}(\xi_{1}',\dotsc,\xi_{6}') = \lie{g}^{1} \oplus \lie{g}^{2},
+\end{equation*}
+where
+\begin{align*}
+  \lie{g}^{1} &= \lie{g}_{\frac{1}{4}} = \Span_{k}(\xi_{1}',\xi_{2}',\xi_{5}',\xi_{6}'), \\
+  \lie{g}^{2} &= \lie{g}_{\frac{1}{2}} = \Span_{k}(\xi_{3}',\xi_{4}').
+\end{align*}
+See \Cref{rem:g-Z-grading} for more details.
+
+This is enough to calculate the graded mod $p$ cohomology of $\lie{g}$, see \cite{code} for the details. We write the result in \Cref{tab:graded-coh-dims-GL2-F}.
+
+\begin{table}[ht]
+  \centering
+  \caption[Graded cohomology dimensions for the $I \subseteq \SL_{2}(\sO_{F})$, quadratic case]{Dimensions of $E_{1}^{s,t} = H^{s,t}(\lie{g},\F_{p})$ for the $I \subseteq \SL_{2}(\sO_{F})$ case, where $F/\Q_{p}$ is a quadratic extension (either $F = \Q_{p}(i)$ or $F = \Q_{p}(\sqrt{p})$).}
+  \label{tab:graded-coh-dims-SL2-F}
+  \renewcommand{\arraystretch}{1.5}
+  $\begin{NiceArray}{*{10}{c}}[hvlines, columns-width=auto]
+    \diagbox{t}{s} & 0 & -1 & -2 & -3 & -4 & -5 & -6 & -7 & -8 \\
+    0 & 1 \\
+    1 \\
+    2 & & 4 \\
+    3 \\
+    4 & & & 4 \\
+    5 & & & & 4 \\
+    6 & \\
+    7 & & & & & 10 \\
+    8 \\
+    9 & & & & & & 4 \\
+    10 & & & & & & & 4 \\
+    11 \\
+    12 & & & & & & & & 4 \\
+    13 \\
+    14 & & & & & & & & & 1
+  \end{NiceArray}$
+  \renewcommand{\arraystretch}{1}
+\end{table}
+
+Altogether, we see that
+\begin{equation}
+  \label{eq:Hn-to-Hst-SL2-F}
+  \begin{aligned}
+    H^{0} &= H^{0,0}, \\
+    H^{1} &= H^{-1,2}, \\
+    H^{2} &= H^{-2,4} \oplus H^{-3,5}, \\
+    H^{3} &= H^{-4,7}, \\
+    H^{4} &= H^{-5,9} \oplus H^{-6,10}, \\
+    H^{5} &= H^{-7,12}, \\
+    H^{6} &= H^{-8,14},
+  \end{aligned}
+\end{equation}
+with dimension as described in \Cref{tab:graded-coh-dims-SL2-F} in both the $F = \Q_{p}(i)$ and the $F = \Q_{p}(\sqrt{p})$ case. I.e., the mod $p$ cohomology doesn't depend on the field extension (among the above ones) in this case.
+
+We note that all differentials $d_{r}^{s,t} \colon E_{r}^{s,t} \to E_{r}^{s+r,t+1-r}$ in \Cref{tab:graded-coh-dims-SL2-F} have bidegree $(r,1-r)$, i.e., they are all below the $(r,-r)$ arrow going $r$ to the left and $r$ up in the table, where $r \geq 1$. Looking at \Cref{tab:graded-coh-dims-SL2-F}, this clearly means that all differentials for $r \geq 1$ are trivial, and thus the spectral sequence collapses on the first page. Hence $H^{s,t}(\lie{g},k) = E_{1}^{s,t} \iso E_{\infty}^{s,t} = \gr^{s} H^{s+t}(I,k)$, and by \eqref{eq:Hn-to-Hst-SL2-F} and \Cref{tab:graded-coh-dims-SL2-F} we get that
+\begin{equation}
+  \label{eq:dim-HnI-SL2-F}
+  \dim H^{n}(I,k) =
+  \begin{dcases}
+    1 & n=0, \\
+    4 & n=1, \\
+    8 & n=2, \\
+    10 & n=3, \\
+    8 & n=4, \\
+    4 & n=5, \\
+    1 & n=6.
+  \end{dcases}
+\end{equation}
+
+
+\section[\texorpdfstring{$I \subseteq \GL_{2}(\sO_{F})$}{I in GL2(OF)}, quadratic]{\texorpdfstring{$I \subseteq \GL_{2}(\sO_{F})$}{I in GL2(OF)}}%
+\label{sec:Iwa-GL2-F}
+
+In this section we will describe the continuous group cohomology of the pro-$p$ Iwahori subgroup $I$ of $\GL_{2}(F)$ for quadratic extensions $F/\Q_{p}$.
+
+We again write $F = \Q_{p}(\alpha)$ and focus on the cases $\alpha = i$ (when $p \equiv 3 \pmod{4}$) and $\alpha = \sqrt{p}$.
+
+When $I$ is the pro-$p$ Iwahori subgroup in $\GL_{2}(F)$, we know by \Cref{sec:cohiwagps-intro} that we can take it to be of the form
+\begin{equation*}
+  I = \pmat{1+\varpi_{F}\sO_{F} & \sO_{F} \\ \varpi_{F}\sO_{F} & 1+\varpi_{F}\sO_{F}} \subseteq \GL_{2}(\sO_{F}),
+\end{equation*}
+where $\varpi_{F} = p$ when $F = \Q_{p}(i)$ and $\varpi_{F} = \sqrt{p}$ when $F = \Q_{p}(\sqrt{p})$. By \Cref{sec:cohiwagps-intro}, we have an ordered basis
+\begin{equation}
+  \label{eq:gis-GL2-F}
+  \begin{gathered}
+    g_{1} = \pmat{ 1 & 0 \\ \varpi_{F} & 1 }, \quad g_{2} = \pmat{ 1 & 0 \\ \varpi_{F}\alpha & 1 }, \\
+    g_{3} = \pmat{ \exp(\varpi_{F}) & 0 \\ 0 & \exp(-\varpi_{F}) }, \quad g_{4} = \pmat{ \exp(\varpi_{F}\alpha) & 0 \\ 0 & \exp(-\varpi_{F}\alpha) }, \\
+    g_{5} = \pmat{ \exp(\varpi_{F}) & 0 \\ 0 & \exp(\varpi_{F}) }, \\
+    g_{6} = \pmat{ 1 & 1 \\ 0 & 1 }, \quad g_{7} = \pmat{ 1 & \alpha \\ 1 & 1 },
+  \end{gathered}
+\end{equation}
+since $1,\alpha$ is a $\Z_{p}$-basis of $\sO_{F}$.
+
+Since we just renamed some elements and added an element of the center of $\GL(\sO_{F})$ when comparing to the ordered basis of $I \subseteq \SL_{2}(\sO_{F})$ from \Cref{sec:Iwa-SL2-F}, it's clear from \Cref{eq:xi_ij-SL2-F-unram} and \Cref{eq:xi_ij-SL2-F-ram} that the only non-zero commutators $[\xi_{i},\xi_{j}]$  (with $i<j$) in  $\lie{g} = k \otimes \gr G$ are
+\begin{equation}
+  \label{eq:xi_ij-GL2-F-unram}
+  \begin{aligned}
+    [\xi_{1},\xi_{6}] &= -\xi_{3}, & [\xi_{1},\xi_{7}] &= -\xi_{4}, \\
+    [\xi_{2},\xi_{6}] &= -\xi_{4}, & [\xi_{2},\xi_{7}] &= \xi_{3},
+  \end{aligned}
+\end{equation}
+when $p\equiv3 \pmod{4}$ and $F = \Q_{p}(i)$, and
+\begin{align*}
+  [\xi_{1},\xi_{3}] &= 2\xi_{2} & [\xi_{1},\xi_{6}] &= -\xi_{2} - \xi_{3} - \frac{1}{2}\xi_{4} + \xi_{7}, \\
+  [\xi_{1},\xi_{7}] &= -\xi_{4}, & [\xi_{2},\xi_{6}] &= -\xi_{4}, \\
+  [\xi_{3},\xi_{6}] &= 2\xi_{7},
+\end{align*}
+when $F = \Q_{p}(\sqrt{p})$. To make the $F = \Q_{p}(\sqrt{p})$ case easier to work with, we again make a base change $\xi_{6}' = \xi_{6} - \frac{1}{2}\xi_{7}$ and $\xi_{i}' = \xi_{i}$ for $i \neq 6$, which gives us commutators
+\begin{equation}
+  \label{eq:xi_ij-GL2-F-ram}
+  \begin{aligned}
+    [\xi_{1}',\xi_{3}'] &= 2\xi_{2}' & [\xi_{1}',\xi_{6}'] &= -\xi_{2}' - \xi_{3}' + \xi_{7}', \\
+    [\xi_{1}',\xi_{7}'] &= -\xi_{4}', & [\xi_{2}',\xi_{6}'] &= -\xi_{4}', \\
+    [\xi_{3}',\xi_{6}'] &= 2\xi_{6}'.
+  \end{aligned}
+\end{equation}
+
+Looking at \Cref{subsec:graded-coh-SL2-F}, we easily see that
+\begin{align*}
+  \lie{g}^{1} &= \Span_{k}(\xi_{1},\xi_{2},\xi_{6},\xi_{7}), \\
+  \lie{g}^{2} &= \Span_{k}(\xi_{3},\xi_{4},\xi_{5}),
+\end{align*}
+in both cases.
+
+This is enough to calculate the graded mod $p$ cohomology of $\lie{g}$, see \cite{code} for the details. We write the result in \Cref{tab:graded-coh-dims-GL2-F}.
+
+
+\begin{table}[ht]
+  \centering
+  \caption[Graded cohomology dimensions for the $I \subseteq \GL_{2}(\sO_{F})$, quadratic case]{Dimensions of $E_{1}^{s,t} = H^{s,t}(\lie{g},\F_{p})$ for the $I \subseteq \GL_{2}(\sO_{F})$ case, where $F/\Q_{p}$ is a quadratic extension (either $F = \Q_{p}(i)$ or $F = \Q_{p}(\sqrt{p})$).}
+  \label{tab:graded-coh-dims-GL2-F}
+  \renewcommand{\arraystretch}{1.5}
+  $\begin{NiceArray}{*{12}{c}}[hvlines, columns-width=auto]
+    \diagbox{t}{s} & 0 & -1 & -2 & -3 & -4 & -5 & -6 & -7 & -8 & -9 & -10 \\
+    0 & 1 \\
+    1 \\
+    2 & & 4 \\
+    3 & & & 1 \\
+    4 & & & 4 \\
+    5 & & & & 8 \\
+    6 & \\
+    7 & & & & & 14 \\
+    8 & & & & & & 4 \\
+    9 & & & & & & 4 \\
+    10 & & & & & & & 14 \\
+    11 \\
+    12 & & & & & & & & 8 \\
+    13 & & & & & & & & & 4 \\
+    14 & & & & & & & & & 1 \\
+    15 & & & & & & & & & & 4 \\
+    16 \\
+    17 & & & & & & & & & & & 1
+  \end{NiceArray}$
+  \renewcommand{\arraystretch}{1}
+\end{table}
+
+Altogether, we see that
+\begin{equation}
+  \label{eq:Hn-to-Hst-GL2-F}
+  \begin{aligned}
+    H^{0} &= H^{0,0}, \\
+    H^{1} &= H^{-1,2} \oplus H^{-2,3}, \\
+    H^{2} &= H^{-2,4} \oplus H^{-3,5}, \\
+    H^{3} &= H^{-4,7} \oplus H^{-5,8}, \\
+    H^{4} &= H^{-5,9} \oplus H^{-6,10}, \\
+    H^{5} &= H^{-7,12} \oplus H^{-8,13}, \\
+    H^{6} &= H^{-8,14} \oplus H^{-9,15}, \\
+    H^{7} &= H^{-10,17},
+  \end{aligned}
+\end{equation}
+with dimension as described in \Cref{tab:graded-coh-dims-GL2-F} in both the $F = \Q_{p}(i)$ and the $F = \Q_{p}(\sqrt{p})$ case. I.e., the mod $p$ cohomology doesn't depend on the field extension (among the above ones) in this case.
+
+We note that all differentials $d_{r}^{s,t} \colon E_{r}^{s,t} \to E_{r}^{s+r,t+1-r}$ in \Cref{tab:graded-coh-dims-GL2-F} have bidegree $(r,1-r)$, i.e., they are all below the $(r,-r)$ arrow going $r$ to the left and $r$ up in the table, where $r \geq 1$. Looking at \Cref{tab:graded-coh-dims-GL2-F}, this clearly means that all differentials for $r \geq 1$ are trivial, and thus the spectral sequence collapses on the first page. Hence $H^{s,t}(\lie{g},k) = E_{1}^{s,t} \iso E_{\infty}^{s,t} = \gr^{s} H^{s+t}(I,k)$, and by \eqref{eq:Hn-to-Hst-GL2-F} and \Cref{tab:graded-coh-dims-GL2-F} we get that
+\begin{equation}
+  \label{eq:dim-HnI-GL2-F}
+  \dim H^{n}(I,k) =
+  \begin{dcases}
+    1 & n=0, \\
+    5 & n=1, \\
+    12 & n=2, \\
+    18 & n=3, \\
+    18 & n=4, \\
+    12 & n=5, \\
+    5 & n=6, \\
+    1 & n=7.
+  \end{dcases}
+\end{equation}
+
 
 \section{Nilpotency index}%
 \label{sec:nilp-index}
@@ -2061,20 +2652,22 @@ Before ending this chapter with a brief discussion of future research directions
 
 Given any cohomology theory $H$ (say over $k$), one can always think of the ring $H^{*}$ with the cup product as $H^{*} = k \oplus H^{+}$, where $k = H^{0}$ and $H^{+} = \bigoplus_{n>0} H^{n}$. Assuming that only finitely many $H^{n}$ are non-zero and that each $H^{n}$ is finite dimensional, one can note that $H^{+}$ must be nilpotent. Thus an interesting question becomes: what is the nilpotency index of $H^{+}$? I.e., what's the smallest positive integer $m$ such that $(H^{+})^{m} = 0$? In continuation of this, another slightly easier question to answer is, what is the nilpotency index of $H^{1}$? I.e., what's the smallest positive integer $m$ such that $(H^{1})^{m} = 0$.
 
-Furthermore, one can consider the exterior algebra $\Lambda(H^{*})$, which by definition is $T(H^{*})/I$, where $T(H^{*}) = \bigoplus_{\ell=0}^{\infty} (H^{*})^{\otimes \ell}$ is the tensor algebra with multiplication given by the canonical isomorphisms $(H^{*})^{\otimes m} \otimes (H^{*})^{\otimes \ell} \to (H^{*})^{\otimes(m+\ell)}$, and $I$ is the two-sided ideal generated by all elements of the form $x \otimes x$. Now another interesting question is, what's the smallest number of wedges needed to ensure that $H^{*} \wedge \dotsb \wedge H^{*} = 0$? Or simpler, what's the smallest number of wedges needed to ensure that $H^{1} \wedge \dotsb \wedge H^{1} = 0$? \dknote{Is this the correct setup? Otherwise, how to change it? Answer this part later. Should be fine for $\SL_{2}(\Z_{p})$ and $\GL_{2}(\Z_{p})$ cases.}
+% Furthermore, one can consider the exterior algebra $\Lambda(H^{*})$, which by definition is $T(H^{*})/I$, where $T(H^{*}) = \bigoplus_{\ell=0}^{\infty} (H^{*})^{\otimes \ell}$ is the tensor algebra with multiplication given by the canonical isomorphisms $(H^{*})^{\otimes m} \otimes (H^{*})^{\otimes \ell} \to (H^{*})^{\otimes(m+\ell)}$, and $I$ is the two-sided ideal generated by all elements of the form $x \otimes x$. Now another interesting question is, what's the smallest number of wedges needed to ensure that $H^{*} \wedge \dotsb \wedge H^{*} = 0$? Or simpler, what's the smallest number of wedges needed to ensure that $H^{1} \wedge \dotsb \wedge H^{1} = 0$? \dknote{Is this the correct setup? Otherwise, how to change it? Answer this part later. Should be fine for $\SL_{2}(\Z_{p})$ and $\GL_{2}(\Z_{p})$ cases.}
 
 We will now try to answer the above questions for the group cohomology $H^{*}(I,k)$ in each of the cases we have discussed in this chapter. Before beginning, recall that
 \begin{equation}\label{eq:graded-coh-inc}
   H^{s,t} \cup H^{s',t'} \subseteq H^{s+s',t+t'}
 \end{equation}
-by \cite[§3.7]{Fuks}.
+by \cite[§3.7]{Fuks}. This will be useful for finding upper bounds for the nilpotency index. Also, note that we write $H^{+} \cup H^{+}$ for the image of $\cup \colon H^{+} \times H^{+} \to H^{+}$, and similarly for $H^{1}$.
 
-In the $I \subseteq \SL_{2}(\Z_{p})$ case, we saw in \Cref{eq:dim-HnI-SL2} that the cup product is trivial, so $H^{*} \cup H^{*} = 0$ and thus also $H^{1} \cup H^{1} = 0$.
-
-In the $I \subseteq \GL_{2}(\Z_{p})$ case, we completely described the (graded) cup product in \Cref{eq:dim-HnI-GL2}, which should be enough to answer the questions. Looking at \Cref{tab:graded-coh-dims-GL2} and using \eqref{eq:graded-coh-inc}, we see that an upper bound for $H^{1}$ is that
+In the $I \subseteq \SL_{2}(\Z_{p})$ case, we saw in \eqref{eq:dim-HnI-SL2} that the cup product is trivial except for $\cup \colon H^{1} \times H^{2} \to H^{3}$, so $H^{1} \cup H^{1} = 0$ and
 \begin{align*}
-  H^{1} \cup H^{1} \cup H^{1} &\neq 0,
-  H^{1} \cup H^{1} \cup H^{1} \cup H^{1} &= 0,
+  H^{+} \cup H^{+} &\neq 0, & H^{+} \cup H^{+} \cup H^{+} &= 0.
+\end{align*}
+
+In the $I \subseteq \GL_{2}(\Z_{p})$ case, we completely described the (graded) cup product in \eqref{eq:dim-HnI-GL2}, which should be enough to answer the questions. Looking at \Cref{tab:graded-coh-dims-GL2} and using \eqref{eq:graded-coh-inc}, we see that an upper bound for $H^{1}$ is that
+\begin{align*}
+  H^{1} \cup H^{1} \cup H^{1} &\neq 0, & H^{1} \cup H^{1} \cup H^{1} \cup H^{1} &= 0,
 \end{align*}
 by starting with $H^{-1,2} \cup H^{-2,3} \subseteq H^{-3,5} \neq 0$ and then using that $H^{-3,5} \cup H^{-1,2} \subseteq H^{-4,7} \neq 0$ or $H^{-3,5} \cup H^{-2,3} \subseteq H^{-5,8} \neq 0$, and finally  $H^{-4,7} \cup H^{-2,3} \subseteq H^{-6,10} \neq 0$ or $H^{-5,8} \cup H^{-1,2} \subseteq H^{-6,10}\neq0$. The question is whether we can follow those steps with non-zero cup products. We note by \eqref{eq:cup-products-GL2} that
 \begin{align*}
@@ -2082,8 +2675,7 @@ by starting with $H^{-1,2} \cup H^{-2,3} \subseteq H^{-3,5} \neq 0$ and then usi
 \end{align*}
 are the only non-zero cup product we can do in $H^{1} = H^{-1,2} \oplus H^{-2,3}$. But $H^{-1,2} = k[e_{1},e_{4}]$ and $H^{-2,3} = k[e_{3}]$ by \eqref{eq:Hst-spaces-GL2}, and we already noted in \Cref{subsec:group-coh-GL2} that $e_{i_{1},\dotsc,i_{m}} \cup e_{j_{1},\dotsc,j_{\ell}}$ if $\set{i_{1},\dotsc,i_{m}} \cap \set{j_{1},\dotsc,j_{\ell}} \neq \emptyset$, so we clearly can't cup with anything from $H^{1}$ without getting zero. Thus
 \begin{align*}
-  H^{1} \cup H^{1} &\neq 0,
-  H^{1} \cup H^{1} \cup H^{1} &= 0.
+  H^{1} \cup H^{1} &\neq 0, & H^{1} \cup H^{1} \cup H^{1} &= 0.
 \end{align*}
 Now, having only four possible numbers in the subscript and using the above equation, we note that we can only ever hope to have two cup products before getting zero (cf.\ \eqref{eq:Hst-spaces-GL2}). By \eqref{eq:cup-products-GL2}
 \begin{equation*}
@@ -2091,22 +2683,225 @@ Now, having only four possible numbers in the subscript and using the above equa
 \end{equation*}
 so
 \begin{align*}
-  H^{*} \cup H^{*} \cup H^{*} &\neq 0, \\
-  H^{*} \cup H^{*} \cup H^{*} \cup H^{*} &= 0,
+  H^{+} \cup H^{+} \cup H^{+} &\neq 0, & H^{+} \cup H^{+} \cup H^{+} \cup H^{+} &= 0,
 \end{align*}
 for $I \subseteq \GL_{2}(\Z_{p})$.
 
-In the $I \subseteq \SL_{2}(\Z_{p})$ case, we haven't described the cup product in detail, but we can tell purely from \eqref{eq:graded-coh-inc} and \Cref{tab:graded-coh-dims-SL3}, that $H^{1} \cup H^{1} = 0$. Going through \Cref{tab:graded-coh-dims-SL3}, we also note that an upper bound for $H^{*}$ is
+In the $I \subseteq \SL_{3}(\Z_{p})$ case, we haven't described the cup product in detail, but we can tell purely from \eqref{eq:graded-coh-inc} and \Cref{tab:graded-coh-dims-SL3}, that $H^{1} \cup H^{1} = 0$. Going through \Cref{tab:graded-coh-dims-SL3}, we also note that an upper bound for $H^{+}$ is
 \begin{align*}
-  H^{*} \cup H^{*} \cup H^{*} &\neq 0, \\
-  H^{*} \cup H^{*} \cup H^{*} \cup H^{*} &= 0,
+  H^{+} \cup H^{+} \cup H^{+} \cup H^{+} &\neq 0, & H^{+} \cup H^{+} \cup H^{+} \cup H^{+} \cup H^{+} &= 0,
 \end{align*}
-\dknote{Check this one in more detail. Write a bit for the last few.}
+which possibly can be achieved through (cf.\ \cite{code})
+\begin{align*}
+  H^{-4,6} \cup H^{-6,9} &\subseteq H^{-10,15}, & H^{-10,15} \cup H^{-4,6} &\subseteq H^{-14,21}, \\
+  H^{-14,21} \cup H^{-1,2} &\subseteq H^{-15,23}.
+\end{align*}
+It still remains to check whether such a series of non-zero cup products exist, which we won't do here. (This would require a lot of extra computations by hand, or hopefully better automation for computing cup products than what's been achieved so far.)
+
+\begin{remark}
+  To give estimates for the upper bounds of $m$ such that $(H^{+})^{m} \neq 0$, we can build a directed graph with nodes $(s,t)$ for $(s,t)$ such that $H^{s,t} \neq 0$ and arrows $(s,t) \to (s+s',t+t')$ (and $(s',t') \to (s+s',t+t')$) for $(s',t')$ such that $H^{s',t'} \neq 0$ and $H^{s+s',t+t'} \neq 0$ (so that $H^{s,t} \cup H^{s',t'} \subseteq H^{s+s',t+t'}$ has a chance of being non-zero). Then standard algorithms for finding the longest path in a directed graph can quickly give us a longest path as above.
+
+  Note that we sometime can be more restrictive than just finding the longest path by also considering dimension arguments. This is the case when working with $I \subseteq \SL_{4}(\Z_{p})$ in the following, where $\dim_{k} H^{-5,7} = 4$, so if $H^{-5,7}$ is used in the sequence of cup products as part of the longest path more than $4$ times, then we know the cup product must be zero.
+\end{remark}
+
+In the $I \subseteq \GL_{3}(\Z_{p})$ case, we also haven't described the cup product in detail, but we can tell purely from \eqref{eq:graded-coh-inc} and \Cref{tab:graded-coh-dims-GL3}, that
+\begin{align*}
+  H^{1} \cup H^{1} \cup H^{1} &\neq 0, & H^{1} \cup H^{1} \cup H^{1} \cup H^{1} &= 0,
+\end{align*}
+is an upper bound, since $\dim_{k} H^{-3,4} = 1$, so $H^{-3,4}$ can only be used once in a non-zero cup product.This upper bound might be achieved through
+\begin{align*}
+  H^{-3,4} \cup H^{-1,2} &\subseteq H^{-4,6}, & H^{-4,6} \cup H^{-1,2} \subset H^{-5,8},
+\end{align*}
+but it still remains to check whether such a non-zero cup product exists. Going through \Cref{tab:graded-coh-dims-GL3}, we also note that an upper bound for $H^{+}$ is
+\begin{align*}
+  (H^{+})^{5} &\neq 0, & (H^{+})^{6} &= 0,
+\end{align*}
+which possibly can be achieved through (cf.\ \cite{code})
+\begin{align*}
+  H^{-3,4} \cup H^{-1,2} &\subseteq H^{-4,6}, & H^{-4,6} \cup H^{-1,2} &\subseteq H^{-5,8}, \\
+  H^{-5,8} \cup H^{-3,4} &\subseteq H^{-8,12}, & H^{-8,12} \cup H^{-1,2} &\subseteq HH^{-9,14}, \\
+  H^{-9,14} \cup H^{-6,9} &\subseteq H^{-15,23}.
+\end{align*}
+Again it still remains to check whether such a series of non-zero cup products exist.
+
+In the $I \subseteq \SL_{4}(\Z_{p})$ case, we also haven't described the cup product in detail, and we don't even fully know the cohomology of $I$ in this case, but from \eqref{eq:graded-coh-inc} and \Cref{tab:graded-coh-dims-SL4}, we at least know enough to see that
+\begin{align*}
+  H^{1} \cup H^{1} &\neq 0, & H^{1} \cup H^{1} \cup H^{1} &= 0,
+\end{align*}
+is an upper bound, since the dimension of the entries $E_{r}^{s,t}$ are non-increasing when $r$ increases. This upper bound might be achieved through
+\begin{equation*}
+  H^{-1,2} \cup H^{-1,2} \subseteq H^{-2,4},
+\end{equation*}
+but it still remains to check whether such a non-zero cup product exists. Going through \Cref{tab:graded-coh-dims-SL4}, we also note that an upper bound for $H^{+}$ is
+\begin{align*}
+  (H^{+})^{7} &\neq 0, & (H^{+})^{8} &= 0,
+\end{align*}
+which possibly can be achieved through (cf.\ \cite{code})
+\begin{align*}
+  H^{-1,2} \cup H^{-5,7} &\subseteq H^{-6,9}, & H^{-6,9} \cup H^{-5,7} &\subseteq H^{-11,16}, \\
+  H^{-11,16} \cup H^{-5,7} &\subseteq H^{-16,23}, & H^{-16,23} \cup H^{-5,7} &\subseteq HH^{-21,30}, \\
+  H^{-21,30} \cup H^{-7,10} &\subseteq H^{-28,40}, & H^{-28,40} \cup H^{-8,11} &\subseteq H^{-36,51}.
+\end{align*}
+
+Similarly, in the $I \subseteq \GL_{4}(\Z_{p})$ case, we also haven't described the cup product or fully know the cohomology of $I$ in this case, but from \eqref{eq:graded-coh-inc} and \Cref{tab:graded-coh-dims-GL4}, we at least know enough to see that
+\begin{align*}
+  (H^{1})^{4} &\neq 0, & (H^{1})^{5} &= 0,
+\end{align*}
+is an upper bound, since the dimension of the entries $E_{r}^{s,t}$ are non-increasing when $r$ increases. This upper bound might be achieved through
+\begin{align*}
+  H^{-4,5} \cup H^{-1,2} &\subseteq H^{-5,7}, & H^{-5,7} \cup H^{-1,2} &\subseteq H^{-6,9}, \\
+  H^{-6,9} \cup H^{-1,2} &\subseteq H^{-7,11},
+\end{align*}
+but it still remains to check whether such a non-zero cup product exists. Going through \Cref{tab:graded-coh-dims-GL4}, we also note that an upper bound for $H^{+}$ is
+\begin{align*}
+  (H^{+})^{10} &\neq 0, & (H^{+})^{11} &= 0,
+\end{align*}
+which possibly can be achieved through (cf.\ \cite{code})
+\begin{align*}
+  H^{-4,5} \cup H^{-1,2} &\subseteq H^{-5,7}, & H^{-5,7} \cup H^{-1,2} &\subseteq H^{-6,9}, \\
+  H^{-6,9} \cup H^{-1,2} &\subseteq H^{-7,11}, & H^{-7,11} \cup H^{-4,5} &\subseteq HH^{-11,16}, \\
+  H^{-11,16} \cup H^{-1,2} &\subseteq H^{-12,18}, & H^{-12,18} \cup H^{-5,7} &\subseteq H^{-17,25}, \\
+  H^{-17,25} \cup H^{-9,12} &\subseteq H^{-26,37}, & H^{-26,37} \cup H^{-5,7} &\subseteq H^{-31,44}, \\
+  H^{-31,44} \cup H^{-5,7} &\subseteq H^{-36,51}.
+\end{align*}
+
+In the $I \subseteq \SL_{2}(\sO_{F})$ (with $F/\Q_{p}$ quadratic) case, we also haven't described the cup product in detail, but from \eqref{eq:graded-coh-inc} and \Cref{tab:graded-coh-dims-SL2-F}, we at least know enough to see that
+\begin{align*}
+  H^{1} \cup H^{1} &\neq 0, & H^{1} \cup H^{1} \cup H^{1} &= 0,
+\end{align*}
+is an upper bound. This upper bound might be achieved through
+\begin{equation*}
+  H^{-1,2} \cup H^{-1,2} \subseteq H^{-2,4},
+\end{equation*}
+but it still remains to check whether such a non-zero cup product exists. Going through \Cref{tab:graded-coh-dims-SL2-F}, we also note that an upper bound for $H^{+}$ is
+\begin{align*}
+  (H^{+})^{4} &\neq 0, & (H^{+})^{5} &= 0,
+\end{align*}
+which possibly can be achieved through (cf.\ \cite{code})
+\begin{align*}
+  H^{-3,5} \cup H^{-3,5} &\subseteq H^{-6,10}, & H^{-6,10} \cup H^{-1,2} &\subseteq H^{-7,12}, \\
+  H^{-7,12} \cup H^{-1,2} &\subseteq H^{-8,14}.
+\end{align*}
+
+In the $I \subseteq \GL_{2}(\sO_{F})$ (with $F/\Q_{p}$ quadratic) case, we also haven't described the cup product in detail, but from \eqref{eq:graded-coh-inc} and \Cref{tab:graded-coh-dims-GL2-F}, we at least know enough to see that
+\begin{align*}
+  (H^{1})^{4} &\neq 0, & (H^{1})^{5} &= 0,
+\end{align*}
+is an upper bound. This upper bound might be achieved through
+\begin{align*}
+  H^{-2,3} \cup H^{-1,2} &\subseteq H^{-3,5}, & H^{-3,5} \cup H^{-1,2} &\subseteq H^{-4,7}, \\
+  H^{-4,7} \cup H^{-1,2} &\subseteq H^{-5,9},
+\end{align*}
+but it still remains to check whether such a non-zero cup product exists. Going through \Cref{tab:graded-coh-dims-GL2-F}, we also note that an upper bound for $H^{+}$ is
+\begin{align*}
+  (H^{+})^{6} &\neq 0, & (H^{+})^{7} &= 0,
+\end{align*}
+which possibly can be achieved through (cf.\ \cite{code})
+\begin{align*}
+  H^{-2,3} \cup H^{-1,2} &\subseteq H^{-3,5}, & H^{-3,5} \cup H^{-1,2} &\subseteq H^{-4,7}, \\
+  H^{-4,7} \cup H^{-1,2} &\subseteq H^{-5,9}, & H^{-5,9} \cup H^{-2,3} &\subseteq H^{-7,12}, \\
+  H^{-7,12} \cup H^{-1,2} &\subseteq H^{-8,14}.
+\end{align*}
+
+We collect our nilpotency index upper bounds in \Cref{tab:nilp-ind}.
+
+\begin{table}[ht]
+  \centering
+  \caption[Nilpotency index upper bounds for mod $p$ cohomology of pro-$p$ Iwahori subgroups]{The upper bound for the nilpotency index of mod $p$ cohomology for each pro-$p$ Iwahori subgroup of $\SL_{n}$ and $\GL_{n}$ that we have found. Confirmed nilpotency indices are bolded, and pure upper bounds are not bolded.}
+  \label{tab:nilp-ind}
+  \begin{NiceTabular}{rccc}[hvlines]
+    $n$ & 2 & 3 & 4 \\
+    $I \subseteq \SL_{n}(\Z_{p})$, $H^{1}$ & \textbf{2} & \textbf{2} & 3 \\
+    $I \subseteq \SL_{n}(\Z_{p})$, $H^{+}$ & \textbf{3} & 5 & 8  \\
+    $I \subseteq \GL_{n}(\Z_{p})$, $H^{1}$ & \textbf{3} & 4 & 5 \\
+    $I \subseteq \GL_{n}(\Z_{p})$, $H^{+}$ & \textbf{4} & 7 & 11 \\
+    $I \subseteq \SL_{n}(\sO_{F})$ (quadratic), $H^{1}$ & 3 \\
+    $I \subseteq \SL_{n}(\sO_{F})$ (quadratic), $H^{+}$ & 4 \\
+    $I \subseteq \GL_{n}(\sO_{F})$ (quadratic), $H^{1}$ & 5 \\
+    $I \subseteq \GL_{n}(\sO_{F})$ (quadratic), $H^{+}$ & 7
+  \end{NiceTabular}
+\end{table}
 
 \section{Future work}%
 \label{sec:future}
 
-An interesting research direction in the future is to try to work with the Serre spectral sequence in the following way.
+In this section we will discuss some interesting future directions of research. We will assume for the whole section that $k = \F_{p}$.
+
+\subsection{Quaternion algebras}%
+\label{subsec:quat-algs}
+
+In this subsection, we will further assume that $p>5$ is a prime of the form $p \equiv 3 \pmod{4}$, so that $\Q_{p^{2}} = \Q_{p}(i)$ is the unique quadratic extension of $\Q_{p}$, and $\F_{p^{2}} = \F_{p}[i]$ is the unique quadratic extension of $\F_{p}$.
+
+Let $D$ be the division quaternion algebra over $\Q_{p}$ and let $\tilde{G} = 1+\idm_{D}$ and $G = (1+\idm_{D})^{\Nrd = 1}$, where $\Nrd = \Nrd_{D/\Q_{p}}$ is the norm form. By \cite[Thm.~12.1.5]{Voight} we can assume that $i^{2} = -1$ and $j^{2} = p$ (i.e., we have a tower $D / \Q_{p}(i) / \Q_{p}$), and that $\sO_{D}=\Z_{p}[i,j,k]$ (where $k=ij$) and $\idm_{D} = j\sO_{D} = \sO_{D}j$ (i.e., $\varpi_{D} = j$), which has $\Z_{p}$-basis $p,pi,j,k$, by \cite[Thm.13.1.6]{Voight}.
+
+
+Now let $\sigma \colon \Q_{p}(i) \to \Q_{p}(i)$ be the complex conjugate and note that $\gen{\sigma} = \Gal\bigl( \Q_{p}(i)/\Q_{p} \bigr)$, so
+\begin{equation*}
+  D \iso \set[\bigg]{\pmat{ a+bi & c+di \\ p(c-di) & a-bi } \given a,b,c,d\in\Q_{p} } \subseteq M_{2}\bigl( \Q_{p}(i) \bigr)
+\end{equation*}
+by \cite[Cor.~13.3.14]{Voight}. Hence we have an embedding
+\begin{align*}
+  D &\hookrightarrow M_{2}\bigl( \Q_{p}(i) \bigr) \\
+  a + bi + cj + dk &\mapsto \pmat{ a+bi & c+di \\ p(c-di) & a-bi }
+\end{align*}
+with
+\begin{equation*}
+  \Nrd(a+bi+cj+dk) = a^{2} + b^{2} - pc^{2} - pd^{2} = \det\Bigl( \pmat{ a+bi & c+di \\ p(c-di) & a-bi } \Bigr).
+\end{equation*}
+We note furthermore that $\sO_{D} = \Z_{p}[i] \oplus \Z_{p}[i]j$ and $\idm_{D} = \sO_{D}j = p\Z_{p}[i] \oplus \Z_{p}[i]j$ gives us
+\begin{equation*}
+  \idm_{D} \iso \set[\bigg]{\pmat{ p(a+bi) & c+di \\ p(c-di) & p(a-bi) } \given a,b,c,d\in\Q_{p} },
+\end{equation*}
+so $1 + \idm_{D} \subseteq I_{\GL_{2}(\Q_{p}(i))}$, where we denote by $I_{G}$\nomiwa[IG]{$I_{G}$}{the pro-$p$ Iwahori subgroup of $G$} the (standard choice of) pro-$p$ Iwahori subgroup of $G$ (cf.\ \Cref{subsec:setup-iwa}). Altogether, we get a commutative diagram
+\begin{equation}\label{eq:quat-diagram}
+  \begin{tikzcd}
+    (1+\idm_{D})^{\Nrd = 1} \ar[d, hook] \ar[r, hook] & I_{\SL_{2}(\Q_{p}(i))} \ar[d, hook] & \ar[l, hook'] I_{\SL_{2}(\Q_{p})} \ar[d, hook] \\
+    (\sO_{D}^{\times})^{\Nrd = 1} \ar[d, hook] \ar[r, hook] & \SL_{2}\bigl( \Z_{p}[i] \bigr) \ar[d, hook] & \ar[l, hook'] \SL_{2}(\Z_{p}) \ar[d, hook] \\
+    (D^{\times})^{\Nrd = 1} \ar[d, hook] \ar[r, hook] & \SL_{2}\bigl( \Q_{p}(i) \bigr) \ar[d, hook] & \ar[l, hook'] \SL_{2}(\Q_{p}) \ar[d, hook] \\
+    D^{\times} \ar[r, hook] & \GL_{2}\bigl( \Q_{p}(i) \bigr) & \ar[l, hook'] \GL_{2}(\Q_{p}) \\
+    \sO_{D}^{\times} \ar[u, hook] \ar[r, hook] & \GL_{2}\bigl( \Z_{p}[i] \bigr) \ar[u, hook] & \ar[l, hook'] \GL_{2}(\Z_{p}) \ar[u, hook] \\
+    1+\idm_{D} \ar[u, hook] \ar[r, hook] & I_{\GL_{2}(\Q_{p}(i))} \ar[u, hook] & \ar[l, hook'] I_{\GL_{2}(\Q_{p})}. \ar[u, hook]
+  \end{tikzcd}
+\end{equation}
+
+We saw in \Cref{rem:quaternion} that $H^{*}(G,\F_{p}) \iso H^{*}(I_{\SL_{2}(\Q_{p})},\F_{p})$, and in \Cref{rem:GL2-SL2-coh-iso} we noted that $H^{*}(I_{\SL_{2}(\Q_{p})},\F_{p}) \otimes_{F_{p}} \F_{p}[\varepsilon] \iso H^{*}(I_{\GL_{2}(\Q_{p})},\F_{p})$ (where $\varepsilon^{2} = 0$), while \cite[Sect.~6.3]{Sor} notes that $H^{*}(\tilde{G},\F_{p}) \iso H^{*}(G,\F_{p}) \otimes_{\F_{p}} \F_{p}[\varepsilon]$, so $H^{*}(\tilde{G},\F_{p}) \iso H^{*}(I_{\GL_{2}(\Q_{p})},\F_{p})$. (Recall that $G = (1+\idm_{D})^{\Nrd = 1}$ and $\tilde{G} = 1+\idm_{D}$.) Furthermore, \cite[Sect.~6.3]{Sor} argues that $H^{*}(\sO_{D}^{\times},\F_{p}) \iso H^{*}(\tilde{G},\F_{p})^{\F_{D}^{\times}}$, using that we can factor $\sO_{D}^{\times}$ as a semi-direct product $\tilde{G} \rtimes \F_{D}^{\times}$. Here the $\F_{D}^{\times}$-action on $H^{*}(\tilde{G},\F_{p})$ is understood and non-trivial, cf.\ \cite[Prop.~7~(b)]{Henn}. An interesting question is, if the comparison between cohomology of the left side and right side of \eqref{eq:quat-diagram} can be somehow continued?
+
+\begin{remark}
+  To see that $H^{*}(\tilde{G},\F_{p}) \iso H^{*}(I_{\GL_{2}(\Q_{p})},\F_{p})$ for $p\geq5$ in general, and not just for $p \equiv 3 \pmod{4}$, one can compare the basis and structure of $H^{*}(\tilde{G},\F_{p})$ described in \cite[Thm.~3.2]{Ravenel} with the basis and structure we describe in \eqref{eq:Hst-spaces-GL2} and \eqref{eq:cup-products-GL2}.
+\end{remark}
+
+Another interesting direction of research is to note that we already have bijections between \emph{certain} mod $p$ representations of $D^{\times}$ and $\GL_{2}(\Q_{p})$ from the Jacquet-Langlands correspondence for $\GL_{2}$ (cf.\ \cite{JL}), and we can ask whether there are similar relations in between the left and right side of the other rows of \eqref{eq:quat-diagram}. Here we note that by \cite[Rem.~4.5]{JL-remark} irreducible representations of $D^{\times}$ are trivial on $1+\idm_{D}$, so we need something new if we want a correspondence between certain mod $p$ representations of $G = (1+\idm_{D})^{\Nrd = 1}$ and $I_{\SL_{2}(\Q_{p})}$ or between certain mod $p$ representations of $\tilde{G} = 1+\idm_{D}$ and $I_{\GL_{2}(\Q_{p})}$.
+
+Finally, although we already have isomorphisms $H^{*}(G,\F_{p}) \iso H^{*}(I_{\SL_{2}(\Q_{p})},\F_{p})$ and $H^{*}(\tilde{G},\F_{p}) \iso H^{*}(I_{\GL_{2}(\Q_{p})},\F_{p})$, we note that these were obtained by concrete calculations, and we would really prefer to have canonical isomorphisms (possibly obtained by working with the corresponding row of \eqref{eq:quat-diagram}).
+
+In pursuit of the canonical isomorphisms mentioned above, we note that one can show by explicit calculations (with bases) that the inclusions of \eqref{eq:quat-diagram} give inclusions
+\begin{equation*}
+  \begin{tikzcd}
+    \gr (1+\idm_{D})^{\Nrd = 1} \ar[r, hook] & \gr I_{\SL_{2}(\Q_{p}(i))} & \ar[l, hook'] \gr I_{\SL_{2}(\Q_{p})}, \\
+    \gr (1+\idm_{D}) \ar[r, hook] & \gr I_{\GL_{2}(\Q_{p}(i))} & \ar[l, hook'] \gr I_{\GL_{2}(\Q_{p})},
+  \end{tikzcd}
+\end{equation*}
+where the pro-$p$ Iwahori subgroups are graded as usual (start with $\gr I = \bigoplus_{\nu>0} \gr_{\nu} I$ where $\gr_{\nu} I = I_{\nu}/I_{\nu+}$ and translate to $\gr^{i} I$), $1+\idm_{D}$ is graded by $\gr^{i}(1+\idm_{D}) = (1+\idm_{D}^{i})/(1+\idm_{D}^{i+1})$, and $(1+\idm_{D})^{\Nrd = 1}$ is graded by $\gr^{i}(1+\idm_{D})^{\Nrd = 1} = (1+\idm_{D}^{i})^{\Nrd = 1}/(1+\idm_{D}^{i+1})^{\Nrd = 1}$. These inclusions further translate to inclusions
+\begin{equation*}
+  \begin{tikzcd}
+    \lie{g}_{(1+\idm_{D})^{\Nrd = 1}} \ar[r, hook] & \lie{g}_{I_{\SL_{2}(\Q_{p}(i))}} & \ar[l, hook'] \lie{g}_{I_{\SL_{2}(\Q_{p})}}, \\
+    \lie{g}_{(1+\idm_{D})} \ar[r, hook] & \lie{g}_{I_{\GL_{2}(\Q_{p}(i))}} & \ar[l, hook'] \lie{g}_{I_{\GL_{2}(\Q_{p})}},
+  \end{tikzcd}
+\end{equation*}
+where $\lie{g}_{G} = \F_{p} \otimes_{\F_{p}[\pi]} \gr G$ is the Lazard Lie algebra of $G$.
+
+
+% With this setup, we also have that
+% \begin{align*}
+%   \F_{D} = \sO_{D}/\idm_{D} \iso \idm_{D}^{n}/\idm_{D}^{n+1} &\xrightarrow{\iso} (1+\idm_{D}^{n})/(1+\idm_{D}^{n+1}) \\
+%   x &\mapsto 1+x
+% \end{align*}
+% is an isomorphism for all $n\geq1$, cf.\ \cite[13.5.8]{Voight}, which should help with translating from $G$ to $\lie{g}_{D}$.
+
+\subsection{Serre spectral sequence}%
+\label{subsec:Serre-spec-seq}
+
+Another interesting research direction is to try to work with the Serre spectral sequence in the following way.
 
 Assume we have the \enquote{standard} setup with $\gs{G} = \SL_{n}$, $\gs{U}$ unipotent upper triangular matrices and $\gs{T}$ diagonal matrices with determinant $1$. Let also $I \subseteq \SL_{n}(\Z_{p})$ be the pro-$p$ Iwahori subgroup of $\SL_{n}(\Q_{p})$ which is upper triangular and unipotent modulo $p$, and let
 \begin{equation*}
@@ -2128,7 +2923,7 @@ Now we can let $\SL_{n}(\Z_{p})$ act by
 \begin{equation*}
   (g \act f)(x) = f(g^{-1}xg)
 \end{equation*}
-for $g \in \SL_{n}(\Z_{p})$, $f \colon K \to \F_{p}$ and $x \in K$, and hope to split $\bigwedge^{j} \Hom_{\F_{p}}(K,\F_{p})$ into a direct sum of Verma modules $\bigoplus_{\lambda} V(\lambda)$ for $p$-restricted $\lambda$ ($\lambda$ with $0 \leq \inner{\lambda}{\alpha^{\vee}} \leq p-1$), similarly to what's done in \cite{PT} (as we used in \Cref{cha:cohunigps}). This description might generalize easier than what we have worked with in this chapter, but it's harder to get started with since the spectral sequence is more complicated. One can hope that the difference in the spectral sequence might make it so that it will collapse on the second page (the starting page in this case).
+for $g \in \SL_{n}(\Z_{p})$, $f \colon K \to \F_{p}$ and $x \in K$, and hope to split $\bigwedge^{j} \Hom_{\F_{p}}(K,\F_{p})$ into a direct sum of Verma modules $\bigoplus_{\lambda} V(\lambda)$ for $p$-restricted $\lambda$ ($\lambda$ with $0 \leq \inner{\lambda}{\alpha^{\vee}} \leq p-1$), similarly to what's done in \cite{PT} (as we used in \Cref{cha:cohunigps}). This description might be easier to generalize than what we have worked with in this chapter, but it's harder to get started with since the spectral sequence is more complicated. One can hope that the difference in the spectral sequence might make it so that it will always collapse on the second page (the starting page in this case).
 \dknote{Maybe add a note about dimension of Lie algebra center conjecture.}
 
 

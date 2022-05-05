@@ -4,7 +4,7 @@
 
 \input{my-macros.tex}
 
-\title{Dissertation}
+\title{On the Mod \texorpdfstring{$p$}{p} Cohomology of Pro-\texorpdfstring{$p$}{p} Iwahori Subgroups}
 % \date{\today}
 \author{Daniel Kongsgaard}
 
@@ -38,6 +38,21 @@
 
 \frontmatter
 
+\setcounter{page}{3}
+
+\addcontentsline{toc}{chapter}{Dissertation Approval Page}
+
+\noindent {\large The dissertation of Daniel Kongsgaard is approved, and it is acceptable in quality and form for publication on microfilm and electronically.}
+
+\vfill
+
+\begin{center}
+  {\large University of California San Diego} \\[1em]
+  {\large 2002}
+\end{center}
+
+\clearpage
+
 \tableofcontents
 
 \clearpage
@@ -51,9 +66,60 @@
 
 \clearpage
 
-\begin{vplace}[0.7]
-  Some extra stuff.
-\end{vplace}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+
+\begin{center}
+  \Large\scshape Acknowledgements
+\end{center}
+
+I would like to acknowledge Professor Claus Sørensen for giving me interesting number theory research topics, and for his input and ideas during my research. I also thank him for his feedback on early drafts of this dissertation.
+
+I would also like to acknowledge Daniel M.\ Kane for introducing me to research problems in robust statistics and his input and later collaboration on this research. In addition I would like to thank my other collaborators Ilias Diakonikolas, Jerry Li, and Kevin Tian.
+
+\clearpage
+
+\addcontentsline{toc}{chapter}{Vita}
+
+
+\begin{center}
+  \Large\scshape Vita
+\end{center}
+\begin{description}
+  \item[2016--2017] Teaching Assistant, Aarhus University
+  \item[2017] Bachelor of Science in Mathematics, Aarhus University
+  \item[2021] Candidate in Philosophy in Mathematics, University of California San Diego
+  \item[2017--2022] Teaching Assistant, University of California San Diego
+  \item[2022] Doctor of Philosophy in Mathematics, University of California San Diego
+\end{description}
+
+\begin{center}
+  \Large\scshape Publications (all joint)
+\end{center}
+\begin{enumerate}[$\bullet$]
+  \item Ilias Diakonikolas, Daniel Kane, and Daniel Kongsgaard. 2020. List-Decodable Mean Estimation via Iterative Multi-Filtering. In \emph{Advances in Neural Information Processing Systems}, H. Larochelle, M. Ranzato, R. Hadsell, M.F. Balcan and H. Lin (Eds.), Vol. 33. Curran Associates, Inc., 9312--9323.
+
+  \item Ilias Diakonikolas, Daniel Kane, Daniel Kongsgaard, Jerry Li, and Kevin Tian. 2021. List-Decodable Mean Estimation in Nearly-PCA Time. In \emph{Advances in Neural Information Processing Systems}, M. Ranzato, A. Beygelzimer, Y. Dauphin, P.S. Liang, and J. Wortman Vaughan (Eds.), Vol. 34. Curran Associates, Inc., 10195--10208.
+
+  \item Ilias Diakonikolas, Daniel Kane, Daniel Kongsgaard, Jerry Li, and Kevin Tian. 2021. Clustering Mixture Models in Almost-Linear Time via List-Decodable Mean Estimation. (Accepted for ACM Symposium on Theory of Computing (STOC 2022).)
+\end{enumerate}
+
+% \begin{center}
+%   \Large\scshape Fields of study
+% \end{center}
+
+% \begin{vplace}[0.7]
+%   Some extra stuff. Acknowledgements, vita, abstact.
+% \end{vplace}
+
+\clearpage
+
+\addcontentsline{toc}{chapter}{Abstract of the Dissertation}
+
+\begin{abstract}
+  Let $\gs{G}$ be a split and connected reductive $\Z_{p}$-group and let $\gs{N}$ be the unipotent radical of a Borel subgroup. In the first chapter of this dissertation we study the cohomology with trivial $\F_{p}$-coefficients of nilpotent pro-$p$ group $N = \gs{N}(\Z_{p})$ and the Lie algebra $\lie{n} = \Lie(\gs{N}_{\F_{p}})$. We proceed by arguing that $N$ is a $p$-valued group using ideas of Schneider and Zábrádi, which by a result of Sørensen gives us a spectral sequence $E_{1}^{s,t} = H^{s,t}(\lie{g},\F_{p}) \Longrightarrow H^{s+t}(N,\F_{p})$, where $\lie{g} = \F_{p} \otimes_{\F_{p}[\pi]} \gr N$ is the graded $\F_{p}$-Lie algebra attached to $N$ as in Lazards work. We then argue that $\lie{g} \iso \lie{n}$ by looking at the Chevalley constants, and, using results of Polo and Tilouine and ideas from Große-Kline, we show that the dimensions of the $\F_{p}$-cohomology of $\lie{n}$ and $N$ agree, which allows us to conclude that the spectral sequence collapses on the first page.
+
+  In the second chapter we study the mod $p$ cohomology of the pro-$p$ Iwahori subgroups $I$ of $\SL_{n}$ and $\GL_{n}$ over $\Q_{p}$ for $n=2,3,4$ and over a quadratic extension $F/\Q_{p}$ for $n=2$. Here we again use the spectral sequence $E_{1}^{s,t} = H^{s,t}(\lie{g},\F_{p}) \Longrightarrow H^{s+t}(I,\F_{p})$ due to Sørensen, but in this chapter we do explicit calculations with an ordered basis of $I$, which gives us a basis of $\lie{g} = \F_{p} \otimes_{\F_{p}[\pi]} I$ that we use to calculate $H^{s,t}(\lie{g},\F_{p})$. We note that the spectral sequence $E_{1}^{s,t} = H^{s,t}(\lie{g},\F_{p})$ collapses on the first page by noticing that all maps on each page are necessarily trivial. Finally we note some connections to cohomology of quaternion algebras over $\Q_{p}$ and point out some future research directions.
+\end{abstract}
 
 \clearpage
 
@@ -73,7 +139,6 @@
 \input{Chapters/cohiwagps.tex}
 
 \clearpage
-
 
 \appendix
 

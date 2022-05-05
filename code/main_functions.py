@@ -312,7 +312,7 @@ def d(g, eis, e_sort, commutator):
                 ]
                 # Check if wedge product should be zero, because of repeat e_i
                 for k in range(len(com)):
-                    if not com[k][1] in d_eis_elem:
+                    if not com[k][1] in d_eis_elem_tmp:
                         d_eis_elem[0] = sign * com[k][0] * eis[0]
                         d_eis_elem[1] = com[k][1]
                         d_eis_elem[2:] = d_eis_elem_tmp

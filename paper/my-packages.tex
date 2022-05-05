@@ -22,9 +22,11 @@
   bm,            %bold math symbols
   % todonotes,   %adds the option \todo{...} (use fixme instead)
   stmaryrd,      %some more math symbolswork
-  nicematrix,    %nicer matrix controls
+  % nicematrix,    %nicer matrix controls
   mathrsfs,      %more math fonts
 }
+
+\usepackage[footnote]{nicematrix}
 
 \usepackage[shortlabels]{enumitem} %better lists, e.g. enumerate
 
@@ -218,7 +220,7 @@
 
 %% BEGIN : USEFUL SETTINGS FOR THIS DOCUMENT %%
 
-\allowdisplaybreaks[1] %allows page change in align (but tries to avoid it)
+\allowdisplaybreaks %allows page change in align (but tries to avoid it)
 
 \newcommand*{\yesnumber}{\refstepcounter{equation}\tag{\theequation}} %makes it possible to add a number in an equation
 

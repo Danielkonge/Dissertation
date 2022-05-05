@@ -1,5 +1,73 @@
-\section{Introduction}%
-\label{sec:robstat-intro}
+% \section{Introduction}%
+% \label{sec:robstat-intro}
+
+In this chapter, I will give a very brief introduction to other research I have participated in. This is all joint research and it's beyond the scope of this dissertation. I refer to the papers \cite{robstat1,robstat2,robstat3} for background and details. The research has been focused on two different, but closely related, subjects.
+
+\paragraph{List-decodable mean estimation.}
+In many statistical settings, including machine learning security and exploratory data analysis e.g.\ in biology,
+datasets contain arbitrary --- and even adversarially chosen --- outliers.
+The central question of the field of robust statistics is to design estimators tolerant to a small amount of unconstrained contamination (corrupted points).
+
+The main question we have been researching is how to quickly find a robust estimator of the mean in the case where more than $\frac{1}{2}$ the points are corrupted. In this case a single accurate hypothesis is information-theoretically impossible, but one may be able to compute a small list of hypotheses with the guarantee that \emph{at least one of them} is accurate. This relaxed notion of estimation is known as \emph{list-decodable learning} in general, and \emph{list-decodable mean estimation} in our more specialized case. In other words, we are giving an algorithm that solves the following problem ``quickly''.
+
+Let $D$ be a distribution with unknown mean $\mu$ and unknown bounded covariance $\Sigma \preceq \sigma^2 I$. Given a set $T \subset \R^d$ of size $n$ and $\alpha \in \open{0}{1/2}$ such that an $\alpha$-fraction of the points in $T$ are i.i.d.\ samples from $D$. We want to output a list of candidate vectors $\{\widehat{\mu}_i \}_{i \in [s]}$ such that $s = \poly(1/\alpha)$ (or optimally $O(1/\alpha)$) and with high probability $\min_{i \in [s]} \|\widehat{\mu}_i - \mu \|_2$ is small.
+
+During our research we managed to give algorithms that solve the above list-decodable problem using
+$n = \Omega(d/\alpha)$ samples (optimal), $O(1/\alpha)$ hypotheses (optimal), and error and runtime as follows:
+\begin{center}
+  \begin{NiceTabular}{ccc}[hvlines]
+    & Error & Time \\
+    \cite{CMY}\tabularnote{Concurrent work.} & $O(\sigma/\sqrt{\alpha})$ & $\widetilde{O}(nd/\alpha^C)$ ($C\geq6$) \\
+    \cite{robstat1} & $O(\sigma\log(1/\alpha)/\sqrt{\alpha})$ & $\widetilde{O}(n^2d/\alpha)$ \\
+    \Block{2-1}{\cite{robstat2}} & $O(\sigma/\sqrt{\alpha})$ & $\widetilde{O}(nd/\alpha + 1/\alpha^6)$ \\
+    & $O(\sigma\sqrt{\log(1/\alpha)/\alpha})$ & $\widetilde{O}(nd/\alpha)$ \\
+    \cite{robstat3} & $O(\sigma\log(1/\alpha)/\sqrt{\alpha})$ & $\widetilde{O}(n^{1+\varepsilon}d)$ ($\varepsilon>0$ small) \\
+  \end{NiceTabular}
+\end{center}
+
+In summary, our most recent result (cf.\ \cite[Thm.~6]{robstat3}) --- which is the best known currently in this setting --- is:
+\begin{theorem}[informal]
+For any fixed constant $\varepsilon_0 > 0$, there is an algorithm \textsc{FastMultifilter} with the following guarantee.
+Let $\mathcal{D}$ be a distribution over $\R^d$ with unknown mean $\mu^{*}$ and unknown covariance $\Sigma$ with
+$\norm{\Sigma}_{\mathrm{op}} \leq \sigma^2$, and let $\alpha \in (0, 1)$.
+Given $\alpha$ and a multiset of $n = \Omega(\frac d \alpha)$ points on $\R^d$
+such that an $\alpha$-fraction are i.i.d.\ draws from $\mathcal{D}$, \textsc{FastMultifilter} runs in time $O(n^{1 + \varepsilon} d)$ and
+outputs a list $L$ of $O(\alpha^{-1})$ hypotheses so that with high probability
+we have
+\[\min_{\hat\mu \in L} \norm{\hat\mu - \mu^{*}}_2 = O \Bigl(\frac{\sigma \log \alpha^{-1}}{\sqrt{\alpha}}\Bigr).\]
+\end{theorem}
+
+
+\paragraph{Clustering well-separated mixture models.}
+Mixture models are a well-studied class of generative models used widely in practice. Given a family of distributions $\mathcal{F}$, a mixture model $\mathcal{M}$ with $k$ components is specified by $k$ distributions $\mathcal{D}_1, \dotsc, \mathcal{D}_k \in \mathcal{F}$ and non-negative mixing weights $\alpha_1, \dotsc, \alpha_k$ summing to one, and its law is given by $\sum_{i \in [k]} \alpha_i \mathcal{D}_i$.
+That is, to draw a sample from $\mathcal{M}$, we first choose $i \in [k]$ with probability $\alpha_i$, and
+then draw a sample from $\mathcal{D}_i$. When the weights are all equal to $\frac 1 k$, we call the mixture \emph{uniform}.
+Mixture models, especially Gaussian mixture models, have been widely studied in statistics since pioneering
+work of Pearson in 1894, and more recently, in theoretical computer science.
+
+A canonical learning task for mixture models is the \emph{clustering problem}.
+Namely, given independent samples drawn from $\mathcal{M}$, the goal is to
+approximately recover which samples came from which component.
+To ensure that this inference task is information-theoretically possible,
+a common assumption is that $\mathcal{M}$ is ``well-separated'' and ``well-behaved'':
+for example, we may assume each component $\mathcal{D}_i$ is sufficiently concentrated
+(with sub-Gaussian tails or bounded moments),
+and that component means have pairwise distance at least $\Delta$, for sufficiently large $\Delta$.
+The goal is then to efficiently and accurately cluster samples from $\mathcal{M}$ %as quickly as possible, and
+with as small a separation as possible.
+
+For this problem, we gave different algorithms for different settings, and managed to get different interesting results in each case in \cite{robstat3}. In particular, see \cite[Cor.~6,~8,~9]{robstat3} for more details. Our main result can be considered to be:
+\begin{theorem}[informal]
+For any fixed constant $\varepsilon_0 > 0$, there is an algorithm with the following guarantee.
+Given a multiset of $n = \Omega (d k)$ i.i.d.\ samples from a uniform mixture model
+$\mathcal{M} = \sum_{i \in [k]} \frac 1 k \mathcal{D}_i$,
+where each component $\mathcal{D}_i$ has unknown mean $\mu_i$, unknown covariance matrix $\Sigma_i$
+with $\norm{\Sigma_i}_{\mathrm{op}} \leq \sigma^2$, and $\min_{i, i' \in [k], i \neq i'} \| \mu_i - \mu_{i'}\|_2 =
+\widetilde\Omega(\sqrt{k}) \, \sigma$, the algorithm runs in time $O(n^{1 + \varepsilon_0} \max(k, d))$,
+and with high probability correctly clusters $99\%$ of the points.
+\end{theorem}
+Again, this is the best known currently in this setting.
+
 
 %%% Local Variables:
 %%% mode: latex
