@@ -59,7 +59,7 @@ where
 
 Furthermore, write $g_{i,j} = [g_{i},g_{j}]$ and $\xi_{i,j} = [\xi_{i},\xi_{j}]$. Then we are ready to find $x_{1},\dotsc,x_{15}$ such that $g_{i,j} = g_{1}^{x_{1}} \dotsb g_{15}^{x_{15}}$ for different $i<j$. (In the following we use that $\frac{1}{p-1} = 1 + p + p^{2} + \dotsb$ and $\log(1-p) = -p - \frac{p^{2}}{2} - \frac{p^{3}}{3} - \dotsb$.) Also, except in the first case, we will note that $x_{k} \in p\Z_{p}$ implies that the coefficient on $\xi_{k}$ in $\xi_{i,j}$ is zero.
 
-We now list all non-identity commutators $g_{i,j} = [g_{i},g_{j}]$ and find $\xi_{i,j} = [\xi_{i},\xi_{j}]$ based on these. (For $g_{i,j} = 1_{4}$ it's clear that $x_{1} = \cdots = x_{15} = 0$, and thus $\xi_{i,j} = 0$.)
+We now list all non-identity commutators $g_{i,j} = [g_{i},g_{j}]$ and find $\xi_{i,j} = [\xi_{i},\xi_{j}]$ based on these. (For $g_{i,j} = 1_{4}$ it is clear that $x_{1} = \cdots = x_{15} = 0$, and thus $\xi_{i,j} = 0$.)
 
 \begin{description}
   \item[$g_{1,7} = \pmat{1 \\ & 1 \\ && 1 \\  p\bigl( 1-\exp(-p) \bigr) &&& 1 }$:] Comparing $g_{1,7}$ with \eqref{eq:gixi-SL4}, we see that $x_{2} = x_{3} = x_{7} = x_{10} = x_{13} = x_{15} = 0$, and thus also $x_{4} = x_{5} = x_{8} = x_{11} = x_{14} = 0$, which implies that $x_{6} = x_{9} = x_{12} = 0$. This leaves $a_{41} = px_{1} = p\bigl( 1-\exp(-p) \bigr) = p^{2} + O(p^{3})$, which implies that $x_{1} = p + O(p^{2})$. Hence $\sigma(g_{1,7}) = \pi \act \sigma(g_{1})$, which implies that $\xi_{1,7} = 0$.
@@ -202,7 +202,7 @@ Thus the non-zero commutators $[\xi_{i},\xi_{j}]$ with $i<j$ are:
 Looking at \eqref{eq:Iwa-p-val-basis-SLn} (with $e=1$ and $h=4$), we see that
 \begin{align*}
   \omega(g_{1}) &= 1-\frac{3}{4} = \frac{1}{4}, & \omega(g_{2}) &= 1-\frac{2}{4} = \frac{1}{2}, & \omega(g_{3}) &= 1-\frac{1}{4} = \frac{3}{4}, \\
-  \omega(g_{4}) &= 1-\frac{2}{4} = \frac{1}{2}, & \omega(g_{5}) &= 1-\frac{1}{4} = \frac{3}{4}, & \omega(g_{6}) &= 1-\frac{1}{4} = \frac{3}{4},
+  \omega(g_{4}) &= 1-\frac{2}{4} = \frac{1}{2}, & \omega(g_{5}) &= 1-\frac{1}{4} = \frac{3}{4}, & \omega(g_{6}) &= 1-\frac{1}{4} = \frac{3}{4}, \\
   \omega(g_{7}) &= 1, & \omega(g_{8}) &= 1, & \omega(g_{8}) &= 1, & \omega(g_{9}) &= 1, \\
   \omega(g_{10}) &= \frac{3}{4}, &  \omega(g_{11}) &= \frac{2}{4} = \frac{1}{2}, & \omega(g_{12}) &= \frac{1}{4}, \\
   \omega(g_{13}) &= \frac{2}{4} = \frac{1}{2}, & \omega(g_{14}) &= \frac{1}{4}, & \omega(g_{15}) &= \frac{1}{4}.
@@ -243,7 +243,7 @@ and, by \Cref{sec:cohiwagps-intro}, we have an ordered basis
     g_{14} = \pmat{1 && 1 \\ & 1 \\ && 1 \\ &&& 1 }, \quad g_{15} = \pmat{ 1 \\ & 1 & 1 \\ && 1 \\ &&& 1 }, \quad g_{16} = \pmat{ 1 & 1 \\ & 1 \\ && 1 \\ &&& 1 }.
   \end{gathered}
 \end{equation}
-Since we just renamed some elements and added an element of the center of $\GL_{4}(\Z_{p})$ when comparing to the ordered basis of $I \subseteq \SL_{4}(\Z_{p})$ from \Cref{sec:SL4-calc}, it's clear from \Cref{eq:xi_ij-SL4} that the only non-zero commutators $[\xi_{i},\xi_{j}]$ with $i<j$ are:
+Since we just renamed some elements and added an element of the center of $\GL_{4}(\Z_{p})$ when comparing to the ordered basis of $I \subseteq \SL_{4}(\Z_{p})$ from \Cref{sec:SL4-calc}, it is clear from \Cref{eq:xi_ij-SL4} that the only non-zero commutators $[\xi_{i},\xi_{j}]$ with $i<j$ are:
 \begin{equation}
   \label{eq:xi_ij-GL4}
   \begin{aligned}
