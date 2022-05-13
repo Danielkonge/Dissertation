@@ -7,13 +7,13 @@ In this chapter we show that the cohomology of certain unipotent groups can be f
 
 % This chapter's main interest is a special case of the continuous mod $p$ cohomology $H^{*}(G,\F_{p})$ of a compact $p$-adic Lie group $G$. Our work will build on several ideas of Lazard and Serre in their more general (but not yet finished) description of the case when $G$ is not equi-$p$-valued, but we will focus only on unipotent groups originating from split and connected reductive $\Z_p$-groups, which is similar to recent work in the case of $\Z_p$ coefficients by Ronchetti (cf.\ \cite{Ron}).
 
-As mentioned in \Cref{cha:intro}, we will focus on describing the continuous mod $p$ cohomology of unipotent groups $N$ originating from split and connected reductive $\Z_p$-groups in this chapter. To be precise, let $\gs{N}$ be the unipotent radical of a Borel in a split and connected reductive $\Z_{p}$-group, and let $N = \gs{N}(\Z_{p})$ be the $\Z_{p}$-points of $\gs{N}$. In this chapter we will show that $N$ is a $p$-valuable group (with a nice $p$-valuation), which will allow us to show that the Lazard Lie algebra $\lie{g} = \F_{p} \otimes_{\F_{p}[\pi]}$ is isomorphic to $\lie{n} = \Lie(\gs{N}_{\F_{p}})$. Using an idea of Große-Klönne (cf.\ \cite[Sect.~7]{GK}) we get that discrete mod $p$ cohomology of $\gs{N}_{\Z}(\Z)$ is isomorphic to the continuous mod $p$ cohomology of $N = \gs{N}(\Z_{p})$, and results of Polo and Tilouine (see \cite{PT}) allows us to compare the discrete cohomology of $\lie{n}_{\Z} = \Lie(\gs{N}_{\Z})$ and $\gs{N}_{\Z}(\Z)$, which by a short argument allows us to compare the dimensions of the continuous mod $p$ cohomology of $N$ and the mod $p$ cohomology of $\lie{g} \iso \lie{n}$. This will let us conclude that the multiplicative spectral sequence \[ E_{1}^{s,t} = H^{s,t}(\lie{g},\F_{p}) \Longrightarrow H^{s+t}(N,\F_{p}) \] due to Sørensen collapses at the first page, which gives us a description of $H^{*}(N,\F_{p})$.
+As mentioned in \Cref{cha:intro}, we will focus on describing the continuous mod $p$ cohomology of unipotent groups $N$ originating from split and connected reductive $\Z_p$-groups in this chapter. To be precise, let $\gs{N}$ be the unipotent radical of a Borel in a split and connected reductive $\Z_{p}$-group, and let $N = \gs{N}(\Z_{p})$ be the $\Z_{p}$-points of $\gs{N}$. In this chapter we will show that $N$ is a $p$-valuable group (with a nice $p$-valuation), which will allow us to show that the Lazard Lie algebra $\lie{g} = \F_{p} \otimes_{\F_{p}[\pi]} \gr N$ is isomorphic to $\lie{n} = \Lie(\gs{N}_{\F_{p}})$. Using an idea of Große-Klönne (cf.\ \cite[Sect.~7]{GK}) we get that discrete mod $p$ cohomology of $\gs{N}_{\Z}(\Z)$ is isomorphic to the continuous mod $p$ cohomology of $N = \gs{N}(\Z_{p})$, and results of Polo and Tilouine (see \cite{PT}) allow us to compare the discrete cohomology of $\lie{n}_{\Z} = \Lie(\gs{N}_{\Z})$ and $\gs{N}_{\Z}(\Z)$, which by a short argument allows us to compare the dimensions of the continuous mod $p$ cohomology of $N$ and the mod $p$ cohomology of $\lie{g} \iso \lie{n}$. This will let us conclude that the multiplicative spectral sequence \[ E_{1}^{s,t} = H^{s,t}(\lie{g},\F_{p}) \Longrightarrow H^{s+t}(N,\F_{p}) \] due to Sørensen collapses at the first page, which gives us a description of $H^{*}(N,\F_{p})$.
 
-It is worth noting that this work started out as an attempt to better understand the proof of \cite[Theorem~7.1]{GK}, in particular the part using the result of Grünenfelder (which by a remark of Polo and Tilouine might have a problem), but the work has since develop in a different direction, where the coefficients are more restricted, but we obtain a more precise description of the cup product.
+It is worth noting that this work started out as an attempt to better understand the proof of \cite[Theorem~7.1]{GK}, in particular the part using the result of Grünenfelder (which by a remark of Polo and Tilouine might have a problem), but the work has since develop in a different direction, where the coefficients are more restricted, but we obtain a more precise (or indeed any) description of the cup product.
 
 \subsection{Notation and setup}
 
-Let $p$ be an odd prime.
+Let $p$ be an odd prime (that will be further restricted later).
 
 \paragraph{Algebraic groups.} We will work with schemes using the functorial approach and notation described in \cite{Jan}. In particular, given an integral domain $R$, we note that a \emph{$R$-group functor}\index{R-group@$R$-group!functor} is a functor from the category of all $R$-algebras to the category of groups, a \emph{$R$-group scheme}\index{R-group!scheme} is a $R$-group functor that is an affine scheme over $R$ when considered as a $R$-functor, and an \emph{algebraic $R$-group}\index{R-group!algebraic}\index{algebraic R-group@algebraic $R$-group} is a $R$-group scheme that is algebraic as an affine scheme. For more in depth introduction to these concepts, we refer to \cite{Con-book} and \cite{Jan}.
 
@@ -36,7 +36,7 @@ For any $\lambda \in X^+$, let $V_{\Z}(\lambda)$\nomuni[VZlambda]{$V_{\Z}(\lambd
 
 \paragraph{Lazard theory.} We will introduce concepts from Lazard theory in next subsection, but we note now that we will let $\lie{g} = \F_p \otimes_{\F_p[\pi]} \gr N$\nomuni[g]{$\lie{g}$}{${} = \F_{p} \otimes_{\F_{p}[\pi]} \gr N$, the Lazard Lie algebra corresponding to $N$} be the Lazard Lie algebra corresponding to $N$.
 
-\paragraph{Cohomology.} For any ring $R$, we denote (using the Chevalley-Eilenberg complex) the Lie algebra cohomology\index{cohomology!Lie algebra} of any $R$-Lie algebra $\lie{g}$ by $H^{\bullet}(\lie{g}, \edot)$,\nomuni[H]{$H^{\bullet}(\lie{g},\edot)$}{the cohomology of the Lie algebra $\lie{g}$} while we write $\Hd^{\bullet}(G, \edot)$\nomuni[Hdsc]{$\Hd^{\bullet}(G, \edot)$}{the discrete group cohomology of a topological group $H$} and $\Hc^{\bullet}(H, \edot)$\nomuni[Hcts]{$\Hc^{\bullet}(H, \edot)$}{the continuous group cohomology of a topological group $G$} for the discrete (resp.\ continuous) group cohomology of a topological group $G$. Later we will introduce filtrations and then gradings on the cohomology, in which case we always use the notation $H^{s,t} = \gr^{s}H^{s+t}$\nomuni[Hst]{$H^{s,t}$}{${} = \gr^{s}H^{s+t}$ for some cohomology $H$} for any type of cohomology $H$.
+\paragraph{Cohomology.} For any ring $R$, we denote (using the Chevalley-Eilenberg complex) the Lie algebra cohomology\index{cohomology!Lie algebra} of any $R$-Lie algebra $\lie{g}$ by $H^{\bullet}(\lie{g}, \edot)$,\nomuni[H]{$H^{\bullet}(\lie{g},\edot)$}{the cohomology of the Lie algebra $\lie{g}$} while we write $\Hd^{\bullet}(G, \edot)$\nomuni[Hdsc]{$\Hd^{\bullet}(G, \edot)$}{the discrete group cohomology of a topological group $H$} and $\Hc^{\bullet}(H, \edot)$\nomuni[Hcts]{$\Hc^{\bullet}(G, \edot)$}{the continuous group cohomology of a topological group $G$} for the discrete (resp.\ continuous) group cohomology of a topological group $G$. Later we will introduce filtrations and then gradings on the cohomology, in which case we always use the notation $H^{s,t} = \gr^{s}H^{s+t}$\nomuni[Hst]{$H^{s,t}$}{${} = \gr^{s}H^{s+t}$ for some cohomology $H$} for any type of cohomology $H$.
 
 \paragraph{Spectral sequences.} Given a ring $R$, a cohomological spectral sequence\index{spectral sequence} is a choice of $r_0 \in \N$ and a collection of
 \begin{enumerate}[$\bullet$]
@@ -74,7 +74,7 @@ Also, we say that the spectral sequence collapses at the $r'$-th page if $E_{r} 
 
 In this subsection we will briefly introduce elements of Lazard theory as presented in \cite{Sch}.
 
-Let $G$ be any abstract group and let the commutator be normalized to as $[g,h]=ghg^{-1}h^{-1}$.
+Let $G$ be any abstract group and let the commutator be normalized as $[g,h]=ghg^{-1}h^{-1}$.
 
 \begin{definition}
   A \emph{$p$-valuation}\index{p-valuation@$p$-valuation} $\omega$ on $G$ is a real valued function
@@ -191,7 +191,7 @@ By \cite[Remark~26.3]{Sch}, we note that for $g \in G \setminus \set{1}$ and $x 
 \end{equation}
 where $\bar{x}$ is the image of $p^{-v_{p}(x)}x$ in $\F_{p}^{\times}$ (i.e., the first non-zero coefficient of $x = \sum_{k=0}^{\infty} a_{k}p^{k}$). We note that an ordered basis $(g_{1},\dotsc,g_{d})$ of $(G,\omega)$ corresponds to an ordered $\F_{p}[\pi]$-basis $\bigl( \sigma(g_{1}), \dotsc, \sigma(g_{d}) \bigr)$ of $\gr G$, cf.\ \cite[Prop.~26.5]{Sch}.
 
-Finally we let $\lie{g} = \F_{p} \otimes_{\F_{p}[\pi]} \gr G = \F_{p} \otimes_{\F_{p}[\pi]} \gr G/\pi\gr G$, and note that this is a Lie algebra over $\F_{p}$ with an $\F_{p}$-basis of vectors $\xi_{i} = 1 \otimes \sigma(g_{i})$. % Furthermore, for later use, we note that any $p$-valuable group $G$ admits a $p$-valuation $\omega$ with values in $\frac{1}{e}\Z$ for some $e \in \N$, cf.\ \cite[Cor.~33.3]{Sch}. Suppose that $\omega$ has this property and note that we can introduce a $\Z$-filtration
+Finally we let $\lie{g} = \F_{p} \otimes_{\F_{p}[\pi]} \gr G = \F_{p} \otimes_{\F_{p}} \gr G/\pi\gr G$, and note that this is a Lie algebra over $\F_{p}$ with an $\F_{p}$-basis of vectors $\xi_{i} = 1 \otimes \sigma(g_{i})$. % Furthermore, for later use, we note that any $p$-valuable group $G$ admits a $p$-valuation $\omega$ with values in $\frac{1}{e}\Z$ for some $e \in \N$, cf.\ \cite[Cor.~33.3]{Sch}. Suppose that $\omega$ has this property and note that we can introduce a $\Z$-filtration
 % \begin{equation*}
 %   \Fil^{i} G = G_{\frac{i}{e}}, \qquad i=0,1,2,\dotsc
 % \end{equation*}
@@ -206,7 +206,7 @@ Finally we let $\lie{g} = \F_{p} \otimes_{\F_{p}[\pi]} \gr G = \F_{p} \otimes_{\
 
 One of the main results we use in this chapter is the spectral sequence introduced in \cite[§6.1]{Sor}, so in this subsection we aim to introduce the concepts needed to use this spectral sequence. We also mention a translation between continuous and discrete group cohomology for the groups we work with.
 
-Let $R$ be a ring and $\lie{g}$ be a $R$-Lie algebra with $R$ a trivial (left) $\lie{g}$-module. Then we use the cochain complex $C^\bullet(\lie{g},R) = \Hom_{R}(\bigwedge^{\bullet}\lie{g}, R)$, i.e.,
+Let $R$ be a ring and let $\lie{g}$ be a $R$-Lie algebra with $R$ a trivial (left) $\lie{g}$-module. Then we use the cochain complex $C^\bullet(\lie{g},R) = \Hom_{R}(\bigwedge^{\bullet}\lie{g}, R)$ to define Lie algebra cohomology, i.e., the cochain complex
 \[
   \begin{tikzcd}
     0 \ar[r] & R \ar[r,"\partial_{1}"] & \Hom_{R}(\lie{g},R) \ar[r,"\partial_{2}"] & \Hom_{R}\Bigl(\bigwedge^2\lie{g}, R\Bigr) \ar[r,"\partial_{3}"] &  \cdots,
@@ -216,7 +216,7 @@ where the coboundary map $\partial_{n}$ is given by
 \begin{equation*}
   \partial_{n}(f)(x_1,\dotsc,x_{n}) = \sum_{i<j}(-1)^{i+j}f([x_i,x_j],x_1,\dotsc,\widehat{x}_i,\dotsc,\widehat{x}_j,\dotsc,x_{n}),
 \end{equation*}
-where $\widehat{x}_{i}$ means excluding $x_{i}$. For more details we refer to \cite[Thm.~7.1]{CartanHomAlg} or \cite[§3]{Fuks}, and note that we are considering the trivial action on $R$, which simplifies the formula slightly (cf.\ \cite[§3.2]{Fuks}).
+where $\widehat{x}_{i}$ means excluding $x_{i}$. For more details we refer to \cite[Thm.~7.1]{CartanHomAlg} or \cite[Chap.~1~§3]{Fuks}, and note that we are considering the trivial action on $R$, which simplifies the formula slightly (cf.\ \cite[Chap.~1~§3.2]{Fuks}).
 
 Now consider $R=\F_{p}$ in the following and suppose that $\lie{g} = \lie{g}^0 \oplus \lie{g}^1 \oplus \dotsb$ is a graded Lie algebra. Then $\bigwedge^n \lie{g}$ is also graded by letting
 \[
@@ -231,9 +231,9 @@ where $\Hom_{\F_{p}}^s$ denotes the homogeneous $\F_{p}$-linear maps of degree $
   H^{s,t}(\lie{g}, \F_{p}) = H^{s+t}\Bigl( \gr^s \Hom_{\F_{p}}\bigl(\bigwedge^{\bullet} \lie{g}, \F_{p} \bigr) \Bigr).
 \end{equation*}%
 \nomuni[HstgR]{$H^{s,t}(\lie{g}, \F_{p})$}{${} = H^{s+t}\bigl( \gr^{s} \Hom_{\F_{p}}(\bigwedge^{\bullet}\lie{g}, \F_{p}) \bigr)$}%
-See \cite[§3]{Fuks} for more details.
+See \cite[Chap.~1~§3]{Fuks} for more details.
 
-In the spectral sequence described in \cite[§6.1]{Sor}, we take $r_{0} = 1$ (i.e., the spectral sequence start from the first page) and $E_{1}^{s,t} = H^{s,t}(\lie{g}, \F_{p})$, where $\lie{g} = \F_{p} \otimes \gr G$ indeed is (positively) $\Z$-graded.
+In the spectral sequence described in \cite[§6.1]{Sor}, we take $r_{0} = 1$ (i.e., the spectral sequence starts from the first page) and $E_{1}^{s,t} = H^{s,t}(\lie{g}, \F_{p})$, where $\lie{g} = \F_{p} \otimes \gr G$ indeed is (positively) $\Z$-graded.
 
 Let now $G$ be a topological group and $\F_{p}$ a $G$-module. Then we will define two types of group cohommology: continuous and discrete.
 
@@ -291,7 +291,7 @@ Note that \cite{Sor} gets the spectral sequence we are interested in by using an
 \end{theorem}
 
 \begin{remark}
-  Finally we note that \cite[Thm.~2.10]{CohComp} implies that $\Hc^{n}(N,\F_{p}) \iso \Hd^{n}(N,\F_{p})$ for all $n$ (with $N = \gs{N}(\Z_{p})$ as above), if we can show that $N$ is a pro-$p$ group which is poly-$\Z_{p}$ by finite.
+  We note that \cite[Thm.~2.10]{CohComp} implies that $\Hc^{n}(N,\F_{p}) \iso \Hd^{n}(N,\F_{p})$ for all $n$ (with $N = \gs{N}(\Z_{p})$ as above), if we can show that $N$ is a pro-$p$ group which is poly-$\Z_{p}$ by finite.
   \begin{definition}
     A group $G$ is poly-$\Z_{p}$\index{poly-Zp@poly-$\Z_{p}$} if it has a normal series
     \begin{equation*}
@@ -346,7 +346,7 @@ by taking the product following the total ordering $\geq$ of $\Phi^{-}$ defined 
 in $N$ for $m\geq0$, following the notation used for $p$-valuable groups. The goal of this section is to show that this $\omega$ is a $p$-valuation by a careful analysis of the sequence of subsets given by $N_m$.
 
 \begin{remark}
-  If we are willing to restrict from $p+1 \geq h$ to $p-1 > h$, then we can restrict the $p$-valuation of the pro-$p$ Iwahori subgroup of $\gs{G}$ introduced in \Cref{sec:cohiwagps-intro} to a $p$-valuation on $N$. We prefer the above $p$-valuation because it will introduce a grading on $\lie{g}$ that will directly correspond to the grading (by height) on $\lie{n}$, whereas the restricted $p$-valuation is a scalar multiple of this $p$-valuation on a basis. \dknote{Write this better.}
+  If we are willing to restrict from $p+1 \geq h$ to $p-1 > h$, then we can restrict the $p$-valuation of the pro-$p$ Iwahori subgroup of $\gs{G}$ introduced in \Cref{sec:cohiwagps-intro} to a $p$-valuation on $N$. We prefer the above $p$-valuation because it will introduce a grading on $\lie{g}$ that will directly correspond to the grading (by height) on $\lie{n}$, whereas the restricted $p$-valuation is a scalar multiple of this $p$-valuation on a basis.
 \end{remark}
 
 We first note that clearly $N_1 = N$, $\bigcap_m N_m = \set{1}$, and
@@ -436,7 +436,7 @@ We are now ready to prove the following lemma, which will help us when showing t
     \begin{equation*}
       N(m-i) \cap N_{(i)} = \prod_{\substack{\alpha \in \Phi^{-} \\ \Ht(\alpha) \leq -i}} x_\alpha(p^{m-i} \Z_p)
     \end{equation*}
-    for $1 \leq i \leq m$, so the statement follows from \ref{item:N_m} and \ref{item:N_mcom}.\dknote{Write (iii) better.}
+    for $1 \leq i \leq m$, so the statement follows from \ref{item:N_m} and \ref{item:N_mcom}.
 
   \item For any $1 \leq \ell \leq m$ we consider the chain of normal subgroups
     \begin{equation*}
@@ -454,7 +454,7 @@ We are now ready to prove the following lemma, which will help us when showing t
     \begin{equation*}
       N_{m} \cap N_{(\ell)} = \prod_{\substack{\alpha \in \Phi^{-} \\ \Ht(\alpha) \leq -\ell}} x_\alpha(p^{\max(0,m+\Ht(\alpha))} \Z_p)
     \end{equation*}
-    and thus (using Chevalley's commutator formula and the fact that $\Ht(i\alpha+j\beta) \leq \Ht(\alpha+\beta) < \Ht(\alpha), \Ht(\beta)$ to move the products for the $\Ht(\alpha) = -\ell$ term)\dknote{More detail here?}
+    and thus (using Chevalley's commutator formula and the fact that $\Ht(i\alpha+j\beta) \leq \Ht(\alpha+\beta) < \Ht(\alpha), \Ht(\beta)$ to move the products for the $\Ht(\alpha) = -\ell$ term)
     \begin{align*}
       N_{m+1}(N_{m} \cap N_{(\ell)}) &= \prod_{\substack{\alpha \in \Phi^{-} \\ \Ht(\alpha) > -\ell}} x_\alpha(p^{\max(0,m+1+\Ht(\alpha))} \Z_p) \\
       &\phantom{{}={}} \cdot \prod_{\substack{\alpha \in \Phi^{-} \\ \Ht(\alpha) = -\ell}} x_\alpha(p^{m-\ell} \Z_p) \\
@@ -491,7 +491,7 @@ We are now ready to prove the following lemma, which will help us when showing t
 With this lemma, we are now ready to prove that $\omega$ is a $p$-valuation on $N$.
 
 \begin{proposition}\label{prop:N-p-val}
-  The function $\omega$ is a $p$-valuation on $N$, i.e., it satisfies for any $g,h \in N$:
+  The function $\omega$ from \eqref{eq:p-val} is a $p$-valuation on $N$, i.e., it satisfies for any $g,h \in N$:
   \begin{enumerate}[(a)]
   \item $\omega(g) > \frac{1}{p-1}$,
   \item $\omega(g^{-1}h) \geq \min(\omega(g),\omega(h))$,
@@ -577,7 +577,7 @@ is a graded $\F_{p}$-vector space, and recall the following well known result, c
 
 \section[Spectral sequence]{Spectral sequence and cohomology}\label{sec:specsec}
 
-Recall that $N = \gs{N}(\Z_{p})$, $\lie{g} = \F_p \otimes_{\F_p[\pi]} \gr G$ and $\lie{n} = \Lie(\gs{N}_{\F_{p}})$. In this section we will first look at the spectral sequence from \cite{Sor} (cf.\ \Cref{thm:spec-seq}), i.e.,
+Recall that $N = \gs{N}(\Z_{p})$, $\lie{g} = \F_p \otimes_{\F_p[\pi]} \gr N$ and $\lie{n} = \Lie(\gs{N}_{\F_{p}})$. In this section we will first look at the spectral sequence from \cite{Sor} (cf.\ \Cref{thm:spec-seq}), i.e.,
 \begin{equation*}
   E_{1}^{s,t} = H^{s,t}(\lie{g}, \F_{p}) \Longrightarrow \Hc^{s+t}(N,\F_{p}),
 \end{equation*}
@@ -599,21 +599,21 @@ We will start by showing that $\lie{g} \iso \lie{n}$, for which we will need the
     \F_{p}[\pi] \otimes_{\F_{p}} \lie{n} &\to \gr N \\
     f \otimes \overline{X}_{\alpha} &\mapsto f \act \sigma\bigl(x_{\alpha}(1)\bigr)
   \end{align*}
-  is an isomorphism of graded modules. \dknote{clarify} Chevalley's commutator formula says that there are $p$-adic integers $c_{\alpha,\beta}$ such that $[X_{\alpha},X_{\beta}] = c_{\alpha,\beta}X_{\alpha+\beta}$ and
+  is an isomorphism of graded modules. Chevalley's commutator formula (cf.\ \cite[Prop.~5.1.14]{Con-book}) says that there are $p$-adic integers $c_{\alpha,\beta} = c_{\alpha,\beta,1,1}$ such that $[X_{\alpha},X_{\beta}] = c_{\alpha,\beta}X_{\alpha+\beta}$ and
   \begin{equation*}
     [x_{\alpha}(1),x_{\beta}(1)] \in x_{\alpha+\beta}(c_{\alpha,\beta})N_{-\Ht(\alpha)-\Ht(\beta)+1} = x_{\alpha+\beta}(1)^{c_{\alpha,\beta}}N_{-\Ht(\alpha)-\Ht(\beta)+1},
   \end{equation*}
-  where $X_{\alpha+\beta} = 0$ and $x_{\alpha+\beta} \equiv 1$ if $\alpha+\beta \notin \Phi$. This implies that the image of the above map is a Lie subalgebra, and thus that the map is an isomorphism of Lie algebras.
+  where $X_{\alpha+\beta} = 0$ and $x_{\alpha+\beta} \equiv 1$ if $\alpha+\beta \notin \Phi$. This implies that the image of the above map is a Lie subalgebra, and thus that the map is an isomorphism of Lie algebras. We note that $\lie{n}$ is graded by the height function, which corresponds to the grading on $\gr N$ by the definition of $\omega$ in \eqref{eq:p-val}.
 \end{proof}
 
-Now $\gr N \iso \F_p[\pi] \otimes_{\F_p} \lie{n}$ implies that $\lie{g} \iso \F_p \otimes_{\F_p[\pi]} \F_p[\pi] \otimes_{\F_p} \lie{n} \iso \lie{n}$, where both $\lie{g}$ and $\lie{n}$ is graded by the height function. From this it clearly follows that $H^{s,t}(\lie{g},\F_{p}) \iso H^{s,t}(\lie{n},\F_{p})$. Note that this can also be seen directly by looking at the Chevalley constants.
+Now $\gr N \iso \F_p[\pi] \otimes_{\F_p} \lie{n}$ implies that $\lie{g} \iso \F_p \otimes_{\F_p[\pi]} \F_p[\pi] \otimes_{\F_p} \lie{n} \iso \lie{n}$, where both $\lie{g}$ and $\lie{n}$ is graded by the height function. From this it clearly follows that $H^{s,t}(\lie{g},\F_{p}) \iso H^{s,t}(\lie{n},\F_{p})$. (Note that this can also be seen directly by looking at the Chevalley constants.)
 % Finally, since we proved in the previous section that $N$ is a pro-$p$ group, we get (as noted in \eqref{eq:coh-comp}) that $\Hc^{n}(N,\F_{p}) \iso \Hd^{n}(N,\F_{p})$ for all $n$.
 
-By \cite[§2.10]{PT} (using that $p \geq h-1$) and the Universal Coefficient Theorem (as used in \cite[§3.8]{PT}), we get a $\F_{p}$-vector space isomorphism
+By \cite[§2.10]{PT} (using that $p \geq h-1$) and the Universal Coefficient Theorem (as used in \cite[§3.8]{PT}), we get an $\F_{p}$-vector space isomorphism
 \begin{equation*}
   H^{n}(\lie{n}_{\Z},\F_{p}) = H^{n}(\lie{n}_\Z,V_{\F_p}(0)) \iso \bigoplus_{\substack{w \in W \\ \ell(w) = n}} V_{\F_p}(w \cdot 0),
 \end{equation*}
-where $V_{\F_{p}}(0) = \F_{p}$ with the trivial action (concentrated in degree $0$). Similarly, by the corollary in \cite[§3.8]{PT}, we have a $\F_{p}$-vector space isomorphism
+where $V_{\F_{p}}(0) = \F_{p}$ with the trivial action (concentrated in degree $0$). Similarly, by the corollary in \cite[§3.8]{PT}, we have an $\F_{p}$-vector space isomorphism
 \begin{equation*}
   \gr \Hd^{n}(\gs{N}_{\Z}(\Z),\F_{p}) = \gr \Hd^{n}(\gs{N}_\Z(\Z),V_{\F_p}(0)) \iso \bigoplus_{\substack{w \in W \\ \ell(w) = n}} V_{\F_p}(w \cdot 0).
 \end{equation*}
@@ -635,8 +635,7 @@ for all $n\geq0$ from \cite[Sect.~I~§2.6]{GalCoh}. Now both $\Hc^0(\Z,\edot)$ a
 \begin{equation*}
   \Hc^n(\gs{N}(\Z_p),\F_p) \to \Hc^n(\gs{N}(\Z),\F_p) \qquad n\geq0,
 \end{equation*}
-induced by the homomorphism $\gs{N}(\Z) \to \gs{N}(\Z_p)$, are all isomorphisms.
-%To see this one can consider a filtration of $\gs{N}(\Z)$ with subquotients isomorphic with $\Z$, and its parallel filtration of $\gs{N}(\Z_p)$ with subquotients isomorphic with $\Z_p$, which will make it follow directly from \cite[Section~I~§2.6 Exercise~2(d)]{GalCoh}.
+induced by the homomorphism $\gs{N}(\Z) \to \gs{N}(\Z_p)$, are all isomorphisms. To see this one can consider a filtration of $\gs{N}(\Z)$ with subquotients isomorphic with $\Z$, and its parallel filtration of $\gs{N}(\Z_p)$ with subquotients isomorphic with $\Z_p$ as in \cite[Sect.~7]{GK}, which will make it follow directly from \cite[Section~I~§2.6 Exercise~2(d)]{GalCoh}.
 
 Hence
 \begin{equation*}
@@ -672,7 +671,23 @@ collapses on the first page, since the dimension of $E_{r}^{s,t}$ is non-increas
 \begin{equation*}
   \gr^{s} H^{n}(N,\F_p) \iso H^{s,t}(\lie{g},\F_p) \iso H^{s,t}(\lie{n},\F_p),
 \end{equation*}
-giving us a good description of $H^n(\gs{N}(\Z_p),\F_p)$. Furthermore, we can describe the cup product, by calculating it in $H^{*}(\lie{g},\F_{p})$ or $H^{*}(\lie{n},\F_{p})$, cf.\ \Cref{thm:spec-seq} for the details.\dknote{Rewrite theorem nicely here.}
+giving us a good description of $H^n(\gs{N}(\Z_p),\F_p)$. Furthermore, we can describe the cup product, by calculating it in $H^{*}(\lie{g},\F_{p})$ or $H^{*}(\lie{n},\F_{p})$, cf.\ \Cref{thm:spec-seq} for the details. I.e., we have shown:
+
+\begin{theorem}
+  Let $N = \gs{N}(\Z_{p})$ be the $\Z_{p}$ points of $\gs{N}$, where $\gs{N}$ is the unipotent radical of a Borel in a split and connected reductive $\Z_{p}$-group, and let and $\lie{n} = \Lie{\gs{N}_{\F_{p}}}$. Then $\omega$ from \eqref{eq:p-val} gives a $p$-valuation on $N$, and if we let $\lie{g} = \F_{p} \otimes_{\F_{p}[\pi]} \gr N$ be the Lazard Lie algebra of $N$, then $\lie{g} \iso \lie{n}$.
+
+  Furthermore, there is a convergent multiplicative spectral sequence
+  \[
+    E_1^{s,t} = H^{s,t}(\lie{g},\F_{p}) \Longrightarrow \Hc^{s+t}(G,\F_{p})
+  \]
+  collapsing at the first page, so $\gr^{s} H^{n}(N,\F_{p}) \iso H^{s,t}(\lie{g},\F_{p}) \iso H^{s,t}(\lie{n},\F_{p})$, and the cup product on $H^{*}(\lie{g},\F_{p})$ is compatible with the cup product on $H^{*}(N,\F_{p})$ in the sense that the following diagram commutes.
+  \[
+    \begin{tikzcd}
+      H^{s,n-s}(\lie{g}, \F_{p}) \otimes H^{s',n'-s'}(\lie{g},\F_{p}) \ar[r] \ar[d,swap,"\iso"] & H^{s+s',n+n'-s-s'}(\lie{g},\F_{p}) \ar[d,"\iso"] \\
+      \gr^s \Hc^n(G,\F_{p}) \otimes \gr^{s'} \Hc^{n'}(G,\F_{p}) \ar[r] & \gr^{s+s'}\Hc^{n+n'}(G,\F_{p})
+    \end{tikzcd}
+  \]
+\end{theorem}
 
 
 \section{Example: \texorpdfstring{$N \subseteq \SL_{3}(\Z_{p})$}{N in SL3(Zp)}}%
@@ -690,11 +705,11 @@ Furthermore we can take $\Phi^{-} = \set{\alpha_1,\alpha_2,\alpha_3=\alpha_1+\al
 \end{align*}
 for any $\Z_p$-algebra $A$ and $a \in A$. Here $\Ht(\alpha_1) = \Ht(\alpha_2) = -1$ and $\Ht(\alpha_3) = -2$, and explicit calculations show that, in $N = \gs{N}(\Z_p)$, $g_1=x_{\alpha_1}(1), g_2=x_{\alpha_2}(1), g_3=x_{\alpha_3}(1)$ is an ordered basis of $(N,\omega)$. Thus (cf.\ \cite[Prop.~26.5]{Sch}) $\sigma(g_1),\sigma(g_2),\sigma(g_3)$ is a basis of the $\F_p[\pi]$-module $\gr N$, and $\xi_1,\xi_2,\xi_3$ is a basis of $\lie{g} = \F_p \otimes_{\F_p[\pi]} \gr N$, where $\xi_i = 1 \otimes \sigma(g_i)$. Furthermore $\lie{g} = \lie{g}^1 \oplus \lie{g}^2$, where $\lie{g}^1 = \Span(\xi_1,\xi_2)$ and $\lie{g}^2 = \Span(\xi_3)$.
 
-The only non-trivial commutator among the $g_i$'s is $[g_1,g_2] = x_{\alpha_3}(-1)$, which implies (cf.\ \cite[Rem.~26.3]{Sch}) that $\sigma([g_1,g_2]) = -\sigma(g_3)$ and thus $[\xi_1,\xi_2] = -\xi_3$. So $[\lie{g},\lie{g}] = \lie{g}^2$.
+The only non-trivial commutator among the $g_i$'s is $[g_1,g_2] = x_{\alpha_3}(-1) = g_{3}^{-1}$, which implies (cf.\ \cite[Rem.~26.3]{Sch}) that $\sigma([g_1,g_2]) = -\sigma(g_3)$ and thus $[\xi_1,\xi_2] = -\xi_3$. In particular $[\lie{g},\lie{g}] = \lie{g}^2$.
 
-Now $H^1(\lie{g},\F_p) = \Hom_k(\lie{g}/[\lie{g},\lie{g}],\F_p) = H^{-1,2}(\lie{g},\F_p)$, and, since $\bigwedge^3 \lie{g} = \lie{g}^1 \wedge \lie{g}^1 \wedge \lie{g}^2$ is degree $4$, $H^3(\lie{g},\F_p) = H^{-4,7}(\lie{g},\F_p)$. A version of Poincaré duality (cf.\ \cite[Chap.~1~§3.6--7]{Fuks}) gives us that $H^1 \times H^2 \to H^3$ with $H^{-1,2} \times H^{s,t} \to H^{-4,7}$ only works for $(s,t) = (-3,5)$, so $H^2(\lie{g},\F_p) = H^{-3,5}(\lie{g},\F_p)$. This gives us a description of $H^*(N,\F_p)$, and we note (either by explicit calculation or by considering properties of the wedge product) that the only non-trivial cup product is $H^1(N,\F_p) \times H^2(N,\F_p) \to H^3(N,\F_p)$.
+Now $H^1(\lie{g},\F_p) = \Hom_k(\lie{g}/[\lie{g},\lie{g}],\F_p) = H^{-1,2}(\lie{g},\F_p)$, and, since $\bigwedge^3 \lie{g} = \lie{g}^1 \wedge \lie{g}^1 \wedge \lie{g}^2$ is degree $4$, $H^3(\lie{g},\F_p) = H^{-4,7}(\lie{g},\F_p)$. A version of Poincaré duality (cf.\ \cite[Chap.~1~§3.6--7]{Fuks}) gives us that $H^1 \times H^2 \to H^3$ with $H^{-1,2} \times H^{s,t} \to H^{-4,7}$ is only non-trivial for $(s,t) = (-3,5)$, so $H^2(\lie{g},\F_p) = H^{-3,5}(\lie{g},\F_p)$. By considering the maps $d_{r}^{s,t} \colon E_{r}^{s,t} \to E_{1}^{s+r,t+1-r}$, we see that the spectral sequence collapses at the first page, so this gives us a description of $H^*(N,\F_p)$, and we note that the only non-trivial cup product is $H^1(N,\F_p) \times H^2(N,\F_p) \to H^3(N,\F_p)$.
 
-We note that we skipped some of the details above since we will go through many examples of this kind of computation in \Cref{cha:cohiwagps}, so we refer to there for more details.
+We note that we skipped some of the details above since we will go through many examples of this kind of computation in \Cref{cha:cohiwagps}, so we refer to there for more of the details in this type of argument.
 
 
 %%% Local Variables:

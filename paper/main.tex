@@ -21,7 +21,6 @@
 \addtolength{\footskip}{-0.5in}
 \checkandfixthelayout
 
-\pagestyle{plain}
 \setsecnumdepth{subsection}
 \settocdepth{subsection}
 
@@ -34,9 +33,17 @@
 
 % \maketitle
 
+\pagestyle{empty}
+
 \input{front.tex}
 
+\clearpage
+\null
+\clearpage
+
 \frontmatter
+
+\pagestyle{plain}
 
 \setcounter{page}{3}
 
