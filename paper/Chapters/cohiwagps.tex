@@ -78,9 +78,9 @@ and the diagonal entries $a_{i}$ satisfy $a_{i} \mid a_{i+1}$ for $i=1,\dotsc,r-
   \omega(g_1^{x_1}\dotsb g_r^{x_r}) = \min_{1 \leq i \leq r}(\omega(g_i)+v(x_i)) \qquad \text{for any } x_1,\dotsc,x_r\in\Z_p.
 \end{equation*}
 
-\paragraph{Algebraic groups.} We will work with schemes using the functorial approach and notation described in \cite{Jan}. In particular, given an integral domain $R$, we note that a \emph{$R$-group functor}\index{R-group@$R$-group!functor} is a functor from the category of all $R$-algebras to the category of groups, a \emph{$R$-group scheme}\index{R-group!scheme} is a $R$-group functor that is an affine scheme over $R$ when considered as a $R$-functor, and an \emph{algebraic $R$-group}\index{R-group!algebraic}\index{algebraic R-group@algebraic $R$-group} is a $R$-group scheme that is algebraic as an affine scheme. For more in depth introduction to these concepts, we refer to \cite{Con-book} and \cite{Jan}.
+\paragraph{Algebraic groups.} We will work with schemes using the functorial approach and notation described in \cite{Jan}. In particular, given an integral domain $R$, we note that a \emph{$R$-group functor}\index{R-group@$R$-group!functor} is a functor from the category of all $R$-algebras to the category of groups, a \emph{$R$-group scheme}\index{R-group@$R$-group!scheme} is a $R$-group functor that is an affine scheme over $R$ when considered as a $R$-functor, and an \emph{algebraic $R$-group}\index{R-group@$R$-group!algebraic}\index{algebraic R-group@algebraic $R$-group} is a $R$-group scheme that is algebraic as an affine scheme. For more in depth introduction to these concepts, we refer to \cite{Con-book} and \cite{Jan}.
 
-\paragraph{Fixed groups and roots.} We fix a split and connected reductive algebraic $F$-group $\gs{G}$\nomiwa[G]{$\gs{G}$}{a (fixed) split and connected reductive algebraic $F$-group}\index{G}, and consider the locally profinite group $G = \gs{G}(F)$.\nomiwa[GF]{$G$}{${} = \gs{G}(F)$, a locally profinite group} We then fix split maximal torus $\gs{T} \subseteq \gs{G}$\nomiwa[T]{$\gs{T}$}{a (fixed) split maximal torus of $\gs{G}$} and let $T = \gs{T}(F)$.\nomiwa[TF]{$T$}{${} = \gs{T}(F)$} In $T$ we have a maximal compact subgroup $T^{0}$ and its Sylow pro-$p$ subgroup $T^{1}$.
+\paragraph{Fixed groups and roots.} We fix a split and connected reductive algebraic $F$-group $\gs{G}$\nomiwa[G]{$\gs{G}$}{a (fixed) split and connected reductive algebraic $F$-group}\index{G}, and consider the locally profinite group $G = \gs{G}(F)$.\nomiwa[GF]{$G$}{${} = \gs{G}(F)$, a locally profinite group} We then fix split maximal torus $\gs{T} \subseteq \gs{G}$\nomiwa[T]{$\gs{T}$}{a (fixed) split maximal torus of $\gs{G}$} and let $T = \gs{T}(F)$.\nomiwa[TF]{$T$}{${} = \gs{T}(F)$}\index{maximal torus} In $T$ we have a maximal compact subgroup $T^{0}$ and its Sylow pro-$p$ subgroup $T^{1}$.
 
 Let $\Phi = \Phi(\gs{G},\gs{T})$\nomiwa[Phi]{$\Phi$}{${} = \Phi(\gs{G},\gs{T})$, the root system of $\gs{G}$ with respect to $\gs{T}$} be the \emph{root system}\index{root!system} of $\gs{G}$ with respect to $\gs{T}$, and let $(X^{*}(T),\Phi,X_{*}(T),\Phi^{\vee})$\nomiwa[XTPhi]{$(X^{*}(T),\Phi,X_{*}(T),\Phi^{\vee})$}{the root datum associated with $\Phi = \Phi(\gs(G),\gs{T})$} be the associated root datum.\index{root!datum} Fix a system of positive roots $\Phi^{+}$ and let $\Delta \subseteq \Phi^{+}$ be the simple roots.\index{root!simple} For any $\alpha \in \Phi$ we have the root subgroup\index{root!subgroup} $\gs{U}_{\alpha} \subseteq \gs{G}$ with Lie algebra $\Lie \gs{U}_{\alpha} =  (\Lie \gs{G})_{\alpha}$. We let $U_{\alpha} = \gs{U}_{\alpha}(F)$ and choose an isomorphism $x_{\alpha} \colon F \xrightarrow{\iso} U_{\alpha}$\nomiwa[xa]{$x_{\alpha} \colon F \xrightarrow{\iso} U_{\alpha}$}{an isomorphism such that $tx_{\alpha}(x)t^{-1} = x_{\alpha}(\alpha(t)x)$ for $t \in T$ and $x \in F$} such that $tx_{\alpha}(x)t^{-1} = x_{\alpha}(\alpha(t)x)$ for $t \in T$ and $x \in F$. For $r \in \Z_{\geq 0}$ we let $U_{\alpha,r} = x_{\alpha}(\idm_{F}^{r})$.\nomiwa[Uar]{$U_{\alpha,r}$}{${} = x_{\alpha}(\idm_{F}^{r})$}
 
@@ -1525,14 +1525,9 @@ Thus the non-zero commutators $[\xi_{i},\xi_{j}]$ with $i<j$ are:
 
 Looking at \eqref{eq:Iwa-p-val-basis-SLn} (with $e=1$ and $h=3$), we see that
 \begin{align*}
-  \omega(g_{1}) &= 1-\frac{2}{3} = \frac{1}{3}, \\
-  \omega(g_{2}) &= 1-\frac{1}{3} = \frac{2}{3}, \\
-  \omega(g_{3}) &= 1-\frac{1}{3} = \frac{2}{3}, \\
-  \omega(g_{4}) &= 1, \\
-  \omega(g_{5}) &= 1, \\
-  \omega(g_{6}) &= \frac{1}{3}, \\
-  \omega(g_{7}) &= \frac{1}{3}, \\
-  \omega(g_{8}) &= \frac{2}{3}.
+  \omega(g_{1}) &= 1-\frac{2}{3} = \frac{1}{3}, & \omega(g_{2}) &= 1-\frac{1}{3} = \frac{2}{3}, & \omega(g_{3}) &= 1-\frac{1}{3} = \frac{2}{3}, \\
+  \omega(g_{4}) &= 1, & \omega(g_{5}) &= 1, & \omega(g_{6}) &= \frac{1}{3}, \\
+  \omega(g_{7}) &= \frac{1}{3}, & \omega(g_{8}) &= \frac{2}{3}.
 \end{align*}
 Hence
 \begin{equation*}
@@ -2032,6 +2027,8 @@ So $H^{8} = H^{-15,23}$ with $\dim H^{-15,23} = 1$ by \Cref{tab:graded-dims-SL3}
   }
   \renewcommand{\arraystretch}{1}
 \end{table}
+
+\clearpage
 
 Altogether, we see that
 \begin{equation}
@@ -3000,8 +2997,8 @@ In a similar vein, we can recall that $\Tr_{\F_{D}\F_{5}}(x) = x + x^{5} + x^{5^
   \Tr_{\F_{D}/\F_{5}}(1) &= 3, & \Tr_{\F_{D}/\F_{5}}(\alpha) &= 0, & \Tr_{\F_{D}/\F_{5}}(\alpha^{2}) &= 4,
 \end{align*}
 since $\alpha^{3} = 2\alpha + 2$. Thus $\F_{D}^{\Tr = 0}$ has basis $\alpha, 4+2\alpha^{2}$. Now let $\xi_{1}' = 1, \xi_{2}' = \alpha, \xi_{3}' = \alpha^{2}$ be the basis of $\lie{g}^{1} \iso \F_{D}$, let $\xi_{4}' = 1, \xi_{5}' = \alpha, \xi_{6}' = \alpha^{2}$ be the basis of $\lie{g}^{2} \iso \F_{D}$, and let $\xi_{7}' = \alpha, \xi_{8}' = 4+2\alpha$ be the basis of $\lie{g}^{3} \iso \F_{D}^{\Tr = 0}$. Using \eqref{eq:central-div-alg-com}, we see that
+\clearpage
 \begin{equation}\label{eq:central-div-alg-second-com}
-  o
   \begin{aligned}
     [\xi_{1}',\xi_{2}'] &= 4\xi_{4}' + 3\xi_{5}' + 2\xi_{6}', & [\xi_{1}',\xi_{3}'] &= 3\xi_{4}' + 2\xi_{5}' + 4\xi_{6}', \\
     [\xi_{1}',\xi_{5}'] &= 3\xi_{7}' + \xi_{8}', & [\xi_{1}',\xi_{6}'] &= 2\xi_{7}' + 2\xi_{8}', \\
@@ -3066,7 +3063,7 @@ Altogether, the above seems to hint at the following conjecture:
     \item $H^{*}\bigl( I_{\GL_{n}(\Q_{p})}, \F_{p} \bigr) \iso H^{*}\bigl( 1+\idm_{D}, \F_{p} \bigr)$ as graded algebras, and
     \item $H^{*}\bigl( I_{\SL_{n}(\Q_{p})}, \F_{p} \bigr) \iso H^{*}\bigl( (1+\idm_{D})^{\Nrd = 1}, \F_{p} \bigr)$ as graded algebras.
   \end{enumerate}
-  In particular, this implies by \cite[Sect.~6.3]{Sor} that $H^{*}( I_{\GL_{n}(\Q_{p})}, \F_{p} ) \iso H^{*}( I_{\SL_{n}(\Q_{p})}, \F_{p} ) \otimes_{\F_{p}} \F_{p}[\varepsilon]$ as graded algebras, where $\F_{p}[\varepsilon]$ denote the dual numbers ($\varepsilon^{2} = 0$).
+  In particular, this implies by \cite[Sect.~6.3]{Sor} that \[ H^{*}( I_{\GL_{n}(\Q_{p})}, \F_{p} ) \iso H^{*}( I_{\SL_{n}(\Q_{p})}, \F_{p} ) \otimes_{\F_{p}} \F_{p}[\varepsilon] \] as graded algebras, where $\F_{p}[\varepsilon]$ denote the dual numbers ($\varepsilon^{2} = 0$).
 \end{conjecture}
 
 \subsection{Serre spectral sequence}%
