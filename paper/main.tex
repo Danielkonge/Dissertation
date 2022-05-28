@@ -15,8 +15,8 @@
 \renewcommand{\footnotesize}{\fontsize{10}{12}\selectfont}
 \setlength{\parindent}{0.5in}
 
-\setulmarginsandblock{1.6in}{*}{0.8}
-\setlrmarginsandblock{1.5in}{*}{1}
+\setulmarginsandblock{1.2in}{*}{0.8}
+\setlrmarginsandblock{1in}{*}{1}
 \setlength{\footskip}{\lowermargin}
 \addtolength{\footskip}{-0.5in}
 \checkandfixthelayout
@@ -57,14 +57,18 @@
 
 \begin{center}
   {\large University of California San Diego} \\[1em]
-  {\large 2002}
+  {\large 2022}
 \end{center}
 
 \clearpage
 
+\renewcommand*{\chaptitlefont}{\centering\Large\scshape}
+
 \renewcommand{\contentsname}{Table of Contents}
 \renewcommand{\cftchaptername}{\chaptername~}
 \renewcommand{\cftappendixname}{\appendixname~}
+\renewcommand*{\cftchapterleader}{\bfseries\cftdotfill{\cftchapterdotsep}}
+\renewcommand*{\cftchapterdotsep}{\cftdotsep}
 \tableofcontents
 
 \clearpage
@@ -74,6 +78,7 @@
 
 \clearpage
 
+\renewcommand{\cfttablename}{\tablename~}
 \listoftables
 
 \clearpage
@@ -134,6 +139,8 @@ I would also like to acknowledge Daniel M.\ Kane for introducing me to research 
 %   In the second chapter we study the mod $p$ cohomology of the pro-$p$ Iwahori subgroups $I$ of $\SL_{n}$ and $\GL_{n}$ over $\Q_{p}$ for $n=2,3,4$ and over a quadratic extension $F/\Q_{p}$ for $n=2$. Here we again use the spectral sequence $E_{1}^{s,t} = H^{s,t}(\lie{g},\F_{p}) \Longrightarrow H^{s+t}(I,\F_{p})$ due to Sørensen, but in this chapter we do explicit calculations with an ordered basis of $I$, which gives us a basis of $\lie{g} = \F_{p} \otimes_{\F_{p}[\pi]} I$ that we use to calculate $H^{s,t}(\lie{g},\F_{p})$. We note that the spectral sequence $E_{1}^{s,t} = H^{s,t}(\lie{g},\F_{p})$ collapses on the first page by noticing that all maps on each page are necessarily trivial. Finally we note some connections to cohomology of quaternion algebras over $\Q_{p}$ and point out some future research directions.
 % \end{abstract}
 
+\vspace*{1in}
+
 \begin{center}
   {\Large\scshape Abstract of the Dissertation}\\[1.5em]
   {\large On the mod \texorpdfstring{$p$}{p} cohomology of pro-\texorpdfstring{$p$}{p} Iwahori subgroups}\\[1.5em]
@@ -152,7 +159,8 @@ In the second chapter we study the mod $p$ cohomology of the pro-$p$ Iwahori sub
 
 \mainmatter
 
-\pagestyle{ruled}
+\renewcommand*{\chaptitlefont}{\Huge\bfseries}
+%\pagestyle{ruled}
 
 \input{Chapters/intro.tex}
 
@@ -174,7 +182,7 @@ In the second chapter we study the mod $p$ cohomology of the pro-$p$ Iwahori sub
 
 \input{Chapters/calculations.tex}
 
-\chapter{Other research}%
+\chapter{Other Research}%
 \label{cha:robstat}
 
 \input{Chapters/robstat.tex}
@@ -183,7 +191,8 @@ In the second chapter we study the mod $p$ cohomology of the pro-$p$ Iwahori sub
 
 \backmatter
 
-\pagestyle{plain}
+% \pagestyle{plain}
+\SingleSpacing
 
 \printbibliography
 

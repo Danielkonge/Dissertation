@@ -48,6 +48,9 @@
 
 \usepackage{varioref}
 
+\usepackage{url}
+\urlstyle{same}
+
 \usepackage[colorlinks=false]{hyperref} %make links to references
 
 \usepackage[nameinlink]{cleveref} %clever referencing (uses varioref and hyperref above)
@@ -84,11 +87,11 @@
 %make index using memoir
 \makeindex %create the default index
 
-\usepackage[refpage,intoc]{nomencl} %used for nomenclature
+\usepackage[intoc]{nomencl} %used for nomenclature
 \makenomenclature
 \renewcommand*{\nomname}{List of Symbols}%name the nomenclature
 \renewcommand*{\nomlabel}[1]{\hfil #1\hfil}%center symbol
-\renewcommand*{\pagedeclaration}[1]{\dotfill\hyperpage{#1}} %pagenumber in nomenclature + link
+%\renewcommand*{\pagedeclaration}[1]{\dotfill\hyperpage{#1}} %pagenumber in nomenclature + link
 \renewcommand{\nomgroup}[1]{%divide nomenclature into groups (can only use capital letters)
 \item[\bfseries%
   \ifstrequal{#1}{A}{Cohomology of Unipotent groups}{%
@@ -106,7 +109,6 @@
 \theoremseparator{.}
 
 \theoremstyle{plain}
-\theorembodyfont{\normalfont}
 \theoremsymbol{\ensuremath{\clubsuit}}
 \newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{corollary}[theorem]{Corollary}
@@ -114,6 +116,8 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{fact}[theorem]{Fact}
 
+
+\theorembodyfont{\normalfont}
 \theoremsymbol{\ensuremath{\spadesuit}}
 \newtheorem{definition}[theorem]{Definition}
 
@@ -132,10 +136,9 @@
 
 %corresponding break versions:
 
-\theoremsymbol{}
-
+% \theoremsymbol{}
 \theoremheaderfont{\normalfont\bfseries}
-\theorembodyfont{\normalfont}
+\theorembodyfont{\itshape}
 \theoremstyle{break}
 \theoremsymbol{\ensuremath{\clubsuit}}
 \newtheorem{theorembreak}[theorem]{Theorem}
@@ -143,6 +146,7 @@
 \newtheorem{propositionbreak}[theorem]{Proposition}
 \newtheorem{lemmabreak}[theorem]{Lemma}
 
+\theorembodyfont{\normalfont}
 \theoremsymbol{\ensuremath{\spadesuit}}
 \newtheorem{definitionbreak}[theorem]{Definition}
 

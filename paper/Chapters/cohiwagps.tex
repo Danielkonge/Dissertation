@@ -21,7 +21,7 @@ We finish the chapter by mentioning some observations on the nilpotency index of
 
 Let $p$ be an odd prime (further restricted later) and let $k$ be a perfect field of characteristic $p$.\nomiwa[k]{$k$}{a perfect field of characteristic $p$}
 
-\paragraph{Field extension of $\Q_{p}$.} We fix a finite extension of $F/\Q_{p}$\nomiwa[F]{$F$}{a finite extension of $\Q_{p}$} of degree $D$\nomiwa[D]{$D$}{${} = [F : \Q_{p}]$, the degree of the extension $F/\Q_{p}$} with valuation ring $\sO_{F}$\nomiwa[OF]{$\sO_{F}$}{the valuation ring of $F$} and maximal ideal $\idm_{F} = (\varpi_{F}) \subseteq \sO_{F}$.\nomiwa[mF]{$\idm_{F}$}{maximal ideal of the valuation ring $\sO_{F}$}\nomiwa[piF]{$\varpi_{F}$}{a uniformizer of $F$} Let $e = e(F/\Q_{p})$ be the \emph{ramification index}\index{ramification index} and $f = f(F/\Q_{p})$ the \emph{inertia degree}\index{inertia degree} of the extension $F/\Q_{p}$. Let furthermore $v$ be the valuation on $F$ for which $v(p) = 1$, and thus $v(\varpi_{F}) = \frac{1}{e}$.
+\paragraph{Field extension of $\Q_{p}$.} We fix a finite extension of $F/\Q_{p}$\nomiwa[F]{$F$}{a finite extension of $\Q_{p}$} of degree $\ell$\nomiwa[l]{$\ell$}{${} = [F : \Q_{p}]$, the degree of the extension $F/\Q_{p}$} with valuation ring $\sO_{F}$\nomiwa[OF]{$\sO_{F}$}{the valuation ring of $F$} and maximal ideal $\idm_{F} = (\varpi_{F}) \subseteq \sO_{F}$.\nomiwa[mF]{$\idm_{F}$}{maximal ideal of the valuation ring $\sO_{F}$}\nomiwa[piF]{$\varpi_{F}$}{a uniformizer of $F$} Let $e = e(F/\Q_{p})$ be the \emph{ramification index}\index{ramification index} and $f = f(F/\Q_{p})$ the \emph{inertia degree}\index{inertia degree} of the extension $F/\Q_{p}$. Let furthermore $v$ be the valuation on $F$ for which $v(p) = 1$, and thus $v(\varpi_{F}) = \frac{1}{e}$.
 
 \paragraph{$\exp$ and $\log$.} Given finite field extension $F/\Q_{p}$ with valuation ring $\sO_{F}$ and maximal ideal $\idm_{F}$ with $p\sO_{F} = \idm_{F}^{e}$, we get by \cite[Prop.~(5.5)]{Neukirch} (noting that we will ensure that $1 > \frac{e}{p-1}$ later) that the power series
 \begin{equation*}
@@ -33,11 +33,11 @@ are two mutually inverse isomorphisms (and homeomorphisms)
     \idm_{F} \ar[r, yshift=0.7ex, "\exp"] & U_{F}^{(1)}. \ar[l, yshift=-0.7ex, "\log"]
   \end{tikzcd}
 \]
-Note that this implies that a $\Z_{p}$-basis of $\idm$ translates to a $\Z_{p}$-basis of $U_{F}^{(1)} = 1+\idm_{F}$ via $\exp$.
+Note that this implies that a $\Z_{p}$-basis of $\idm_{F}$ translates to a $\Z_{p}$-basis of $U_{F}^{(1)} = 1+\idm_{F}$ via $\exp$.
 
 \paragraph{Big-$O$ notation.} For elements of $\sO_{F}$ we write $x = y + O(p^{r})$ if and only if $x-y \in p^{r}\sO_{F}$.\index{big-O notation@big-$O$ notation}\index{Opr@$O(p^{r})$}\nomiwa[Opr]{$O(p^{r})$}{for elements of $\sO_{F}$ we write $x = y + O(p^{r})$ if and only if $x-y \in p^{r}\sO_{F}$}
 
-\paragraph{Matrices.} Let $E_{ij}$\nomiwa[Eij]{$E_{ij}$}{the matrix with $1$ in the $(i,j)$ entry and zeroes in all other entries} denote the matrix with $1$ in the $(i,j)$ entry, and zeroes in all other entries, and write $1_{n}$ for the identity matrix in $M_{n}(F)$. Let $A = (a_{ij})$. We write $A = \diag(a_{1},\dotsc,a_{n})$\nomiwa[diag]{$\diag(a_{1},\dotsc,a_{n})$}{(${} = (a_{ij})$) the diagonal matrix with entries $a_{ii} = a_{i}$} for the diagonal matrix in $M_{n}(F)$ with entries $a_{ii}=a_{i}$ in the diagonal, and $A = \diag_{i_{1},\dotsc,i_{k}}(a_{1},\dotsc,a_{k})$\nomiwa[diagi]{$\diag_{i_{1},\dotsc,i_{k}}(a_{1},\dotsc,)$}{(${} = (a_{ij})$) the matrix with entries $a_{i_{\ell}i_{\ell}} = a_{\ell}$ for $\ell=1,\dotsc,k$ and zeroes in all other entries} for the diagonal matrix in $M_{n}(F)$ with entries $a_{i_{\ell}i_{\ell}} = a_{\ell}$ for $\ell = 1,\dotsc,k$ and zeroes in all other entries. Finally, we write $A^{\top}$\nomiwa[T]{$(\edot)^{\top}$}{the transpose matrix} for the transpose matrix of $A$.
+\paragraph{Matrices.} Let $E_{ij}$\nomiwa[Eij]{$E_{ij}$}{the matrix with $1$ in the $(i,j)$ entry and zeroes in all other entries} denote the matrix with $1$ in the $(i,j)$ entry, and zeroes in all other entries, and write $1_{n}$ for the identity matrix in $M_{n}(F)$. Let $A = (a_{ij})$. We write $A = \diag(a_{1},\dotsc,a_{n})$\nomiwa[diag]{$\diag(a_{1},\dotsc,a_{n})$}{(${} = (a_{ij})$) the diagonal matrix with entries $a_{ii} = a_{i}$} for the diagonal matrix in $M_{n}(F)$ with entries $a_{ii}=a_{i}$ in the diagonal, and $A = \diag_{i_{1},\dotsc,i_{k}}(a_{1},\dotsc,a_{k})$\nomiwa[diagi]{$\diag_{i_{1},\dotsc,i_{k}}(a_{1},\dotsc,a_{k})$}{(${} = (a_{ij})$) the matrix with entries $a_{i_{\ell}i_{\ell}} = a_{\ell}$ for $\ell=1,\dotsc,k$, ones in the other diagonal entries and zeroes in all other entries} for the diagonal matrix in $M_{n}(F)$ with entries $a_{i_{\ell}i_{\ell}} = a_{\ell}$ for $\ell = 1,\dotsc,k$, ones in the other diagonal entries and zeroes in all other entries. Finally, we write $A^{\top}$\nomiwa[T]{$(\edot)^{\top}$}{the transpose matrix} for the transpose matrix of $A$.
 
 \paragraph{Dual basis.} Let $V$ be a $k$-vector space with basis $\basis = (e_{1},\dotsc,e_{d})$. Then we let $\basis^{*} = (e_{1}^{*},\dotsc,e_{d}^{*})$ be the dual basis of $\Hom_{k}(V,k)$ defined by $e_{i}^{*}(e_{i}) = \delta_{ij}$, where $\delta_{ij}$ is the Kronecker delta function. Now consider two vector spaces $V$ and $W$ with bases $\basis_{V}$ and $\basis_{W}$. Given a linear map $d \colon V \to W$ with matrix $A$ when described in these bases, it is a well known fact from linear algebra that the dual map $d^{*} \colon \Hom_{k}(W,k) \to \Hom_{k}(V,k)$ has matrix $A^{\top}$ when described in the dual bases $\basis_{V}^{*}$ and $\basis_{W}^{*}$. We will often use this without mention and abuse notation writing $d$ and $d^{\top}$ for these matrices.
 
@@ -98,7 +98,7 @@ Let $\Phi = \Phi(\gs{G},\gs{T})$\nomiwa[Phi]{$\Phi$}{${} = \Phi(\gs{G},\gs{T})$,
 \end{equation}
 where the products are ordered in an arbitrarily chosen way. For a more detailed introduction to these pro-$p$ groups we refer to \cite{SchOll-modular}.
 
-\paragraph{Pro-$p$ Iwahori subgroups of $\GL_{n}(F)$ and $\SL_{n}(F)$.} In this chapter, we will only work with pro-$p$ Iwahori subgroups of $\GL_{n}(F)$ or $\SL_{n}(F)$, which simplifies the definitions. When $\gs{G} = \GL_{n}$ or $\gs{G} = \SL_{n}$, we can always take $\gs{T}$ the diagonal maximal torus, and we can take $I$ to be the subgroup of $\gs{G}(\sO_{F})$ which is upper triangular and unipotent modulo $\varpi$. In this case we have that $U_{\alpha,1}$ for $\alpha \in \Phi^{-}$ correspond to entries below the diagonal and $U_{\alpha,0}$ for $\alpha \in \Phi^{+}$ corresponds to the entries above the diagonal.
+\paragraph{Pro-$p$ Iwahori subgroups of $\GL_{n}(F)$ and $\SL_{n}(F)$.} In this chapter, we will only work with pro-$p$ Iwahori subgroups of $\GL_{n}(F)$ or $\SL_{n}(F)$, which simplifies the definitions. When $\gs{G} = \GL_{n}$ or $\gs{G} = \SL_{n}$, we can always take $\gs{T}$ the diagonal maximal torus, and we can take $I$ to be the subgroup of $\gs{G}(\sO_{F})$ which is upper triangular and unipotent modulo $\varpi_{F}$. In this case we have that $U_{\alpha,1}$ for $\alpha \in \Phi^{-}$ correspond to entries below the diagonal and $U_{\alpha,0}$ for $\alpha \in \Phi^{+}$ corresponds to the entries above the diagonal.
 
 \paragraph{$p$-valuation on $I$.} By a recent preprint by Lahiri and Sørensen (cf.\ \cite[Prop.~3.4]{IwaBasis}), we know (since $p-1 > eh$) that $I$ admits a $p$-valuation $\omega$ satisfying the properties:
 \begin{enumerate}[(a)]
@@ -133,7 +133,7 @@ When $\gs{G} = \SL_{n}$, we have that $\Phi = \set{ \varepsilon_{i}-\varepsilon_
 \begin{equation*}
   \Delta = \set{\alpha_{1}=\varepsilon_{1}-\varepsilon_{2}, \alpha_{2}=\varepsilon_{2}-\varepsilon_{3}, \dotsc, \alpha_{n-1}=\varepsilon_{n-1}-\varepsilon_{n}},
 \end{equation*}
-where $\varepsilon_{i}$ is the map that takes a diagonal matrix to its $i$-th diagonal entry. In this case $\alpha_{i}^{\vee}(u) = \diag(0,\dotsc,0,u,-u,0,\dotsc,0) = \diag_{i,i+1}(u,-u)$, where the non-zero entries are the $i$-th and $(i+1)$-th entries. This together with the above gives us the following ordered basis (in the listed order and with a chosen ordering of $\set{ (i,j) : 1 \leq i,j \leq n }$) in the case $\gs{G} = \SL_{n}$:
+where $\varepsilon_{i}$ is the map that takes a diagonal matrix to its $i$-th diagonal entry. In this case $\alpha_{i}^{\vee}(u) = \diag(1,\dotsc,1,u,u^{-1},1,\dotsc,1) = \diag_{i,i+1}(u,u^{-1})$, where the non-trivial entries are the $i$-th and $(i+1)$-th entries. Since the second non-trivial entry of these matrices are always just the inverse of the first entry, we will abuse notation and write $\diag_{i,i+1}(u) = \diag_{i,i+1}(u,u^{-1})$.\nomiwa[diagii]{$\diag_{i,i+1}(u)$}{${} = \diag_{i,i+1}(u,u^{-1})$} This together with the above gives us the following ordered basis (in the listed order and with a chosen ordering of $\set{ (i,j) : 1 \leq i,j \leq n }$) in the case $\gs{G} = \SL_{n}$:
 \begin{enumerate}[$\bullet$]
   \item $\bigl( 1_{n}+\varpi_{F}b_{1}E_{ij}, \dotsc, 1_{n}+\varpi_{F}b_{\ell}E_{ij} \bigr)_{1 \leq j < i \leq n}$,
   \item $\bigl( \diag_{i,i+1}(\exp(\varpi_{F}b_{1})), \dotsc, \diag_{i,i+1}(\exp(\varpi_{F}b_{\ell})) \bigr)_{i=1,\dotsc,n-1}$,
@@ -254,7 +254,7 @@ See the proofs of \cite[Lem.~26.4 and Prop.~26.5]{Sch} for more details.
 
 Let $\set{\ell_{1},\dotsc,\ell_{r}}$ be the subset of $\set{1,\dotsc,d}$ such that $v_{p}(x_{\ell_{s}}) = 0$ and $v_{p}(x_{\ell}) > 0$ for $\ell \notin \set{\ell_{1},\dotsc,\ell_{r}}$, and recall that $\lie{g} = k \otimes_{\F_{p}[\pi]} \gr G$ has basis $1 \otimes \sigma(g_{i})$. Since $\pi$ acts trivially on $k$ here, we see that
 \begin{equation*}
-  [\xi_{i},\xi_{j}] = \bigl[ 1\otimes\sigma(g_{i}),1\otimes\sigma(g_{j}) \bigr] = \sum_{s=1}^{r} \overline{x}_{\ell_{s}} \sigma(g_{\ell_{s}}).
+  [\xi_{i},\xi_{j}] = \bigl[ 1\otimes\sigma(g_{i}),1\otimes\sigma(g_{j}) \bigr] = \sum_{s=1}^{r} \overline{x}_{\ell_{s}} \xi_{\ell_{s}}.
 \end{equation*}
 Now we have a basis $(\xi_{1},\dotsc,\xi_{d})$ of $\lie{g} = k \otimes_{\F_{p}[\pi]} \gr G$, and we know all the structure constants.
 
@@ -657,6 +657,10 @@ Let $e_{i_{1},\dotsc,i_{m}} = (\xi_{i_{1}} \wedge \dotsb \wedge \xi_{i_{m}})^{*}
   \end{aligned}
 \end{equation}
 
+\begin{remark}
+  Here we abuse notation and write $k[e_{1},e_{3}]$ for the $k$-vector space with basis $e_{1}$ and $e_{3}$, and not the polynomial ring. We use the same notation from now on without notice, and note that this should not give rise to any confusion since it will only be used for basis elements of the $e_{i_{1},\dotsc,i_{m}}$.
+\end{remark}
+
 For $f \in \Hom_{k}\bigl( \bigwedge^{p}\lie{g}, k \bigr)$ and $g \in \Hom_{k}\bigl( \bigwedge^{q}\lie{g}, k \bigr)$, we recall from \eqref{eq:cup-prod-def} that the cup product in cohomology is induced by: $f \cup g \in \Hom_{k}\bigl( \bigwedge^{p+q}\lie{g}, k \bigr)$ defined by
 \begin{equation*}
   (f \cup g)(x_{1} \wedge \dotsb \wedge x_{p+q})  = \sum_{\mathclap{\substack{ \sigma \in S_{p+q} \\ \sigma(1) < \dotsb < \sigma(p) \\ \sigma(p+1) < \dotsb < \sigma(p+q) }}} \sign(\sigma) f(x_{\sigma(1)} \wedge \dotsb \wedge x_{\sigma(p)}) g(x_{\sigma(p+1)} \wedge \dotsb \wedge x_{\sigma(p+q)}).
@@ -673,7 +677,7 @@ We first note that \eqref{eq:cup-prod-def} simplifies to
 \begin{equation*}
   (e_{i} \cup e_{j,k})(x_{1} \wedge x_{2} \wedge x_{3}) = \sum_{\substack{\sigma \in S_{3} \\ \sigma(2) < \sigma(3)}} \sign(\sigma) e_{i}(x_{\sigma(1)}) e_{j,k}(x_{\sigma(2)} \wedge x_{\sigma(3)})
 \end{equation*}
-in these cases. Here the terms of the sum on the right is only non-zero if $x_{\sigma(1)} = \xi_{i}$ and $x_{\sigma(2)} \wedge x_{\sigma(3)} = \xi_{j} \wedge \xi_{3}$ (up to constants). In the case $e_{1} \cup e_{1,2}$ (resp.\ $e_{3} \cup e_{3,2}$), we can only have this if $x_{1} \wedge x_{2} \wedge x_{3}$ contains two copies of $\xi_{1}$ (resp.\ $\xi_{3}$), which implies that $x_{1} \wedge x_{2} \wedge x_{3} = 0$. So $e_{1} \cup e_{1,2} = 0$ and $e_{3} \cup e_{3,2} = 0$. Alternatively, one can see this by plugging in $x_{1} \wedge x_{2} \wedge x_{3} = \xi_{1} \wedge \xi_{3} \wedge \xi_{2}$ and simply calculating the right side.
+in these cases. Here the terms of the sum on the right is only non-zero if $x_{\sigma(1)} = \xi_{i}$ and $x_{\sigma(2)} \wedge x_{\sigma(3)} = \xi_{j} \wedge \xi_{k}$ (up to constants). In the case $e_{1} \cup e_{1,2}$ (resp.\ $e_{3} \cup e_{3,2}$), we can only have this if $x_{1} \wedge x_{2} \wedge x_{3}$ contains two copies of $\xi_{1}$ (resp.\ $\xi_{3}$), which implies that $x_{1} \wedge x_{2} \wedge x_{3} = 0$. So $e_{1} \cup e_{1,2} = 0$ and $e_{3} \cup e_{3,2} = 0$. Alternatively, one can see this by plugging in $x_{1} \wedge x_{2} \wedge x_{3} = \xi_{1} \wedge \xi_{3} \wedge \xi_{2}$ and simply calculating the right side.
 
 In the case $e_{1} \cup e_{3,2}$, \eqref{eq:cup-prod-def} simplifies to
 \begin{equation*}

@@ -1,64 +1,65 @@
 
 \begin{thenomenclature} 
 \nomgroup{A}
-  \item [{$\gs{B}$ / $\gs{B}^{+}$}]\begingroup (${} = \gs{T}\gs{N}$ / ${} = \gs{T}\gs{N}^{+}$) the Borel subgroups of $\gs{G}$ corresponding to $\Phi^{-}$ / $\Phi^{+}$\nomeqref {2.0}\nompageref{6}
-  \item [{$\Delta$}]\begingroup a (fixed) basis of the root system $\Phi$\nomeqref {2.0}\nompageref{6}
-  \item [{$\gs{G}$}]\begingroup a (fixed) split and connected reductive algebraic $\Z_{p}$-group\nomeqref {2.0}\nompageref{6}
-  \item [{$\lie{g}$}]\begingroup ${} = \F_{p} \otimes_{\F_{p}[\pi]} \gr N$, the Lazard Lie algebra corresponding to $N$\nomeqref {2.0}\nompageref{7}
-  \item [{$G_{\nu}$}]\begingroup ${}\coloneqq \set{g\in G : \omega(g)\geq \nu}$\nomeqref {2.0}\nompageref{9}
-  \item [{$G_{\nu+}$}]\begingroup ${}\coloneqq \set{g\in G : \omega(g)>\nu}$\nomeqref {2.0}\nompageref{9}
-  \item [{$\gr G$}]\begingroup ${} \coloneqq \bigoplus_{\nu>0} \gr_\nu G$ (a graded Lie algebra over $\F_{p}[\pi]$)\nomeqref {2.0}\nompageref{9}
-  \item [{$\gr_\nu G$}]\begingroup ${}\coloneqq G_\nu/G_{\nu+}$\nomeqref {2.0}\nompageref{9}
-  \item [{$h$}]\begingroup the Coxeter number of $\gs{G}$\nomeqref {2.0}\nompageref{7}
-  \item [{$H^{\bullet}(\lie{g},\edot)$}]\begingroup the cohomology of the Lie algebra $\lie{g}$\nomeqref {2.0}\nompageref{7}
-  \item [{$\Hc^{\bullet}(G, \edot)$}]\begingroup the continuous group cohomology of a topological group $G$\nomeqref {2.0}\nompageref{7}
-  \item [{$\Hd^{\bullet}(G, \edot)$}]\begingroup the discrete group cohomology of a topological group $H$\nomeqref {2.0}\nompageref{7}
+  \item [{$\gs{B}$ / $\gs{B}^{+}$}]\begingroup (${} = \gs{T}\gs{N}$ / ${} = \gs{T}\gs{N}^{+}$) the Borel subgroups of $\gs{G}$ corresponding to $\Phi^{-}$ / $\Phi^{+}$\nomeqref {2.0}\nompageref{5}
+  \item [{$\Delta$}]\begingroup a (fixed) basis of the root system $\Phi$\nomeqref {2.0}\nompageref{5}
+  \item [{$\gs{G}$}]\begingroup a (fixed) split and connected reductive algebraic $\Z_{p}$-group\nomeqref {2.0}\nompageref{5}
+  \item [{$\lie{g}$}]\begingroup ${} = \F_{p} \otimes_{\F_{p}[\pi]} \gr N$, the Lazard Lie algebra corresponding to $N$\nomeqref {2.0}\nompageref{6}
+  \item [{$G_{\nu}$}]\begingroup ${}\coloneqq \set{g\in G : \omega(g)\geq \nu}$\nomeqref {2.0}\nompageref{8}
+  \item [{$G_{\nu+}$}]\begingroup ${}\coloneqq \set{g\in G : \omega(g)>\nu}$\nomeqref {2.0}\nompageref{8}
+  \item [{$\gr G$}]\begingroup ${} \coloneqq \bigoplus_{\nu>0} \gr_\nu G$ (a graded Lie algebra over $\F_{p}[\pi]$)\nomeqref {2.0}\nompageref{8}
+  \item [{$\gr_\nu G$}]\begingroup ${}\coloneqq G_\nu/G_{\nu+}$\nomeqref {2.0}\nompageref{8}
+  \item [{$h$}]\begingroup the Coxeter number of $\gs{G}$\nomeqref {2.0}\nompageref{6}
+  \item [{$H^{\bullet}(\lie{g},\edot)$}]\begingroup the cohomology of the Lie algebra $\lie{g}$\nomeqref {2.0}\nompageref{6}
+  \item [{$\Hc^{\bullet}(G, \edot)$}]\begingroup the continuous group cohomology of a topological group $G$\nomeqref {2.0}\nompageref{6}
+  \item [{$\Hd^{\bullet}(G, \edot)$}]\begingroup the discrete group cohomology of a topological group $H$\nomeqref {2.0}\nompageref{6}
   \item [{$H^{s,t}$}]\begingroup ${} = \gr^{s}H^{s+t}$ for some cohomology $H$\nomeqref {2.0}\nompageref{7}
-  \item [{$H^{s,t}(\lie{g}, \F_{p})$}]\begingroup ${} = H^{s+t}\bigl( \gr^{s} \Hom_{\F_{p}}(\bigwedge^{\bullet}\lie{g}, \F_{p}) \bigr)$\nomeqref {2.2}\nompageref{13}
+  \item [{$H^{s,t}(\lie{g}, \F_{p})$}]\begingroup ${} = H^{s+t}\bigl( \gr^{s} \Hom_{\F_{p}}(\bigwedge^{\bullet}\lie{g}, \F_{p}) \bigr)$\nomeqref {2.2}\nompageref{11}
   \item [{$\gs{N}$ / $\gs{N}^{+}$}]\begingroup the unipotent radical of $\gs{B}$ / $\gs{B}^{+}$\nomeqref {2.0}\nompageref{6}
-  \item [{$\omega \colon G \setminus \set{1} \to \open{0}{\infty}$}]\begingroup a $p$-valuation on $G$\nomeqref {2.0}\nompageref{8}
-  \item [{$p$}]\begingroup a prime, $p \geq h-1$, where $h$ is the Coxeter number of $\gs{G}$\nomeqref {2.0}\nompageref{7}
-  \item [{$\Phi$}]\begingroup ${} = \Phi(\gs{G},\gs{T})$, the root system of $\gs{G}$ with respect to $\gs{T}$\nomeqref {2.0}\nompageref{6}
-  \item [{$\Phi^{+}$ / $\Phi^{-}$}]\begingroup the positive/negative roots in $\Phi$ with respect to $\Delta$\nomeqref {2.0}\nompageref{6}
-  \item [{$\Phi^{\vee}$}]\begingroup the dual root system of $\Phi$\nomeqref {2.0}\nompageref{7}
-  \item [{$\pi \colon \gr G \to \gr G$}]\begingroup the direct sum of the maps $gG_{\nu+} \mapsto g^pG_{(\nu+1)+}$\nomeqref {2.0}\nompageref{10}
-  \item [{$\rank(G,\omega)$}]\begingroup ${}\coloneqq \rank_{\F_p[P]} \gr G$ the rank of the pair $(G,\omega)$\nomeqref {2.0}\nompageref{11}
-  \item [{$\gs{T}$}]\begingroup a (fixed) split maximal torus of $\gs{G}$\nomeqref {2.0}\nompageref{6}
-  \item [{$V_{\F_{p}}(\lambda)$}]\begingroup ${} = V_{\Z}(\lambda) \otimes_{\Z} \F_{p}$\nomeqref {2.0}\nompageref{7}
-  \item [{$V_{\Z}(\lambda)$}]\begingroup the Weyl module for $\gs{G}_{\Z}$ over $\Z$ with highest weight $\lambda$\nomeqref {2.0}\nompageref{7}
-  \item [{$W$}]\begingroup the Weyl group corresponding to $\Phi$ and $\Phi^{\vee}$\nomeqref {2.0}\nompageref{7}
-  \item [{$X$}]\begingroup $=X(\gs{T}) \iso X(\gs{T}_{\Z})$, the character group of $\gs{T}$\nomeqref {2.0}\nompageref{7}
-  \item [{$X^{+}$}]\begingroup ${} = \set{\lambda \in X \given \inner{\lambda}{\alpha^\vee} \geq 0 \text{ for all } \alpha \in \Phi^+}$\nomeqref {2.0}\nompageref{7}
+  \item [{$\omega \colon G \setminus \set{1} \to \open{0}{\infty}$}]\begingroup a $p$-valuation on $G$\nomeqref {2.0}\nompageref{7}
+  \item [{$p$}]\begingroup a prime, $p \geq h-1$, where $h$ is the Coxeter number of $\gs{G}$\nomeqref {2.0}\nompageref{6}
+  \item [{$\Phi$}]\begingroup ${} = \Phi(\gs{G},\gs{T})$, the root system of $\gs{G}$ with respect to $\gs{T}$\nomeqref {2.0}\nompageref{5}
+  \item [{$\Phi^{+}$ / $\Phi^{-}$}]\begingroup the positive/negative roots in $\Phi$ with respect to $\Delta$\nomeqref {2.0}\nompageref{5}
+  \item [{$\Phi^{\vee}$}]\begingroup the dual root system of $\Phi$\nomeqref {2.0}\nompageref{6}
+  \item [{$\pi \colon \gr G \to \gr G$}]\begingroup the direct sum of the maps $gG_{\nu+} \mapsto g^pG_{(\nu+1)+}$\nomeqref {2.0}\nompageref{9}
+  \item [{$\rank(G,\omega)$}]\begingroup ${}\coloneqq \rank_{\F_p[P]} \gr G$ the rank of the pair $(G,\omega)$\nomeqref {2.0}\nompageref{9}
+  \item [{$\gs{T}$}]\begingroup a (fixed) split maximal torus of $\gs{G}$\nomeqref {2.0}\nompageref{5}
+  \item [{$V_{\F_{p}}(\lambda)$}]\begingroup ${} = V_{\Z}(\lambda) \otimes_{\Z} \F_{p}$\nomeqref {2.0}\nompageref{6}
+  \item [{$V_{\Z}(\lambda)$}]\begingroup the Weyl module for $\gs{G}_{\Z}$ over $\Z$ with highest weight $\lambda$\nomeqref {2.0}\nompageref{6}
+  \item [{$W$}]\begingroup the Weyl group corresponding to $\Phi$ and $\Phi^{\vee}$\nomeqref {2.0}\nompageref{6}
+  \item [{$X$}]\begingroup $=X(\gs{T}) \iso X(\gs{T}_{\Z})$, the character group of $\gs{T}$\nomeqref {2.0}\nompageref{6}
+  \item [{$X^{+}$}]\begingroup ${} = \set{\lambda \in X \given \inner{\lambda}{\alpha^\vee} \geq 0 \text{ for all } \alpha \in \Phi^+}$\nomeqref {2.0}\nompageref{6}
 \nomgroup{B}
-  \item [{$D$}]\begingroup ${} = [F : \Q_{p}]$, the degree of the extension $F/\Q_{p}$\nomeqref {3.0}\nompageref{32}
-  \item [{$\diag(a_{1},\dotsc,a_{n})$}]\begingroup (${} = (a_{ij})$) the diagonal matrix with entries $a_{ii} = a_{i}$\nomeqref {3.0}\nompageref{32}
-  \item [{$\diag_{i_{1},\dotsc,i_{k}}(a_{1},\dotsc,)$}]\begingroup (${} = (a_{ij})$) the matrix with entries $a_{i_{\ell}i_{\ell}} = a_{\ell}$ for $\ell=1,\dotsc,k$ and zeroes in all other entries\nomeqref {3.0}\nompageref{32}
-  \item [{$e_{i_{1},\dotsc,i_{m}}$}]\begingroup ${} = (\xi_{i_{1}} \wedge \dotsb \wedge \xi_{i_{m}})^{*}$, the element of the dual basis of $\Hom_{k}\bigl( \bigwedge^{m}\lie{g},k \bigr)$ corresponding to $\xi_{i_{1}} \wedge \dotsb \wedge \xi_{i_{m}}$ in the basis of $\bigwedge^{m}\lie{g}$\nomeqref {3.18}\nompageref{69}
-  \item [{$E_{ij}$}]\begingroup the matrix with $1$ in the $(i,j)$ entry and zeroes in all other entries\nomeqref {3.0}\nompageref{32}
-  \item [{$F$}]\begingroup a finite extension of $\Q_{p}$\nomeqref {3.0}\nompageref{32}
-  \item [{$\gs{G}$}]\begingroup a (fixed) split and connected reductive algebraic $F$-group\nomeqref {3.0}\nompageref{35}
-  \item [{$\lie{g}$}]\begingroup ${} = k \otimes_{\F_{p}[\pi]} \gr I$, the Lazard Lie algebra corresponding to the pro-$p$ Iwahori subgroup $I$\nomeqref {3.0}\nompageref{34}
-  \item [{$G$}]\begingroup ${} = \gs{G}(F)$, a locally profinite group\nomeqref {3.0}\nompageref{35}
-  \item [{$g_{ij}$}]\begingroup ${} = [g_{i},g_{j}]$\nomeqref {3.9}\nompageref{47}
-  \item [{$h$}]\begingroup the Coxeter number of $\gs{G}$\nomeqref {3.0}\nompageref{35}
-  \item [{$H^{\bullet}(\lie{g},\edot)$}]\begingroup the cohomology of the Lie algebra $\lie{g}$\nomeqref {3.3}\nompageref{38}
-  \item [{$H^{\bullet}(G,\edot)$}]\begingroup the continuous group cohomology of the topological group $G$\nomeqref {3.3}\nompageref{38}
-  \item [{$H^{s,t}$}]\begingroup ${} = \gr^{s}H^{s+t}$ for some cohomology $H$\nomeqref {3.3}\nompageref{38}
-  \item [{$H^{s,t}$}]\begingroup ${}= H^{s,t}(\lie{g},k) = H^{s+t}\bigl( \gr^{s} \Hom_{k}(\bigwedge^{\bullet}\lie{g}, k) \bigr)$\nomeqref {3.5}\nompageref{44}
-  \item [{$I_{G}$}]\begingroup the pro-$p$ Iwahori subgroup of $G$\nomeqref {3.39}\nompageref{121}
-  \item [{$k$}]\begingroup a perfect field of characteristic $p$\nomeqref {3.0}\nompageref{32}
-  \item [{$\idm_{F}$}]\begingroup maximal ideal of the valuation ring $\sO_{F}$\nomeqref {3.0}\nompageref{32}
-  \item [{$\sO_{F}$}]\begingroup the valuation ring of $F$\nomeqref {3.0}\nompageref{32}
-  \item [{$O(p^{r})$}]\begingroup for elements of $\sO_{F}$ we write $x = y + O(p^{r})$ if and only if $x-y \in p^{r}\sO_{F}$\nomeqref {3.0}\nompageref{32}
-  \item [{$p$}]\begingroup a prime, $p-1 \geq eh$, where $h$ is the Coxeter number of $\gs{G}$\nomeqref {3.0}\nompageref{35}
-  \item [{$\Phi$}]\begingroup ${} = \Phi(\gs{G},\gs{T})$, the root system of $\gs{G}$ with respect to $\gs{T}$\nomeqref {3.0}\nompageref{35}
-  \item [{$\varpi_{F}$}]\begingroup a uniformizer of $F$\nomeqref {3.0}\nompageref{32}
-  \item [{$(\edot)^{\top}$}]\begingroup the transpose matrix\nomeqref {3.0}\nompageref{32}
-  \item [{$\gs{T}$}]\begingroup a (fixed) split maximal torus of $\gs{G}$\nomeqref {3.0}\nompageref{35}
-  \item [{$T$}]\begingroup ${} = \gs{T}(F)$\nomeqref {3.0}\nompageref{35}
-  \item [{$U_{\alpha,r}$}]\begingroup ${} = x_{\alpha}(\idm_{F}^{r})$\nomeqref {3.0}\nompageref{35}
-  \item [{$x_{\alpha} \colon F \xrightarrow{\iso} U_{\alpha}$}]\begingroup an isomorphism such that $tx_{\alpha}(x)t^{-1} = x_{\alpha}(\alpha(t)x)$ for $t \in T$ and $x \in F$\nomeqref {3.0}\nompageref{35}
-  \item [{$\xi_{ij}$}]\begingroup ${} = [\xi_{i},\xi_{j}]$\nomeqref {3.9}\nompageref{47}
-  \item [{$(X^{*}(T),\Phi,X_{*}(T),\Phi^{\vee})$}]\begingroup the root datum associated with $\Phi = \Phi(\gs(G),\gs{T})$\nomeqref {3.0}\nompageref{35}
+  \item [{$\diag(a_{1},\dotsc,a_{n})$}]\begingroup (${} = (a_{ij})$) the diagonal matrix with entries $a_{ii} = a_{i}$\nomeqref {3.0}\nompageref{28}
+  \item [{$\diag_{i_{1},\dotsc,i_{k}}(a_{1},\dotsc,a_{k})$}]\begingroup (${} = (a_{ij})$) the matrix with entries $a_{i_{\ell}i_{\ell}} = a_{\ell}$ for $\ell=1,\dotsc,k$, ones in the other diagonal entries and zeroes in all other entries\nomeqref {3.0}\nompageref{28}
+  \item [{$\diag_{i,i+1}(u)$}]\begingroup ${} = \diag_{i,i+1}(u,u^{-1})$\nomeqref {3.2}\nompageref{32}
+  \item [{$e_{i_{1},\dotsc,i_{m}}$}]\begingroup ${} = (\xi_{i_{1}} \wedge \dotsb \wedge \xi_{i_{m}})^{*}$, the element of the dual basis of $\Hom_{k}\bigl( \bigwedge^{m}\lie{g},k \bigr)$ corresponding to $\xi_{i_{1}} \wedge \dotsb \wedge \xi_{i_{m}}$ in the basis of $\bigwedge^{m}\lie{g}$\nomeqref {3.18}\nompageref{59}
+  \item [{$E_{ij}$}]\begingroup the matrix with $1$ in the $(i,j)$ entry and zeroes in all other entries\nomeqref {3.0}\nompageref{28}
+  \item [{$F$}]\begingroup a finite extension of $\Q_{p}$\nomeqref {3.0}\nompageref{27}
+  \item [{$\gs{G}$}]\begingroup a (fixed) split and connected reductive algebraic $F$-group\nomeqref {3.0}\nompageref{30}
+  \item [{$\lie{g}$}]\begingroup ${} = k \otimes_{\F_{p}[\pi]} \gr I$, the Lazard Lie algebra corresponding to the pro-$p$ Iwahori subgroup $I$\nomeqref {3.0}\nompageref{29}
+  \item [{$G$}]\begingroup ${} = \gs{G}(F)$, a locally profinite group\nomeqref {3.0}\nompageref{30}
+  \item [{$g_{ij}$}]\begingroup ${} = [g_{i},g_{j}]$\nomeqref {3.9}\nompageref{40}
+  \item [{$h$}]\begingroup the Coxeter number of $\gs{G}$\nomeqref {3.0}\nompageref{30}
+  \item [{$H^{\bullet}(\lie{g},\edot)$}]\begingroup the cohomology of the Lie algebra $\lie{g}$\nomeqref {3.3}\nompageref{32}
+  \item [{$H^{\bullet}(G,\edot)$}]\begingroup the continuous group cohomology of the topological group $G$\nomeqref {3.3}\nompageref{32}
+  \item [{$H^{s,t}$}]\begingroup ${} = \gr^{s}H^{s+t}$ for some cohomology $H$\nomeqref {3.3}\nompageref{32}
+  \item [{$H^{s,t}$}]\begingroup ${}= H^{s,t}(\lie{g},k) = H^{s+t}\bigl( \gr^{s} \Hom_{k}(\bigwedge^{\bullet}\lie{g}, k) \bigr)$\nomeqref {3.5}\nompageref{37}
+  \item [{$I_{G}$}]\begingroup the pro-$p$ Iwahori subgroup of $G$\nomeqref {3.39}\nompageref{106}
+  \item [{$k$}]\begingroup a perfect field of characteristic $p$\nomeqref {3.0}\nompageref{27}
+  \item [{$\ell$}]\begingroup ${} = [F : \Q_{p}]$, the degree of the extension $F/\Q_{p}$\nomeqref {3.0}\nompageref{27}
+  \item [{$\idm_{F}$}]\begingroup maximal ideal of the valuation ring $\sO_{F}$\nomeqref {3.0}\nompageref{27}
+  \item [{$\sO_{F}$}]\begingroup the valuation ring of $F$\nomeqref {3.0}\nompageref{27}
+  \item [{$O(p^{r})$}]\begingroup for elements of $\sO_{F}$ we write $x = y + O(p^{r})$ if and only if $x-y \in p^{r}\sO_{F}$\nomeqref {3.0}\nompageref{28}
+  \item [{$p$}]\begingroup a prime, $p-1 \geq eh$, where $h$ is the Coxeter number of $\gs{G}$\nomeqref {3.0}\nompageref{30}
+  \item [{$\Phi$}]\begingroup ${} = \Phi(\gs{G},\gs{T})$, the root system of $\gs{G}$ with respect to $\gs{T}$\nomeqref {3.0}\nompageref{30}
+  \item [{$\varpi_{F}$}]\begingroup a uniformizer of $F$\nomeqref {3.0}\nompageref{27}
+  \item [{$(\edot)^{\top}$}]\begingroup the transpose matrix\nomeqref {3.0}\nompageref{28}
+  \item [{$\gs{T}$}]\begingroup a (fixed) split maximal torus of $\gs{G}$\nomeqref {3.0}\nompageref{30}
+  \item [{$T$}]\begingroup ${} = \gs{T}(F)$\nomeqref {3.0}\nompageref{30}
+  \item [{$U_{\alpha,r}$}]\begingroup ${} = x_{\alpha}(\idm_{F}^{r})$\nomeqref {3.0}\nompageref{30}
+  \item [{$x_{\alpha} \colon F \xrightarrow{\iso} U_{\alpha}$}]\begingroup an isomorphism such that $tx_{\alpha}(x)t^{-1} = x_{\alpha}(\alpha(t)x)$ for $t \in T$ and $x \in F$\nomeqref {3.0}\nompageref{30}
+  \item [{$\xi_{ij}$}]\begingroup ${} = [\xi_{i},\xi_{j}]$\nomeqref {3.9}\nompageref{40}
+  \item [{$(X^{*}(T),\Phi,X_{*}(T),\Phi^{\vee})$}]\begingroup the root datum associated with $\Phi = \Phi(\gs(G),\gs{T})$\nomeqref {3.0}\nompageref{30}
 
 \end{thenomenclature}

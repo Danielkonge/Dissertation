@@ -123,7 +123,7 @@ An element $\xi \in \gr G$ is called, as usual, homogeneous\index{homogeneous} (
 Note that $p\xi = 0$ for any homogeneous element $\xi \in \gr G$ since $\omega(g^{p}) = \omega(g) + 1$. Hence $\gr G$ in fact is an $\F_p$-vector space. Furthermore, by bilinear extension of the map
 \begin{align*}
   \gr_\nu G \times \gr_{\nu'} G &\to \gr_{\nu+\nu'} G \\
-  (\xi,\eta) &\mapsto [\xi,\eta]\coloneqq [g,h]G_{\nu+\nu'}+,
+  (\xi,\eta) &\mapsto [\xi,\eta]\coloneqq [g,h]G_{(\nu+\nu')+},
 \end{align*}
 for $\nu,\nu'>0$, we obtain a graded $\F_p$-bilinear map
 \begin{equation*}
@@ -151,7 +151,7 @@ We can and will therefore view $\gr G$ as a graded module over the polynomial ri
 \end{definition}
 Note that $G$ being of finite rank does not depend on the choice of the $p$-valuation, and assume from now on that $(G,\omega)$ is of finite rank. Note that $\gr G$ is finitely generated and torsionfree over the principal ideal domain $\F_{p}[\pi]$, and thus by the elementary divisor theorem  $\gr G$ is free. We call
 \begin{equation*}
-  \rank(G,\omega) \coloneqq \rank_{\F_p[P]} \gr G
+  \rank(G,\omega) \coloneqq \rank_{\F_p[\pi]} \gr G
 \end{equation*}%
 \nomuni[rankGomega]{$\rank(G,\omega)$}{${}\coloneqq \rank_{\F_p[P]} \gr G$ the rank of the pair $(G,\omega)$}%
 the \emph{rank}\index{p-valued group@$p$-valued group!rank} of the pair $(G,\omega)$.
@@ -176,7 +176,7 @@ which depends on the order of the $g_i$ and therefore is not a group homomorphis
 \begin{definition}
   The sequence of elements $(g_1,\dotsc,g_r)$ in $G$ is called an \emph{ordered basis} of $(G,\omega)$\index{p-valued group@$p$-valued group!ordered basis} if the map \eqref{eq:ZprtoG} is a bijection (and hence, by compactness, a homeomorphism) and
   \begin{equation*}
-    \omega(g_1^{x_1}\dotsb g_r^{x_r}) = \min_{1 \leq i \leq r}(\omega(g_i)+v(x_i)) \qquad \text{for any } x_1,\dotsc,x_r\in\Z_p.
+    \omega(g_1^{x_1}\dotsb g_r^{x_r}) = \min_{1 \leq i \leq r}(\omega(g_i)+v_{p}(x_i)) \qquad \text{for any } x_1,\dotsc,x_r\in\Z_p.
   \end{equation*}
 \end{definition}
 
@@ -245,7 +245,7 @@ Continuous group cohomology $\Hc^{n}(G,\F_{p})$ is the cohomology of the complex
 \]
 where the coboundary map $\partial_{n}$ is given by
 \begin{equation}\label{eq:group-coh-d}
-  \partial_{n}(f)(g_{1},\dotsc,g_{n}) = f(g_{2},\dotsc,g_{n}) + \sum_{i=0}^{n}(-1)^{i}f(g_{1},\dotsc,g_{i}g_{i+1},\dotsc,g_{n}),
+  \partial_{n}(f)(g_{1},\dotsc,g_{n}) = f(g_{2},\dotsc,g_{n}) + \sum_{i=1}^{n}(-1)^{i}f(g_{1},\dotsc,g_{i}g_{i+1},\dotsc,g_{n}),
 \end{equation}
 where $n$-th term is interpreted as $(-1)^{n}f(g_{1},\dotsc,g_{n-1})$, cf.\ \cite[§3]{Sor} or \cite[§2]{GalCoh}. Note again that our formula is slightly simpler since we only consider the trivial action on $\F_{p}$.
 
@@ -674,11 +674,11 @@ collapses on the first page, since the dimension of $E_{r}^{s,t}$ is non-increas
 giving us a good description of $H^n(\gs{N}(\Z_p),\F_p)$. Furthermore, we can describe the cup product, by calculating it in $H^{*}(\lie{g},\F_{p})$ or $H^{*}(\lie{n},\F_{p})$, cf.\ \Cref{thm:spec-seq} for the details. I.e., we have shown:
 
 \begin{theorem}
-  Let $N = \gs{N}(\Z_{p})$ be the $\Z_{p}$ points of $\gs{N}$, where $\gs{N}$ is the unipotent radical of a Borel in a split and connected reductive $\Z_{p}$-group, and let and $\lie{n} = \Lie{\gs{N}_{\F_{p}}}$. Then $\omega$ from \eqref{eq:p-val} gives a $p$-valuation on $N$, and if we let $\lie{g} = \F_{p} \otimes_{\F_{p}[\pi]} \gr N$ be the Lazard Lie algebra of $N$, then $\lie{g} \iso \lie{n}$.
+  Let $N = \gs{N}(\Z_{p})$ be the $\Z_{p}$-points of $\gs{N}$, where $\gs{N}$ is the unipotent radical of a Borel in a split and connected reductive $\Z_{p}$-group, and let and $\lie{n} = \Lie{\gs{N}_{\F_{p}}}$. Then $\omega$ from \eqref{eq:p-val} gives a $p$-valuation on $N$, and if we let $\lie{g} = \F_{p} \otimes_{\F_{p}[\pi]} \gr N$ be the Lazard Lie algebra of $N$, then $\lie{g} \iso \lie{n}$.
 
   Furthermore, there is a convergent multiplicative spectral sequence
   \[
-    E_1^{s,t} = H^{s,t}(\lie{g},\F_{p}) \Longrightarrow \Hc^{s+t}(G,\F_{p})
+    E_1^{s,t} = H^{s,t}(\lie{g},\F_{p}) \Longrightarrow \Hc^{s+t}(N,\F_{p})
   \]
   collapsing at the first page, so $\gr^{s} H^{n}(N,\F_{p}) \iso H^{s,t}(\lie{g},\F_{p}) \iso H^{s,t}(\lie{n},\F_{p})$, and the cup product on $H^{*}(\lie{g},\F_{p})$ is compatible with the cup product on $H^{*}(N,\F_{p})$ in the sense that the following diagram commutes.
   \[

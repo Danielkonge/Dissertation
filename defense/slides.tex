@@ -1,0 +1,1588 @@
+\documentclass{beamer}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{amsfonts}       % blackboard math symbols
+
+\usetheme{Copenhagen}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+% \pgfmathdeclarefunction{gauss}{2}{%
+%   \pgfmathparse{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}%
+% }
+
+%%%%%%%%%%%%% BEGIN: MY SETTINGS (FINAL) %%%%%%%%%%%%%
+
+\usepackage{%
+  amsmath,    %some math tools
+  amssymb,       %math symbols
+  graphicx,      %enhanced graphics options
+  mathtools, 	 %extension of amsmath
+  etoolbox,      %useful commands
+  microtype,  	 %small typographic effects
+  %bm,		 %bold math symbols
+  %todonotes, 	 %adds the option \todo{...} (use fixme instead)
+}
+
+\usepackage[shortlabels]{enumitem} %better lists, e.g. enumerate
+
+% \usepackage{algorithm,algpseudocode}
+
+\usepackage[english]{babel} %use English as the main language
+
+\usepackage{multirow}
+\usepackage{adjustbox}
+
+\usepackage{color}
+
+\usepackage{tikz}
+\usetikzlibrary{patterns,cd}
+
+\usepackage{nicematrix}
+
+\newcommand*\N{\mathbb{N}}
+\newcommand*\Z{\mathbb{Z}}
+\newcommand*\Q{\mathbb{Q}}
+\newcommand*\R{\mathbb{R}}
+\newcommand*\C{\mathbb{C}}
+\newcommand*\F{\mathbb{F}}
+\newcommand*\G{\mathbb{G}}
+
+% define absolute value \abs{...}:
+\DeclarePairedDelimiterX\abs[1]\lvert\rvert{%
+  \ifblank{#1}{\:\cdot\:}{#1}
+}
+% define norm \norm{...}:
+\DeclarePairedDelimiterX\norm[1]\lVert\rVert{%
+  \ifblank{#1}{\:\cdot\:}{#1}
+}
+% define inner product \inner{...}{...}:
+\DeclarePairedDelimiterX{\inner}[2]{\langle}{\rangle}{%
+  \ifblank{#1}{\:\cdot\:}{#1},\ifblank{#2}{\:\cdot\:}{#2}
+}
+
+% define \set{...} to write sets and \given to write \set{... \given ...} for {...|...}
+\newcommand*\setSymbol[1][]{
+  \nonscript\:#1\vert\allowbreak\nonscript\:\mathopen{}
+}
+\providecommand\given{}
+\DeclarePairedDelimiterX\set[1]{\lbrace}{\rbrace}{
+  \renewcommand*\given{\setSymbol[\delimsize]}
+  #1
+}
+
+%define \lopen{...}{...}, \ropen{...}{...}, \open{...}{...}, \closed{...}{...} for intervals
+\DeclarePairedDelimiterX\open[2](){#1,#2}
+\DeclarePairedDelimiterX\lopen[2](]{#1,#2}
+\DeclarePairedDelimiterX\ropen[2][){#1,#2}
+\DeclarePairedDelimiterX\closed[2][]{#1,#2}
+
+
+%define \Span{...} to write span of vectors
+\DeclareMathOperator\Span{span}
+
+%define \Mat to write for set of matrices
+\newcommand*\Mat{\textup{Mat}}
+
+%define \gen{...} to write <...>
+\DeclarePairedDelimiterX\gen[1]\langle\rangle{
+  \ifblank{#1}{\:\cdot\:}{#1}
+}
+
+\DeclareMathOperator{\Var}{Var} %Variance
+\DeclareMathOperator{\Cov}{Cov} %Covariance
+\DeclareMathOperator{\polylog}{polylog}
+\DeclareMathOperator{\poly}{poly}
+\DeclareMathOperator{\median}{median}
+
+\DeclareMathOperator{\Ker}{Ker} %Kernel
+\DeclareMathOperator{\kernel}{ker} %kernel
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator*{\supp}{supp} %support
+\DeclareMathOperator{\id}{id} %identity map
+\DeclareMathOperator{\Id}{Id} %Identity map
+\DeclareMathOperator{\ord}{ord} %order of a group
+\DeclareMathOperator{\Syl}{Syl} %Sylow
+\DeclareMathOperator{\GL}{GL} %GL
+\DeclareMathOperator{\SL}{SL} %SL
+\DeclareMathOperator{\Ad}{Ad} %Adjoint representation
+\DeclareMathOperator{\ad}{ad} %adjoint representation
+\DeclareMathOperator{\Char}{char} %characteristic (cannot write with small c since that is used in LaTeX already)
+\DeclareMathOperator{\diag}{diag} %diagonal matrix
+\DeclareMathOperator{\Tr}{Tr} %Trace
+\DeclareMathOperator{\tr}{tr} %trace
+\DeclareMathOperator{\rank}{rank} %rank
+\DeclareMathOperator{\rk}{rk} %rank
+\DeclareMathOperator{\Hom}{Hom} %Hom 
+\DeclareMathOperator{\homo}{hom} %hom
+\DeclareMathOperator{\spec}{Spec} %spec
+\DeclareMathOperator{\End}{End} %endomorphisms
+\DeclareMathOperator{\Aut}{Aut} %automorphisms
+\DeclareMathOperator{\Der}{Der} %derivations
+\DeclareMathOperator{\Gal}{Gal} %Galois group
+\DeclareMathOperator{\Frac}{Frac} %fraction field
+\DeclareMathOperator{\Fr}{Fr} %Frobenius
+\DeclareMathOperator{\Frob}{Frob} %Frobenius
+\DeclareMathOperator{\Nm}{Nm} %Norm
+\DeclareMathOperator{\Ht}{ht} %height
+\DeclareMathOperator{\gr}{gr} %graded ...
+\DeclareMathOperator{\amp}{amp}
+\DeclareMathOperator{\Lie}{Lie}
+\DeclareMathOperator{\reduc}{red}
+\DeclareMathOperator{\Nrd}{Nrd}
+\DeclareMathOperator{\sign}{sign}
+
+\newcommand*\op{^{\textup{op}}} %oposite ring/category/...
+\newcommand*\ab{^{\textup{ab}}}
+\renewcommand*\Re{\operatorname{Re}} %real part
+\renewcommand*\Im{\operatorname{Im}} %imaginary part
+%\newcommand*{\Lie}[1]{\operatorname{#1}} %for writing Lie groups, e.g. \Lie{O}(n)
+\newcommand*{\lie}[1]{\mathfrak{#1}} %for writing Lie algebras, e.g. \lie{g}
+\newcommand*{\cat}[1]{\textup{\textbf{#1}}} %for writing categories, e.g. \cat{Sets}, \cat{$R$-mod},...
+\newcommand*\rad[1]{\sqrt{#1}} %radical
+\newcommand*\cl[1]{\overline{#1}} %closure of a set
+\newcommand*\rint[1]{\mathcal{O}_{#1}} %ring of integers
+\newcommand*\act{\,.\,} %action of a group/Lie algebra/...
+\newcommand*\iso{\cong} %isomorphism
+\newcommand*\std{_{\textup{std}}}
+
+\newcommand*\sO{\mathcal{O}}
+\newcommand*\idm{\mathfrak{m}}
+\newcommand*\idp{\mathfrak{p}}
+\newcommand*\fo{\mathfrak{o}}
+\newcommand*\sL{\mathcal{L}}
+\newcommand*\Cont{\mathcal{C}}
+\newcommand*\defeq{\coloneqq}
+\renewcommand*\projlim{\varprojlim}
+
+\newcommand*\gs[1]{\mathcal{#1}}
+\newcommand*\edot{{-}}
+
+\newcommand*\bmat[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\newcommand*\pmat[1]{\begin{pmatrix} #1 \end{pmatrix}}
+
+
+%% END : COMMANDS %%
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Overview}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{PhD Defense} % The short title appears at the bottom of every slide, the full title is only on the title page
+\subtitle{On the mod \texorpdfstring{$p$}{p} cohomology of pro-\texorpdfstring{$p$}{p} Iwahori subgroups}
+\author{Daniel Kongsgaard} % Your name
+\institute{University of California, San Diego}
+\date{May 25, 2022} % Date, can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+\begin{frame}
+  \frametitle{Acknowledgements}
+
+  I would like to acknowledge Professor Claus Sørensen and the rest of the committee. \\[1em]
+
+  I would also like to acknowledge Daniel M.\ Kane, Ilias Diakonikolas, Jerry Li, and Kevin Tian. \\[1em]
+
+  Finally I would also like to thank the attendants of my defense.
+\end{frame}
+
+\begin{frame}
+\frametitle{Overview} % Table of contents slide, comment this block out to remove it
+\hypersetup{linkcolor=black}
+\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+\end{frame}
+
+
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+%------------------------------------------------
+%\section[List-Decodable Mean Estimation]{List-Decodable Mean Estimation (via Iterative Multi-Filtering)} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+% ------------------------------------------------
+
+%\subsection{Introduction}
+
+% \begin{frame}
+%   \frametitle{Defining the problem}
+
+%   Let $D$ be a distribution with unknown mean $\mu$ and unknown bounded covariance $\Sigma \preceq \sigma^2 I$.
+  
+%   \begin{block}{List-Decodable Mean Estimation.}\label{def:list-mean}
+%     Given
+%     \begin{itemize}
+%     \item a set $T \subset \R^d$ of size $n$,
+%     \item $\alpha \in \open{0}{1/2}$,
+%     \end{itemize}
+%     such that
+%     \begin{itemize}
+%     \item an $\alpha$-fraction of the points in $T$ are i.i.d.\ samples from $D$.
+%     \end{itemize}
+      
+%     We want to output a list of candidate vectors $\{\widehat{\mu}_i \}_{i \in [s]}$ such that
+%     \begin{itemize}
+%     \item $s = \poly(1/\alpha)$ (or optimally $O(1/\alpha)$),
+%     \item w.h.p.\ $\min_{i \in [s]} \|\widehat{\mu}_i - \mu \|_2$ is small.
+%     \end{itemize}
+%   \end{block}
+% \end{frame}
+
+% \begin{frame}
+%   \frametitle{Example}
+
+%   We need a list of size at least $1/\alpha$.
+  
+%   \begin{figure}
+%     \centering
+%     \begin{tikzpicture}
+%       \filldraw[color=blue!50, fill=blue!10, very thick] (-1.5,0) circle (1);
+%       \filldraw[color=blue!50, fill=red!10, very thick] (1,1.5) circle (1);
+%       \filldraw[color=blue!50, fill=red!10, very thick] (1,-1.5) circle (1);
+%     \end{tikzpicture}
+%     \caption{$1/\alpha$ clusters in the case $\alpha = 1/3$.}
+%   \end{figure}
+% \end{frame}
+
+%------------------------------------------------
+
+% \begin{frame}
+%   \frametitle{Applications}
+
+%   \begin{itemize}
+%   \item Clustering in mixture models
+%   \item Learning stochastic block models
+%   \item Crowdsourcing
+%   \end{itemize}
+% \end{frame}
+
+%------------------------------------------------
+
+%\subsection{Results}
+
+% \begin{frame}
+%   \frametitle{Results}
+
+%   We solve the above list-decodable problem using:
+%   \begin{itemize}
+%   \item $n = \Omega(d/\alpha)$ samples (optimal),
+%   \item $O(1/\alpha)$ hypotheses (optimal),
+%   \end{itemize}
+%   and 
+%   \begin{center}
+%     \begin{tabular}{|c||c|c|}
+%       \hline
+%       & Error & Time \\
+%       \hline
+%       [CMY20]\footnote{Concurrent work} & $O(\sigma/\sqrt{\alpha})$ & $\widetilde{O}(nd/\alpha^C)$ ($C\geq6$) \\
+%       \hline
+%       [DKK20] & $O(\sigma\log(1/\alpha)/\sqrt{\alpha})$ & $\widetilde{O}(n^2d/\alpha)$ \\
+%       \hline
+%       \multirow{2}{*}{[DKKLT20]} & $O(\sigma/\sqrt{\alpha})$ & $\widetilde{O}(nd/\alpha + 1/\alpha^6)$ \\
+%       & $O(\sigma\sqrt{\log(1/\alpha)/\alpha})$ & $\widetilde{O}(nd/\alpha)$ \\
+%       \hline
+%       [DKKLT21]\footnote{In the works} & $\sim O(\sigma\log(1/\alpha)/\alpha)$ & $\widetilde{O}(nd/\alpha^c)$ ($c>0$ small) \\
+%       \hline
+%     \end{tabular}
+%   \end{center}
+% \end{frame}
+
+%------------------------------------------------
+
+% \begin{frame}
+%   \frametitle{Multifilters}
+  
+%   Multifilters:
+%   \begin{itemize}
+%   \item Identify direction of large variance
+%   \item Do iterative outlier removal
+%   \end{itemize}
+
+%   \begin{figure}
+%     \centering
+%     \scalebox{.5}{
+%     \begin{tikzpicture}
+%       \begin{axis}[
+%         no markers, domain=0:10, samples=100,
+%         axis lines*=left, xlabel=\empty, ylabel=\empty,
+%         %every axis y label/.style={at=(current axis.above origin),anchor=south},
+%         %every axis x label/.style={at=(current axis.right of origin),anchor=west},
+%         height=5cm, width=12cm,
+%         xtick=\empty, ytick=\empty,
+%         enlargelimits=false, clip=false, axis on top,
+%         grid = major
+%         ]
+%         \addplot [very thick,cyan!50!black] {gauss(4,1)};
+%         \addplot [very thick,cyan!50!black] {gauss(6.5,1)};
+
+%         \draw [thick, decoration={brace,mirror,raise=0.2cm}, decorate] (0,0) -- (700,0) node [pos=0.5,anchor=north,yshift=-0.25cm] {$I_1$};
+%         \draw [thick, decoration={brace,mirror,raise=0.9cm}, decorate] (300,0) -- (1000,0) node [pos=0.5,anchor=north,yshift=-0.95cm] {$I_2$};
+%       \end{axis}
+%     \end{tikzpicture}
+%     }
+%   \end{figure}
+  
+%   Advantages:
+%   \begin{itemize}
+%   \item Usually lead to practical algorithms
+%   \end{itemize}
+%   New contributions:
+%   \begin{itemize}
+%   \item Previous multifilters relied on strong concentration bounds to get near-optimal error
+%   \end{itemize}
+% \end{frame}
+
+
+
+
+
+
+% ---------------------------------------------------------------------------------------
+
+
+\section{Introduction}
+
+
+%---------------------------------------------------------------------------------------
+
+%\subsection[Cohomology of Lie groups]{Cohomology of Lie groups}
+
+%------------------------------------------------
+
+
+\subsection{Cohomology of compact Lie groups}
+
+\begin{frame}
+  \frametitle{Cohomology of connected compact Lie groups (1)}
+
+  Given a connected compact Lie group $G$ with Lie algebra $\lie{g}$ with $\ell = \rank(G)$.
+  \begin{block}{Theorem (Chevalley and Eilenberg, 1948)}
+    \[
+      H^{*}(G,\R) \iso H^{*}(\lie{g},\R),
+    \]
+    or more explicitly $H^{*}(G,\R)$ is an exterior algebra $\bigwedge (\xi_{1},\dotsc,\xi_{\ell})$ on generators $\xi_{i}$ of various odd degrees $2d_{i}-1$.
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Cohomology of connected compact Lie groups (2)}
+
+  \begin{block}{Theorem (Kac, 1985)}
+    \[
+      H^{*}(G,\F_{p}) \iso \F_{p}[x_{1},\dotsc,x_{r}]/(x_{1}^{p^{k_{1}}}, \dotsc, x_{r}^{p^{k_{r}}}) \otimes_{\F_{p}} \bigwedge (\xi_{1},\dotsc,\xi_{\ell})
+    \]
+    for $p>2$. Here $\deg(\xi_{i}) = 2d_{i,p} - 1$ and $\deg(x_{i}) = 2d_{i,p}$, where Kac defines $d_{i,p}$ along with $r$ and the $k_{i}$.
+  \end{block}
+  \pause
+  \textbf{Note:} The above cohomology is the cohomology of $G$ as a topological space, and not continuous group cohomology. Continuous group cohomology can be thought of as the cohomology of the classifying space $BG$. One can identify $H^{*}(BG,\R)$ with a polynomial algebra $\R[x_{1},\dotsc,x_{\ell}]$ in variables of even degrees.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Mod $p$ cohomology of $p$-adic Lie groups $G$}
+
+  Let $G$ be a $p$-valued compact $p$-adic Lie group, and denote by $\lie{g} = \F_{p} \otimes_{\F_{p}[\pi]} \gr G$ the Lazard Lie algebra attached to $G$.
+
+  \begin{block}{Theorem (Lazard, 1965)}
+    If $G$ is equi-$p$-valued, then there is an isomorphism of algebras \[ H^{*}(G,\F_{p}) \iso \bigwedge \lie{g}^{*}. \]
+  \end{block}
+
+  \pause
+
+  \textbf{Note:} Any compact $p$-adic Lie group contains an open equi-$p$-valuable subgroup. So distinction between $p$-valued and equi-$p$-valued groups is somewhat nuanced.
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Other newer results}
+
+  Let $\gs{N}$ be the unipotent radical of a Borel in a split reductive $\Z_{p}$-group.
+
+  \begin{block}{Theorem (Ronchetti, 2020)}
+    There is a $\gs{T}(\Z_p)$-equivariant isomorphism
+    \[
+      H^*(\lie{n}_{\Z_p},\Z_p) \iso \gr H^*(N,\Z_p),
+    \]
+    where $\lie{n}_{\Z_p} = \Lie(\gs{N})$ and $N = \gs{N}(\Z_p)$.
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Interesting $p$-valuable groups $G$}
+
+  There are many examples of naturally occurring $p$-valuable groups $G$ which are not equi-$p$-valuable, where detailed information about $H^{*}(G,\F_{p})$ is important. E.g.
+  \begin{enumerate}[$\bullet$]
+    \item unipotent groups (i.e., the $\Z_{p}$-points of the unipotent radical of a Borel in a split reductive group),
+    \item Serre's standard groups with $e>1$,
+    \item pro-$p$ Iwahori subgroups for large enough $p$,
+    \item $1+\idm_{D}$ where $D$ is the quaternion division algebra over $\Q_{p}$ for $p>3$ (or more generally a central division algebra over $\Q_{p}$).
+  \end{enumerate}
+\end{frame}
+
+
+% ------------------------------------------------
+
+\subsection{Lazard Theory}
+
+\begin{frame}
+  \frametitle{$p$-adic integers}
+
+  \[
+    \Z_p = \set[\Big]{\sum_{n=0}^\infty a_np^n \given a_n \in \{0,1,\dotsc,p-1\}} \supseteq \Z
+  \]
+  is a commutative ring on which we have a $p$-adic valuation $v_p \colon \Z_p \to \N \cup \set{\infty}$ given by $v_p(0) = \infty$ and $v_p(a) = \min \set{n \in \N \given a_n \neq 0}$ for $a = \sum_{n \in \N} a_np^n \neq 0$ and satisfying
+
+  \begin{enumerate}[(a)]
+  \item $v_p(a) = \infty \Longleftrightarrow a=0$,
+  \item $v_p(ab) = v_p(a) + v_p(b)$,
+  \item $v_p(a+b) \geq \min\bigl( v_p(a),v_p(b) \bigr)$
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{$p$-valuations}
+
+  Let $G$ be any group.
+  \begin{block}{Definition}
+    A $p$-valuation $\omega$ on $G$ is a function \[\omega \colon G\setminus\set{1} \to \open{0}{\infty}\] which, with the convention that $\omega(1) = \infty$, satisfies
+
+    \begin{enumerate}[(a)]
+      \item $\omega(g) > \frac{1}{p-1}$,
+      \item $\omega(g^{-1}h) \geq \min\bigl( \omega(g),\omega(h) \bigr)$,
+      \item $\omega([g,h]) \geq \omega(g) + \omega(h)$  (where $[g,h] = ghg^{-1}h^{-1}$),
+      \item $\omega(g^p) = \omega(g) + 1$
+    \end{enumerate}
+    for any $g,h \in G$.
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Filtration of $G$}
+
+  Let $G$ be a $p$-valued group. For any real number $\nu > 0$ put
+  \[
+    G_{\nu} \defeq \set{ g \in G : \omega(g) \geq \nu } \quad \text{ and } \quad G_{\nu+} \defeq \set{ g \in G : \omega(g) > \nu },
+  \]
+  and note that these are normal subgroups.
+
+  The subgroups $G_{\nu}$ form a decreasing exhaustive and separated filtration of $G$ with the properties
+  \[
+    G_{\nu} = \bigcap_{\nu' < \nu} G_{\nu'} \quad \text{ and } \quad [G_{\nu},G_{\nu'}] \subseteq G_{\nu+\nu'}.
+  \]
+
+  There is a unique (Hausdorff) topological group structure on $G$ for which the $G_{\nu}$ form a fundamental system of open neighborhoods of the identity element. We assume that $G$ is profinite, so that $G = \projlim_{\nu>0} G/G_{\nu}$ is a pro-$p$ group since $\omega(g^{p}) = \omega(g)+1$ implies that $G/G_{\nu}$ is a $p$-group (finite since $G_{\nu}$ is open).
+\end{frame}
+
+\begin{frame}
+  \frametitle{Grading on $G$}
+
+  Consider the graded abelian group (denoted additively) \[ \gr G = \bigoplus_{\nu>0} \gr_{\nu} G, \] where $\gr_{\nu} G \defeq G_{\nu}/G_{\nu+}$ for $\nu>0$.
+
+
+  An element $\xi \in \gr G$ is called homogeneous (of degree $\nu$) if it lies in $\gr_{\nu} G$. Note that $p \xi = 0$ for any homogeneous $\xi \in \gr G$ since $\omega(g^{p}) = \omega(g)+1$. Hence $\gr G$ is an $\F_{p}$-vector space.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Lie bracket on $\gr G$}
+
+  Bilinearly extending the map
+  \begin{align*}
+    \gr_{\nu} G \times \gr_{\nu'} G &\to \gr_{\nu+\nu'} G \\
+    (\xi,\eta) &\mapsto [\xi,\eta] \defeq [g,h]G_{(\nu+\nu')+},
+  \end{align*}
+  we obtain a graded $\F_{p}$-bilinear map
+  \[
+    [\edot,\edot] \colon \gr G \times \gr G \to \gr G.
+  \]
+  One can check that $[\edot,\edot]$ makes $\gr G$ a graded Lie algebra over $\F_{p}$.
+\end{frame}
+
+\begin{frame}
+  \frametitle{$\F_{p}[\pi]$-Lie algebra structure on $\gr G$}
+
+  The map
+  \begin{align*}
+    \gr_{\nu} G &\to \gr_{\nu+1} G \\
+    gG_{\nu+} &\mapsto g^{p}G_{(\nu+1)+}
+  \end{align*}
+  is well-defined and $\F_{p}$-linear, so it induces an $\F_{p}$-linear map of degree one \[ \pi \colon \gr G \to \gr G. \]
+
+  We view $\gr G$ as a graded module over $\F_{p}[\pi]$, and note that the Lie bracket on $\gr G$ is bilinear for the $\F_{p}[\pi]$-module structure, i.e., $\gr G$ is a Lie algebra over $\F_{p}[\pi]$.
+
+  \pause
+  \begin{block}{Definition}
+    The pair $(G,\omega)$ is called of finite rank if $\gr G$ is finitely generated as an $\F_{p}[\pi]$-module.
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Ordered basis of $(G,\omega)$}
+  
+  Assume from now on that $(G,\omega)$ is of finite rank $d$.
+
+  For any finitely many $g_{1},\dotsc,g_{r} \in G$ we have a continuous map (not group homomorphism)
+  \begin{equation}
+    \label{eq:Zpr-to-G-map}
+    \begin{aligned}
+      \Z_{p}^{r} &\to G \\
+      (x_{1},\dotsc,x_{r}) &\mapsto g_{1}^{x_{1}} \dotsb g_{r}^{x_{r}}.
+    \end{aligned}
+  \end{equation}
+
+  \begin{block}{Definition}
+    The sequence of elements $(g_{1},\dotsc,g_{r})$ in $G$ is called an ordered basis of $(G,\omega)$ if the map \eqref{eq:Zpr-to-G-map} is a bijection and \[ \omega(g_{1}^{x_{1}} \dotsb g_{r}^{x_{r}}) = \min_{1 \leq i \leq r} \bigl( \omega(g_{i})+v_{p}(x_{i}) \bigr) \quad \text{ for any }x_{1},\dotsc,x_{r} \in \Z_{p}. \]
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{$\F_{p}[\pi]$-basis of $\gr G$}
+
+ \begin{block}{Definition}
+    For any $g \in G \setminus \set{1}$, we put $\sigma(g) \defeq gG_{\omega(g)+} \in \gr G$.
+  \end{block}
+
+  Note that for $g \in G \setminus \set{1}$ and $x \in \Z_{p} \setminus \set{0}$
+  \[
+    \omega(g^{x}) = \omega(g) + v_{p}(x) \quad \text{ and } \quad \sigma(g^{x}) = \bar{x}\pi^{v_{p}(x)} \act \sigma(g),
+  \]
+  where $\bar{x}$ is the image of $p^{-v_{p}(x)}x$ in $\F_{p}^{\times}$.
+
+  An ordered basis $(g_{1},\dotsc,g_{d})$ of $(G,\omega)$ corresponds to an $\F_{p}[\pi]$-basis $\bigl( \sigma(g_{1}),\dotsc,\sigma(g_{d}) \bigr)$ of $\gr G$.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Lazard Lie algebra $\lie{g} = \F_{p} \otimes_{\F_{p}[\pi]} \gr G$}
+
+  Let \[ \lie{g} \defeq \F_{p} \otimes_{\F_{p}[\pi]} \gr G, \] and note that this an $\F_{p}$-Lie algebra with an $\F_{p}$-basis of vectors $\xi_{i} = 1 \otimes \sigma(g_{i})$ for $i=1,\dotsc,d$.
+
+  \pause
+
+  Note that the commutators $[g_{i},g_{j}]$, allow us to calculate $\sigma\bigl( [g_{i},g_{j}] \bigr) = \bigl[ \sigma(g_{i}), \sigma(g_{j}) \bigr]$ and thus $[\xi_{i},\xi_{j}] = 1 \otimes \bigl[ \sigma(g_{i}),\sigma(g_{j}) \bigr]$.
+\end{frame}
+
+
+% \begin{frame}
+%   \frametitle{Quick introduction to group schemes}
+
+%   We will not need a lot of properties from algebraic groups in the following, so it's enough to think of an algebraic $\Z_p$-group as a functor
+%   \[
+%     \set{\Z_p\text{{}-algebras}} \rightsquigarrow \set{groups},
+%   \]
+%   \pause
+%   e.g.\
+%   \[
+%     A \mapsto \G_a(A) = (A,+)
+%   \]
+%   or
+%   \[
+%     A \mapsto \GL_n(A)
+%   \]
+%   for any $\Z_p$-algebra $A$.
+% \end{frame}
+
+
+% ------------------------------------------------
+
+\subsection{\texorpdfstring{$E_1^{s,t} = H^{s,t}(\lie{g},\F_p) \Longrightarrow H^{s+t}(G,\F_p)$}{Multiplicative spectral sequence}}
+
+%------------------------------------------------
+
+% \begin{frame}[fragile]
+%   \frametitle{Cohomology (over $\F_p$)}
+
+%   A chain complex $(C_\bullet,d_\bullet)$ is a sequence of modules $\dotsc,C_0,C_1,C_2,\dotsc$ with morphisms (called differentials) $d_n \colon C_n \to C_{n-1}$ such that $d^2 = d_n \circ d_{n+1} = 0$.
+%   \pause
+
+%   Given a chain complex $(C_\bullet,d_\bullet)$, we can construct a cochain complex $(C^\bullet,\partial^\bullet)$ with $C^\bullet = \Hom(C_\bullet,\F_p)$, which now consists of a sequence of modules $\dotsc,C^0,C^1,C^2,\dotsc$ with differentials $\partial_n \colon C^n \to C^{n+1}$ such that $\partial^2 = 0$.
+%   \pause
+
+%   We define the n-th cohomology of the cochain complex
+%   \[
+%     \begin{tikzcd}
+%       \cdots \ar[r,"\partial^{-1}"] & C^0 \ar[r,"\partial^0"] & C^1 \ar[r,"\partial^1"] & C^2 \ar[r,"\partial^2"] & \cdots
+%     \end{tikzcd}
+%   \]
+%   to be
+%   \[
+%     H^n(C^\bullet) = \frac{\ker(\partial^n \colon C^{n} \to C^{n+1})}{\im(\partial^{n-1} \colon C^{n-1} \to C^n)}.
+%   \]
+% \end{frame}
+
+%------------------------------------------------
+
+\begin{frame}[fragile]
+  \frametitle{Continuous group cohomology (over $\F_p$)}
+
+  Let $G$ be a topological group and $\F_p$ a trivial $G$-module. Continuous group cohomology $H^{*}(G,\F_{p})$ is the cohomology of the complex $C^{\bullet}(G,\F_{p}) = \Cont(G^{\bullet},\F_{p})$ of continuous maps $G \times G \times \dotsb \times G \to \F_{p}$, i.e.,
+  \[
+    \begin{tikzcd}
+      0 \ar[r] & \F_{p} \ar[r,"\partial_{1}"] & \Cont(G,\F_{p}) \ar[r,"\partial_{2}"] & \Cont(G^{2},\F_{p}) \ar[r,"\partial_{3}"] & \cdots,
+    \end{tikzcd}
+  \]
+  where the coboundary maps $\partial_{n}$ are given by
+  \[
+    \partial_{n}(f)(g_{1},\dotsc,g_{n}) = f(g_{2},\dotsc,g_{n}) + \sum_{i=1}^{n} (-1)^{i}f(g_{1},\dotsc,g_{i}g_{i+1},\dotsc,g_{n}),
+  \]
+  with $n$-th term $(-1)^{n}f(g_{1},\dotsc,g_{n-1})$. \pause (Discrete is a special case.)
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Lie algebra cohomology (over $\F_p$) (1)}
+
+    Let $\lie{g}$ be a Lie algebra over $\F_p$ with $\F_p$ a trivial (left) $\lie{g}$-module. Lie algebra cohomology $H^{*}(\lie{g},\F_{p})$ is the cohomology of the complex $C^{\bullet}(\lie{g},\F_p) = \Hom_{\F_p}(\bigwedge^{\bullet}\lie{g},\F_p)$, i.e.,
+  \[
+    \begin{tikzcd}[column sep=scriptsize]
+      0 \ar[r] & \F_p \ar[r,"\partial_{1}"] & \Hom_{\F_{p}}(\lie{g},\F_p) \ar[r,"\partial_{2}"] & \Hom_{\F_{p}}\Bigl(\bigwedge^2\lie{g},\F_p\Bigr) \ar[r,"\partial_{3}"] &  \cdots,
+    \end{tikzcd}
+  \]
+  where the coboundary maps $\partial_{n}$ are given by
+  \begin{align*}
+    \partial_{n}(f)(x_1,\dotsc,x_{n}) &= \sum_{i<j}(-1)^{i+j}f\bigl([x_i,x_j],x_1,\dotsc,\widehat{x}_i,\dotsc,\widehat{x}_j,\dotsc,x_{n}\bigr),
+  \end{align*}
+  where $\widehat{x}_{i}$ means excluding $x_{i}$.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Lie algebra cohomology (over $\F_p$) (2)}
+
+  \textbf{Note:} The cochain complex corresponds to the chain complex $C_{\bullet}(\lie{g},\F_{p}) = \bigwedge^{\bullet}\lie{g}$, i.e.,
+  \[
+    \begin{tikzcd}
+      \cdots \ar[r] & \bigwedge^{3}\lie{g} \ar[r,"d_{3}"] & \bigwedge^{2}\lie{g} \ar[r,"d_{2}"] & \lie{g} \ar[r,"d_{1}"] & \F_{p} \ar[r] &  0,
+    \end{tikzcd}
+  \]
+  where the boundary maps $d_{n}$ are given by
+  \begin{align*}
+    &d_{n}(x_1\wedge \dotsb \wedge x_{n}) \\
+    &= \sum_{i<j}(-1)^{i+j}[x_i,x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x}_i \wedge \dotsb \wedge \widehat{x}_j \wedge \dotsb \wedge x_{n},
+  \end{align*}
+  where $\widehat{x}_{i}$ means excluding $x_{i}$.
+\end{frame}
+
+% ------------------------------------------------
+
+% \begin{frame}
+%   \frametitle{Group and Lie algebra cohomology over $\F_p$}
+
+%   In conclusion
+%   \[
+%     H^n(\lie{g},\F_p) = H^n\Bigl( \Hom_{\F_{p}}(\bigwedge^{\bullet}\lie{g},\F_p) \Bigr)
+%   \]
+%   and
+%   \[
+%     H^n(G,\F_p) = H^n\Bigl( \Cont(G^\bullet,\F_p) \Bigr).
+%   \]
+% \end{frame}
+
+% ------------------------------------------------
+
+\begin{frame}
+  \frametitle{Bigrading of the Lie algebra cohomology}
+
+  Suppose that $\lie{g} = \lie{g}^{1} \oplus \lie{g}^{2} \dotsb$ is a graded Lie algebra. Then $\bigwedge^{n} \lie{g}$ is also graded by letting
+  \[
+    \gr^{j}\Bigl( \bigwedge^{n} \lie{g} \Bigr) = \bigoplus_{j_{1}+\dotsb+j_{n} = j} \lie{g}^{j_{1}} \wedge \dotsb \wedge \lie{g}^{j_{n}}.
+  \]
+  \pause
+  Letting $\F_p$ be a $\Z$-graded (concentrated in degree $0$) $\lie{g}$-module, we get a grading
+  \[
+    \Hom_{\F_p}\Bigl( \bigwedge^n \lie{g}, \F_p \Bigr) = \bigoplus_{s \in \Z} \Hom_{\F_p}^s\Bigl( \bigwedge^n\lie{g},\F_p \Bigr)
+  \]
+  where $\Hom_{\F_p}^s$ denotes the homogeneous $\F_p$-linear maps of degree $s$.
+
+  This passes to bigrading of Lie algebra cohomology
+  \[
+    H^{s,t}(\lie{g},\F_p) = H^{s+t}\Bigl( \gr^{s} \Hom_{\F_p}(\bigwedge^{\bullet} \lie{g},\F_p) \Bigr).
+  \]
+\end{frame}
+
+% ------------------------------------------------
+
+\begin{frame}
+  \frametitle{Spectral sequences}
+
+  A cohomological spectral sequence is a choice of $r_0 \in \N$ and a collection of
+  \begin{enumerate}[$\bullet$]
+  \item $\F_{p}$-modules $E_{r}^{s,t}$ for each $s,t \in \Z$ and all integers $r \geq r_0$
+  \item differentials $d_{r}^{s,t} \colon E_{r}^{s,t} \to E_{r}^{s+r,t+1-r}$ such that $d_{r}^{2} = 0$ and $E_{r+1}$ is (isomorphic to) the homology of $(E_r,d_r)$, i.e.,
+    \[
+      E_{r+1}^{s,t} = \frac{\ker(d_{r}^{s,t} \colon E_{r}^{s,t} \to E_{r}^{s+r,t+1-r})}{\im(d_{r}^{s-r,t+r-1} \colon E_{r}^{s-r,t+r-1} \to E_{r}^{s,t})}.
+    \]
+  \end{enumerate}
+  For a given $r$, the collection $(E_{r}^{s,t},d_{r}^{s,t})_{s,t\in\Z}$ is called the r-th page.
+\end{frame}
+
+% ------------------------------------------------
+
+\begin{frame}[fragile]
+  \frametitle{$E_1$ (page 1)}
+
+  \[
+    \begin{tikzcd}[column sep=small,row sep=small]
+      \ddots & \vdots & \vdots & \vdots & \reflectbox{$\ddots$} \\
+      \cdots \ar[r] & E_1^{s-1,t+1} \ar[r] & E_1^{s,t+1} \ar[r] & E_1^{s+1,t+1} \ar[r] & \cdots \\
+      \cdots \ar[r] & E_1^{s-1,t} \ar[r] & E_1^{s,t} \ar[r] & E_1^{s,t} \ar[r] & \cdots \\
+      \cdots \ar[r] & E_1^{s-1,t-1} \ar[r] & E_1^{s,t-1} \ar[r] & E_1^{s,t-1} \ar[r] & \cdots \\
+      \reflectbox{$\ddots$} & \vdots & \vdots & \vdots & \ddots
+    \end{tikzcd}
+  \]
+\end{frame}
+
+% ------------------------------------------------
+
+\begin{frame}[fragile]
+  \frametitle{$E_2$ (page 2)}
+
+  \[
+    \begin{tikzcd}[column sep=small,row sep=small]
+      \ddots & \vdots & \vdots & \vdots & \reflectbox{$\ddots$} \\
+      \cdots & E_2^{s-1,t+1} \ar[drr] & E_2^{s,t+1} \ar[drr] & E_2^{s+1,t+1}  & \cdots \\
+      \cdots & E_2^{s-1,t} \ar[drr] & E_2^{s,t} \ar[drr] & E_2^{s,t} & \cdots \\
+      \cdots & E_2^{s-1,t-1}  & E_2^{s,t-1}  & E_2^{s,t-1} & \cdots \\
+      \reflectbox{$\ddots$} & \vdots & \vdots & \vdots & \ddots
+    \end{tikzcd}
+  \]
+\end{frame}
+
+% ------------------------------------------------
+
+\begin{frame}[fragile]
+  \frametitle{Convergent spectral sequences}
+
+  A spectral sequence \emph{converges} if $d_r$ vanishes on $E_r^{s,t}$ for any $s,t$ when $r\gg0$.
+
+  In this case $E_r^{s,t}$ is independent of $r$ for sufficiently large $r$, we denote it by $E_\infty^{s,t}$ and write
+  \[
+    E_{r}^{s,t} \Longrightarrow E_\infty^{s+t}.
+  \]
+
+  If we have terms $E_\infty^{n}$  with a natural filtration $F^\bullet E_\infty^n$ (but no natural double grading), we set $E_\infty^{s,t} = \gr^{s} E_\infty^{s,t}= F^sE_\infty^{s+t}/F^{s+t}E_\infty^{s+t}$.
+\end{frame}
+
+% ------------------
+
+\begin{frame}[fragile]
+  \frametitle{$E_1^{s,t} = H^{s,t}(\lie{g},\F_p) \Longrightarrow H^{s+t}(G,\F_p)$}
+
+  \begin{block}{Theorem (Sørensen, 2021)}
+    Let $(G,\omega)$ be a $p$-valuable group and $\lie{g} = \F_{p} \otimes_{\F_{p}[\pi]} \gr G$ its Lazard Lie algebra. Then there is a multiplicative spectral sequence collapsing at a finite stage,
+    \[
+      E_1^{s,t} = H^{s,t}(\lie{g},\F_{p}) \Longrightarrow H^{s+t}(G,\F_{p}).
+    \]
+  \end{block}
+  \pause
+
+  I.e., the multiplication on $E_{\infty}$ is compatible with the cup product on $H^{*}(G,\F_{p})$ in the sense that the following diagram commutes.
+  \[
+    \begin{tikzcd}
+      E_\infty^{s,n-s} \otimes E_\infty^{s',n'-s'} \ar[r] \ar[d,swap,"\iso"] & E_\infty^{s+s',n+n'-s-s'} \ar[d,"\iso"] \\
+      \gr^s H^n(G,k) \otimes \gr^{s'} H^{n'}(G,k) \ar[r] & \gr^{s+s'}H^{n+n'}(G,k)
+    \end{tikzcd}
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Proof idea:}
+
+  \begin{block}{Theorem (Sørensen, 2021)}
+    There is a convergent spectral sequence collapsing at a finite stage,
+    \[
+      E_{1}^{s,t} = HH^{s,t}(\gr \Omega(G),\gr W) \Longrightarrow HH^{s+t}(\Omega(G),W),
+    \]
+    where $W$ is a finite filtered $\Omega(G)$-bimodule.
+  \end{block}
+
+  \begin{align*}
+    H^{*}(G,W^{\mathrm{ad}}) &\leftrightsquigarrow HH^{*}(\Omega(G),W) \leftrightsquigarrow HH^{*}(\gr \Omega(G),\gr W) \\
+    &\iso HH^{*}(U(\lie{g}),\gr W) \leftrightsquigarrow H^{*}(\lie{g},(\gr W)^{\mathrm{ad}})
+  \end{align*}
+\end{frame}
+
+
+
+%---------------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------------
+
+\section[mod \texorpdfstring{$p$}{p} cohomology of unipotent groups]{On the mod \texorpdfstring{$p$}{p} cohomology of unipotent groups}
+
+%------------------------------------------------
+
+
+% \begin{frame}
+%   \frametitle{Original problem}
+
+%   \begin{block}{Theorem (Große-Klönne)}
+%     Let $\gs{G}$ be a simple split algebraic $\Z_p$-group with split maximal torus $\gs{T}$ and unipotent radical $\gs{N}$. Let $\rho$ denote the half sum of the positive roots. Suppose that $\mu \in X_1^*(\gs{T})$ ($p$-restricted weights) satisfies $\inner{\mu+\rho}{\check\beta} \leq p$ for all $\check\beta \in \Phi^{+}$. Then the natural map
+%     \[
+%       H^{i}(\gs{N}(\Z_p),V(\mu)) \to \prod_{\substack{w \in \gs{W} \\ \ell(w)=i}} H^{i}(\gs{N}_w(\Z_p),V(\mu)_{\gs{N}(\Z_p)(w)})
+%     \]
+%     is bijective, for any $i \in \Z$.
+%   \end{block}
+%   Note that the right side above is isomorphic to $H^{i}(\lie{n},V(\mu))$, where $\lie{n} = \Lie(\gs{N}_{\F_p})$.
+%   \pause
+%   Mistake in proof --- can we fix it? Yes (when $\mu=0$).
+% \end{frame}
+
+%------------------------------------------------
+
+\begin{frame}[fragile]
+  \frametitle{Main result}
+
+  Let $N = \gs{N}(\Z_{p})$ be the $\Z_{p}$-points of $\gs{N}$, where $\gs{N}$ is the unipotent radical of a Borel in a split and connected reductive $\Z_{p}$-group, and let $\lie{n} = \Lie(\gs{N}_{\F_{p}})$. Then (for $p \geq h_{\gs{G}}-1$ an odd prime)
+  \begin{enumerate}[$\bullet$]
+    \item $N$ is $p$-valuable with a $p$-valuation such that $\lie{g} \iso \lie{n}$ (as graded Lie algebras) for $\lie{g} = \F_{p} \otimes_{\F_{p}[\pi]} \gr N$,
+    \item $\gr^{s} H^{s+t}(N,\F_{p}) \iso H^{s,t}(\lie{g},\F_{p}) \iso H^{s,t}(\lie{n},\F_{p})$, and
+    \item the cup product on $H^{*}(\lie{g},\F_{p})$ is compatible with the cup product on $H^{*}(N,\F_{p})$ in the sense that the following diagram commutes.
+          \[
+          \begin{tikzcd}
+            H^{s,n-s}(\lie{n},\F_p) \otimes H^{s',n'-s'}(\lie{n},\F_p) \ar[r] \ar[d,swap,"\iso"] & H^{s+s',n+n'-s-s'}(\lie{n},\F_p) \ar[d,"\iso"] \\
+            \gr^s H^n(N,\F_p) \otimes \gr^{s'} H^{n'}(N,\F_p) \ar[r] & \gr^{s+s'}H^{n+n'}(N,\F_p)
+          \end{tikzcd}
+          \]
+  \end{enumerate}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+  \frametitle{Example}
+
+  For $\gs{N}$ think of the group
+  \[
+    \gs{N} = \set[\Bigg]{\pmat{1 & * & * \\ 0 & 1 & * \\ 0 & 0 & 1}} \subseteq \GL_n \text{ or  }\SL_{n}.
+  \]
+\end{frame}
+
+
+%------------------------------------------------
+
+
+% \begin{frame}
+%   \frametitle{Example (2)}
+
+%   In the case of $\gs{G} = \SL_3$ (in this case $h=3$, so $p\geq3$), we can take $\gs{T}$ to be the diagonal matrices in $\SL_3$ ($\det = 1$), $\gs{B}$ upper triangular matrices in $\SL_3$ and
+%   \[
+%     \gs{N} = \set[\Bigg]{\pmat{1 & * & * \\ 0 & 1 & * \\ 0 & 0 & 1}} \subseteq \SL_n.
+%   \]
+%   \pause
+%   Furthermore we can make $\Phi^{-} = \set{\alpha_1,\alpha_2,\alpha_3=\alpha_1+\alpha_2}$ with
+%   \[
+%     X_{\alpha_1} = \pmat{1 & 1 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1}, \qquad x_\alpha(A)(a) = \pmat{1 & a & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1}
+%   \]
+%   for $A$ a $\Z_p$-algebra and $a \in A$, and similar for $\alpha_2$ and $\alpha_3$.
+% \end{frame}
+
+%------------------------------------------------
+
+%------------------------------------------------
+%---------------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------------
+
+\section[mod \texorpdfstring{$p$}{p} cohomology of pro-\texorpdfstring{$p$}{p} Iwahori subgroups]{On the mod \texorpdfstring{$p$}{p} cohomology of pro-\texorpdfstring{$p$}{p} Iwahori subgroups}
+
+\begin{frame}[fragile]
+  \frametitle{Pro-$p$ Iwahori subgroups of $\SL_{n}$ and $\GL_{n}$ (1)}
+
+  Let $\gs{G} = \SL_{n}$ or $\gs{G} = \GL_{n}$ and let $h$ be the Coxeter number of $\gs{G}$ (i.e., $h = n$). Let furthermore
+  \begin{enumerate}[$\bullet$]
+    \item $F/\Q_{p}$ a finite extension with ramification index $e = e(F/\Q_{p})$ and inertia degree $f = f(F/\Q_{p})$,
+    \item $p-1 > eh$,
+    \item $\sO_{F}$ the valuation ring of $F$ with maximal ideal $\idm_{F} = (\varpi_{F})$,
+    \item $\exp$ and $\log$ the two mutually inverse isomorphisms (and homeomorphisms)
+          \[
+          \begin{tikzcd}
+            \idm_{F} \ar[r, yshift=0.7ex, "\exp"] & U_{F}^{(1)}. \ar[l, yshift=-0.7ex, "\log"]
+          \end{tikzcd}
+          \]
+  \end{enumerate}
+
+  Note that $\exp$ transfers a $\Z_{p}$-basis of $\idm_{F}$ to a $\Z_{p}$-basis of $U_{F}^{(1)} = 1 + \idm_{F}$.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Pro-$p$ Iwahori subgroups of $\SL_{n}$ and $\GL_{n}$ (2)}
+
+  When $\gs{G} = \SL_{n}$ or $\gs{G} = \GL_{n}$, we can always take the pro-$p$ Iwahori subgroup $I$ of $\gs{G}(F)$ to be the subgroup of $\gs{G}(\sO_{F})$ which is upper triangular and unipotent modulo $\varpi_{F}$.
+
+  \pause
+
+  When $\gs{G} = \SL_{n}$, we have roots $\Phi = \set{\varepsilon_{i}-\varepsilon_{j} \given 1 \leq i \neq j \leq n}$ and can take \[ \Delta = \set{ \alpha_{1}=\varepsilon_{1}-\varepsilon_{2},\alpha_{2}=\varepsilon_{2}-\varepsilon_{3},\dotsc, \alpha_{n-1}=\varepsilon_{n-1}-\varepsilon_{n} }, \] where $\varepsilon_{i}$ is the map that takes a diagonal matrix to its $i$-th diagonal entry. In this case \[ \alpha_{i}^{\vee}(u) = \diag(1,\dotsc,1,u,u^{-1},1,\dotsc,1) = \diag_{i,i+1}(u). \]
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Ordered basis of $I$ in $\SL_{n}(F)$}
+
+  Let $\set{b_{1},\dotsc,b_{\ell}}$ be a $\Z_{p}$-basis of $\sO_{F}$, where $\ell = [F:\Q_{p}]$. With a chosen ordering of $\set{(i,j) : 1 \leq i,j \leq n}$, we get for $\gs{G} = \SL_{n}$:
+  \begin{block}{Proposition (Lahiri and Sørensen, 2022)}
+    \begin{enumerate}[$\bullet$]
+      \item $\bigl( 1_{n}+\varpi_{F}b_{1}E_{ij},\dotsc, 1_{n}+\varpi_{F}b_{\ell}E_{ij} \bigr)_{1 \leq j < i \leq n}$,
+      \item $\bigl( \diag_{i,i+1}(\exp(\varpi_{F}b_{1})), \dotsc, \diag_{i,i+1}(\exp(\varpi_{F}b_{\ell})) \bigr)_{i=1,\dotsc,n-1}$,
+      \item $\bigl( 1_{n}+b_{1}E_{ij}, \dotsc, 1_{n}+b_{\ell}E_{ij} \bigr)_{1 \leq i < j \leq n}$
+    \end{enumerate}
+    is an ordered basis of $I$.
+  \end{block}
+
+  Here $E_{ij}$ denotes the matrix with $1$ in the $(i,j)$-entry and zeroes in all other entries, and $1_{n}$ is the identity matrix in $M_{n}(F)$.
+\end{frame}
+
+\begin{frame}
+  \frametitle{$p$-valuation on $I$}
+
+  On this basis we have a $p$-valuation given by:
+  \begin{enumerate}[$\bullet$]
+    \item $\omega\bigl( 1_{n}+\varpi_{F}b_{m}E_{ij} \bigr) = \frac{1}{e} + \frac{j-i}{eh}$ for $j<i$,
+    \item $\omega\bigl( \diag_{i,i+1}(\exp(\varpi_{F}b_{m})) \bigr) = \frac{1}{e}$ for $i=1,\dotsc,n-1$,
+    \item $\omega\bigl( 1_{n}+b_{m}E_{ij} \bigr) = \frac{j-i}{eh}$ for $i<j$.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Ordered basis of $I$ in $\GL_{n}$}
+
+  Given the ordered basis of $I$ in $\SL_{n}$, it is straightforward to obtain an ordered basis of $\GL_{n}$ by simply adding the elements $\bigl( \exp(\varpi_{F}b_{1})1_{n}, \dotsc, \exp(\varpi_{F}b_{\ell})1_{n} \bigr)$ to the middle item in the earlier list (corresponding to adding the root $\varepsilon_{1} + \dotsb + \varepsilon_{n}$).
+
+  The $p$-valuation of all of these are clearly also $\frac{1}{e}$.
+\end{frame}
+
+% ---------------------------------------------------------------------------------------
+
+\subsection{\texorpdfstring{$I \subseteq \SL_{2}(\Z_{p})$}{I in SL2(Zp)}}
+
+\begin{frame}[fragile]
+  \frametitle{The ordered basis of $I \subseteq \SL_{2}(\Z_{p})$}
+
+  Let $I$ be the pro-$p$ Iwahori subgroup of $\SL_{2}(\Q_{p})$, so we can take $I$ of the form
+  \[
+    I = \pmat{ 1+p\Z_{p} & \Z_{p} \\ p\Z_{p} & 1+p\Z_{p} }^{\!\!\det = 1} \subseteq \SL_{2}(\Z_{p}),
+  \]
+  and
+  \[
+    g_{1} = \pmat{ 1 & 0 \\ p & 1 }, \quad g_{2} = \pmat{ \exp(p) & 0 \\ 0 & \exp(-p) }, \quad g_{3} = \pmat{ 1 & 1 \\ 0 & 1 }
+  \]
+  is an ordered basis of $I$.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Commutators $[g_{i},g_{j}]$}
+
+  Calculating $[g_{i},g_{j}]$ for $i,j=1,2,3$, we can find $x_{1},x_{2},x_{3} \in \Z_{p}$ such that \[ [g_{i},g_{j}] = g_{1}^{x_{1}}g_{2}^{x_{2}}g_{3}^{x_{3}}, \] and thus \[ \bigl[ \sigma(g_{i}),\sigma(g_{j}) \bigr] = \sigma\bigl( [g_{i},g_{j}] \bigr) = \sum_{\ell=1}^{d} \overline{x}_{\ell}\pi^{v_{p}(x_{\ell})} \act \sigma(g_{\ell}). \] Letting $\set{ \ell_{1},\dotsc,\ell_{r} }$ be the subset of $\set{ 1,\dotsc,d }$ such that $v_{p}(x_{\ell_{s}}) = 0$ and $v_{p}(x_{\ell}) > 0$ for $\ell \notin \set{ \ell_{1},\dotsc,\ell_{r} }$, we get that \[ [\xi_{i},\xi_{j}] = \sum_{s=1}^{r} \overline{x}_{\ell_{s}} \xi_{\ell_{s}}. \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{$g_{1}^{x_{1}}g_{2}^{x_{2}}g_{3}^{x_{3}}$}
+
+  Note that
+  \begin{align*}
+    g_{1}^{x_{1}}g_{2}^{x_{2}}g_{3}^{x_{3}} &= \pmat{ \exp(px_{2}) & x_{3}\exp(px_{2}) \\ px_{1}\exp(px_{2}) & px_{1}x_{3}\exp(px_{2}) + \exp(-px_{2}) } \\
+    &= \pmat{ a_{11} & a_{12} \\ a_{21} & a_{22} }.
+  \end{align*}
+\end{frame}
+
+\begin{frame}
+  \frametitle{$[g_{1},g_{2}] = g_{1}^{x_{1}}g_{2}^{x_{2}}g_{3}^{x_{3}}$}
+
+  \[ [g_{1},g_{2}] = \pmat{ 1 & 0 \\ p\bigl( 1-\exp(-2p) \bigr) & 1 } = g_{1}^{x_{1}}g_{2}^{x_{2}}g_{3}^{x_{3}} \]
+  implies that $x_{2} = x_{3} = 0$ and \[ a_{21} = px_{1} = p\bigl( 1-\exp(-2p) \bigr) = 2p^{2} + O(p^{3}). \] So $x_{1} = 2p + O(p^{2})$, and thus $\sigma([g_{1},g_{2}]) = 2\pi \act \sigma(g_{1})$, which implies that \[ [\xi_{1},\xi_{2}] = 0. \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{$[g_{1},g_{3}] = g_{1}^{x_{1}}g_{2}^{x_{2}}g_{3}^{x_{3}}$}
+
+  \[ [g_{1},g_{3}] = \pmat{ 1-p & p \\ -p^{2} & 1+p+p^{2} } = g_{1}^{x_{1}}g_{2}^{x_{2}}g_{3}^{x_{3}} \]
+  implies that
+  \begin{align*}
+    a_{11} &= \exp(px_{2}) = 1-p, \\
+    a_{12} &= x_{3}\exp(px_{2}) = x_{3}(1-p) = p, \\
+    a_{21} &= px_{1}\exp(px_{2}) = px_{1}(1-p) = -p^{2}.
+  \end{align*}
+  So $x_{2} = \frac{1}{p}\log(1-p) = \frac{1}{p}\bigl( (-p) + O(p^{2}) \bigr) = -1 + O(p)$ and $x_{1},x_{3} \in p\Z_{p}$. Hence \[ [\xi_{1},\xi_{3}] = -\xi_{2}. \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{$[g_{2},g_{3}]$}
+
+  \[ [g_{2},g_{3}] = \pmat{ 1 & \exp(2p)-1 \\ 0 & 1 } = g_{1}^{x_{1}}g_{2}^{x_{2}}g_{3}^{x_{3}} \]
+  implies that $x_{1} = x_{2} = 0$ and $a_{12} = x_{3} = \exp(2p)-1 = 2p + O(p^{2})$. So \[ [\xi_{1},\xi_{2}] = 0. \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Commutators in $\lie{g} = \F_{p} \otimes_{\F_{p}[\pi]} \gr I$ and grading on $\lie{g}$}
+
+  Altogether we have that $\xi_{1},\xi_{2},\xi_{3}$ is a basis of the Lazard Lie algebra $\lie{g} = \F_{p} \otimes_{\F_{p}[\pi]} \gr I$ with commutators
+  \[
+    [\xi_{1},\xi_{2}] = 0, \qquad [\xi_{1},\xi_{3}] = -\xi_{2}, \qquad [\xi_{2},\xi_{3}] = 0.
+  \]
+  \pause
+  \textbf{Note:} By the general formula for $\omega$ on $\SL_{n}$ (with $e=1$ and $h=2$), we see that
+  \[
+    \omega(g_{1}) = 1-\frac{1}{2} = \frac{1}{2}, \qquad \omega(g_{2})=1, \qquad \omega(g_{3}) = \frac{1}{2},
+  \]
+  so
+  \[
+    \lie{g}^{1} = \lie{g}_{\frac{1}{2}} = \Span_{\F_{p}}(\xi_{1},\xi_{3}), \qquad \lie{g}^{2}=\lie{g}_{1}=\Span_{\F_{p}}(\xi_{2}).
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Grading on $\bigwedge^{n} \lie{g}$}
+
+  For $n=0$: $\F_{p} = \gr^{0} \F_{p}$ with $\F_{p}$-basis $1$. \\[1em]
+
+  For $n=1$: $\lie{g} = \gr^{1} \lie{g} \oplus \gr^{2} \lie{g}$, where $\gr^{1} \lie{g} = \lie{g}^{1}$ has basis $\xi_{1},\xi_{3}$ and $\gr^{2} \lie{g} = \lie{g}^{2}$ has basis $\xi_{2}$. \\[1em]
+
+  For $n=2$: $\bigwedge^{2} \lie{g} = \gr^{2} \bigl( \bigwedge^{2} \lie{g} \bigr) \oplus \gr^{3} \bigl( \bigwedge^{2} \lie{g} \bigr)$, where $\gr^{2} \bigl( \bigwedge^{2} \lie{g} \bigr) = \lie{g}^{1} \wedge \lie{g}^{1}$ has basis $\xi_{1}\wedge\xi_{3}$ and $\gr^{3} \bigl( \bigwedge^{2}\lie{g} \bigr) = \lie{g}^{1} \wedge \lie{g}^{2}$ has basis $\xi_{1}\wedge \xi_{2},\xi_{3}\wedge\xi_{2}$. \\[1em]
+
+  For $n=3$: $\bigwedge^{3} \lie{g} = \gr^{4} \bigl( \bigwedge^{3} \lie{g} \bigr)$, where $\gr^{4} \bigl( \bigwedge^{3} \lie{g} \bigr) = \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2}$ has basis $\xi_{1}\wedge\xi_{3}\wedge \xi_{2}$. \\[1em]
+
+  For $n>3$: $\bigwedge^{n} \lie{g} = 0$.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Grading on $\Hom_{\F_{p}}\bigl( \bigwedge^{n}\lie{g},\F_{p} \bigr)$}
+
+  Recall that
+  \[
+    \Hom_{\F_{p}} \Bigl( \bigwedge^{n}\lie{g}, \F_{p} \Bigr) = \bigoplus_{s \in \Z} \Hom_{\F_{p}}^{s}\Bigl( \bigwedge^{n}\lie{g}, \F_{p} \Bigr),
+  \]
+  and let
+  \[
+    e_{i_{1},\dotsc,i_{n}} = (\xi_{i_{1}} \wedge \dotsb \wedge \xi_{i_{n}})^{*}
+  \]
+  be the element of the dual basis of $\Hom_{\F_{p}}\bigl( \bigwedge^{n}\lie{g},\F_{p}  \bigr)$ corresponding to $\xi_{i_{1}} \wedge \dotsb \wedge \xi_{i_{n}}$ in the basis of $\bigwedge^{n} \lie{g}$. \pause
+
+  We can transfer the previous grading and bases to $\Hom_{\F_{p}}\bigl( \bigwedge^{n}\lie{g},\F_{p} \bigr)$ using this.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Finding $H^{s,t} = H^{s,t}(\lie{g},\F_{p})$}
+
+  We will now calculate all maps
+  \begin{align*}
+    \gr^{j} \Bigl( \bigwedge^{n} \lie{g} \Bigr) &\to \gr^{j} \Bigl( \bigwedge^{n-1} \lie{g} \Bigr) \\
+    x_{1} \wedge \dotsb \wedge x_{n} &\mapsto \sum_{i<j} (-1)^{i+j} [x_{i},x_{j}] \wedge x_{1} \wedge \dotsb \wedge \widehat{x}_{i} \wedge \dotsb \wedge \widehat{x}_{j} \wedge \dotsb \wedge x_{n}
+  \end{align*}
+  in the chain complex and transfer them to the cochain complex
+  \[
+    \Hom_{\F_{p}}^{s}\Bigl( \bigwedge^{n-1}\lie{g},\F_{p} \Bigr) \to \Hom_{\F_{p}}^{s}\Bigl( \bigwedge^{n}\lie{g},\F_{p} \Bigr).
+  \]
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{$\gr^{0} H^{n}(\lie{g},\F_{p})$}
+
+  In grade $0$ we have the chain complex
+  \[
+    \begin{tikzcd}
+      0 \ar[r] & \F_{p} \ar[r] & 0,
+    \end{tikzcd}
+  \]
+  which gives us the grade $0$ cochain complex
+  \[
+    \begin{tikzcd}
+      0 & \ar[l] \Hom_{\F_{p}}^{0}(\F_{p},\F_{p}) & \ar[l] 0.
+    \end{tikzcd}
+  \]
+  So $H^{0} = H^{0,0}$ with $\dim H^{0,0} = 1$.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{$\gr^{-1} H^{n}(\lie{g},\F_{p})$}
+
+  In grade $1$ we have the chain complex
+  \[
+    \begin{tikzcd}
+      0 \ar[r] & \lie{g}^{1} \ar[r] & 0,
+    \end{tikzcd}
+  \]
+  which gives us the grade $-1$ cochain complex
+  \[
+    \begin{tikzcd}
+      0 & \ar[l] \Hom_{\F_{p}}^{-1}(\lie{g},\F_{p}) & \ar[l] 0.
+    \end{tikzcd}
+  \]
+  So $\dim H^{-1,2} = 2$ and $H^{-1,2} = \F_{p}[e_{1},e_{3}]$.
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{$\gr^{-2} H^{n}(\lie{g},\F_{p})$ (1)}
+
+  In grade $2$ we have the chain complex
+  \[
+    \begin{tikzcd}
+      0 \ar[r] & \lie{g}^{1} \wedge \lie{g}^{1} \ar[r, "{(1)}" {yshift=2pt}] & \lie{g}^{2} \ar[r] & 0,
+    \end{tikzcd}
+  \]
+  since
+  \begin{align*}
+    \lie{g}^{1} \wedge \lie{g}^{1} &\to \lie{g}^{2} \\
+    \xi_{1} \wedge \xi_{3} &\mapsto -[\xi_{1},\xi_{3}] = \xi_{2}.
+  \end{align*}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{$\gr^{-2} H^{n}(\lie{g},\F_{p})$ (2)}
+
+  This gives us the grade $-2$ cochain complex
+  \[
+    \begin{tikzcd}
+      0 & \ar[l] \Hom_{\F_{p}}^{-2}\bigl( \bigwedge^{2} \lie{g}, \F_{p} \bigr) & \ar[l, "{(1)}"' {yshift=2pt}] \Hom_{\F_{p}}^{-2}(\lie{g},\F_{p}) & \ar[l] 0.
+    \end{tikzcd}
+  \]
+  So
+  \begin{align*}
+    \dim H^{-2,3} &= \dim \kernel( (1) ) = 0, \\
+    \dim H^{-2,4} &= \dim \coker( (1) ) = 0.
+  \end{align*}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{$\gr^{-3} H^{n}(\lie{g},\F_{p})$}
+
+  In grade $3$ we have the chain complex
+  \[
+    \begin{tikzcd}
+      0 \ar[r] & \lie{g}^{1} \wedge \lie{g}^{2} \ar[r] & 0,
+    \end{tikzcd}
+  \]
+  which gives us the grade $-3$ cochain complex
+  \[
+    \begin{tikzcd}
+      0 & \ar[l] \Hom_{\F_{p}}^{-3}\bigl( \bigwedge^{2}\lie{g}, \F_{p} \bigr) & \ar[l] 0.
+    \end{tikzcd}
+  \]
+  So $\dim H^{-3,5} = 2$ and $H^{-3,5} = \F_{p}[e_{1,2},e_{3,2}]$.
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{$\gr^{-4} H^{n}(\lie{g},\F_{p})$}
+
+  In grade $4$ we have the chain complex
+  \[
+    \begin{tikzcd}
+      0 \ar[r] & \lie{g}^{1} \wedge \lie{g}^{1} \wedge \lie{g}^{2}  \ar[r] & 0,
+    \end{tikzcd}
+  \]
+  which gives us the grade $-4$ cochain complex
+  \[
+    \begin{tikzcd}
+      0 & \ar[l] \Hom_{k}^{-4}\bigl( \bigwedge^{3}\lie{g}, k \bigr) & \ar[l] 0.
+    \end{tikzcd}
+  \]
+  So $\dim H^{-4,7} = 1$ and $H^{-4,7} = \F_{p}[e_{1,3,2}]$.
+\end{frame}
+
+\begin{frame}
+  \frametitle{$H^{*}(\lie{g},\F_{p})$}
+
+  Altogether we see that
+  \begin{align*}
+    H^{0} &= H^{0,0} = \F_{p}, \\
+    H^{1} &= H^{-1,2} = \F_{p}[e_{1},e_{3}], \\
+    H^{2} &= H^{-3,5} = \F_{p}[e_{1,2},e_{3,2}], \\
+    H^{3} &= H^{-4,7} = \F_{p}[e_{1,3,2}],
+  \end{align*}
+  with dimensions $1,2,2,1$.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{$E_{1}^{s,t} = H^{s,t}(\lie{g},\F_{p}) \Longrightarrow H^{s+t}(I,\F_{p})$}
+
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begingroup
+      \renewcommand{\arraystretch}{1.5}
+      $\begin{NiceArray}{*{6}{c}}[hvlines, columns-width=auto]
+        \diagbox{t}{s} & 0 & -1 & -2 & -3 & -4 \\
+        0 & 1 \\
+        1 & \\
+        2 & & 2 \\
+        3 & \\
+        4 & \\
+        5 & & & & 2 \\
+        6 & \\
+        7 & & & & & 1
+      \end{NiceArray}$
+      \renewcommand{\arraystretch}{1}
+      \endgroup
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Recall that all differential $d_{r}^{s,t} \colon E_{r}^{s,t} \to E_{r}^{s+r,t+1-r}$ has bidegree $(r,1-r)$, i.e., they are all below the $(r,-r)$ arrow going $r$ to the left and $r$ up in the table to the left, where $r \geq 1$. \\[1em]
+
+      This means that all differentials for $r\geq1$ are trivial, so the spectral sequence collapses on the first page.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{$H^{n}(I,\F_{p})$ dimensions}
+
+  Hence $H^{s,t}(\lie{g},\F_{p}) = E_{1}^{s,t} \iso E_{\infty}^{s,t} = \gr^{s} H^{s+t}(I,\F_{p})$, and we get that
+  \begin{equation*}
+    \dim H^{n}(I,\F_{p}) =
+    \begin{dcases}
+      1 & n=0, \\
+      2 & n=1, \\
+      2 & n=2, \\
+      1 & n=3.
+    \end{dcases}
+  \end{equation*}
+  \pause
+
+  Furthermore $H^{s,t} \cup H^{s',t'} \subseteq H^{s+s',t+t'}$ by a result of Fuks, so the cup products
+  \begin{equation*}
+    \gr^{s} H^{n}(I,\F_{p}) \otimes \gr^{s'} H^{n'}(I,\F_{p}) \to \gr^{s+s'} H^{n+n'}(I,\F_{p})
+  \end{equation*}
+  are trivial, except for $H^{1}(I,\F_{p}) \otimes H^{2}(I,\F_{p}) \to H^{3}(I,\F_{p})$.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Cup product in Lie algebra cohomology}
+
+  For $f \in \Hom_{\F_{p}}\bigl( \bigwedge^{p}\lie{g},\F_{p} \bigr)$ and $g \in \Hom_{\F_{p}}\bigl( \bigwedge^{q}\lie{g},\F_{p} \bigr)$, we recall that the cup product in cohomology is induced by: $f \cup g \in \Hom_{\F_{p}}\bigl( \bigwedge^{p+q}\lie{g}, \F_{p} \bigr)$ defined by
+  \begin{align*}
+    &(f \cup g)(x_{1} \wedge \dotsb \wedge x_{p+q}) \\
+    &= \sum_{\mathclap{\substack{ \sigma \in S_{p+q} \\ \sigma(1) < \dotsb < \sigma(p) \\ \sigma(p+1) < \dotsb < \sigma(p+q) }}} \sign(\sigma) f(x_{\sigma(1)} \wedge \dotsb \wedge x_{\sigma(p)}) g(x_{\sigma(p+1)} \wedge \dotsb \wedge x_{\sigma(p+q)}).
+  \end{align*}
+
+  When finding $\cup \colon H^{1} \otimes H^{2} \to H^{3}$, where $H^{1} = \F_{p}[e_{1},e_{3}]$, $H^{2} = \F_{p}[e_{1,2},e_{3,2}]$ and $H^{3} = \F_{p}[e_{1,3,2}]$, we need to calculate $e_{i} \cup e_{j,k}$ on the basis $\xi_{1} \wedge \xi_{3} \wedge \xi_{2}$ of $\gr^{4} \bigl( \bigwedge^{3}\lie{g} \bigr)$.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Cup product on $H^{*}(\lie{g},\F_{p})$}
+
+  In this case, the sum simplifies to
+  \begin{align*}
+    &(e_{i} \cup e_{j,k})(x_{1} \wedge x_{2} \wedge x_{3}) \\
+    &= \sum_{\substack{ \sigma\in S_{3} \\ \sigma(2)<\sigma(3) }} \sign(\sigma)e_{i}(x_{\sigma(1)}) e_{j,k}(x_{\sigma(2)} \wedge x_{\sigma(3)}).
+  \end{align*}
+
+  The terms on the right are only non-zero if $x_{\sigma(1)} = \xi_{i}$ and $x_{\sigma(2)} \wedge x_{\sigma(3)} = \xi_{j} \wedge \xi_{k}$ (up to constants). \\[1em]
+  \pause
+
+  When $x_{1} \wedge x_{2} \wedge x_{3} = \xi_{1} \wedge \xi_{3} \wedge \xi_{2}$, we see that $e_{1} \cup e_{3,2} = e_{1,3,2}$ (with $\sigma = (1)$) and $e_{3} \cup e_{1,2} = -e_{1,3,2}$ (with $\sigma = (1,2)$).
+
+  This translates to a cup product on $H^{*}(I,\F_{p})$.
+\end{frame}
+
+\begin{frame}
+  \frametitle{$H^{*}\bigl( (1+\idm_{D})^{\Nrd = 1},\F_{p} \bigr)$ for $D$ a div.\ quat.\ alg.\ over $\Q_{p}$}
+
+  Let $D$ be the division quaternion algebra over $\Q_{p}$ for a prime $p>3$ and let $G = (1+\idm_{D})^{\Nrd = 1}$, where $\Nrd = \Nrd_{D/\Q_{p}}$ is the norm form. Sørensen and Henn have shown that
+  \[
+    H^{*}(G,\F_{p}) \iso \F_{p} \oplus \F_{D} \oplus \F_{D} \oplus \F_{p}
+  \]
+  of graded $\F_{p}$-algebras (where $\F_{D} \iso \F_{p^{2}}$). The only non-trivial cup product is $H^{1}(G,\F_{p}) \times H^{2}(G,\F_{p}) \to H^{3}(G,\F_{p})$, which corresponds to the trace pairing \[\F_{D} \times \F_{D} \to \F_{p}, \quad (x,y) \mapsto \Tr(xy). \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Comparing $H^{*}(I,\F_{p})$ and $H^{*}\bigl( (1+\idm_{D})^{\Nrd = 1},\F_{p} \bigr)$}
+
+  When $p \equiv 3 \pmod{4}$, we can write $\F_{D} = \F_{p}[\alpha]$ with $\alpha^{2} = -1$, and see that
+  \[
+    \Tr(1) = 2, \qquad \Tr(\alpha) = 0, \qquad \Tr(\alpha^{2}) = -2.
+  \]
+  \pause
+
+  Hence
+  \[
+    H^{*}(I,\ \F_{p}) \iso H^{*}\bigl( (1+\idm_{D})^{\Nrd = 1}, \F_{p} \bigr).
+  \]
+
+  \textbf{Note:} We even have that $\lie{g} \iso \lie{g}_{D}$, where $\lie{g}_{D} = \F_{p} \otimes_{\F_{p}[\pi]} \gr G$.
+
+  \begin{block}{Question}
+    Does this result generalize?
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Sidenote: $I$ is not uniformly powerful (1)}
+
+  \begin{block}{Definition}
+    Let $G$ be a finitely generated pro-$p$ group. The \emph{lower $p$-series}\index{lower p-series@lower $p$-series} $\dotsb \geq P_{3}(G) \geq P_{2}(G) \geq P_{1}(G)$ of $G$ is given by $P_{i}(G)$, where $P_{1}(G) = G$ and
+    \begin{equation*}
+      P_{i+1}(G) = P_{i}(G)^{p}\bigl[ P_{i}(G),G \bigr]
+    \end{equation*}
+    for $i \geq 1$.
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Sidenote: $I$ is not uniformly powerful (2)}
+
+  \begin{block}{Definition}
+    Let $p$ be an odd prime. A pro-$p$ group $G$ is \emph{uniformly powerful}\index{group!uniformly powerful} (often written as \emph{uniform}) if
+    \begin{enumerate}[(i)]
+      \item $G$ is finitely generated,
+      \item $G$ is \emph{powerful},\index{group!powerful} i.e., $G/\overline{G^{p}}$ is abelian, and
+      \item for all $i$, $[P_{i}(G) : P_{i+1}(G)] = [G : P_{2}(G)]$.
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Sidenote: $I$ is not uniformly powerful (3)}
+
+  \begin{block}{Theorem (K, 2022)}
+    Let $I$ be the pro-$p$ Iwahori subgroup of $\SL_{2}(\Q_{p})$ and let $g_{1},g_{2},g_{3}$ be the ordered basis of $I$. Then the lower $p$-series is given by
+    \begin{equation*}
+      P_{i}(I) =
+      \begin{dcases*}
+        I^{p^{n}} & if $i = 2n+1$, \\
+        [I,I]^{p^{n-1}} & if $i = 2n$,
+      \end{dcases*}
+    \end{equation*}
+    where $P_{2n+1}(I) = I^{p^{n}}$ is the subgroup generated by $g_{1}^{p^{n}},g_{2}^{p^{n}},g_{3}^{p^{n}}$ and $P_{2n}(I) = [I,I]^{p^{n-1}}$ is the subgroup generated by $g_{1}^{p^{n}},g_{2}^{p^{n-1}},g_{3}^{p^{n}}$.
+
+    Thus $I$ is not uniformly powerful, since
+    \begin{equation*}
+      [P_{i}(G) : P_{i+1}(G)] =
+      \begin{dcases*}
+        1 & if $i = 2n$, \\
+        2 & if $i = 2n+1$.
+      \end{dcases*}
+    \end{equation*}
+  \end{block}
+\end{frame}
+
+
+\subsection{\texorpdfstring{$I \subseteq \GL_{2}(\Z_{p})$}{I in GL2(Zp)}}
+
+\begin{frame}
+  \frametitle{The ordered basis of $I \subseteq \GL_{2}(\Z_{p})$}
+
+  Let $I$ be the pro-$p$ Iwahori subgroup of $\GL_{2}(\Q_{p})$, so we can take $I$ of the form
+  \[
+    I = \pmat{ 1+p\Z_{p} & \Z_{p} \\ p\Z_{p} & 1+p\Z_{p} } \subseteq \GL_{2}(\Z_{p}),
+  \]
+  and
+  \begin{align*}
+    g_{1} &= \pmat{ 1&0\\p&1 }, & g_{2} &= \pmat{ \exp(p)&0\\0&\exp(-p) }, \\
+    g_{3} &= \pmat{ \exp(p)&0\\0&\exp(p) }, & g_{4} &= \pmat{ 1&1\\0&1 }
+  \end{align*}
+  is an ordered basis of $I$.
+\end{frame}
+
+\begin{frame}
+  \frametitle{$E_{1}^{s,t} = H^{s,t}(\lie{g},\F_{p}) \Longrightarrow H^{s+t}(I,\F_{p})$}
+
+  Let $\lie{g} = \F_{p} \otimes_{\F_{p}[\pi]} \gr I$ be the Lazard Lie algebra of $I$, and note that it has basis $\xi_{1},\xi_{2},\xi_{3},\xi_{4}$ with $[\xi_{1},\xi_{4}] = -\xi_{2}$ the only non-zero commutator.
+
+  \pause
+
+  An argument similar to the $I \subseteq \SL_{2}(\Z_{p})$ case allows us to find $E_{1}^{s,t} = H^{s,t}(\lie{g},\F_{p})$ and show that
+  \[
+    E_{1}^{s,t} = H^{s,t}(\lie{g},\F_{p}) \Longrightarrow H^{s+t}(I,\F_{p})
+  \]
+  collapses at the first page.
+\end{frame}
+
+\begin{frame}
+  \frametitle{$H^{n}(I,\F_{p})$ dimensions}
+
+  We get that
+  \begin{equation*}
+    \dim H^{n}(I,\F_{p}) =
+    \begin{dcases}
+      1 & n=0, \\
+      3 & n=1, \\
+      4 & n=2, \\
+      3 & n=3, \\
+      1 & n=4.
+    \end{dcases}
+  \end{equation*}
+
+  This time the non-trivial cup products are
+  \begin{align*}
+    H^{1} \otimes H^{1} &\to H^{2}, & H^{1} \otimes H^{2} &\to H^{3}, \\
+    H^{1} \otimes H^{3} &\to H^{4}, & H^{2} \otimes H^{2} &\to H^{4}.
+  \end{align*}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Compairing $H^{*}(I,\F_{p})$ with $H^{*}(1+\idm_{D},\F_{p})$}
+
+  By explicit calculation, we can check that
+  \[
+    H^{*}(I,\F_{p}) \iso H^{*}(1+\idm_{D},\F_{p}).
+  \]
+
+  \begin{block}{Proposition (Sørensen, 2021)}
+    $H^{*}(1+\idm_{D},\F_{p}) \iso H^{*}\bigl( (1+\idm_{D})^{\Nrd = 1},\F_{p} \bigr) \otimes_{\F_{p}} \F_{p}[\varepsilon]$ (where $\varepsilon^{2}=0$).
+  \end{block}
+
+  Thus
+  \[
+    H^{*}(I_{\GL_{2}(\Q_{p})},\F_{p}) \iso H^{*}(I_{\SL_{2}(\Q_{p})},\F_{p}) \otimes_{\F_{p}} \F_{p}[\varepsilon].
+  \]
+\end{frame}
+
+\subsection{Other calculations}
+
+\begin{frame}
+  \frametitle{Other pro-$p$ Iwahori cohomology calculations}
+
+  We can similarly find the mod $p$ cohomology of the pro-$p$ Iwahori $I_{G}$ for $G = {}$
+  \begin{enumerate}[$\bullet$]
+    \item $\SL_{3}(\Q_{p})$,
+    \item $\GL_{3}(\Q_{p})$,
+    \item $\SL_{4}(\Q_{p})$ (partially),
+    \item $\GL_{4}(\Q_{p})$ (partially),
+    \item $\SL_{2}(F)$ (for $F/\Q_{p}$ quadratic),
+    \item $\GL_{2}(F)$ (for $F/\Q_{p}$ quadratic).
+  \end{enumerate}
+\end{frame}
+
+\subsection{Nilpotency index}
+
+\begin{frame}
+  \frametitle{Consequences: Nilpotency index of mod $p$ cohomology (1)}
+
+  Given any (suitable) cohomology theory $H$ (say over $\F_{p}$), we can think of the ring $H^{*}$ with the cup product $H^{*} = \F_{p} \oplus H^{+}$, where $\F_{p} = H^{0}$ and $H^{+} = \oplus_{n>0} H^{n}$.
+
+  Assuming that only finitely many $H^{n}$ are non-zero and that each $H^{n}$ is finite dimensional, one can note that $H^{+}$ must be nilpotent.
+
+  \begin{block}{Question}
+    What is the smallest positive integer $m$ such that $(H^{+})^{m} = 0$?
+  \end{block}
+
+  \begin{block}{Question}
+    What is the smallest positive integer $m$ such that $(H^{1})^{m} = 0$?
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Consequences: Nilpotency index of mod $p$ cohomology (2)}
+
+  \begin{center}
+    \begin{NiceTabular}{rccc}[hvlines]
+      $n$ & 2 & 3 & 4 \\
+      $I \subseteq \SL_{n}(\Z_{p})$, $H^{1}$ & \textbf{2} & \textbf{2} & 3 \\
+      $I \subseteq \SL_{n}(\Z_{p})$, $H^{+}$ & \textbf{3} & 5 & 8  \\
+      $I \subseteq \GL_{n}(\Z_{p})$, $H^{1}$ & \textbf{3} & 4 & 5 \\
+      $I \subseteq \GL_{n}(\Z_{p})$, $H^{+}$ & \textbf{4} & 7 & 11 \\
+      $I \subseteq \SL_{n}(\sO_{F})$ (quadratic), $H^{1}$ & 3 \\
+      $I \subseteq \SL_{n}(\sO_{F})$ (quadratic), $H^{+}$ & 4 \\
+      $I \subseteq \GL_{n}(\sO_{F})$ (quadratic), $H^{1}$ & 5 \\
+      $I \subseteq \GL_{n}(\sO_{F})$ (quadratic), $H^{+}$ & 7
+    \end{NiceTabular}
+  \end{center}
+\end{frame}
+
+% ---------------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------------
+
+\section{Future work}
+
+\subsection{Division quaternion algebras}
+
+\begin{frame}[fragile]
+  \frametitle{Division quaternion algebras}
+
+  \begin{columns}
+    \begin{column}{0.4\textwidth}
+      Let $p>5$ be a prime such that $p \equiv 3 \pmod{4}$. Let $D$ be a division quaternion algebra over $\Q_{p}$ and note that we can assume that $i^{2} = -1$ and $j^{2} = p$. Also $\sO_{D} = \Z_{p}[i,j,k]$ (where $k = ij$) and $\idm_{D} = j\sO_{D} = \sO_{D}j$ has $\Z_{p}$-basis $p,pi,j,k$ (by Voight's book). $D \subseteq M_{2}\bigl( \Q_{p}(i) \bigr)$ gives the right diagram.
+    \end{column}
+    \begin{column}{0.6\textwidth}
+      \begin{adjustbox}{max totalsize={\textwidth}{.7\textheight},center}
+        \begingroup
+        $\begin{tikzcd}
+          (1+\idm_{D})^{\Nrd = 1} \ar[d, hook] \ar[r, hook] & I_{\SL_{2}(\Q_{p}(i))} \ar[d, hook] & \ar[l, hook'] I_{\SL_{2}(\Q_{p})} \ar[d, hook] \\
+          (\sO_{D}^{\times})^{\Nrd = 1} \ar[d, hook] \ar[r, hook] & \SL_{2}\bigl( \Z_{p}[i] \bigr) \ar[d, hook] & \ar[l, hook'] \SL_{2}(\Z_{p}) \ar[d, hook] \\
+          (D^{\times})^{\Nrd = 1} \ar[d, hook] \ar[r, hook] & \SL_{2}\bigl( \Q_{p}(i) \bigr) \ar[d, hook] & \ar[l, hook'] \SL_{2}(\Q_{p}) \ar[d, hook] \\
+          D^{\times} \ar[r, hook] & \GL_{2}\bigl( \Q_{p}(i) \bigr) & \ar[l, hook'] \GL_{2}(\Q_{p}) \\
+          \sO_{D}^{\times} \ar[u, hook] \ar[r, hook] & \GL_{2}\bigl( \Z_{p}[i] \bigr) \ar[u, hook] & \ar[l, hook'] \GL_{2}(\Z_{p}) \ar[u, hook] \\
+          1+\idm_{D} \ar[u, hook] \ar[r, hook] & I_{\GL_{2}(\Q_{p}(i))} \ar[u, hook] & \ar[l, hook'] I_{\GL_{2}(\Q_{p})}. \ar[u, hook]
+        \end{tikzcd}$
+        \endgroup
+      \end{adjustbox}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\subsection{Central division algebras}
+
+\begin{frame}
+  \frametitle{Central division algebras}
+
+  \begin{block}{Conjecture}
+    Let $D$ be the central division algebra over $\Q_{p}$ of dimension $n^{2}$ and invariant $\frac{1}{n}$. Let $\sO_{D}$ be the maximal compact (local) subring of $D$ with maximal ideal $\idm_{D}$ and residue field $\F_{D} \iso \F_{p^{n}}$. If $p > n+1$ then
+    \begin{enumerate}[$\bullet$]
+      \item $H^{*}(I_{\GL_{n}(\Q_{p})},\F_{p}) \iso H^{*}(1+\idm_{D},\F_{p})$ as graded algebras, and
+      \item $H^{*}(I_{\SL_{n}(\Q_{p})},\F_{p}) \iso H^{*}\bigl( (1+\idm_{D})^{\Nrd = 1},\F_{p} \bigr)$ as graded algebras.
+    \end{enumerate}
+    In particular (due to Sørensen)
+    \[
+      H^{*}(I_{\GL_{n}(\Q_{p})},\F_{p}) \iso H^{*}(I_{\SL_{n}(\Q_{p})},\F_{p}) \otimes_{\F_{p}} \F_{p}[\varepsilon]
+    \]
+    as graded algebras, where $\varepsilon^{2} = 0$.
+  \end{block}
+\end{frame}
+
+% \begin{frame}
+%   \frametitle{pro-$p$-Iwahori subgroups}
+
+%   Let $\gs{G}$ be a split and connected reductive $\Z_p$ group and fix $\gs{N}\subseteq\gs{B}$ as before. Consider the reduction map
+%   \[
+%     \reduc \colon \gs{G}(\Z_p) \to \gs{G}(\F_p)
+%   \]
+%   induced by $\Z_p \to \F_p$. Then
+%   \[
+%     I_1 = \set{g \in \gs{G}(\Z_p) \given \reduc(g) \in \gs{N}(\Z_p)}
+%   \]
+%   is the pro-$p$-Iwahori subgroup.
+%   \pause
+%   \begin{block}{Question}
+%     Can we get a good description of the mod $p$ cohomology of $I_1$ in terms of the mod $p$ cohomology of $\lie{g}$ or $\lie{n}$?
+%   \end{block}
+% \end{frame}
+
+\subsection{Serre spectral sequence}
+
+\begin{frame}
+  \frametitle{Serre spectral sequence}
+
+  Assume we have the ``standard'' setup over $\Q_{p}$ with $\gs{G} = \SL_{n}$, $\gs{U}$ unipotent upper triangular matrices and $\gs{T}$ diagonal matrices with determinant $1$. Let
+  \begin{align*}
+    I &= \set[\big]{ g \in \gs{G}(\Z_{p}) : \reduc(g) \in \gs{U}(\F_{p}) } \text{ (pro-}p\text{ Iwahori)}, \\
+    K &= \ker\bigl( \reduc \colon \gs{G}(\Z_{p}) \to \gs{G}(\F_{p}) \bigr) \triangleleft I.
+  \end{align*}
+  Then $I/K \iso \gs{U}(\F_{p})$, and thus we get the (multiplicative) Serre spectral sequence
+  \[
+    E_{2}^{s,t} = H^{s}\bigl( \gs{U}(\F_{p}), H^{t}(K,\F_{p}) \bigr) \Longrightarrow H^{s+t}(I,\F_{p}).
+  \]
+  Since $K$ is uniformly powerful, we know by Lazard that
+  \[
+    H^{t}(K,\F_{p}) \iso \bigwedge^{t} \Hom_{\F_{p}}(K,\F_{p}).
+  \]
+\end{frame}
+
+%---------------------------------------------------------------------------------------
+\begin{frame}
+\Huge{\centerline{Thank you}}
+%\Large{\centerline{}}
+\end{frame}
+%---------------------------------------------------------------------------------------
+
+\end{document} 
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

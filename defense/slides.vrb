@@ -1,0 +1,21 @@
+\frametitle{Division quaternion algebras}
+
+  \begin{columns}
+    \begin{column}{0.4\textwidth}
+      Let $p>5$ be a prime such that $p \equiv 3 \pmod{4}$. Let $D$ be a division quaternion algebra over $\Q_{p}$ and note that we can assume that $i^{2} = -1$ and $j^{2} = p$. Also $\sO_{D} = \Z_{p}[i,j,k]$ (where $k = ij$) and $\idm_{D} = j\sO_{D} = \sO_{D}j$ has $\Z_{p}$-basis $p,pi,j,k$ (by Voight's book). $D \subseteq M_{2}\bigl( \Q_{p}(i) \bigr)$ gives the right diagram.
+    \end{column}
+    \begin{column}{0.6\textwidth}
+      \begin{adjustbox}{max totalsize={\textwidth}{.7\textheight},center}
+        \begingroup
+        $\begin{tikzcd}
+          (1+\idm_{D})^{\Nrd = 1} \ar[d, hook] \ar[r, hook] & I_{\SL_{2}(\Q_{p}(i))} \ar[d, hook] & \ar[l, hook'] I_{\SL_{2}(\Q_{p})} \ar[d, hook] \\
+          (\sO_{D}^{\times})^{\Nrd = 1} \ar[d, hook] \ar[r, hook] & \SL_{2}\bigl( \Z_{p}[i] \bigr) \ar[d, hook] & \ar[l, hook'] \SL_{2}(\Z_{p}) \ar[d, hook] \\
+          (D^{\times})^{\Nrd = 1} \ar[d, hook] \ar[r, hook] & \SL_{2}\bigl( \Q_{p}(i) \bigr) \ar[d, hook] & \ar[l, hook'] \SL_{2}(\Q_{p}) \ar[d, hook] \\
+          D^{\times} \ar[r, hook] & \GL_{2}\bigl( \Q_{p}(i) \bigr) & \ar[l, hook'] \GL_{2}(\Q_{p}) \\
+          \sO_{D}^{\times} \ar[u, hook] \ar[r, hook] & \GL_{2}\bigl( \Z_{p}[i] \bigr) \ar[u, hook] & \ar[l, hook'] \GL_{2}(\Z_{p}) \ar[u, hook] \\
+          1+\idm_{D} \ar[u, hook] \ar[r, hook] & I_{\GL_{2}(\Q_{p}(i))} \ar[u, hook] & \ar[l, hook'] I_{\GL_{2}(\Q_{p})}. \ar[u, hook]
+        \end{tikzcd}$
+        \endgroup
+      \end{adjustbox}
+    \end{column}
+  \end{columns}
